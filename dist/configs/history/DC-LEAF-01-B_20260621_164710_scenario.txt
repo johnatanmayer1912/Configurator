@@ -1,0 +1,18 @@
+{
+  "id": "vpc_leaf_pair",
+  "name": "vPC Leaf Pair (Primary + Secondary)",
+  "nxos_version": "9.3",
+  "features": [
+    "interface_vlan",
+    "lldp",
+    "lacp",
+    "vpc",
+    "hsrp",
+    "storm_control",
+    "vpc_peer_gateway",
+    "vpc_auto_recovery",
+    "vpc_arp_sync",
+    "bash"
+  ],
+  "vpc_role": "secondary"
+}

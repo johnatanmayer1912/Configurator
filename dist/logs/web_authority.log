@@ -1,0 +1,261 @@
+2026-04-13 16:55:00,968 [INFO] WebAuthority: Initializing Static Assets from: C:\Users\bbb12\AppData\Local\Temp\_MEI149802\static
+2026-04-13 16:55:00,968 [INFO] WebAuthority: --------------------------------------------------
+2026-04-13 16:55:00,968 [INFO] WebAuthority:      CONFIGURATION AUTHORITY SYSTEM (2.0.0)
+2026-04-13 16:55:00,968 [INFO] WebAuthority:            Institutional Web Platform
+2026-04-13 16:55:00,968 [INFO] WebAuthority: --------------------------------------------------
+2026-04-13 16:55:02,988 [INFO] WebAuthority: Starting Production Server at http://127.0.0.1:9000
+2026-04-13 16:55:04,989 [INFO] WebAuthority: Opening browser at: http://127.0.0.1:9000/?token=lYPnRaLjSKnzvD9GDU4CBrfbuucUw_jM
+2026-04-13 17:03:20,128 [INFO] WebAuthority: SHUTDOWN REQUEST: Exit button triggered.
+2026-04-13 17:03:30,958 [INFO] WebAuthority: Initializing Static Assets from: C:\Users\bbb12\AppData\Local\Temp\_MEI216282\static
+2026-04-13 17:03:30,958 [INFO] WebAuthority: --------------------------------------------------
+2026-04-13 17:03:30,958 [INFO] WebAuthority:      CONFIGURATION AUTHORITY SYSTEM (2.0.0)
+2026-04-13 17:03:30,958 [INFO] WebAuthority:            Institutional Web Platform
+2026-04-13 17:03:30,958 [INFO] WebAuthority: --------------------------------------------------
+2026-04-13 17:03:32,986 [INFO] WebAuthority: Starting Production Server at http://127.0.0.1:9000
+2026-04-13 17:03:34,988 [INFO] WebAuthority: Opening browser at: http://127.0.0.1:9000/?token=EhimlrQeVSqDkEVXyfwLbZv_1dWZQi5Q
+2026-04-14 08:36:16,157 [INFO] WebAuthority: Initializing Static Assets from: C:\Users\bbb12\AppData\Local\Temp\_MEI89642\static
+2026-04-14 08:36:16,157 [INFO] WebAuthority: --------------------------------------------------
+2026-04-14 08:36:16,157 [INFO] WebAuthority:      CONFIGURATION AUTHORITY SYSTEM (2.0.1)
+2026-04-14 08:36:16,157 [INFO] WebAuthority:            Institutional Web Platform
+2026-04-14 08:36:16,157 [INFO] WebAuthority: --------------------------------------------------
+2026-04-14 08:36:18,191 [INFO] WebAuthority: Starting Production Server at http://127.0.0.1:9000
+2026-04-14 08:36:20,192 [INFO] WebAuthority: Opening browser at: http://127.0.0.1:9000/?token=YFUB6MTnjULl_awVdlfHQHjTA4TfdqZQ
+2026-04-14 11:11:06,951 [INFO] WebAuthority: Initializing Static Assets from: C:\Users\bbb12\AppData\Local\Temp\_MEI96162\static
+2026-04-14 11:11:06,951 [INFO] WebAuthority: --------------------------------------------------
+2026-04-14 11:11:06,951 [INFO] WebAuthority:      CONFIGURATION AUTHORITY SYSTEM (2.0.1)
+2026-04-14 11:11:06,951 [INFO] WebAuthority:            Institutional Web Platform
+2026-04-14 11:11:06,951 [INFO] WebAuthority: --------------------------------------------------
+2026-04-14 11:11:08,983 [INFO] WebAuthority: Starting Production Server at http://127.0.0.1:9000
+2026-04-14 11:11:10,984 [INFO] WebAuthority: Opening browser at: http://127.0.0.1:9000/?token=u356Bdbb0wYLBEcogonxlBwGa9UIVCZ6
+2026-04-19 16:58:23,722 [INFO] WebAuthority: Initializing Static Assets from: C:\Users\bbb12\AppData\Local\Temp\_MEI188042\static
+2026-04-19 16:58:23,722 [INFO] WebAuthority: --------------------------------------------------
+2026-04-19 16:58:23,722 [INFO] WebAuthority:      CONFIGURATION AUTHORITY SYSTEM (2.0.1)
+2026-04-19 16:58:23,722 [INFO] WebAuthority:            Institutional Web Platform
+2026-04-19 16:58:23,722 [INFO] WebAuthority: --------------------------------------------------
+2026-04-19 16:58:25,776 [INFO] WebAuthority: Starting Production Server at http://127.0.0.1:9000
+2026-04-19 16:58:27,777 [INFO] WebAuthority: Opening browser at: http://127.0.0.1:9000/?token=lvWvM06ByrpMAdHhMyupgIikRXwaXk8E
+2026-06-21 16:46:09,758 [INFO] WebAuthority: Initializing Static Assets from: C:\Users\bbb12\AppData\Local\Temp\_MEI87162\static
+2026-06-21 16:46:09,759 [INFO] WebAuthority: --------------------------------------------------
+2026-06-21 16:46:09,759 [INFO] WebAuthority:      NX-OS CONFIGURATION AUTHORITY (2.2.0)
+2026-06-21 16:46:09,759 [INFO] WebAuthority:            Web Platform — Offline Ready
+2026-06-21 16:46:09,760 [INFO] WebAuthority: --------------------------------------------------
+2026-06-21 16:46:11,806 [INFO] WebAuthority: Starting Production Server at http://127.0.0.1:9000
+2026-06-21 16:46:13,807 [INFO] WebAuthority: Opening browser at: http://127.0.0.1:9000/?token=chpgFvdaMx_p5svt2OVIzLl5rZZcqqbd
+2026-06-21 16:52:10,227 [INFO] WebAuthority: SHUTDOWN REQUEST: Exit button triggered.
+2026-06-21 17:26:06,420 [INFO] WebAuthority: Initializing Static Assets from: C:\Users\bbb12\AppData\Local\Temp\_MEI178202\static
+2026-06-21 17:26:06,422 [INFO] WebAuthority: --------------------------------------------------
+2026-06-21 17:26:06,423 [INFO] WebAuthority:      NX-OS CONFIGURATION AUTHORITY (2.7.0)
+2026-06-21 17:26:06,423 [INFO] WebAuthority:            Web Platform — Offline Ready
+2026-06-21 17:26:06,423 [INFO] WebAuthority: --------------------------------------------------
+2026-06-21 17:26:08,462 [INFO] WebAuthority: Starting Production Server at http://127.0.0.1:9000
+2026-06-21 17:26:10,463 [INFO] WebAuthority: Opening browser at: http://127.0.0.1:9000/?token=YS1RfCgayO16EpvZmkPi_FgKmIXwGS4F
+2026-06-21 17:41:47,454 [INFO] WebAuthority: Initializing Static Assets from: C:\Users\bbb12\AppData\Local\Temp\_MEI236962\static
+2026-06-21 17:41:47,455 [INFO] WebAuthority: --------------------------------------------------
+2026-06-21 17:41:47,455 [INFO] WebAuthority:      NX-OS CONFIGURATION AUTHORITY (2.8.0)
+2026-06-21 17:41:47,455 [INFO] WebAuthority:            Web Platform — Offline Ready
+2026-06-21 17:41:47,455 [INFO] WebAuthority: --------------------------------------------------
+2026-06-21 17:41:49,494 [INFO] WebAuthority: Starting Production Server at http://127.0.0.1:9000
+2026-06-21 17:41:51,494 [INFO] WebAuthority: Opening browser at: http://127.0.0.1:9000/?token=M9i4JETw76pgR5NllxpqPI5_5WfE4tds
+2026-06-21 17:44:25,760 [INFO] WebAuthority: SHUTDOWN REQUEST: Exit button triggered.
+2026-06-21 17:45:26,293 [INFO] WebAuthority: Initializing Static Assets from: C:\Users\bbb12\AppData\Local\Temp\_MEI193242\static
+2026-06-21 17:45:26,294 [INFO] WebAuthority: --------------------------------------------------
+2026-06-21 17:45:26,294 [INFO] WebAuthority:      NX-OS CONFIGURATION AUTHORITY (2.8.0)
+2026-06-21 17:45:26,294 [INFO] WebAuthority:            Web Platform — Offline Ready
+2026-06-21 17:45:26,294 [INFO] WebAuthority: --------------------------------------------------
+2026-06-21 17:45:28,320 [INFO] WebAuthority: Starting Production Server at http://127.0.0.1:9000
+2026-06-21 17:45:30,429 [INFO] WebAuthority: Opening browser at: http://127.0.0.1:9000/?token=h0-SV2mzBK8IFpZbrXm-jG0x2SfOeLJs
+2026-06-21 17:59:00,118 [INFO] WebAuthority: Initializing Static Assets from: C:\Users\bbb12\AppData\Local\Temp\_MEI266522\static
+2026-06-21 17:59:00,119 [INFO] WebAuthority: --------------------------------------------------
+2026-06-21 17:59:00,119 [INFO] WebAuthority:      NX-OS CONFIGURATION AUTHORITY (2.9.0)
+2026-06-21 17:59:00,119 [INFO] WebAuthority:            Web Platform — Offline Ready
+2026-06-21 17:59:00,119 [INFO] WebAuthority: --------------------------------------------------
+2026-06-21 17:59:00,120 [ERROR] WebAuthority: CRITICAL: Port 9000 is already in use. Please close other instances.
+2026-06-21 17:59:07,921 [INFO] WebAuthority: SHUTDOWN REQUEST: Exit button triggered.
+2026-06-21 17:59:13,274 [INFO] WebAuthority: Initializing Static Assets from: C:\Users\bbb12\AppData\Local\Temp\_MEI138122\static
+2026-06-21 17:59:13,275 [INFO] WebAuthority: --------------------------------------------------
+2026-06-21 17:59:13,275 [INFO] WebAuthority:      NX-OS CONFIGURATION AUTHORITY (2.9.0)
+2026-06-21 17:59:13,275 [INFO] WebAuthority:            Web Platform — Offline Ready
+2026-06-21 17:59:13,275 [INFO] WebAuthority: --------------------------------------------------
+2026-06-21 17:59:15,313 [INFO] WebAuthority: Starting Production Server at http://127.0.0.1:9000
+2026-06-21 17:59:17,313 [INFO] WebAuthority: Opening browser at: http://127.0.0.1:9000/?token=DJ6FYe5myvlNe_1lD603mmqW6uuSSJTv
+2026-06-21 18:00:04,335 [INFO] WebAuthority: SHUTDOWN REQUEST: Exit button triggered.
+2026-06-22 08:49:22,639 [INFO] WebAuthority: Initializing Static Assets from: C:\Users\bbb12\AppData\Local\Temp\_MEI25882\static
+2026-06-22 08:49:22,640 [INFO] WebAuthority: --------------------------------------------------
+2026-06-22 08:49:22,640 [INFO] WebAuthority:      NX-OS CONFIGURATION AUTHORITY (3.0.0)
+2026-06-22 08:49:22,640 [INFO] WebAuthority:            Web Platform — Offline Ready
+2026-06-22 08:49:22,641 [INFO] WebAuthority: --------------------------------------------------
+2026-06-22 08:49:24,664 [INFO] WebAuthority: Starting Production Server at http://127.0.0.1:9000
+2026-06-22 08:49:26,665 [INFO] WebAuthority: Opening browser at: http://127.0.0.1:9000/?token=kP_VKZRTxIMKXLuzjaUzvc8jDnA-MVd5
+2026-06-22 08:56:14,916 [INFO] WebAuthority: SHUTDOWN REQUEST: Exit button triggered.
+2026-06-22 09:49:39,068 [INFO] WebAuthority: Initializing Static Assets from: C:\Users\bbb12\AppData\Local\Temp\_MEI245842\static
+2026-06-22 09:49:39,069 [INFO] WebAuthority: --------------------------------------------------
+2026-06-22 09:49:39,069 [INFO] WebAuthority:      NX-OS CONFIGURATION AUTHORITY (3.2.0)
+2026-06-22 09:49:39,069 [INFO] WebAuthority:            Web Platform — Offline Ready
+2026-06-22 09:49:39,070 [INFO] WebAuthority: --------------------------------------------------
+2026-06-22 09:49:41,112 [INFO] WebAuthority: Starting Production Server at http://127.0.0.1:9000
+2026-06-22 09:49:43,112 [INFO] WebAuthority: Opening browser at: http://127.0.0.1:9000/?token=0qYFumnKtLa5vGKStC3SX83SCUz-b7PX
+2026-06-22 09:57:57,252 [INFO] WebAuthority: SHUTDOWN REQUEST: Exit button triggered.
+2026-06-22 10:04:32,216 [INFO] WebAuthority: Initializing Static Assets from: C:\Users\bbb12\AppData\Local\Temp\_MEI246722\static
+2026-06-22 10:04:32,217 [INFO] WebAuthority: --------------------------------------------------
+2026-06-22 10:04:32,217 [INFO] WebAuthority:      NX-OS CONFIGURATION AUTHORITY (3.3.0)
+2026-06-22 10:04:32,217 [INFO] WebAuthority:            Web Platform — Offline Ready
+2026-06-22 10:04:32,217 [INFO] WebAuthority: --------------------------------------------------
+2026-06-22 10:04:34,230 [INFO] WebAuthority: Starting Production Server at http://127.0.0.1:9000
+2026-06-22 10:04:36,231 [INFO] WebAuthority: Opening browser at: http://127.0.0.1:9000/?token=mSecDK9Ng_l3AuK9rlw7ct6ftXw4lysf
+2026-06-22 10:10:03,783 [INFO] WebAuthority: SHUTDOWN REQUEST: Exit button triggered.
+2026-06-22 10:36:37,074 [INFO] WebAuthority: Initializing Static Assets from: C:\Users\bbb12\AppData\Local\Temp\_MEI178962\static
+2026-06-22 10:36:37,075 [INFO] WebAuthority: --------------------------------------------------
+2026-06-22 10:36:37,075 [INFO] WebAuthority:      NX-OS CONFIGURATION AUTHORITY (3.5.0)
+2026-06-22 10:36:37,075 [INFO] WebAuthority:            Web Platform — Offline Ready
+2026-06-22 10:36:37,075 [INFO] WebAuthority: --------------------------------------------------
+2026-06-22 10:36:39,122 [INFO] WebAuthority: Starting Production Server at http://127.0.0.1:9000
+2026-06-22 10:36:41,123 [INFO] WebAuthority: Opening browser at: http://127.0.0.1:9000/?token=R1GoVxMUs5sM8TSmqTJ8hZHpnsA1BaiX
+2026-06-22 10:56:55,113 [INFO] WebAuthority: Initializing Static Assets from: C:\Users\bbb12\AppData\Local\Temp\_MEI256722\static
+2026-06-22 10:56:55,114 [INFO] WebAuthority: --------------------------------------------------
+2026-06-22 10:56:55,115 [INFO] WebAuthority:      NX-OS CONFIGURATION AUTHORITY (3.5.2)
+2026-06-22 10:56:55,115 [INFO] WebAuthority:            Web Platform — Offline Ready
+2026-06-22 10:56:55,115 [INFO] WebAuthority: --------------------------------------------------
+2026-06-22 10:56:55,116 [ERROR] WebAuthority: CRITICAL: Port 9000 is already in use. Please close other instances.
+2026-06-22 10:57:09,229 [INFO] WebAuthority: SHUTDOWN REQUEST: Exit button triggered.
+2026-06-22 10:57:32,536 [INFO] WebAuthority: Initializing Static Assets from: C:\Users\bbb12\AppData\Local\Temp\_MEI161722\static
+2026-06-22 10:57:32,537 [INFO] WebAuthority: --------------------------------------------------
+2026-06-22 10:57:32,537 [INFO] WebAuthority:      NX-OS CONFIGURATION AUTHORITY (3.5.2)
+2026-06-22 10:57:32,537 [INFO] WebAuthority:            Web Platform — Offline Ready
+2026-06-22 10:57:32,537 [INFO] WebAuthority: --------------------------------------------------
+2026-06-22 10:57:34,573 [INFO] WebAuthority: Starting Production Server at http://127.0.0.1:9000
+2026-06-22 10:57:36,573 [INFO] WebAuthority: Opening browser at: http://127.0.0.1:9000/?token=gmL8ZV6jZnTkFkw_6Sujw_z769BHfSa-
+2026-06-22 12:37:05,762 [INFO] WebAuthority: Initializing Static Assets from: C:\Users\bbb12\AppData\Local\Temp\_MEI118602\static
+2026-06-22 12:37:05,763 [INFO] WebAuthority: --------------------------------------------------
+2026-06-22 12:37:05,763 [INFO] WebAuthority:      NX-OS CONFIGURATION AUTHORITY (3.7.2)
+2026-06-22 12:37:05,763 [INFO] WebAuthority:            Web Platform — Offline Ready
+2026-06-22 12:37:05,764 [INFO] WebAuthority: --------------------------------------------------
+2026-06-22 12:37:07,818 [INFO] WebAuthority: Starting Production Server at http://127.0.0.1:9000
+2026-06-22 12:37:07,818 [INFO] WebAuthority: Session URL (bookmark this tab): http://127.0.0.1:9000/?token=NQcH934QS5pIO04kM1FSxjz0DDiQpUb4
+2026-06-22 12:37:09,820 [INFO] WebAuthority: Opening browser at: http://127.0.0.1:9000/?token=NQcH934QS5pIO04kM1FSxjz0DDiQpUb4
+2026-06-22 12:37:13,385 [INFO] WebAuthority: SHUTDOWN REQUEST: Stop button or CLI triggered.
+2026-06-22 12:37:26,611 [INFO] WebAuthority: Initializing Static Assets from: C:\Users\bbb12\AppData\Local\Temp\_MEI84202\static
+2026-06-22 12:37:26,612 [INFO] WebAuthority: --------------------------------------------------
+2026-06-22 12:37:26,612 [INFO] WebAuthority:      NX-OS CONFIGURATION AUTHORITY (3.7.2)
+2026-06-22 12:37:26,612 [INFO] WebAuthority:            Web Platform — Offline Ready
+2026-06-22 12:37:26,612 [INFO] WebAuthority: --------------------------------------------------
+2026-06-22 12:37:28,647 [INFO] WebAuthority: Starting Production Server at http://127.0.0.1:9000
+2026-06-22 12:37:28,647 [INFO] WebAuthority: Session URL (bookmark this tab): http://127.0.0.1:9000/?token=SuGJSqa99V8OjJJc4hGzMdxDp1CIvFRy
+2026-06-22 12:37:30,649 [INFO] WebAuthority: Opening browser at: http://127.0.0.1:9000/?token=SuGJSqa99V8OjJJc4hGzMdxDp1CIvFRy
+2026-06-22 12:46:49,130 [INFO] WebAuthority: SHUTDOWN REQUEST: Stop button or CLI triggered.
+2026-06-22 13:21:29,034 [INFO] WebAuthority: Initializing Static Assets from: C:\Users\bbb12\AppData\Local\Temp\_MEI116922\static
+2026-06-22 13:21:29,035 [INFO] WebAuthority: --------------------------------------------------
+2026-06-22 13:21:29,035 [INFO] WebAuthority:      NX-OS CONFIGURATION AUTHORITY (3.7.3)
+2026-06-22 13:21:29,035 [INFO] WebAuthority:            Web Platform — Offline Ready
+2026-06-22 13:21:29,035 [INFO] WebAuthority: --------------------------------------------------
+2026-06-22 13:21:31,077 [INFO] WebAuthority: Starting Production Server at http://127.0.0.1:9000
+2026-06-22 13:21:31,077 [INFO] WebAuthority: Session URL (bookmark this tab): http://127.0.0.1:9000/?token=DcFytAtkrLMKDVuo-kHB7YbEK5SlCX_1
+2026-06-22 13:21:33,078 [INFO] WebAuthority: Opening browser at: http://127.0.0.1:9000/?token=DcFytAtkrLMKDVuo-kHB7YbEK5SlCX_1
+2026-06-22 13:29:00,575 [INFO] WebAuthority: SHUTDOWN REQUEST: Stop button or CLI triggered.
+2026-06-22 17:18:52,694 [INFO] WebAuthority: Initializing Static Assets from: C:\Users\bbb12\AppData\Local\Temp\_MEI247602\static
+2026-06-22 17:18:52,696 [INFO] WebAuthority: --------------------------------------------------
+2026-06-22 17:18:52,696 [INFO] WebAuthority:      NX-OS CONFIGURATION AUTHORITY (3.7.4)
+2026-06-22 17:18:52,696 [INFO] WebAuthority:            Web Platform — Offline Ready
+2026-06-22 17:18:52,696 [INFO] WebAuthority: --------------------------------------------------
+2026-06-22 17:18:54,720 [INFO] WebAuthority: Starting Production Server at http://127.0.0.1:9000
+2026-06-22 17:18:54,721 [INFO] WebAuthority: Session URL (bookmark this tab): http://127.0.0.1:9000/?token=gwKk0jm_fPdMhD2MuzqKsu_cERZv67X5
+2026-06-22 17:18:56,721 [INFO] WebAuthority: Opening browser at: http://127.0.0.1:9000/?token=gwKk0jm_fPdMhD2MuzqKsu_cERZv67X5
+2026-06-22 17:19:02,976 [INFO] WebAuthority: SHUTDOWN REQUEST: Stop button or CLI triggered.
+2026-06-22 18:02:03,390 [INFO] WebAuthority: Initializing Static Assets from: C:\Users\bbb12\AppData\Local\Temp\_MEI167202\static
+2026-06-22 18:02:03,394 [INFO] WebAuthority: --------------------------------------------------
+2026-06-22 18:02:03,394 [INFO] WebAuthority:      NX-OS CONFIGURATION AUTHORITY (3.9.0)
+2026-06-22 18:02:03,394 [INFO] WebAuthority:            Web Platform — Offline Ready
+2026-06-22 18:02:03,395 [INFO] WebAuthority: --------------------------------------------------
+2026-06-22 18:02:05,434 [INFO] WebAuthority: Starting Production Server at http://127.0.0.1:9000
+2026-06-22 18:02:05,434 [INFO] WebAuthority: Session URL (bookmark this tab): http://127.0.0.1:9000/?token=nHEb1d4Amob1n9OjCGLxwQ1NkpGwgu4X
+2026-06-22 18:02:07,435 [INFO] WebAuthority: Opening browser at: http://127.0.0.1:9000/?token=nHEb1d4Amob1n9OjCGLxwQ1NkpGwgu4X
+2026-06-22 18:06:07,586 [INFO] WebAuthority: SHUTDOWN REQUEST: Stop button or CLI triggered.
+2026-06-23 11:10:38,717 [INFO] WebAuthority: Initializing Static Assets from: C:\Users\bbb12\AppData\Local\Temp\_MEI162842\static
+2026-06-23 11:10:38,719 [INFO] WebAuthority: --------------------------------------------------
+2026-06-23 11:10:38,720 [INFO] WebAuthority:      NX-OS CONFIGURATION AUTHORITY (4.0.0)
+2026-06-23 11:10:38,720 [INFO] WebAuthority:            Web Platform — Offline Ready
+2026-06-23 11:10:38,720 [INFO] WebAuthority: --------------------------------------------------
+2026-06-23 11:10:40,754 [INFO] WebAuthority: Starting Production Server at http://127.0.0.1:9000
+2026-06-23 11:10:40,754 [INFO] WebAuthority: Session URL (bookmark this tab): http://127.0.0.1:9000/?token=JHQJEbeHUhvnnoxPbGVlbdQy0H08Ssym
+2026-06-23 11:10:42,755 [INFO] WebAuthority: Opening browser at: http://127.0.0.1:9000/?token=JHQJEbeHUhvnnoxPbGVlbdQy0H08Ssym
+2026-06-23 11:27:15,643 [INFO] WebAuthority: SHUTDOWN REQUEST: Stop button or CLI triggered.
+2026-06-23 11:44:27,696 [INFO] WebAuthority: Initializing Static Assets from: C:\Users\bbb12\AppData\Local\Temp\_MEI58642\static
+2026-06-23 11:44:27,697 [INFO] WebAuthority: --------------------------------------------------
+2026-06-23 11:44:27,697 [INFO] WebAuthority:      NX-OS CONFIGURATION AUTHORITY (4.1.0)
+2026-06-23 11:44:27,697 [INFO] WebAuthority:            Web Platform — Offline Ready
+2026-06-23 11:44:27,697 [INFO] WebAuthority: --------------------------------------------------
+2026-06-23 11:44:29,728 [INFO] WebAuthority: Starting Production Server at http://127.0.0.1:9000
+2026-06-23 11:44:29,728 [INFO] WebAuthority: Session URL (bookmark this tab): http://127.0.0.1:9000/?token=rxo8WuP1Y2b-gIJlPTU2SxM9LPQ7z6Sf
+2026-06-23 11:44:31,729 [INFO] WebAuthority: Opening browser at: http://127.0.0.1:9000/?token=rxo8WuP1Y2b-gIJlPTU2SxM9LPQ7z6Sf
+2026-06-23 12:06:27,823 [INFO] WebAuthority: SHUTDOWN REQUEST: Stop button or CLI triggered.
+2026-06-23 12:08:40,637 [INFO] WebAuthority: Initializing Static Assets from: C:\Users\bbb12\AppData\Local\Temp\_MEI244482\static
+2026-06-23 12:08:40,637 [INFO] WebAuthority: --------------------------------------------------
+2026-06-23 12:08:40,638 [INFO] WebAuthority:      NX-OS CONFIGURATION AUTHORITY (5.0.0)
+2026-06-23 12:08:40,638 [INFO] WebAuthority:            Web Platform — Offline Ready
+2026-06-23 12:08:40,638 [INFO] WebAuthority: --------------------------------------------------
+2026-06-23 12:08:42,653 [INFO] WebAuthority: Starting Production Server at http://127.0.0.1:9000
+2026-06-23 12:08:42,653 [INFO] WebAuthority: Session URL (bookmark this tab): http://127.0.0.1:9000/?token=LWtmuvniq98vX7ZAvK3H1FHr2cdBG0Oe
+2026-06-23 12:08:44,655 [INFO] WebAuthority: Opening browser at: http://127.0.0.1:9000/?token=LWtmuvniq98vX7ZAvK3H1FHr2cdBG0Oe
+2026-06-23 12:13:40,433 [INFO] WebAuthority: SHUTDOWN REQUEST: Stop button or CLI triggered.
+2026-06-23 12:39:07,868 [INFO] WebAuthority: Initializing Static Assets from: C:\Users\bbb12\AppData\Local\Temp\_MEI245482\static
+2026-06-23 12:39:07,869 [INFO] WebAuthority: --------------------------------------------------
+2026-06-23 12:39:07,869 [INFO] WebAuthority:      NX-OS CONFIGURATION AUTHORITY (5.0.3)
+2026-06-23 12:39:07,869 [INFO] WebAuthority:            Web Platform — Offline Ready
+2026-06-23 12:39:07,869 [INFO] WebAuthority: --------------------------------------------------
+2026-06-23 12:39:09,888 [INFO] WebAuthority: Starting Production Server at http://127.0.0.1:9000
+2026-06-23 12:39:09,889 [INFO] WebAuthority: Session URL (bookmark this tab): http://127.0.0.1:9000/?token=T_mqw8_-n5a_YWxfpfz-9CTkwd-zvCTL
+2026-06-23 12:39:11,890 [INFO] WebAuthority: Opening browser at: http://127.0.0.1:9000/?token=T_mqw8_-n5a_YWxfpfz-9CTkwd-zvCTL
+2026-06-23 14:07:57,768 [INFO] WebAuthority: SHUTDOWN REQUEST: Stop button or CLI triggered.
+2026-06-23 14:11:52,978 [INFO] WebAuthority: Initializing Static Assets from: C:\Users\bbb12\AppData\Local\Temp\_MEI105442\static
+2026-06-23 14:11:52,978 [INFO] WebAuthority: --------------------------------------------------
+2026-06-23 14:11:52,978 [INFO] WebAuthority:      NX-OS CONFIGURATION AUTHORITY (6.0.0)
+2026-06-23 14:11:52,978 [INFO] WebAuthority:            Web Platform — Offline Ready
+2026-06-23 14:11:52,978 [INFO] WebAuthority: --------------------------------------------------
+2026-06-23 14:11:55,018 [INFO] WebAuthority: Starting Production Server at http://127.0.0.1:9000
+2026-06-23 14:11:55,018 [INFO] WebAuthority: Session URL (bookmark this tab): http://127.0.0.1:9000/?token=tqtvSQfpI-LEdQKf-OkV6IyloefGelO_
+2026-06-23 14:11:57,020 [INFO] WebAuthority: Opening browser at: http://127.0.0.1:9000/?token=tqtvSQfpI-LEdQKf-OkV6IyloefGelO_
+2026-06-23 14:28:20,907 [INFO] WebAuthority: Initializing Static Assets from: C:\Users\bbb12\AppData\Local\Temp\_MEI304922\static
+2026-06-23 14:28:20,907 [INFO] WebAuthority: --------------------------------------------------
+2026-06-23 14:28:20,907 [INFO] WebAuthority:      NX-OS CONFIGURATION AUTHORITY (6.1.0)
+2026-06-23 14:28:20,907 [INFO] WebAuthority:            Web Platform — Offline Ready
+2026-06-23 14:28:20,907 [INFO] WebAuthority: --------------------------------------------------
+2026-06-23 14:28:20,929 [ERROR] WebAuthority: Port 9000 is already in use.
+Listening process PID(s): 22916
+PID file: C:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator\dist\logs\nxos_configurator.pid (pid 22916)
+Close the console window, click Stop in the web UI, or run: scripts\stop_configurator.ps1
+To replace the running instance: re-launch with --replace
+2026-06-23 14:28:28,235 [INFO] WebAuthority: SHUTDOWN REQUEST: Stop button or CLI triggered.
+2026-06-23 14:28:36,910 [INFO] WebAuthority: Initializing Static Assets from: C:\Users\bbb12\AppData\Local\Temp\_MEI300482\static
+2026-06-23 14:28:36,910 [INFO] WebAuthority: --------------------------------------------------
+2026-06-23 14:28:36,910 [INFO] WebAuthority:      NX-OS CONFIGURATION AUTHORITY (6.1.0)
+2026-06-23 14:28:36,910 [INFO] WebAuthority:            Web Platform — Offline Ready
+2026-06-23 14:28:36,910 [INFO] WebAuthority: --------------------------------------------------
+2026-06-23 14:28:38,941 [INFO] WebAuthority: Starting Production Server at http://127.0.0.1:9000
+2026-06-23 14:28:38,941 [INFO] WebAuthority: Session URL (bookmark this tab): http://127.0.0.1:9000/?token=wLNf0ePjdmNLbTI6j8DzA5F6rG_UVbVR
+2026-06-23 14:28:40,942 [INFO] WebAuthority: Opening browser at: http://127.0.0.1:9000/?token=wLNf0ePjdmNLbTI6j8DzA5F6rG_UVbVR
+2026-06-23 14:33:18,018 [INFO] WebAuthority: Initializing Static Assets from: C:\Users\bbb12\AppData\Local\Temp\_MEI300082\static
+2026-06-23 14:33:18,018 [INFO] WebAuthority: --------------------------------------------------
+2026-06-23 14:33:18,018 [INFO] WebAuthority:      NX-OS CONFIGURATION AUTHORITY (6.0.0)
+2026-06-23 14:33:18,018 [INFO] WebAuthority:            Web Platform — Offline Ready
+2026-06-23 14:33:18,018 [INFO] WebAuthority: --------------------------------------------------
+2026-06-23 14:33:20,067 [INFO] WebAuthority: Starting Production Server at http://127.0.0.1:9000
+2026-06-23 14:33:20,067 [INFO] WebAuthority: Session URL (bookmark this tab): http://127.0.0.1:9000/?token=GwmYpDQNqP_v5nMs0MtANT_Mz8AdNj0b
+2026-06-23 14:33:22,070 [INFO] WebAuthority: Opening browser at: http://127.0.0.1:9000/?token=GwmYpDQNqP_v5nMs0MtANT_Mz8AdNj0b
+2026-06-23 14:35:11,017 [INFO] WebAuthority: SHUTDOWN REQUEST: Stop button or CLI triggered.
+2026-06-24 08:46:33,758 [INFO] WebAuthority: Initializing Static Assets from: C:\Users\bbb12\AppData\Local\Temp\_MEI254682\static
+2026-06-24 08:46:33,766 [INFO] WebAuthority: --------------------------------------------------
+2026-06-24 08:46:33,766 [INFO] WebAuthority:      NX-OS CONFIGURATION AUTHORITY (6.0.0)
+2026-06-24 08:46:33,766 [INFO] WebAuthority:            Web Platform — Offline Ready
+2026-06-24 08:46:33,766 [INFO] WebAuthority: --------------------------------------------------
+2026-06-24 08:46:35,816 [INFO] WebAuthority: Starting Production Server at http://127.0.0.1:9000
+2026-06-24 08:46:35,816 [INFO] WebAuthority: Session URL (bookmark this tab): http://127.0.0.1:9000/?token=8b65vLH6mwQ057tDp6VFgGZc3hEQZDqB
+2026-06-24 08:46:37,817 [INFO] WebAuthority: Opening browser at: http://127.0.0.1:9000/?token=8b65vLH6mwQ057tDp6VFgGZc3hEQZDqB
+2026-06-24 08:54:41,259 [INFO] WebAuthority: SHUTDOWN REQUEST: Stop button or CLI triggered.
+2026-06-24 14:25:24,766 [INFO] WebAuthority: Initializing Static Assets from: C:\Users\bbb12\AppData\Local\Temp\_MEI198402\static
+2026-06-24 14:25:24,767 [INFO] WebAuthority: --------------------------------------------------
+2026-06-24 14:25:24,768 [INFO] WebAuthority:      NX-OS CONFIGURATION AUTHORITY (5.0.3)
+2026-06-24 14:25:24,768 [INFO] WebAuthority:            Web Platform — Offline Ready
+2026-06-24 14:25:24,768 [INFO] WebAuthority: --------------------------------------------------
+2026-06-24 14:25:26,797 [INFO] WebAuthority: Starting Production Server at http://127.0.0.1:9000
+2026-06-24 14:25:26,797 [INFO] WebAuthority: Session URL (bookmark this tab): http://127.0.0.1:9000/?token=kJ_wVyQ-Pjma5sttsGceR9QVpfu-xuu_
+2026-06-24 14:25:28,797 [INFO] WebAuthority: Opening browser at: http://127.0.0.1:9000/?token=kJ_wVyQ-Pjma5sttsGceR9QVpfu-xuu_
+2026-06-24 14:25:50,267 [INFO] WebAuthority: SHUTDOWN REQUEST: Stop button or CLI triggered.

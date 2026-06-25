@@ -1,0 +1,62 @@
+# Contextual field hints — shown inline in the web wizard as informative add-ons.
+
+fields:
+  hostname:
+    label: Hostname
+    hint: "Letters, numbers, hyphens only. Example: DC-LEAF-01-A"
+    why: "NX-OS rejects spaces and special characters in hostnames."
+
+  mgmt_ip:
+    label: Management IP
+    hint: "Must include subnet mask — e.g. 10.10.10.10/24"
+    why: "mgmt0 requires CIDR notation for correct routing table programming."
+
+  mgmt_gw:
+    label: Management Gateway
+    hint: "Default route next-hop for vrf management"
+    why: "Used in: vrf context management → ip route 0.0.0.0/0 <gw>"
+
+  nxos_version:
+    label: NX-OS Version
+    hint: "Match show version on target switch. ★ = recommended baseline."
+    why: "Legacy 7.x uses a simplified template without peer-gateway/auto-recovery."
+
+  vpc_domain:
+    label: vPC Domain ID
+    hint: "Must be identical on both vPC peers (1–1000)."
+    why: "Mismatched domain IDs prevent vPC formation."
+
+  vpc_pl_ints:
+    label: Peer-Link Interfaces
+    hint: "Dedicated high-speed links — NOT uplinks. Use LACP active mode."
+    why: "Cisco best practice: peer-link separate from keepalive and uplinks."
+
+  local_ka:
+    label: Local Keepalive IP
+    hint: "Reachable IP on this switch for vPC keepalive VRF."
+    why: "Must differ from remote keepalive. Often on mgmt VRF or dedicated link."
+
+  remote_ka:
+    label: Remote Keepalive IP
+    hint: "Peer switch keepalive destination."
+    why: "Cross-check: Primary local = Secondary remote (and vice versa)."
+
+  generate_pair:
+    label: Export vPC pair files
+    hint: "Writes Primary + Secondary (-B) config files. Live preview always shows this switch only."
+    why: "Use for change windows — secondary gets swapped keepalive IPs and matching Po IDs."
+
+wizard_tips:
+  step_1: "One role — Core (40G), Leaf (10G), Access (1G), or OOB. Model and scenario are chosen for you. Tap (i) for details."
+  step_2: "vPC = two switches with peer-link + keepalive. Skipped for Access and OOB — those are always standalone."
+  step_3: "40G → Nexus 9336C · 10G → Nexus 93180 · 1G → Nexus 9348. Speed is auto-set when only one tier applies."
+  step_4: "Hostname + mgmt IP = lab ready. Standard preset for day-one; Hardened before production. Preview updates live on the right."
+  step_5: "Validate first. Green Lab ready = safe to paste in lab. Production items are optional until cutover."
+  export_dir: "Leave blank to save next to the exe in configs/history/. Use a full path for a shared drive."
+  builder_paste: "Paste show running-config output — include 'interface port-channel' and 'vpc peer-link' for vPC detection."
+
+paste_checklist:
+  - "show vpc brief — peers must be In-Sync"
+  - "show interface port-channel — peer-link up/up"
+  - "show ip route vrf management — mgmt reachability"
+  - "copy run start — only after lab validation"

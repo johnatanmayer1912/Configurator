@@ -1,0 +1,119 @@
+# NX-OS version profiles — drives feature syntax and template selection.
+
+# Each version defines supported features and CLI notes shown in the UI.
+
+
+
+versions:
+
+  - id: "9.3"
+
+    label: "NX-OS 9.3.x (Recommended baseline)"
+
+    template: "nxos_base.j2"
+
+    boot_image: "nxos.9.3.5.bin"
+
+    notes: "Stable DC release. Full vPC, HSRP v2, peer-gateway, auto-recovery."
+
+    min_recommended: true
+
+    features:
+
+      hsrp_version: 2
+
+      vpc_peer_gateway: true
+
+      vpc_auto_recovery: true
+
+      vpc_arp_sync: true
+
+      storm_control: true
+
+      lacp: true
+
+
+
+  - id: "10.2"
+
+    label: "NX-OS 10.2.x (Current generation)"
+
+    template: "nxos_base.j2"
+
+    boot_image: "nxos.10.2.4.M.bin"
+
+    notes: "Latest stable train. Same baseline syntax as 9.3 for this configurator."
+
+    min_recommended: false
+
+    features:
+
+      hsrp_version: 2
+
+      vpc_peer_gateway: true
+
+      vpc_auto_recovery: true
+
+      vpc_arp_sync: true
+
+      storm_control: true
+
+      lacp: true
+
+
+
+  - id: "10.3"
+
+    label: "NX-OS 10.3.x (Early adoption)"
+
+    template: "nxos_base.j2"
+
+    boot_image: "nxos.10.3.1.M.bin"
+
+    notes: "Preview train — validate generated config in lab before production."
+
+    min_recommended: false
+
+    features:
+
+      hsrp_version: 2
+
+      vpc_peer_gateway: true
+
+      vpc_auto_recovery: true
+
+      vpc_arp_sync: true
+
+      storm_control: true
+
+      lacp: true
+
+
+
+  - id: "7.0"
+
+    label: "NX-OS 7.0.x (Legacy — limited)"
+
+    template: "nxos_legacy.j2"
+
+    boot_image: "nxos.7.0.3.I7.8.bin"
+
+    notes: "Legacy switches. Some vPC options differ; peer-gateway may be unavailable."
+
+    min_recommended: false
+
+    features:
+
+      hsrp_version: 1
+
+      vpc_peer_gateway: false
+
+      vpc_auto_recovery: false
+
+      vpc_arp_sync: true
+
+      storm_control: true
+
+      lacp: true
+
+

@@ -1,0 +1,21 @@
+---
+description: Mandatory governance and skill activation for NX-OS Configurator (G-00, G-13, G-18, G-CC)
+alwaysApply: true
+---
+
+# NX-OS Configuration Authority — Mandatory Governance
+
+Always apply (see `.devin/SKILL_ACTIVATION_SYSTEM.md` and `.cursor/ROLE_ACTIVATION_MATRIX.md`):
+
+1. **Orchestrator first** — `.cursor/skills/nst-orchestrator/SKILL.md` + `.cursor/skills/nxos-config-engineer/SKILL.md`
+2. Read `.devin/skills/global-master-prompt-rules/SKILL.md` before structural changes
+3. Activate roles by domain **without** user naming them (see ROLE_ACTIVATION_MATRIX)
+4. Knowledge base: `.cursor/skills-sickn33/`, `.cursor/skills-devin/`, `.devin/skills/` — resolve via `scripts/resolve_skill.py`
+5. NX-OS config changes: `nxos-config-engineer` + `nst-network-operations` + `network-engineer`
+6. Web UI: `nst-product-architect` + `frontend-ui-engineering` + `02-nst-ui-ux`
+7. Security: `nst-security-ops` for API auth, credentials, `/generate-config` mutations
+8. Outputs: `get_history_dir()` / `get_checkpoints_dir()` — exe-relative, not install dir
+9. PyInstaller/offline: bundle `templates/`, `static/`, `data/`, `docs/`, `hardware_profiles.yaml`
+10. Zero-trust audit: `nst-zero-trust-network-council` + `nxos-zero-trust-review-team` before releases
+
+Docs truth: `docs/06-quality-assurance/zero-trust-review/` + `VERSION` + `CHANGELOG.md`

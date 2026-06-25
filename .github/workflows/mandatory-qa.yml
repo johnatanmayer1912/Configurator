@@ -1,0 +1,39 @@
+# Mandatory QA — runs on every push/PR and before release tagging.
+# Full pre-release gate: python scripts/run_mandatory_qa.py --pre-release
+# Pre-exe gate (same as enterprise_qa_gate.py): --pre-exe
+
+name: Mandatory QA
+
+on:
+  push:
+    branches: [main, master, develop]
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  on-change:
+    name: Fast gate (on-change)
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+      - name: Run on-change mandatory QA
+        run: python scripts/run_mandatory_qa.py --on-change
+
+  pre-release:
+    name: Full gate (pre-release)
+    runs-on: windows-latest
+    if: github.event_name == 'workflow_dispatch' || startsWith(github.ref, 'refs/tags/v')
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+      - name: Run pre-release mandatory QA
+        run: python scripts/run_mandatory_qa.py --pre-release

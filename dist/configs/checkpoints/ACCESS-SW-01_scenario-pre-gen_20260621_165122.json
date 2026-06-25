@@ -1,0 +1,32 @@
+{
+    "hostname": "ACCESS-SW-01",
+    "mgmt_ip": "10.10.10.10/24",
+    "mgmt_gw": "10.10.10.1",
+    "model": "Generic",
+    "vlans": [
+        {
+            "id": 10,
+            "name": "USER_10"
+        }
+    ],
+    "interfaces": [],
+    "svis": [
+        {
+            "vlan_id": 10,
+            "ip_address": "10.10.0.1/24",
+            "description": "INTENT_SVI_1",
+            "hsrp": null,
+            "vrf": null
+        }
+    ],
+    "static_routes": [],
+    "vpc": null,
+    "motd": "OOB Management \u2014 Initial Provisioning",
+    "admin_user": "admin",
+    "admin_password": "",
+    "nxos_version": "9.3",
+    "enabled_features": [
+        "interface_vlan",
+        "lldp"
+    ]
+}

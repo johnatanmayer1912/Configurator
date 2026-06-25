@@ -1,0 +1,75 @@
+# Explicit placeholder registry — only these tokens appear in Action Required.
+# phase: lab = blocks lab-ready status | production = shown under "Before production paste"
+
+placeholders:
+  - id: mgmt_ip
+    token: "MGMT_IP"
+    severity: required
+    phase: lab
+    field: mgmt_ip
+    message: "Set management IP with CIDR (e.g. 10.10.10.10/24)."
+    wizard_step: 4
+
+  - id: mgmt_gateway
+    token: "MGMT_GATEWAY"
+    severity: required
+    phase: lab
+    field: mgmt_gw
+    message: "Set management default gateway."
+    wizard_step: 4
+
+  - id: site_location
+    token: "NET_DEVICE_LOCATION"
+    severity: recommended
+    phase: production
+    field: site_location
+    message: "Set rack/location in Production details (optional for lab)."
+    wizard_step: 4
+
+  - id: network_name
+    token: "NETWORK_NAME"
+    severity: recommended
+    phase: production
+    field: network_name
+    message: "Set site name for MOTD banner (defaults from Site Name)."
+    wizard_step: 4
+
+  - id: snmp_trap_host_1
+    token: "SNMP_SERVER_HOST1"
+    severity: recommended
+    phase: production
+    field: snmp_trap_host_1
+    message: "Add SNMP trap host in Production details when NMS is ready."
+    wizard_step: 4
+
+  - id: snmp_trap_host_2
+    token: "SNMP_SERVER_HOST2"
+    severity: recommended
+    phase: production
+    field: snmp_trap_host_2
+    message: "Optional second SNMP trap host."
+    wizard_step: 4
+
+  - id: snmp_v3_user
+    token: "USER_NAME"
+    severity: recommended
+    phase: production
+    field: snmp_v3_user
+    message: "SNMPv3 username for trap hosts (production NMS)."
+    wizard_step: 4
+
+  - id: boot_image
+    token: "BOOT_IMAGE"
+    severity: recommended
+    phase: production
+    field: boot_image
+    message: "Confirm boot image matches show boot on target switch."
+    wizard_step: 4
+
+  - id: nxos_version_match
+    token: "NXOS_VERSION"
+    severity: recommended
+    phase: production
+    field: nxos_version
+    message: "Verify NX-OS version matches show version on device."
+    wizard_step: 4

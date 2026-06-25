@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Po Map Admin | NX-OS Configurator</title>
+    <link rel="stylesheet" href="/static/styles.css">
+</head>
+<body>
+    <div class="container admin-page">
+        <header class="app-header">
+            <div>
+                <h1>Port-channel map</h1>
+                <p class="subtitle">Institutional Po ID ranges per model — saved next to the exe in <code>configs/po_allocation_map.yaml</code></p>
+            </div>
+            <a href="/" id="backToWizard" class="btn-outline">← Back to wizard</a>
+        </header>
+        <div class="panel">
+            <p class="field-note">Peer-link=1, keepalive=2, planner=10–19, downlink=20–29, uplink=30+. Adjust per your site standards.</p>
+            <div id="poMapEditor"></div>
+            <div class="btn-row">
+                <button type="button" class="btn-primary" onclick="savePoMap()">Save overrides</button>
+                <button type="button" class="btn-outline" onclick="loadPoMap()">Reload</button>
+            </div>
+            <pre id="poMapStatus" class="field-note"></pre>
+        </div>
+    </div>
+    <script src="/static/admin-po-map.js"></script>
+</body>
+</html>

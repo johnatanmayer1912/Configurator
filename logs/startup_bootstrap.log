@@ -1,0 +1,329 @@
+2026-04-13 16:19:05 | Session token generated and exported for API guards.
+2026-04-13 16:19:05 | SERVER CRASH: If you use `@root_validator` with pre=False (the default) you MUST specify `skip_on_failure=True`. Note that `@root_validator` is deprecated and should be replaced with `@model_validator`.
+
+For further information visit https://errors.pydantic.dev/2.12/u/root-validator-pre-skip
+Traceback (most recent call last):
+  File "C:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator\web_launcher.py", line 78, in <module>
+    app, logger = build_web_app()
+                  ~~~~~~~~~~~~~^^
+  File "C:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator\web_launcher.py", line 35, in build_web_app
+    from api.main import app
+  File "C:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator\api\main.py", line 98, in <module>
+    class DeviceInput(BaseModel):
+    ...<31 lines>...
+            return values
+  File "C:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator\api\main.py", line 124, in DeviceInput
+    @root_validator
+     ^^^^^^^^^^^^^^
+  File "C:\Users\bbb12\AppData\Roaming\Python\Python314\site-packages\pydantic\deprecated\class_validators.py", line 234, in root_validator
+    return root_validator()(*__args)  # type: ignore
+           ~~~~~~~~~~~~~~^^
+  File "C:\Users\bbb12\AppData\Roaming\Python\Python314\site-packages\pydantic\deprecated\class_validators.py", line 240, in root_validator
+    raise PydanticUserError(
+    ...<3 lines>...
+    )
+pydantic.errors.PydanticUserError: If you use `@root_validator` with pre=False (the default) you MUST specify `skip_on_failure=True`. Note that `@root_validator` is deprecated and should be replaced with `@model_validator`.
+
+For further information visit https://errors.pydantic.dev/2.12/u/root-validator-pre-skip
+
+2026-04-13 16:19:26 | Session token generated and exported for API guards.
+2026-04-13 16:19:26 | Initializing static assets from C:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator\static
+2026-04-13 16:19:26 | Application banners and logger initialized.
+2026-04-13 16:19:28 | Starting uvicorn server on 127.0.0.1:9000
+2026-04-13 16:22:01 | Session token generated and exported for API guards.
+2026-04-13 16:22:01 | Initializing static assets from C:\Users\bbb12\AppData\Local\Temp\_MEI490482\static
+2026-04-13 16:22:01 | Application banners and logger initialized.
+2026-04-13 16:22:03 | Starting uvicorn server on 127.0.0.1:9000
+2026-04-13 16:33:34 | Runtime info: python=3.14.4 frozen=False cwd=C:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator
+2026-04-13 16:33:34 | Session token generated and exported for API guards.
+2026-04-13 16:33:34 | Initializing static assets from C:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator\static
+2026-04-13 16:33:34 | Application banners and logger initialized.
+2026-04-13 16:33:36 | Starting uvicorn server on 127.0.0.1:9000
+2026-04-13 16:36:15 | Runtime info: python=3.12.6 frozen=True cwd=C:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator
+2026-04-13 16:36:15 | Session token generated and exported for API guards.
+2026-04-13 16:36:15 | Initializing static assets from C:\Users\bbb12\AppData\Local\Temp\_MEI164522\static
+2026-04-13 16:36:15 | Application banners and logger initialized.
+2026-04-13 16:36:17 | Starting uvicorn server on 127.0.0.1:9000
+2026-04-13 16:45:57 | Runtime info: python=3.14.4 frozen=False cwd=C:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator
+2026-04-13 16:45:57 | Session token generated and exported for API guards.
+2026-04-13 16:45:57 | Initializing static assets from C:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator\static
+2026-04-13 16:45:57 | Application banners and logger initialized.
+2026-04-13 16:45:59 | Starting uvicorn server on 127.0.0.1:9000
+2026-04-13 16:48:26 | Runtime info: python=3.12.6 frozen=True cwd=C:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator
+2026-04-13 16:48:26 | Session token generated and exported for API guards.
+2026-04-13 16:48:27 | Initializing static assets from C:\Users\bbb12\AppData\Local\Temp\_MEI247002\static
+2026-04-13 16:48:27 | Application banners and logger initialized.
+2026-04-13 16:48:29 | Starting uvicorn server on 127.0.0.1:9000
+2026-04-13 16:51:08 | Runtime info: python=3.14.4 frozen=False cwd=C:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator
+2026-04-13 16:51:08 | Session token generated and exported for API guards.
+2026-04-13 16:51:08 | Initializing static assets from C:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator\static
+2026-04-13 16:51:08 | Application banners and logger initialized.
+2026-04-13 16:51:10 | Starting uvicorn server on 127.0.0.1:9000
+2026-04-13 16:54:07 | Runtime info: python=3.12.6 frozen=True cwd=C:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator
+2026-04-13 16:54:07 | Session token generated and exported for API guards.
+2026-04-13 16:54:07 | Initializing static assets from C:\Users\bbb12\AppData\Local\Temp\_MEI135682\static
+2026-04-13 16:54:07 | Application banners and logger initialized.
+2026-04-13 16:54:09 | Starting uvicorn server on 127.0.0.1:9000
+2026-04-14 08:19:10 | Runtime info: python=3.14.4 frozen=False cwd=C:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator
+2026-04-14 08:19:10 | Session token generated and exported for API guards.
+2026-04-14 08:19:10 | Initializing static assets from C:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator\static
+2026-04-14 08:19:10 | Application banners and logger initialized.
+2026-04-14 08:19:12 | Starting uvicorn server on 127.0.0.1:9000
+2026-04-14 08:22:56 | Runtime info: python=3.12.6 frozen=True cwd=C:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator
+2026-04-14 08:22:56 | Session token generated and exported for API guards.
+2026-04-14 08:22:56 | Initializing static assets from C:\Users\bbb12\AppData\Local\Temp\_MEI380042\static
+2026-04-14 08:22:56 | Application banners and logger initialized.
+2026-04-14 08:22:58 | Starting uvicorn server on 127.0.0.1:9000
+2026-06-22 11:50:58 | Runtime info: python=3.14.4 frozen=False cwd=C:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator
+2026-06-22 11:50:58 | Session token generated and exported for API guards.
+2026-06-22 11:50:58 | Initializing static assets from C:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator\static
+2026-06-22 11:50:58 | Application banners and logger initialized.
+2026-06-22 11:51:00 | Starting uvicorn server on 127.0.0.1:9000
+2026-06-22 11:54:01 | Runtime info: python=3.14.4 frozen=False cwd=C:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator
+2026-06-22 11:54:01 | Session token generated and exported for API guards.
+2026-06-22 11:54:01 | Initializing static assets from C:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator\static
+2026-06-22 11:54:01 | Application banners and logger initialized.
+2026-06-22 11:54:03 | Starting uvicorn server on 127.0.0.1:9000
+2026-06-22 11:54:09 | Runtime info: python=3.14.4 frozen=False cwd=C:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator
+2026-06-22 11:54:09 | Session token generated and exported for API guards.
+2026-06-22 11:54:09 | Initializing static assets from C:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator\static
+2026-06-22 11:54:09 | Application banners and logger initialized.
+2026-06-22 11:54:11 | Starting uvicorn server on 127.0.0.1:9000
+2026-06-22 12:46:48 | Runtime info: python=3.14.4 frozen=False cwd=C:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator
+2026-06-22 12:46:48 | Session token generated and exported for API guards.
+2026-06-22 12:46:48 | Initializing static assets from C:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator\static
+2026-06-22 12:46:48 | Application banners and logger initialized.
+2026-06-22 12:46:48 | Port 9000 is already in use.
+Listening process PID(s): 2368
+Close the console window, click Stop in the web UI, or run: scripts\stop_configurator.ps1
+To replace the running instance: re-launch with --replace
+2026-06-22 12:46:54 | Runtime info: python=3.14.4 frozen=False cwd=C:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator
+2026-06-22 12:46:54 | Session token generated and exported for API guards.
+2026-06-22 12:46:54 | Initializing static assets from C:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator\static
+2026-06-22 12:46:54 | Application banners and logger initialized.
+2026-06-22 12:46:56 | Starting uvicorn server on 127.0.0.1:9000
+2026-06-22 13:29:00 | Runtime info: python=3.14.4 frozen=False cwd=C:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator
+2026-06-22 13:29:00 | Session token generated and exported for API guards.
+2026-06-22 13:29:00 | Initializing static assets from C:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator\static
+2026-06-22 13:29:00 | Application banners and logger initialized.
+2026-06-22 13:29:00 | Port 9000 is already in use.
+Listening process PID(s): 5444
+Close the console window, click Stop in the web UI, or run: scripts\stop_configurator.ps1
+To replace the running instance: re-launch with --replace
+2026-06-22 13:29:05 | Runtime info: python=3.14.4 frozen=False cwd=C:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator
+2026-06-22 13:29:05 | Session token generated and exported for API guards.
+2026-06-22 13:29:05 | Initializing static assets from C:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator\static
+2026-06-22 13:29:05 | Application banners and logger initialized.
+2026-06-22 13:29:07 | Starting uvicorn server on 127.0.0.1:9000
+2026-06-22 14:30:50 | Runtime info: python=3.14.4 frozen=False cwd=C:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator
+2026-06-22 14:30:50 | Session token generated and exported for API guards.
+2026-06-22 14:30:50 | Initializing static assets from C:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator\static
+2026-06-22 14:30:50 | Application banners and logger initialized.
+2026-06-22 14:30:52 | Starting uvicorn server on 127.0.0.1:9000
+2026-06-22 14:34:51 | Runtime info: python=3.14.4 frozen=False cwd=C:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator
+2026-06-22 14:34:51 | Session token generated and exported for API guards.
+2026-06-22 14:34:52 | Initializing static assets from C:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator\static
+2026-06-22 14:34:52 | Application banners and logger initialized.
+2026-06-22 14:34:54 | Starting uvicorn server on 127.0.0.1:9000
+2026-06-22 14:37:30 | Runtime info: python=3.14.4 frozen=False cwd=C:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator
+2026-06-22 14:37:30 | Session token generated and exported for API guards.
+2026-06-22 14:37:30 | Initializing static assets from C:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator\static
+2026-06-22 14:37:30 | Application banners and logger initialized.
+2026-06-22 14:37:32 | Starting uvicorn server on 127.0.0.1:9000
+2026-06-22 17:21:38 | Runtime info: python=3.14.4 frozen=False cwd=C:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator
+2026-06-22 17:21:38 | Session token generated and exported for API guards.
+2026-06-22 17:21:38 | Initializing static assets from C:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator\static
+2026-06-22 17:21:38 | Application banners and logger initialized.
+2026-06-22 17:21:40 | Starting uvicorn server on 127.0.0.1:9000
+2026-06-22 17:38:35 | Runtime info: python=3.14.4 frozen=False cwd=C:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator
+2026-06-22 17:38:35 | Session token generated and exported for API guards.
+2026-06-22 17:38:36 | Initializing static assets from C:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator\static
+2026-06-22 17:38:36 | Application banners and logger initialized.
+2026-06-22 17:38:38 | Starting uvicorn server on 127.0.0.1:9000
+2026-06-22 17:40:53 | Runtime info: python=3.14.4 frozen=False cwd=C:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator
+2026-06-22 17:40:53 | Session token generated and exported for API guards.
+2026-06-22 17:40:53 | Initializing static assets from C:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator\static
+2026-06-22 17:40:53 | Application banners and logger initialized.
+2026-06-22 17:40:55 | Starting uvicorn server on 127.0.0.1:9000
+2026-06-22 17:41:21 | Runtime info: python=3.14.4 frozen=False cwd=C:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator
+2026-06-22 17:41:21 | Session token generated and exported for API guards.
+2026-06-22 17:41:22 | Initializing static assets from C:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator\static
+2026-06-22 17:41:22 | Application banners and logger initialized.
+2026-06-22 17:41:24 | Starting uvicorn server on 127.0.0.1:9000
+2026-06-22 17:41:36 | Runtime info: python=3.14.4 frozen=False cwd=C:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator
+2026-06-22 17:41:36 | Session token generated and exported for API guards.
+2026-06-22 17:41:36 | Initializing static assets from C:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator\static
+2026-06-22 17:41:36 | Application banners and logger initialized.
+2026-06-22 17:41:38 | Starting uvicorn server on 127.0.0.1:9000
+2026-06-22 17:44:02 | Runtime info: python=3.14.4 frozen=False cwd=C:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator
+2026-06-22 17:44:02 | Session token generated and exported for API guards.
+2026-06-22 17:44:02 | Initializing static assets from C:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator\static
+2026-06-22 17:44:02 | Application banners and logger initialized.
+2026-06-22 17:44:04 | Starting uvicorn server on 127.0.0.1:9000
+2026-06-22 17:55:02 | Runtime info: python=3.14.4 frozen=False cwd=C:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator
+2026-06-22 17:55:02 | Session token generated and exported for API guards.
+2026-06-22 17:55:02 | Initializing static assets from C:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator\static
+2026-06-22 17:55:02 | Application banners and logger initialized.
+2026-06-22 17:55:04 | Starting uvicorn server on 127.0.0.1:9000
+2026-06-22 17:57:08 | Runtime info: python=3.14.4 frozen=False cwd=C:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator
+2026-06-22 17:57:08 | Session token generated and exported for API guards.
+2026-06-22 17:57:08 | Initializing static assets from C:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator\static
+2026-06-22 17:57:08 | Application banners and logger initialized.
+2026-06-22 17:57:10 | Starting uvicorn server on 127.0.0.1:9000
+2026-06-22 17:57:54 | Runtime info: python=3.14.4 frozen=False cwd=C:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator
+2026-06-22 17:57:54 | Session token generated and exported for API guards.
+2026-06-22 17:57:54 | Initializing static assets from C:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator\static
+2026-06-22 17:57:54 | Application banners and logger initialized.
+2026-06-22 17:57:56 | Starting uvicorn server on 127.0.0.1:9000
+2026-06-22 17:58:29 | Runtime info: python=3.14.4 frozen=False cwd=C:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator
+2026-06-22 17:58:29 | Session token generated and exported for API guards.
+2026-06-22 17:58:29 | Initializing static assets from C:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator\static
+2026-06-22 17:58:29 | Application banners and logger initialized.
+2026-06-22 17:58:31 | Starting uvicorn server on 127.0.0.1:9000
+2026-06-23 11:07:16 | Runtime info: python=3.14.4 frozen=False cwd=C:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator
+2026-06-23 11:07:16 | Session token generated and exported for API guards.
+2026-06-23 11:07:16 | Initializing static assets from C:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator\static
+2026-06-23 11:07:16 | Application banners and logger initialized.
+2026-06-23 11:07:18 | Starting uvicorn server on 127.0.0.1:9000
+2026-06-23 11:08:22 | Runtime info: python=3.14.4 frozen=False cwd=C:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator
+2026-06-23 11:08:22 | Session token generated and exported for API guards.
+2026-06-23 11:08:23 | Initializing static assets from C:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator\static
+2026-06-23 11:08:23 | Application banners and logger initialized.
+2026-06-23 11:08:25 | Starting uvicorn server on 127.0.0.1:9000
+2026-06-23 11:08:56 | Runtime info: python=3.14.4 frozen=False cwd=C:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator
+2026-06-23 11:08:56 | Session token generated and exported for API guards.
+2026-06-23 11:08:56 | Initializing static assets from C:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator\static
+2026-06-23 11:08:56 | Application banners and logger initialized.
+2026-06-23 11:08:58 | Starting uvicorn server on 127.0.0.1:9000
+2026-06-23 11:36:04 | Runtime info: python=3.14.4 frozen=False cwd=C:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator
+2026-06-23 11:36:04 | Session token generated and exported for API guards.
+2026-06-23 11:36:04 | Initializing static assets from C:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator\static
+2026-06-23 11:36:04 | Application banners and logger initialized.
+2026-06-23 11:36:06 | Starting uvicorn server on 127.0.0.1:9000
+2026-06-23 11:37:26 | Runtime info: python=3.14.4 frozen=False cwd=C:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator
+2026-06-23 11:37:26 | Session token generated and exported for API guards.
+2026-06-23 11:37:26 | Initializing static assets from C:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator\static
+2026-06-23 11:37:26 | Application banners and logger initialized.
+2026-06-23 11:37:28 | Starting uvicorn server on 127.0.0.1:9000
+2026-06-23 11:38:24 | Runtime info: python=3.14.4 frozen=False cwd=C:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator
+2026-06-23 11:38:24 | Session token generated and exported for API guards.
+2026-06-23 11:38:24 | Initializing static assets from C:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator\static
+2026-06-23 11:38:24 | Application banners and logger initialized.
+2026-06-23 11:38:27 | Starting uvicorn server on 127.0.0.1:9000
+2026-06-23 11:40:18 | Runtime info: python=3.14.4 frozen=False cwd=C:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator
+2026-06-23 11:40:18 | Session token generated and exported for API guards.
+2026-06-23 11:40:19 | Initializing static assets from C:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator\static
+2026-06-23 11:40:19 | Application banners and logger initialized.
+2026-06-23 11:40:21 | Starting uvicorn server on 127.0.0.1:9000
+2026-06-23 11:41:27 | Runtime info: python=3.14.4 frozen=False cwd=C:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator
+2026-06-23 11:41:27 | Session token generated and exported for API guards.
+2026-06-23 11:41:27 | Initializing static assets from C:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator\static
+2026-06-23 11:41:27 | Application banners and logger initialized.
+2026-06-23 11:41:29 | Starting uvicorn server on 127.0.0.1:9000
+2026-06-23 11:42:05 | Runtime info: python=3.14.4 frozen=False cwd=C:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator
+2026-06-23 11:42:05 | Session token generated and exported for API guards.
+2026-06-23 11:42:05 | Initializing static assets from C:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator\static
+2026-06-23 11:42:05 | Application banners and logger initialized.
+2026-06-23 11:42:07 | Starting uvicorn server on 127.0.0.1:9000
+2026-06-23 12:06:27 | Runtime info: python=3.14.4 frozen=False cwd=C:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator
+2026-06-23 12:06:27 | Session token generated and exported for API guards.
+2026-06-23 12:06:27 | Initializing static assets from C:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator\static
+2026-06-23 12:06:27 | Application banners and logger initialized.
+2026-06-23 12:06:27 | Port 9000 is already in use.
+Listening process PID(s): 16288
+Close the console window, click Stop in the web UI, or run: scripts\stop_configurator.ps1
+To replace the running instance: re-launch with --replace
+2026-06-23 12:06:54 | Runtime info: python=3.14.4 frozen=False cwd=C:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator
+2026-06-23 12:06:54 | Session token generated and exported for API guards.
+2026-06-23 12:06:54 | Initializing static assets from C:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator\static
+2026-06-23 12:06:54 | Application banners and logger initialized.
+2026-06-23 12:06:56 | Starting uvicorn server on 127.0.0.1:9000
+2026-06-23 12:07:33 | Runtime info: python=3.14.4 frozen=False cwd=C:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator
+2026-06-23 12:07:33 | Session token generated and exported for API guards.
+2026-06-23 12:07:33 | Initializing static assets from C:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator\static
+2026-06-23 12:07:33 | Application banners and logger initialized.
+2026-06-23 12:07:35 | Starting uvicorn server on 127.0.0.1:9000
+2026-06-23 12:13:39 | Runtime info: python=3.14.4 frozen=False cwd=C:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator
+2026-06-23 12:13:39 | Session token generated and exported for API guards.
+2026-06-23 12:13:40 | Initializing static assets from C:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator\static
+2026-06-23 12:13:40 | Application banners and logger initialized.
+2026-06-23 12:13:40 | Port 9000 is already in use.
+Listening process PID(s): 26664
+Close the console window, click Stop in the web UI, or run: scripts\stop_configurator.ps1
+To replace the running instance: re-launch with --replace
+2026-06-23 12:14:20 | Runtime info: python=3.14.4 frozen=False cwd=C:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator
+2026-06-23 12:14:20 | Session token generated and exported for API guards.
+2026-06-23 12:14:20 | Initializing static assets from C:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator\static
+2026-06-23 12:14:20 | Application banners and logger initialized.
+2026-06-23 12:14:22 | Starting uvicorn server on 127.0.0.1:9000
+2026-06-23 12:14:58 | Runtime info: python=3.14.4 frozen=False cwd=C:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator
+2026-06-23 12:14:58 | Session token generated and exported for API guards.
+2026-06-23 12:14:58 | Initializing static assets from C:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator\static
+2026-06-23 12:14:58 | Application banners and logger initialized.
+2026-06-23 12:15:00 | Starting uvicorn server on 127.0.0.1:9000
+2026-06-23 12:16:09 | Runtime info: python=3.14.4 frozen=False cwd=C:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator
+2026-06-23 12:16:09 | Session token generated and exported for API guards.
+2026-06-23 12:16:09 | Initializing static assets from C:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator\static
+2026-06-23 12:16:09 | Application banners and logger initialized.
+2026-06-23 12:16:11 | Starting uvicorn server on 127.0.0.1:9000
+2026-06-23 12:22:11 | Runtime info: python=3.14.4 frozen=False cwd=C:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator
+2026-06-23 12:22:11 | Session token generated and exported for API guards.
+2026-06-23 12:22:11 | Initializing static assets from C:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator\static
+2026-06-23 12:22:11 | Application banners and logger initialized.
+2026-06-23 12:22:13 | Starting uvicorn server on 127.0.0.1:9000
+2026-06-23 12:23:19 | Runtime info: python=3.14.4 frozen=False cwd=C:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator
+2026-06-23 12:23:19 | Session token generated and exported for API guards.
+2026-06-23 12:23:20 | Initializing static assets from C:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator\static
+2026-06-23 12:23:20 | Application banners and logger initialized.
+2026-06-23 12:23:22 | Starting uvicorn server on 127.0.0.1:9000
+2026-06-23 12:23:57 | Runtime info: python=3.14.4 frozen=False cwd=C:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator
+2026-06-23 12:23:57 | Session token generated and exported for API guards.
+2026-06-23 12:23:58 | Initializing static assets from C:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator\static
+2026-06-23 12:23:58 | Application banners and logger initialized.
+2026-06-23 12:24:00 | Starting uvicorn server on 127.0.0.1:9000
+2026-06-23 12:27:59 | Runtime info: python=3.14.4 frozen=False cwd=C:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator
+2026-06-23 12:27:59 | Session token generated and exported for API guards.
+2026-06-23 12:27:59 | Initializing static assets from C:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator\static
+2026-06-23 12:27:59 | Application banners and logger initialized.
+2026-06-23 12:28:01 | Starting uvicorn server on 127.0.0.1:9000
+2026-06-23 12:28:24 | Runtime info: python=3.14.4 frozen=False cwd=C:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator
+2026-06-23 12:28:24 | Session token generated and exported for API guards.
+2026-06-23 12:28:24 | Initializing static assets from C:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator\static
+2026-06-23 12:28:24 | Application banners and logger initialized.
+2026-06-23 12:28:26 | Starting uvicorn server on 127.0.0.1:9000
+2026-06-23 12:29:01 | Runtime info: python=3.14.4 frozen=False cwd=C:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator
+2026-06-23 12:29:01 | Session token generated and exported for API guards.
+2026-06-23 12:29:01 | Initializing static assets from C:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator\static
+2026-06-23 12:29:01 | Application banners and logger initialized.
+2026-06-23 12:29:03 | Starting uvicorn server on 127.0.0.1:9000
+2026-06-23 12:30:08 | Runtime info: python=3.14.4 frozen=False cwd=C:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator
+2026-06-23 12:30:08 | Session token generated and exported for API guards.
+2026-06-23 12:30:08 | Initializing static assets from C:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator\static
+2026-06-23 12:30:08 | Application banners and logger initialized.
+2026-06-23 12:30:11 | Starting uvicorn server on 127.0.0.1:9000
+2026-06-23 12:37:51 | Runtime info: python=3.14.4 frozen=False cwd=C:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator
+2026-06-23 12:37:51 | Session token generated and exported for API guards.
+2026-06-23 12:37:51 | Initializing static assets from C:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator\static
+2026-06-23 12:37:51 | Application banners and logger initialized.
+2026-06-23 12:37:53 | Starting uvicorn server on 127.0.0.1:9000
+2026-06-23 12:38:29 | Runtime info: python=3.14.4 frozen=False cwd=C:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator
+2026-06-23 12:38:29 | Session token generated and exported for API guards.
+2026-06-23 12:38:29 | Initializing static assets from C:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator\static
+2026-06-23 12:38:29 | Application banners and logger initialized.
+2026-06-23 12:38:31 | Starting uvicorn server on 127.0.0.1:9000
+2026-06-25 08:44:24 | Runtime info: python=3.14.4 frozen=False cwd=C:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator
+2026-06-25 08:44:24 | Initializing static assets from c:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator\static
+2026-06-25 08:44:24 | Application banners and logger initialized.
+2026-06-25 08:44:26 | Starting uvicorn server on 127.0.0.1:9000
+2026-06-25 08:56:06 | Runtime info: python=3.14.4 frozen=False cwd=C:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator
+2026-06-25 08:56:07 | Initializing static assets from c:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator\static
+2026-06-25 08:56:07 | Application banners and logger initialized.
+2026-06-25 08:56:07 | Port 9000 is already in use.
+Listening process PID(s): 11868
+PID file: c:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator\logs\nxos_configurator.pid (pid 11868)
+Close the console window, click Stop in the web UI, or run: scripts\stop_configurator.ps1
+To replace the running instance: re-launch with --replace
+2026-06-25 08:56:23 | Runtime info: python=3.14.4 frozen=False cwd=C:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator
+2026-06-25 08:56:23 | Initializing static assets from c:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator\static
+2026-06-25 08:56:23 | Application banners and logger initialized.
+2026-06-25 08:56:25 | Starting uvicorn server on 127.0.0.1:9000

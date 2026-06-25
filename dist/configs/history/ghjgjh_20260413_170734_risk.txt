@@ -1,0 +1,43 @@
+==========================================
+       CONFIGURATION RISK ASSESSMENT      
+==========================================
+OVERALL RISK LEVEL: CRITICAL
+TOTAL FINDINGS: 18
+------------------------------------------
+[LOW] hostname ghjgjh
+   ↳ Matches risk pattern: 'hostname'
+[HIGH] feature interface-vlan
+   ↳ Matches risk pattern: 'vlan'
+[MEDIUM] feature interface-vlan
+   ↳ Matches risk pattern: 'interface'
+[CRITICAL] vpc domain 100
+   ↳ Matches risk pattern: 'vpc domain'
+[MEDIUM] interface Eth/1/49
+   ↳ Matches risk pattern: 'interface'
+[LOW] description vPC Peer-Link Member
+   ↳ Matches risk pattern: 'description'
+[HIGH] no shutdown
+   ↳ Matches risk pattern: 'shutdown'
+[MEDIUM] no shutdown
+   ↳ Matches risk pattern: 'no shutdown'
+[MEDIUM] interface Eth1/50
+   ↳ Matches risk pattern: 'interface'
+[LOW] description vPC Peer-Link Member
+   ↳ Matches risk pattern: 'description'
+[HIGH] no shutdown
+   ↳ Matches risk pattern: 'shutdown'
+[MEDIUM] no shutdown
+   ↳ Matches risk pattern: 'no shutdown'
+[MEDIUM] interface port-channel102
+   ↳ Matches risk pattern: 'interface'
+[LOW] description vPC PEER-LINK
+   ↳ Matches risk pattern: 'description'
+[HIGH] spanning-tree port type network
+   ↳ Matches risk pattern: 'spanning-tree'
+[HIGH] no shutdown
+   ↳ Matches risk pattern: 'shutdown'
+[MEDIUM] no shutdown
+   ↳ Matches risk pattern: 'no shutdown'
+[MEDIUM] interface mgmt0
+   ↳ Matches risk pattern: 'interface'
+==========================================

@@ -1,0 +1,193 @@
+# Toggleable NX-OS features and CLI option blocks — rendered as checkboxes in the UI.
+# Each option maps to template variables or injected CLI snippets.
+
+features:
+  - id: interface_vlan
+    label: "interface-vlan"
+    description: "Enable L3 SVI capability (required for routed VLAN interfaces)."
+    default: true
+    category: core
+    cli: "feature interface-vlan"
+
+  - id: lldp
+    label: "LLDP"
+    description: "Link Layer Discovery Protocol — neighbor visibility for troubleshooting."
+    default: true
+    category: core
+    cli: "feature lldp"
+
+  - id: lacp
+    label: "LACP"
+    description: "Link Aggregation Control Protocol — required for port-channels and vPC."
+    default: true
+    category: core
+    cli: "feature lacp"
+
+  - id: vpc
+    label: "vPC"
+    description: "Virtual Port Channel — dual-homed active-active topology."
+    default: false
+    category: redundancy
+    requires_redundancy: vpc
+    cli: "feature vpc"
+
+  - id: hsrp
+    label: "HSRP"
+    description: "First-hop redundancy on SVIs (v2 on NX-OS 9.x+)."
+    default: false
+    category: l3
+    cli: "feature hsrp"
+
+  - id: storm_control
+    label: "Storm Control"
+    description: "Broadcast/multicast storm protection on access ports."
+    default: true
+    category: security
+    applies_to: access_ports
+
+  - id: vpc_peer_gateway
+    label: "vPC Peer-Gateway"
+    description: "Allows either vPC peer to route traffic for the peer's SVI MAC."
+    default: true
+    category: vpc
+    requires_feature: vpc
+    cli: "peer-gateway"
+
+  - id: vpc_auto_recovery
+    label: "vPC Auto-Recovery"
+    description: "Automatically recover vPC after keepalive/peer-link restoration."
+    default: true
+    category: vpc
+    requires_feature: vpc
+    cli: "auto-recovery"
+
+  - id: vpc_arp_sync
+    label: "vPC ARP Sync"
+    description: "Synchronize ARP entries between vPC peers."
+    default: true
+    category: vpc
+    requires_feature: vpc
+    cli: "ip arp synchronize"
+
+  - id: bfd
+    label: "BFD"
+    description: "Bidirectional Forwarding Detection for fast routing failover."
+    default: false
+    category: l3
+    cli: "feature bfd"
+
+  - id: nxapi
+    label: "NX-API"
+    description: "REST API on-box (disable in high-security environments)."
+    default: false
+    category: management
+    cli: "feature nxapi"
+
+  - id: bash
+    label: "Bash Shell"
+    description: "Enable bash access for advanced troubleshooting."
+    default: false
+    category: management
+    cli: "feature bash-shell"
+
+  - id: ntp
+    label: "NTP"
+    description: "Network Time Protocol — sync clock via management VRF."
+    default: true
+    category: management
+    cli: "ntp server"
+
+  - id: logging
+    label: "Syslog"
+    description: "Remote syslog to management VRF (required for hardened tier)."
+    default: true
+    category: management
+    cli: "logging server"
+
+  - id: snmp
+    label: "SNMP Location"
+    description: "SNMP location string only (no community strings generated)."
+    default: false
+    category: management
+
+  - id: vpc_orphan_suspend
+    label: "vPC Orphan-Port Suspend"
+    description: "Suspend orphan ports when peer-link fails — data center best practice."
+    default: true
+    category: vpc
+    requires_feature: vpc
+    cli: "orphan-port suspend"
+
+  - id: vpc_peer_switch
+    label: "vPC Peer-Switch"
+    description: "peer-switch under vpc domain — required for core/spine vPC pairs."
+    default: false
+    category: vpc
+    requires_feature: vpc
+    cli: "peer-switch"
+
+  - id: vpc_delay_restore
+    label: "vPC Delay Restore"
+    description: "delay restore 150 — stagger port restore after peer-link recovery."
+    default: false
+    category: vpc
+    requires_feature: vpc
+    cli: "delay restore 150"
+
+  - id: vxlan
+    label: "VXLAN Overlay"
+    description: "Enable NV overlay feature — foundation for VXLAN/EVPN leaf (extend in lab)."
+    default: false
+    category: fabric
+    cli: "feature nv overlay"
+
+  - id: aaa_tacacs
+    label: "AAA / TACACS+ (placeholder)"
+    description: "Commented AAA block — replace with your TACACS+ servers before production."
+    default: false
+    category: security
+    cli: |
+      ! aaa group server tacacs+ ACS-TACACS
+      !   server 10.0.0.1
+      ! tacacs-server host 10.0.0.1 key 7 PLACEHOLDER
+      ! aaa authentication login default group ACS-TACACS local
+
+aliases:
+  - id: uplink_trunk
+    label: "Uplink Trunk Template"
+    description: "Standard trunk to core/spine with allowed VLAN list placeholder."
+    snippet: |
+      switchport mode trunk
+      switchport trunk allowed vlan {{ trunk_vlans | default('1-4094') }}
+      spanning-tree port type network
+
+  - id: access_user
+    label: "User Access Port"
+    description: "Edge access port with storm control and portfast."
+    snippet: |
+      switchport mode access
+      switchport access vlan {{ access_vlan | default('10') }}
+      spanning-tree port type edge
+      storm-control broadcast level 20.00
+      storm-control multicast level 20.00
+      storm-control action shutdown
+
+  - id: vpc_member
+    label: "vPC Member Port-Channel"
+    description: "Port-channel bound to a vPC ID."
+    snippet: |
+      switchport mode trunk
+      vpc {{ vpc_id | default('200') }}
+
+  - id: svi_gateway
+    label: "SVI Gateway with HSRP"
+    description: "L3 SVI with optional HSRP VIP."
+    snippet: |
+      no ip redirects
+      no ip proxy-arp
+      ip address {{ svi_ip }}
+      hsrp version {{ hsrp_version | default('2') }}
+      hsrp {{ hsrp_group | default('1') }}
+        priority {{ hsrp_priority | default('110') }}
+        preempt
+        ip {{ hsrp_vip }}

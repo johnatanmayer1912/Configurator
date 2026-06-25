@@ -1,0 +1,549 @@
+2026-04-12 14:27:53,847 [INFO] WebAuthority: Initializing Static Assets from: C:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator\static
+2026-04-12 14:27:53,847 [INFO] WebAuthority: --------------------------------------------------
+2026-04-12 14:27:53,848 [INFO] WebAuthority:      CONFIGURATION AUTHORITY SYSTEM (1.6.0)
+2026-04-12 14:27:53,848 [INFO] WebAuthority:            Institutional Web Platform
+2026-04-12 14:27:53,848 [INFO] WebAuthority: --------------------------------------------------
+2026-04-12 14:27:53,848 [ERROR] WebAuthority: CRITICAL: Port 8000 is already in use. Please close other instances.
+2026-04-12 14:28:21,144 [INFO] WebAuthority: Initializing Static Assets from: C:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator\static
+2026-04-12 14:28:21,145 [INFO] WebAuthority: --------------------------------------------------
+2026-04-12 14:28:21,145 [INFO] WebAuthority:      CONFIGURATION AUTHORITY SYSTEM (1.6.0)
+2026-04-12 14:28:21,145 [INFO] WebAuthority:            Institutional Web Platform
+2026-04-12 14:28:21,145 [INFO] WebAuthority: --------------------------------------------------
+2026-04-12 14:28:21,145 [ERROR] WebAuthority: CRITICAL: Port 8000 is already in use. Please close other instances.
+2026-04-12 14:29:21,660 [INFO] WebAuthority: Initializing Static Assets from: C:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator\static
+2026-04-12 14:29:21,660 [INFO] WebAuthority: --------------------------------------------------
+2026-04-12 14:29:21,660 [INFO] WebAuthority:      CONFIGURATION AUTHORITY SYSTEM (1.6.0)
+2026-04-12 14:29:21,660 [INFO] WebAuthority:            Institutional Web Platform
+2026-04-12 14:29:21,660 [INFO] WebAuthority: --------------------------------------------------
+2026-04-12 14:29:21,661 [ERROR] WebAuthority: CRITICAL: Port 8080 is already in use. Please close other instances.
+2026-04-12 14:30:14,085 [INFO] WebAuthority: Initializing Static Assets from: C:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator\static
+2026-04-12 14:30:14,085 [INFO] WebAuthority: --------------------------------------------------
+2026-04-12 14:30:14,085 [INFO] WebAuthority:      CONFIGURATION AUTHORITY SYSTEM (1.6.0)
+2026-04-12 14:30:14,085 [INFO] WebAuthority:            Institutional Web Platform
+2026-04-12 14:30:14,085 [INFO] WebAuthority: --------------------------------------------------
+2026-04-12 14:30:16,093 [INFO] WebAuthority: Starting Production Server at http://127.0.0.1:9000
+2026-04-12 14:30:18,093 [INFO] WebAuthority: Opening browser at: http://127.0.0.1:9000
+2026-04-12 14:33:27,618 [INFO] WebAuthority: Initializing Static Assets from: C:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator\static
+2026-04-12 14:33:27,618 [INFO] WebAuthority: --------------------------------------------------
+2026-04-12 14:33:27,618 [INFO] WebAuthority:      CONFIGURATION AUTHORITY SYSTEM (1.6.0)
+2026-04-12 14:33:27,619 [INFO] WebAuthority:            Institutional Web Platform
+2026-04-12 14:33:27,619 [INFO] WebAuthority: --------------------------------------------------
+2026-04-12 14:33:29,647 [INFO] WebAuthority: Starting Production Server at http://127.0.0.1:9000
+2026-04-12 14:33:31,647 [INFO] WebAuthority: Opening browser at: http://127.0.0.1:9000
+2026-04-12 14:33:35,550 [INFO] WebAuthority: SHUTDOWN REQUEST RECEIVED: Terminating system in 1 second...
+2026-04-13 16:19:26,289 [INFO] WebAuthority: Initializing Static Assets from: C:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator\static
+2026-04-13 16:19:26,290 [INFO] WebAuthority: --------------------------------------------------
+2026-04-13 16:19:26,290 [INFO] WebAuthority:      CONFIGURATION AUTHORITY SYSTEM (1.7.0)
+2026-04-13 16:19:26,290 [INFO] WebAuthority:            Institutional Web Platform
+2026-04-13 16:19:26,290 [INFO] WebAuthority: --------------------------------------------------
+2026-04-13 16:19:28,305 [INFO] WebAuthority: Starting Production Server at http://127.0.0.1:9000
+2026-04-13 16:19:30,305 [INFO] WebAuthority: Opening browser at: http://127.0.0.1:9000/?token=win_bbGwqiQgcGJN03RSmJRI2mXzO6Rs
+2026-04-13 16:19:37,679 [INFO] WebAuthority: SHUTDOWN REQUEST: Exit button triggered.
+2026-04-13 16:22:01,673 [INFO] WebAuthority: Initializing Static Assets from: C:\Users\bbb12\AppData\Local\Temp\_MEI490482\static
+2026-04-13 16:22:01,673 [INFO] WebAuthority: --------------------------------------------------
+2026-04-13 16:22:01,673 [INFO] WebAuthority:      CONFIGURATION AUTHORITY SYSTEM (1.7.0)
+2026-04-13 16:22:01,673 [INFO] WebAuthority:            Institutional Web Platform
+2026-04-13 16:22:01,673 [INFO] WebAuthority: --------------------------------------------------
+2026-04-13 16:22:03,717 [INFO] WebAuthority: Starting Production Server at http://127.0.0.1:9000
+2026-04-13 16:22:05,718 [INFO] WebAuthority: Opening browser at: http://127.0.0.1:9000/?token=U75SZnkinmF5QRK0_kWfHqZSC3Im0AKq
+2026-04-13 16:22:17,648 [INFO] WebAuthority: SHUTDOWN REQUEST: Exit button triggered.
+2026-04-13 16:33:34,745 [INFO] WebAuthority: Initializing Static Assets from: C:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator\static
+2026-04-13 16:33:34,746 [INFO] WebAuthority: --------------------------------------------------
+2026-04-13 16:33:34,746 [INFO] WebAuthority:      CONFIGURATION AUTHORITY SYSTEM (1.7.0)
+2026-04-13 16:33:34,746 [INFO] WebAuthority:            Institutional Web Platform
+2026-04-13 16:33:34,746 [INFO] WebAuthority: --------------------------------------------------
+2026-04-13 16:33:36,788 [INFO] WebAuthority: Starting Production Server at http://127.0.0.1:9000
+2026-04-13 16:33:38,788 [INFO] WebAuthority: Opening browser at: http://127.0.0.1:9000/?token=WtnTOhUPT1td8gnOR1enVhMgX2KZAY4_
+2026-04-13 16:34:01,145 [INFO] WebAuthority: SHUTDOWN REQUEST: Exit button triggered.
+2026-04-13 16:36:15,320 [INFO] WebAuthority: Initializing Static Assets from: C:\Users\bbb12\AppData\Local\Temp\_MEI164522\static
+2026-04-13 16:36:15,321 [INFO] WebAuthority: --------------------------------------------------
+2026-04-13 16:36:15,321 [INFO] WebAuthority:      CONFIGURATION AUTHORITY SYSTEM (1.8.0)
+2026-04-13 16:36:15,321 [INFO] WebAuthority:            Institutional Web Platform
+2026-04-13 16:36:15,322 [INFO] WebAuthority: --------------------------------------------------
+2026-04-13 16:36:17,366 [INFO] WebAuthority: Starting Production Server at http://127.0.0.1:9000
+2026-04-13 16:36:19,366 [INFO] WebAuthority: Opening browser at: http://127.0.0.1:9000/?token=ChjOwNZWyLgXOnbUw9qEF8lZkvwXIxZt
+2026-04-13 16:36:30,727 [INFO] WebAuthority: SHUTDOWN REQUEST: Exit button triggered.
+2026-04-13 16:45:57,311 [INFO] WebAuthority: Initializing Static Assets from: C:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator\static
+2026-04-13 16:45:57,312 [INFO] WebAuthority: --------------------------------------------------
+2026-04-13 16:45:57,312 [INFO] WebAuthority:      CONFIGURATION AUTHORITY SYSTEM (1.8.0)
+2026-04-13 16:45:57,312 [INFO] WebAuthority:            Institutional Web Platform
+2026-04-13 16:45:57,312 [INFO] WebAuthority: --------------------------------------------------
+2026-04-13 16:45:59,333 [INFO] WebAuthority: Starting Production Server at http://127.0.0.1:9000
+2026-04-13 16:46:01,333 [INFO] WebAuthority: Opening browser at: http://127.0.0.1:9000/?token=WGM0S9vBr7xnOt3UQ3Nc4f7ii_2kBpR4
+2026-04-13 16:46:25,386 [INFO] WebAuthority: SHUTDOWN REQUEST: Exit button triggered.
+2026-04-13 16:48:27,017 [INFO] WebAuthority: Initializing Static Assets from: C:\Users\bbb12\AppData\Local\Temp\_MEI247002\static
+2026-04-13 16:48:27,017 [INFO] WebAuthority: --------------------------------------------------
+2026-04-13 16:48:27,017 [INFO] WebAuthority:      CONFIGURATION AUTHORITY SYSTEM (1.9.0)
+2026-04-13 16:48:27,017 [INFO] WebAuthority:            Institutional Web Platform
+2026-04-13 16:48:27,017 [INFO] WebAuthority: --------------------------------------------------
+2026-04-13 16:48:29,057 [INFO] WebAuthority: Starting Production Server at http://127.0.0.1:9000
+2026-04-13 16:48:31,058 [INFO] WebAuthority: Opening browser at: http://127.0.0.1:9000/?token=EikJlZoFN6GvKvV3lszfNsVoYy5TP6V5
+2026-04-13 16:48:37,351 [INFO] WebAuthority: SHUTDOWN REQUEST: Exit button triggered.
+2026-04-13 16:51:08,804 [INFO] WebAuthority: Initializing Static Assets from: C:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator\static
+2026-04-13 16:51:08,805 [INFO] WebAuthority: --------------------------------------------------
+2026-04-13 16:51:08,805 [INFO] WebAuthority:      CONFIGURATION AUTHORITY SYSTEM (1.9.0)
+2026-04-13 16:51:08,805 [INFO] WebAuthority:            Institutional Web Platform
+2026-04-13 16:51:08,805 [INFO] WebAuthority: --------------------------------------------------
+2026-04-13 16:51:10,845 [INFO] WebAuthority: Starting Production Server at http://127.0.0.1:9000
+2026-04-13 16:51:12,845 [INFO] WebAuthority: Opening browser at: http://127.0.0.1:9000/?token=GPoagR3cJanH44Z_c9xwdvfS3T-lXtWG
+2026-04-13 16:51:35,459 [INFO] WebAuthority: SHUTDOWN REQUEST: Exit button triggered.
+2026-04-13 16:54:07,256 [INFO] WebAuthority: Initializing Static Assets from: C:\Users\bbb12\AppData\Local\Temp\_MEI135682\static
+2026-04-13 16:54:07,256 [INFO] WebAuthority: --------------------------------------------------
+2026-04-13 16:54:07,256 [INFO] WebAuthority:      CONFIGURATION AUTHORITY SYSTEM (2.0.0)
+2026-04-13 16:54:07,256 [INFO] WebAuthority:            Institutional Web Platform
+2026-04-13 16:54:07,256 [INFO] WebAuthority: --------------------------------------------------
+2026-04-13 16:54:09,300 [INFO] WebAuthority: Starting Production Server at http://127.0.0.1:9000
+2026-04-13 16:54:11,300 [INFO] WebAuthority: Opening browser at: http://127.0.0.1:9000/?token=DY1e-lHez056WvUh1NkiMXigswO-FXuq
+2026-04-13 16:54:22,889 [INFO] WebAuthority: SHUTDOWN REQUEST: Exit button triggered.
+2026-04-14 08:19:10,086 [INFO] WebAuthority: Initializing Static Assets from: C:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator\static
+2026-04-14 08:19:10,087 [INFO] WebAuthority: --------------------------------------------------
+2026-04-14 08:19:10,087 [INFO] WebAuthority:      CONFIGURATION AUTHORITY SYSTEM (2.0.0)
+2026-04-14 08:19:10,087 [INFO] WebAuthority:            Institutional Web Platform
+2026-04-14 08:19:10,087 [INFO] WebAuthority: --------------------------------------------------
+2026-04-14 08:19:12,110 [INFO] WebAuthority: Starting Production Server at http://127.0.0.1:9000
+2026-04-14 08:19:14,110 [INFO] WebAuthority: Opening browser at: http://127.0.0.1:9000/?token=6HAY-qAKoYSQOnEiqvijrBb2kQbBf6Dx
+2026-04-14 08:19:34,278 [INFO] WebAuthority: SHUTDOWN REQUEST: Exit button triggered.
+2026-04-14 08:22:56,372 [INFO] WebAuthority: Initializing Static Assets from: C:\Users\bbb12\AppData\Local\Temp\_MEI380042\static
+2026-04-14 08:22:56,372 [INFO] WebAuthority: --------------------------------------------------
+2026-04-14 08:22:56,372 [INFO] WebAuthority:      CONFIGURATION AUTHORITY SYSTEM (2.0.1)
+2026-04-14 08:22:56,372 [INFO] WebAuthority:            Institutional Web Platform
+2026-04-14 08:22:56,372 [INFO] WebAuthority: --------------------------------------------------
+2026-04-14 08:22:58,413 [INFO] WebAuthority: Starting Production Server at http://127.0.0.1:9000
+2026-04-14 08:23:00,415 [INFO] WebAuthority: Opening browser at: http://127.0.0.1:9000/?token=ophg4QTn_uOjPHG1hbhnc7YGwW4evRKx
+2026-04-14 08:23:09,854 [INFO] WebAuthority: SHUTDOWN REQUEST: Exit button triggered.
+2026-06-22 11:50:58,379 [INFO] WebAuthority: Initializing Static Assets from: C:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator\static
+2026-06-22 11:50:58,380 [INFO] WebAuthority: --------------------------------------------------
+2026-06-22 11:50:58,380 [INFO] WebAuthority:      NX-OS CONFIGURATION AUTHORITY (3.7.1)
+2026-06-22 11:50:58,380 [INFO] WebAuthority:            Web Platform — Offline Ready
+2026-06-22 11:50:58,380 [INFO] WebAuthority: --------------------------------------------------
+2026-06-22 11:51:00,429 [INFO] WebAuthority: Starting Production Server at http://127.0.0.1:9000
+2026-06-22 11:51:00,430 [INFO] WebAuthority: Session URL (bookmark this tab): http://127.0.0.1:9000/?token=wvDHzGJU_FP2fhuyGZ_QWLoxYsAsLE1B
+2026-06-22 11:51:00,979 [INFO] WebAuthority: SHUTDOWN REQUEST: Stop button or CLI triggered.
+2026-06-22 11:54:01,453 [INFO] WebAuthority: Initializing Static Assets from: C:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator\static
+2026-06-22 11:54:01,453 [INFO] WebAuthority: --------------------------------------------------
+2026-06-22 11:54:01,453 [INFO] WebAuthority:      NX-OS CONFIGURATION AUTHORITY (3.7.2)
+2026-06-22 11:54:01,453 [INFO] WebAuthority:            Web Platform — Offline Ready
+2026-06-22 11:54:01,453 [INFO] WebAuthority: --------------------------------------------------
+2026-06-22 11:54:03,493 [INFO] WebAuthority: Starting Production Server at http://127.0.0.1:9000
+2026-06-22 11:54:03,493 [INFO] WebAuthority: Session URL (bookmark this tab): http://127.0.0.1:9000/?token=ae388zpwMM6gIlX--FYpObElJmH6l9V0
+2026-06-22 11:54:04,094 [INFO] WebAuthority: SHUTDOWN REQUEST: Stop button or CLI triggered.
+2026-06-22 11:54:09,220 [INFO] WebAuthority: Initializing Static Assets from: C:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator\static
+2026-06-22 11:54:09,221 [INFO] WebAuthority: --------------------------------------------------
+2026-06-22 11:54:09,221 [INFO] WebAuthority:      NX-OS CONFIGURATION AUTHORITY (3.7.2)
+2026-06-22 11:54:09,221 [INFO] WebAuthority:            Web Platform — Offline Ready
+2026-06-22 11:54:09,221 [INFO] WebAuthority: --------------------------------------------------
+2026-06-22 11:54:11,261 [INFO] WebAuthority: Starting Production Server at http://127.0.0.1:9000
+2026-06-22 11:54:11,261 [INFO] WebAuthority: Session URL (bookmark this tab): http://127.0.0.1:9000/?token=1-XNT1ingaofMKaMyrbQwH6vOPoiyDuS
+2026-06-22 11:54:12,036 [INFO] WebAuthority: SHUTDOWN REQUEST: Stop button or CLI triggered.
+2026-06-22 12:46:48,720 [INFO] WebAuthority: Initializing Static Assets from: C:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator\static
+2026-06-22 12:46:48,721 [INFO] WebAuthority: --------------------------------------------------
+2026-06-22 12:46:48,721 [INFO] WebAuthority:      NX-OS CONFIGURATION AUTHORITY (3.7.3)
+2026-06-22 12:46:48,721 [INFO] WebAuthority:            Web Platform — Offline Ready
+2026-06-22 12:46:48,721 [INFO] WebAuthority: --------------------------------------------------
+2026-06-22 12:46:48,732 [ERROR] WebAuthority: Port 9000 is already in use.
+Listening process PID(s): 2368
+Close the console window, click Stop in the web UI, or run: scripts\stop_configurator.ps1
+To replace the running instance: re-launch with --replace
+2026-06-22 12:46:54,191 [INFO] WebAuthority: Initializing Static Assets from: C:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator\static
+2026-06-22 12:46:54,192 [INFO] WebAuthority: --------------------------------------------------
+2026-06-22 12:46:54,192 [INFO] WebAuthority:      NX-OS CONFIGURATION AUTHORITY (3.7.3)
+2026-06-22 12:46:54,192 [INFO] WebAuthority:            Web Platform — Offline Ready
+2026-06-22 12:46:54,192 [INFO] WebAuthority: --------------------------------------------------
+2026-06-22 12:46:56,229 [INFO] WebAuthority: Starting Production Server at http://127.0.0.1:9000
+2026-06-22 12:46:56,229 [INFO] WebAuthority: Session URL (bookmark this tab): http://127.0.0.1:9000/?token=x87Hh-F7e3wDaHZk85QkzmK3_BAB-fUF
+2026-06-22 12:46:56,990 [INFO] WebAuthority: SHUTDOWN REQUEST: Stop button or CLI triggered.
+2026-06-22 13:29:00,195 [INFO] WebAuthority: Initializing Static Assets from: C:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator\static
+2026-06-22 13:29:00,195 [INFO] WebAuthority: --------------------------------------------------
+2026-06-22 13:29:00,195 [INFO] WebAuthority:      NX-OS CONFIGURATION AUTHORITY (3.7.4)
+2026-06-22 13:29:00,195 [INFO] WebAuthority:            Web Platform — Offline Ready
+2026-06-22 13:29:00,195 [INFO] WebAuthority: --------------------------------------------------
+2026-06-22 13:29:00,207 [ERROR] WebAuthority: Port 9000 is already in use.
+Listening process PID(s): 5444
+Close the console window, click Stop in the web UI, or run: scripts\stop_configurator.ps1
+To replace the running instance: re-launch with --replace
+2026-06-22 13:29:05,502 [INFO] WebAuthority: Initializing Static Assets from: C:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator\static
+2026-06-22 13:29:05,503 [INFO] WebAuthority: --------------------------------------------------
+2026-06-22 13:29:05,503 [INFO] WebAuthority:      NX-OS CONFIGURATION AUTHORITY (3.7.4)
+2026-06-22 13:29:05,503 [INFO] WebAuthority:            Web Platform — Offline Ready
+2026-06-22 13:29:05,503 [INFO] WebAuthority: --------------------------------------------------
+2026-06-22 13:29:07,516 [INFO] WebAuthority: Starting Production Server at http://127.0.0.1:9000
+2026-06-22 13:29:07,516 [INFO] WebAuthority: Session URL (bookmark this tab): http://127.0.0.1:9000/?token=Tt6kLlhzRuxqDb-jkzoO7xEUtAmphAT3
+2026-06-22 13:29:08,058 [INFO] WebAuthority: SHUTDOWN REQUEST: Stop button or CLI triggered.
+2026-06-22 14:28:10,479 [INFO] WebAuthority: SHUTDOWN REQUEST: Stop button or CLI triggered.
+2026-06-22 14:28:49,182 [INFO] WebAuthority: SHUTDOWN REQUEST: Stop button or CLI triggered.
+2026-06-22 14:29:09,132 [INFO] WebAuthority: SHUTDOWN REQUEST: Stop button or CLI triggered.
+2026-06-22 14:29:53,895 [INFO] WebAuthority: SHUTDOWN REQUEST: Stop button or CLI triggered.
+2026-06-22 14:30:14,715 [INFO] WebAuthority: SHUTDOWN REQUEST: Stop button or CLI triggered.
+2026-06-22 14:30:50,225 [INFO] WebAuthority: Initializing Static Assets from: C:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator\static
+2026-06-22 14:30:50,226 [INFO] WebAuthority: --------------------------------------------------
+2026-06-22 14:30:50,226 [INFO] WebAuthority:      NX-OS CONFIGURATION AUTHORITY (3.7.4)
+2026-06-22 14:30:50,226 [INFO] WebAuthority:            Web Platform — Offline Ready
+2026-06-22 14:30:50,226 [INFO] WebAuthority: --------------------------------------------------
+2026-06-22 14:30:52,235 [INFO] WebAuthority: Starting Production Server at http://127.0.0.1:9000
+2026-06-22 14:30:52,235 [INFO] WebAuthority: Session URL (bookmark this tab): http://127.0.0.1:9000/?token=DlId9sTbiWK7Jb144hcPkslvt6K-Kl54
+2026-06-22 14:30:52,767 [INFO] WebAuthority: SHUTDOWN REQUEST: Stop button or CLI triggered.
+2026-06-22 14:31:26,974 [INFO] WebAuthority: SHUTDOWN REQUEST: Stop button or CLI triggered.
+2026-06-22 14:31:50,653 [INFO] WebAuthority: SHUTDOWN REQUEST: Stop button or CLI triggered.
+2026-06-22 14:32:26,233 [INFO] WebAuthority: SHUTDOWN REQUEST: Stop button or CLI triggered.
+2026-06-22 14:33:09,986 [INFO] WebAuthority: SHUTDOWN REQUEST: Stop button or CLI triggered.
+2026-06-22 14:34:14,638 [INFO] WebAuthority: SHUTDOWN REQUEST: Stop button or CLI triggered.
+2026-06-22 14:34:46,667 [INFO] WebAuthority: SHUTDOWN REQUEST: Stop button or CLI triggered.
+2026-06-22 14:34:52,005 [INFO] WebAuthority: Initializing Static Assets from: C:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator\static
+2026-06-22 14:34:52,005 [INFO] WebAuthority: --------------------------------------------------
+2026-06-22 14:34:52,005 [INFO] WebAuthority:      NX-OS CONFIGURATION AUTHORITY (3.7.4)
+2026-06-22 14:34:52,005 [INFO] WebAuthority:            Web Platform — Offline Ready
+2026-06-22 14:34:52,005 [INFO] WebAuthority: --------------------------------------------------
+2026-06-22 14:34:54,019 [INFO] WebAuthority: Starting Production Server at http://127.0.0.1:9000
+2026-06-22 14:34:54,019 [INFO] WebAuthority: Session URL (bookmark this tab): http://127.0.0.1:9000/?token=V_Lbi6QG-S4FUWNy_hBHmpsFs3cIPiha
+2026-06-22 14:34:54,552 [INFO] WebAuthority: SHUTDOWN REQUEST: Stop button or CLI triggered.
+2026-06-22 14:35:25,231 [INFO] WebAuthority: SHUTDOWN REQUEST: Stop button or CLI triggered.
+2026-06-22 14:37:23,521 [INFO] WebAuthority: SHUTDOWN REQUEST: Stop button or CLI triggered.
+2026-06-22 14:37:30,354 [INFO] WebAuthority: Initializing Static Assets from: C:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator\static
+2026-06-22 14:37:30,355 [INFO] WebAuthority: --------------------------------------------------
+2026-06-22 14:37:30,355 [INFO] WebAuthority:      NX-OS CONFIGURATION AUTHORITY (3.7.4)
+2026-06-22 14:37:30,355 [INFO] WebAuthority:            Web Platform — Offline Ready
+2026-06-22 14:37:30,355 [INFO] WebAuthority: --------------------------------------------------
+2026-06-22 14:37:32,389 [INFO] WebAuthority: Starting Production Server at http://127.0.0.1:9000
+2026-06-22 14:37:32,390 [INFO] WebAuthority: Session URL (bookmark this tab): http://127.0.0.1:9000/?token=UWQw8KleftvlGFB7d5l7YApvPAIqELFN
+2026-06-22 14:37:32,897 [INFO] WebAuthority: SHUTDOWN REQUEST: Stop button or CLI triggered.
+2026-06-22 17:21:33,239 [INFO] WebAuthority: SHUTDOWN REQUEST: Stop button or CLI triggered.
+2026-06-22 17:21:38,323 [INFO] WebAuthority: Initializing Static Assets from: C:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator\static
+2026-06-22 17:21:38,324 [INFO] WebAuthority: --------------------------------------------------
+2026-06-22 17:21:38,324 [INFO] WebAuthority:      NX-OS CONFIGURATION AUTHORITY (3.7.4)
+2026-06-22 17:21:38,324 [INFO] WebAuthority:            Web Platform — Offline Ready
+2026-06-22 17:21:38,324 [INFO] WebAuthority: --------------------------------------------------
+2026-06-22 17:21:40,346 [INFO] WebAuthority: Starting Production Server at http://127.0.0.1:9000
+2026-06-22 17:21:40,346 [INFO] WebAuthority: Session URL (bookmark this tab): http://127.0.0.1:9000/?token=zcWhcDgW2Z6TC-otD-NQWKjpdZwWVbWv
+2026-06-22 17:21:40,908 [INFO] WebAuthority: SHUTDOWN REQUEST: Stop button or CLI triggered.
+2026-06-22 17:38:31,089 [INFO] WebAuthority: SHUTDOWN REQUEST: Stop button or CLI triggered.
+2026-06-22 17:38:36,000 [INFO] WebAuthority: Initializing Static Assets from: C:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator\static
+2026-06-22 17:38:36,001 [INFO] WebAuthority: --------------------------------------------------
+2026-06-22 17:38:36,001 [INFO] WebAuthority:      NX-OS CONFIGURATION AUTHORITY (3.8.0)
+2026-06-22 17:38:36,001 [INFO] WebAuthority:            Web Platform — Offline Ready
+2026-06-22 17:38:36,001 [INFO] WebAuthority: --------------------------------------------------
+2026-06-22 17:38:38,009 [INFO] WebAuthority: Starting Production Server at http://127.0.0.1:9000
+2026-06-22 17:38:38,009 [INFO] WebAuthority: Session URL (bookmark this tab): http://127.0.0.1:9000/?token=q--GcynqoCZCbU7cRfELjgzCU1_GD-MM
+2026-06-22 17:38:38,591 [INFO] WebAuthority: SHUTDOWN REQUEST: Stop button or CLI triggered.
+2026-06-22 17:40:48,475 [INFO] WebAuthority: SHUTDOWN REQUEST: Stop button or CLI triggered.
+2026-06-22 17:40:53,585 [INFO] WebAuthority: Initializing Static Assets from: C:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator\static
+2026-06-22 17:40:53,586 [INFO] WebAuthority: --------------------------------------------------
+2026-06-22 17:40:53,586 [INFO] WebAuthority:      NX-OS CONFIGURATION AUTHORITY (3.8.0)
+2026-06-22 17:40:53,586 [INFO] WebAuthority:            Web Platform — Offline Ready
+2026-06-22 17:40:53,586 [INFO] WebAuthority: --------------------------------------------------
+2026-06-22 17:40:55,610 [INFO] WebAuthority: Starting Production Server at http://127.0.0.1:9000
+2026-06-22 17:40:55,610 [INFO] WebAuthority: Session URL (bookmark this tab): http://127.0.0.1:9000/?token=RctqS3VQLq4J6lsm9KMSlzarUQBI1Zvq
+2026-06-22 17:40:56,126 [INFO] WebAuthority: SHUTDOWN REQUEST: Stop button or CLI triggered.
+2026-06-22 17:41:22,115 [INFO] WebAuthority: Initializing Static Assets from: C:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator\static
+2026-06-22 17:41:22,115 [INFO] WebAuthority: --------------------------------------------------
+2026-06-22 17:41:22,115 [INFO] WebAuthority:      NX-OS CONFIGURATION AUTHORITY (3.8.0)
+2026-06-22 17:41:22,115 [INFO] WebAuthority:            Web Platform — Offline Ready
+2026-06-22 17:41:22,115 [INFO] WebAuthority: --------------------------------------------------
+2026-06-22 17:41:24,145 [INFO] WebAuthority: Starting Production Server at http://127.0.0.1:9000
+2026-06-22 17:41:24,145 [INFO] WebAuthority: Session URL (bookmark this tab): http://127.0.0.1:9000/?token=bnFA8HLtgnTUhAsAOeqGwcemwvsy8dCM
+2026-06-22 17:41:24,593 [INFO] WebAuthority: SHUTDOWN REQUEST: Stop button or CLI triggered.
+2026-06-22 17:41:28,164 [INFO] WebAuthority: SHUTDOWN REQUEST: Stop button or CLI triggered.
+2026-06-22 17:41:31,572 [INFO] WebAuthority: SHUTDOWN REQUEST: Stop button or CLI triggered.
+2026-06-22 17:41:36,489 [INFO] WebAuthority: Initializing Static Assets from: C:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator\static
+2026-06-22 17:41:36,490 [INFO] WebAuthority: --------------------------------------------------
+2026-06-22 17:41:36,490 [INFO] WebAuthority:      NX-OS CONFIGURATION AUTHORITY (3.8.0)
+2026-06-22 17:41:36,490 [INFO] WebAuthority:            Web Platform — Offline Ready
+2026-06-22 17:41:36,490 [INFO] WebAuthority: --------------------------------------------------
+2026-06-22 17:41:38,511 [INFO] WebAuthority: Starting Production Server at http://127.0.0.1:9000
+2026-06-22 17:41:38,511 [INFO] WebAuthority: Session URL (bookmark this tab): http://127.0.0.1:9000/?token=1zi6gwCGQPtjVlC69KAuE3ePJcKGUjEA
+2026-06-22 17:41:39,043 [INFO] WebAuthority: SHUTDOWN REQUEST: Stop button or CLI triggered.
+2026-06-22 17:43:57,713 [INFO] WebAuthority: SHUTDOWN REQUEST: Stop button or CLI triggered.
+2026-06-22 17:44:02,868 [INFO] WebAuthority: Initializing Static Assets from: C:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator\static
+2026-06-22 17:44:02,869 [INFO] WebAuthority: --------------------------------------------------
+2026-06-22 17:44:02,869 [INFO] WebAuthority:      NX-OS CONFIGURATION AUTHORITY (3.8.0)
+2026-06-22 17:44:02,869 [INFO] WebAuthority:            Web Platform — Offline Ready
+2026-06-22 17:44:02,869 [INFO] WebAuthority: --------------------------------------------------
+2026-06-22 17:44:04,896 [INFO] WebAuthority: Starting Production Server at http://127.0.0.1:9000
+2026-06-22 17:44:04,897 [INFO] WebAuthority: Session URL (bookmark this tab): http://127.0.0.1:9000/?token=padtGa4lQQs2eyQhTRNGdKJ8aAXvR_Dy
+2026-06-22 17:44:05,440 [INFO] WebAuthority: SHUTDOWN REQUEST: Stop button or CLI triggered.
+2026-06-22 17:54:57,263 [INFO] WebAuthority: SHUTDOWN REQUEST: Stop button or CLI triggered.
+2026-06-22 17:55:02,290 [INFO] WebAuthority: Initializing Static Assets from: C:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator\static
+2026-06-22 17:55:02,291 [INFO] WebAuthority: --------------------------------------------------
+2026-06-22 17:55:02,291 [INFO] WebAuthority:      NX-OS CONFIGURATION AUTHORITY (3.8.0)
+2026-06-22 17:55:02,291 [INFO] WebAuthority:            Web Platform — Offline Ready
+2026-06-22 17:55:02,291 [INFO] WebAuthority: --------------------------------------------------
+2026-06-22 17:55:04,312 [INFO] WebAuthority: Starting Production Server at http://127.0.0.1:9000
+2026-06-22 17:55:04,313 [INFO] WebAuthority: Session URL (bookmark this tab): http://127.0.0.1:9000/?token=fh0RxFpM2XgXvpdo5BKhnT0jDWnRfk8V
+2026-06-22 17:55:04,840 [INFO] WebAuthority: SHUTDOWN REQUEST: Stop button or CLI triggered.
+2026-06-22 17:57:02,798 [INFO] WebAuthority: SHUTDOWN REQUEST: Stop button or CLI triggered.
+2026-06-22 17:57:08,730 [INFO] WebAuthority: Initializing Static Assets from: C:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator\static
+2026-06-22 17:57:08,731 [INFO] WebAuthority: --------------------------------------------------
+2026-06-22 17:57:08,731 [INFO] WebAuthority:      NX-OS CONFIGURATION AUTHORITY (3.9.0)
+2026-06-22 17:57:08,731 [INFO] WebAuthority:            Web Platform — Offline Ready
+2026-06-22 17:57:08,731 [INFO] WebAuthority: --------------------------------------------------
+2026-06-22 17:57:10,757 [INFO] WebAuthority: Starting Production Server at http://127.0.0.1:9000
+2026-06-22 17:57:10,758 [INFO] WebAuthority: Session URL (bookmark this tab): http://127.0.0.1:9000/?token=sYBbeq2s3lHhXNzRTSmui8byfK5oxoNb
+2026-06-22 17:57:11,173 [INFO] WebAuthority: SHUTDOWN REQUEST: Stop button or CLI triggered.
+2026-06-22 17:57:54,573 [INFO] WebAuthority: Initializing Static Assets from: C:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator\static
+2026-06-22 17:57:54,573 [INFO] WebAuthority: --------------------------------------------------
+2026-06-22 17:57:54,573 [INFO] WebAuthority:      NX-OS CONFIGURATION AUTHORITY (3.9.0)
+2026-06-22 17:57:54,573 [INFO] WebAuthority:            Web Platform — Offline Ready
+2026-06-22 17:57:54,573 [INFO] WebAuthority: --------------------------------------------------
+2026-06-22 17:57:56,593 [INFO] WebAuthority: Starting Production Server at http://127.0.0.1:9000
+2026-06-22 17:57:56,594 [INFO] WebAuthority: Session URL (bookmark this tab): http://127.0.0.1:9000/?token=8BzPvQjkFRuyZIuHPjGQKq0D0DhFh0cg
+2026-06-22 17:57:57,059 [INFO] WebAuthority: SHUTDOWN REQUEST: Stop button or CLI triggered.
+2026-06-22 17:58:00,672 [INFO] WebAuthority: SHUTDOWN REQUEST: Stop button or CLI triggered.
+2026-06-22 17:58:23,432 [INFO] WebAuthority: SHUTDOWN REQUEST: Stop button or CLI triggered.
+2026-06-22 17:58:29,601 [INFO] WebAuthority: Initializing Static Assets from: C:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator\static
+2026-06-22 17:58:29,601 [INFO] WebAuthority: --------------------------------------------------
+2026-06-22 17:58:29,602 [INFO] WebAuthority:      NX-OS CONFIGURATION AUTHORITY (3.9.0)
+2026-06-22 17:58:29,602 [INFO] WebAuthority:            Web Platform — Offline Ready
+2026-06-22 17:58:29,602 [INFO] WebAuthority: --------------------------------------------------
+2026-06-22 17:58:31,611 [INFO] WebAuthority: Starting Production Server at http://127.0.0.1:9000
+2026-06-22 17:58:31,611 [INFO] WebAuthority: Session URL (bookmark this tab): http://127.0.0.1:9000/?token=0P6TgkKtjIVDZNqGE18_I0Y1rF9K2IFy
+2026-06-22 17:58:32,091 [INFO] WebAuthority: SHUTDOWN REQUEST: Stop button or CLI triggered.
+2026-06-23 11:07:10,553 [INFO] WebAuthority: SHUTDOWN REQUEST: Stop button or CLI triggered.
+2026-06-23 11:07:16,716 [INFO] WebAuthority: Initializing Static Assets from: C:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator\static
+2026-06-23 11:07:16,717 [INFO] WebAuthority: --------------------------------------------------
+2026-06-23 11:07:16,717 [INFO] WebAuthority:      NX-OS CONFIGURATION AUTHORITY (4.0.0)
+2026-06-23 11:07:16,717 [INFO] WebAuthority:            Web Platform — Offline Ready
+2026-06-23 11:07:16,718 [INFO] WebAuthority: --------------------------------------------------
+2026-06-23 11:07:18,751 [INFO] WebAuthority: Starting Production Server at http://127.0.0.1:9000
+2026-06-23 11:07:18,752 [INFO] WebAuthority: Session URL (bookmark this tab): http://127.0.0.1:9000/?token=kFg3B7bLya3tOO4vkgo5osvviug-yvbB
+2026-06-23 11:07:19,248 [INFO] WebAuthority: SHUTDOWN REQUEST: Stop button or CLI triggered.
+2026-06-23 11:08:23,105 [INFO] WebAuthority: Initializing Static Assets from: C:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator\static
+2026-06-23 11:08:23,105 [INFO] WebAuthority: --------------------------------------------------
+2026-06-23 11:08:23,105 [INFO] WebAuthority:      NX-OS CONFIGURATION AUTHORITY (4.0.0)
+2026-06-23 11:08:23,105 [INFO] WebAuthority:            Web Platform — Offline Ready
+2026-06-23 11:08:23,105 [INFO] WebAuthority: --------------------------------------------------
+2026-06-23 11:08:25,153 [INFO] WebAuthority: Starting Production Server at http://127.0.0.1:9000
+2026-06-23 11:08:25,153 [INFO] WebAuthority: Session URL (bookmark this tab): http://127.0.0.1:9000/?token=pvSieX6257BytQ_Pxm_i_lYpUJZ91dXm
+2026-06-23 11:08:25,700 [INFO] WebAuthority: SHUTDOWN REQUEST: Stop button or CLI triggered.
+2026-06-23 11:08:29,161 [INFO] WebAuthority: SHUTDOWN REQUEST: Stop button or CLI triggered.
+2026-06-23 11:08:49,881 [INFO] WebAuthority: SHUTDOWN REQUEST: Stop button or CLI triggered.
+2026-06-23 11:08:56,258 [INFO] WebAuthority: Initializing Static Assets from: C:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator\static
+2026-06-23 11:08:56,259 [INFO] WebAuthority: --------------------------------------------------
+2026-06-23 11:08:56,259 [INFO] WebAuthority:      NX-OS CONFIGURATION AUTHORITY (4.0.0)
+2026-06-23 11:08:56,259 [INFO] WebAuthority:            Web Platform — Offline Ready
+2026-06-23 11:08:56,259 [INFO] WebAuthority: --------------------------------------------------
+2026-06-23 11:08:58,285 [INFO] WebAuthority: Starting Production Server at http://127.0.0.1:9000
+2026-06-23 11:08:58,285 [INFO] WebAuthority: Session URL (bookmark this tab): http://127.0.0.1:9000/?token=MzSoYTPD-bGm7aSl914iQkXDxsMsdVNB
+2026-06-23 11:08:58,814 [INFO] WebAuthority: SHUTDOWN REQUEST: Stop button or CLI triggered.
+2026-06-23 11:35:57,120 [INFO] WebAuthority: SHUTDOWN REQUEST: Stop button or CLI triggered.
+2026-06-23 11:36:04,418 [INFO] WebAuthority: Initializing Static Assets from: C:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator\static
+2026-06-23 11:36:04,419 [INFO] WebAuthority: --------------------------------------------------
+2026-06-23 11:36:04,419 [INFO] WebAuthority:      NX-OS CONFIGURATION AUTHORITY (4.0.0)
+2026-06-23 11:36:04,419 [INFO] WebAuthority:            Web Platform — Offline Ready
+2026-06-23 11:36:04,419 [INFO] WebAuthority: --------------------------------------------------
+2026-06-23 11:36:06,450 [INFO] WebAuthority: Starting Production Server at http://127.0.0.1:9000
+2026-06-23 11:36:06,450 [INFO] WebAuthority: Session URL (bookmark this tab): http://127.0.0.1:9000/?token=VfbFZJk2Tn5cCt8CanWfnG1og0qA1Nng
+2026-06-23 11:36:07,016 [INFO] WebAuthority: SHUTDOWN REQUEST: Stop button or CLI triggered.
+2026-06-23 11:37:19,099 [INFO] WebAuthority: SHUTDOWN REQUEST: Stop button or CLI triggered.
+2026-06-23 11:37:26,501 [INFO] WebAuthority: Initializing Static Assets from: C:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator\static
+2026-06-23 11:37:26,501 [INFO] WebAuthority: --------------------------------------------------
+2026-06-23 11:37:26,502 [INFO] WebAuthority:      NX-OS CONFIGURATION AUTHORITY (4.0.0)
+2026-06-23 11:37:26,502 [INFO] WebAuthority:            Web Platform — Offline Ready
+2026-06-23 11:37:26,502 [INFO] WebAuthority: --------------------------------------------------
+2026-06-23 11:37:28,551 [INFO] WebAuthority: Starting Production Server at http://127.0.0.1:9000
+2026-06-23 11:37:28,552 [INFO] WebAuthority: Session URL (bookmark this tab): http://127.0.0.1:9000/?token=g2cWjogdG70CDh8-X676M-3nV-chQlsz
+2026-06-23 11:37:29,050 [INFO] WebAuthority: SHUTDOWN REQUEST: Stop button or CLI triggered.
+2026-06-23 11:38:17,721 [INFO] WebAuthority: SHUTDOWN REQUEST: Stop button or CLI triggered.
+2026-06-23 11:38:24,992 [INFO] WebAuthority: Initializing Static Assets from: C:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator\static
+2026-06-23 11:38:24,992 [INFO] WebAuthority: --------------------------------------------------
+2026-06-23 11:38:24,992 [INFO] WebAuthority:      NX-OS CONFIGURATION AUTHORITY (4.0.0)
+2026-06-23 11:38:24,992 [INFO] WebAuthority:            Web Platform — Offline Ready
+2026-06-23 11:38:24,992 [INFO] WebAuthority: --------------------------------------------------
+2026-06-23 11:38:27,018 [INFO] WebAuthority: Starting Production Server at http://127.0.0.1:9000
+2026-06-23 11:38:27,018 [INFO] WebAuthority: Session URL (bookmark this tab): http://127.0.0.1:9000/?token=lUeL--NsS6WB2FfNv3SDQKfZCSyPz2FK
+2026-06-23 11:38:27,601 [INFO] WebAuthority: SHUTDOWN REQUEST: Stop button or CLI triggered.
+2026-06-23 11:40:11,372 [INFO] WebAuthority: SHUTDOWN REQUEST: Stop button or CLI triggered.
+2026-06-23 11:40:19,059 [INFO] WebAuthority: Initializing Static Assets from: C:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator\static
+2026-06-23 11:40:19,060 [INFO] WebAuthority: --------------------------------------------------
+2026-06-23 11:40:19,060 [INFO] WebAuthority:      NX-OS CONFIGURATION AUTHORITY (4.0.0)
+2026-06-23 11:40:19,060 [INFO] WebAuthority:            Web Platform — Offline Ready
+2026-06-23 11:40:19,060 [INFO] WebAuthority: --------------------------------------------------
+2026-06-23 11:40:21,089 [INFO] WebAuthority: Starting Production Server at http://127.0.0.1:9000
+2026-06-23 11:40:21,089 [INFO] WebAuthority: Session URL (bookmark this tab): http://127.0.0.1:9000/?token=theLbPK-xEwFu9iMYUk3dXUDEBEpLgxK
+2026-06-23 11:40:21,611 [INFO] WebAuthority: SHUTDOWN REQUEST: Stop button or CLI triggered.
+2026-06-23 11:41:27,603 [INFO] WebAuthority: Initializing Static Assets from: C:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator\static
+2026-06-23 11:41:27,604 [INFO] WebAuthority: --------------------------------------------------
+2026-06-23 11:41:27,604 [INFO] WebAuthority:      NX-OS CONFIGURATION AUTHORITY (4.1.0)
+2026-06-23 11:41:27,604 [INFO] WebAuthority:            Web Platform — Offline Ready
+2026-06-23 11:41:27,604 [INFO] WebAuthority: --------------------------------------------------
+2026-06-23 11:41:29,635 [INFO] WebAuthority: Starting Production Server at http://127.0.0.1:9000
+2026-06-23 11:41:29,635 [INFO] WebAuthority: Session URL (bookmark this tab): http://127.0.0.1:9000/?token=cPnwgqQii_P-w-kZoKqBR096eRZi3xA0
+2026-06-23 11:41:30,149 [INFO] WebAuthority: SHUTDOWN REQUEST: Stop button or CLI triggered.
+2026-06-23 11:41:34,544 [INFO] WebAuthority: SHUTDOWN REQUEST: Stop button or CLI triggered.
+2026-06-23 11:41:57,940 [INFO] WebAuthority: SHUTDOWN REQUEST: Stop button or CLI triggered.
+2026-06-23 11:42:05,196 [INFO] WebAuthority: Initializing Static Assets from: C:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator\static
+2026-06-23 11:42:05,196 [INFO] WebAuthority: --------------------------------------------------
+2026-06-23 11:42:05,196 [INFO] WebAuthority:      NX-OS CONFIGURATION AUTHORITY (4.1.0)
+2026-06-23 11:42:05,196 [INFO] WebAuthority:            Web Platform — Offline Ready
+2026-06-23 11:42:05,196 [INFO] WebAuthority: --------------------------------------------------
+2026-06-23 11:42:07,235 [INFO] WebAuthority: Starting Production Server at http://127.0.0.1:9000
+2026-06-23 11:42:07,235 [INFO] WebAuthority: Session URL (bookmark this tab): http://127.0.0.1:9000/?token=-hFaJ_3UmHELkeN04hWa1b-WF0X4ddqZ
+2026-06-23 11:42:07,737 [INFO] WebAuthority: SHUTDOWN REQUEST: Stop button or CLI triggered.
+2026-06-23 12:06:20,045 [INFO] WebAuthority: SHUTDOWN REQUEST: Stop button or CLI triggered.
+2026-06-23 12:06:27,378 [INFO] WebAuthority: Initializing Static Assets from: C:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator\static
+2026-06-23 12:06:27,378 [INFO] WebAuthority: --------------------------------------------------
+2026-06-23 12:06:27,378 [INFO] WebAuthority:      NX-OS CONFIGURATION AUTHORITY (5.0.0)
+2026-06-23 12:06:27,378 [INFO] WebAuthority:            Web Platform — Offline Ready
+2026-06-23 12:06:27,379 [INFO] WebAuthority: --------------------------------------------------
+2026-06-23 12:06:27,391 [ERROR] WebAuthority: Port 9000 is already in use.
+Listening process PID(s): 16288
+Close the console window, click Stop in the web UI, or run: scripts\stop_configurator.ps1
+To replace the running instance: re-launch with --replace
+2026-06-23 12:06:54,443 [INFO] WebAuthority: Initializing Static Assets from: C:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator\static
+2026-06-23 12:06:54,443 [INFO] WebAuthority: --------------------------------------------------
+2026-06-23 12:06:54,443 [INFO] WebAuthority:      NX-OS CONFIGURATION AUTHORITY (5.0.0)
+2026-06-23 12:06:54,443 [INFO] WebAuthority:            Web Platform — Offline Ready
+2026-06-23 12:06:54,443 [INFO] WebAuthority: --------------------------------------------------
+2026-06-23 12:06:56,468 [INFO] WebAuthority: Starting Production Server at http://127.0.0.1:9000
+2026-06-23 12:06:56,468 [INFO] WebAuthority: Session URL (bookmark this tab): http://127.0.0.1:9000/?token=N935ef9pY7sqCZuT-GZsAfp1cy-pxlNS
+2026-06-23 12:06:56,970 [INFO] WebAuthority: SHUTDOWN REQUEST: Stop button or CLI triggered.
+2026-06-23 12:07:00,733 [INFO] WebAuthority: SHUTDOWN REQUEST: Stop button or CLI triggered.
+2026-06-23 12:07:25,942 [INFO] WebAuthority: SHUTDOWN REQUEST: Stop button or CLI triggered.
+2026-06-23 12:07:33,376 [INFO] WebAuthority: Initializing Static Assets from: C:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator\static
+2026-06-23 12:07:33,376 [INFO] WebAuthority: --------------------------------------------------
+2026-06-23 12:07:33,376 [INFO] WebAuthority:      NX-OS CONFIGURATION AUTHORITY (5.0.0)
+2026-06-23 12:07:33,376 [INFO] WebAuthority:            Web Platform — Offline Ready
+2026-06-23 12:07:33,377 [INFO] WebAuthority: --------------------------------------------------
+2026-06-23 12:07:35,404 [INFO] WebAuthority: Starting Production Server at http://127.0.0.1:9000
+2026-06-23 12:07:35,404 [INFO] WebAuthority: Session URL (bookmark this tab): http://127.0.0.1:9000/?token=Gy8ArwdHCs2-Z72mi9xPNxJKZFSPEszu
+2026-06-23 12:07:35,951 [INFO] WebAuthority: SHUTDOWN REQUEST: Stop button or CLI triggered.
+2026-06-23 12:13:32,468 [INFO] WebAuthority: SHUTDOWN REQUEST: Stop button or CLI triggered.
+2026-06-23 12:13:40,107 [INFO] WebAuthority: Initializing Static Assets from: C:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator\static
+2026-06-23 12:13:40,107 [INFO] WebAuthority: --------------------------------------------------
+2026-06-23 12:13:40,108 [INFO] WebAuthority:      NX-OS CONFIGURATION AUTHORITY (5.0.0)
+2026-06-23 12:13:40,108 [INFO] WebAuthority:            Web Platform — Offline Ready
+2026-06-23 12:13:40,108 [INFO] WebAuthority: --------------------------------------------------
+2026-06-23 12:13:40,120 [ERROR] WebAuthority: Port 9000 is already in use.
+Listening process PID(s): 26664
+Close the console window, click Stop in the web UI, or run: scripts\stop_configurator.ps1
+To replace the running instance: re-launch with --replace
+2026-06-23 12:14:20,524 [INFO] WebAuthority: Initializing Static Assets from: C:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator\static
+2026-06-23 12:14:20,525 [INFO] WebAuthority: --------------------------------------------------
+2026-06-23 12:14:20,525 [INFO] WebAuthority:      NX-OS CONFIGURATION AUTHORITY (5.0.0)
+2026-06-23 12:14:20,525 [INFO] WebAuthority:            Web Platform — Offline Ready
+2026-06-23 12:14:20,525 [INFO] WebAuthority: --------------------------------------------------
+2026-06-23 12:14:22,552 [INFO] WebAuthority: Starting Production Server at http://127.0.0.1:9000
+2026-06-23 12:14:22,552 [INFO] WebAuthority: Session URL (bookmark this tab): http://127.0.0.1:9000/?token=YMk0YBFXV4O25iclnCPH7uUHwl5gqbLz
+2026-06-23 12:14:23,085 [INFO] WebAuthority: SHUTDOWN REQUEST: Stop button or CLI triggered.
+2026-06-23 12:14:26,692 [INFO] WebAuthority: SHUTDOWN REQUEST: Stop button or CLI triggered.
+2026-06-23 12:14:50,994 [INFO] WebAuthority: SHUTDOWN REQUEST: Stop button or CLI triggered.
+2026-06-23 12:14:58,333 [INFO] WebAuthority: Initializing Static Assets from: C:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator\static
+2026-06-23 12:14:58,334 [INFO] WebAuthority: --------------------------------------------------
+2026-06-23 12:14:58,334 [INFO] WebAuthority:      NX-OS CONFIGURATION AUTHORITY (5.0.0)
+2026-06-23 12:14:58,334 [INFO] WebAuthority:            Web Platform — Offline Ready
+2026-06-23 12:14:58,334 [INFO] WebAuthority: --------------------------------------------------
+2026-06-23 12:15:00,354 [INFO] WebAuthority: Starting Production Server at http://127.0.0.1:9000
+2026-06-23 12:15:00,354 [INFO] WebAuthority: Session URL (bookmark this tab): http://127.0.0.1:9000/?token=TTLy5VHKgXdHfbDTFActmRfmHhdqhiWV
+2026-06-23 12:15:00,917 [INFO] WebAuthority: SHUTDOWN REQUEST: Stop button or CLI triggered.
+2026-06-23 12:16:02,245 [INFO] WebAuthority: SHUTDOWN REQUEST: Stop button or CLI triggered.
+2026-06-23 12:16:09,681 [INFO] WebAuthority: Initializing Static Assets from: C:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator\static
+2026-06-23 12:16:09,681 [INFO] WebAuthority: --------------------------------------------------
+2026-06-23 12:16:09,681 [INFO] WebAuthority:      NX-OS CONFIGURATION AUTHORITY (5.0.1)
+2026-06-23 12:16:09,681 [INFO] WebAuthority:            Web Platform — Offline Ready
+2026-06-23 12:16:09,681 [INFO] WebAuthority: --------------------------------------------------
+2026-06-23 12:16:11,706 [INFO] WebAuthority: Starting Production Server at http://127.0.0.1:9000
+2026-06-23 12:16:11,707 [INFO] WebAuthority: Session URL (bookmark this tab): http://127.0.0.1:9000/?token=Xxeq0ppKRjiKoKOHH7ahxmgHgJIGcR2r
+2026-06-23 12:16:12,251 [INFO] WebAuthority: SHUTDOWN REQUEST: Stop button or CLI triggered.
+2026-06-23 12:22:03,788 [INFO] WebAuthority: SHUTDOWN REQUEST: Stop button or CLI triggered.
+2026-06-23 12:22:11,307 [INFO] WebAuthority: Initializing Static Assets from: C:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator\static
+2026-06-23 12:22:11,308 [INFO] WebAuthority: --------------------------------------------------
+2026-06-23 12:22:11,308 [INFO] WebAuthority:      NX-OS CONFIGURATION AUTHORITY (5.0.1)
+2026-06-23 12:22:11,308 [INFO] WebAuthority:            Web Platform — Offline Ready
+2026-06-23 12:22:11,308 [INFO] WebAuthority: --------------------------------------------------
+2026-06-23 12:22:13,352 [INFO] WebAuthority: Starting Production Server at http://127.0.0.1:9000
+2026-06-23 12:22:13,352 [INFO] WebAuthority: Session URL (bookmark this tab): http://127.0.0.1:9000/?token=SO-rXBWEvg5daGq-Yi7fbL7qTtUur4uk
+2026-06-23 12:22:13,809 [INFO] WebAuthority: SHUTDOWN REQUEST: Stop button or CLI triggered.
+2026-06-23 12:23:20,064 [INFO] WebAuthority: Initializing Static Assets from: C:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator\static
+2026-06-23 12:23:20,065 [INFO] WebAuthority: --------------------------------------------------
+2026-06-23 12:23:20,065 [INFO] WebAuthority:      NX-OS CONFIGURATION AUTHORITY (5.0.2)
+2026-06-23 12:23:20,065 [INFO] WebAuthority:            Web Platform — Offline Ready
+2026-06-23 12:23:20,065 [INFO] WebAuthority: --------------------------------------------------
+2026-06-23 12:23:22,107 [INFO] WebAuthority: Starting Production Server at http://127.0.0.1:9000
+2026-06-23 12:23:22,107 [INFO] WebAuthority: Session URL (bookmark this tab): http://127.0.0.1:9000/?token=G8q5XTsXV3xKfTd8LzUbimJMk_T61XRF
+2026-06-23 12:23:22,602 [INFO] WebAuthority: SHUTDOWN REQUEST: Stop button or CLI triggered.
+2026-06-23 12:23:26,189 [INFO] WebAuthority: SHUTDOWN REQUEST: Stop button or CLI triggered.
+2026-06-23 12:23:50,715 [INFO] WebAuthority: SHUTDOWN REQUEST: Stop button or CLI triggered.
+2026-06-23 12:23:58,120 [INFO] WebAuthority: Initializing Static Assets from: C:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator\static
+2026-06-23 12:23:58,121 [INFO] WebAuthority: --------------------------------------------------
+2026-06-23 12:23:58,121 [INFO] WebAuthority:      NX-OS CONFIGURATION AUTHORITY (5.0.2)
+2026-06-23 12:23:58,121 [INFO] WebAuthority:            Web Platform — Offline Ready
+2026-06-23 12:23:58,121 [INFO] WebAuthority: --------------------------------------------------
+2026-06-23 12:24:00,155 [INFO] WebAuthority: Starting Production Server at http://127.0.0.1:9000
+2026-06-23 12:24:00,155 [INFO] WebAuthority: Session URL (bookmark this tab): http://127.0.0.1:9000/?token=f3H4kKKug555exTxEPCTKHBJqESZ0bWM
+2026-06-23 12:24:00,686 [INFO] WebAuthority: SHUTDOWN REQUEST: Stop button or CLI triggered.
+2026-06-23 12:27:52,289 [INFO] WebAuthority: SHUTDOWN REQUEST: Stop button or CLI triggered.
+2026-06-23 12:27:59,420 [INFO] WebAuthority: Initializing Static Assets from: C:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator\static
+2026-06-23 12:27:59,420 [INFO] WebAuthority: --------------------------------------------------
+2026-06-23 12:27:59,420 [INFO] WebAuthority:      NX-OS CONFIGURATION AUTHORITY (5.0.2)
+2026-06-23 12:27:59,420 [INFO] WebAuthority:            Web Platform — Offline Ready
+2026-06-23 12:27:59,420 [INFO] WebAuthority: --------------------------------------------------
+2026-06-23 12:28:01,455 [INFO] WebAuthority: Starting Production Server at http://127.0.0.1:9000
+2026-06-23 12:28:01,455 [INFO] WebAuthority: Session URL (bookmark this tab): http://127.0.0.1:9000/?token=_xS7ckXtUhXxEf43-Lg4B4v82mPok4I5
+2026-06-23 12:28:01,964 [INFO] WebAuthority: SHUTDOWN REQUEST: Stop button or CLI triggered.
+2026-06-23 12:28:24,722 [INFO] WebAuthority: Initializing Static Assets from: C:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator\static
+2026-06-23 12:28:24,723 [INFO] WebAuthority: --------------------------------------------------
+2026-06-23 12:28:24,723 [INFO] WebAuthority:      NX-OS CONFIGURATION AUTHORITY (5.0.2)
+2026-06-23 12:28:24,723 [INFO] WebAuthority:            Web Platform — Offline Ready
+2026-06-23 12:28:24,723 [INFO] WebAuthority: --------------------------------------------------
+2026-06-23 12:28:26,752 [INFO] WebAuthority: Starting Production Server at http://127.0.0.1:9000
+2026-06-23 12:28:26,753 [INFO] WebAuthority: Session URL (bookmark this tab): http://127.0.0.1:9000/?token=uIyDgFLpb6_2kkHNYDvCD0E1EaNB5a_j
+2026-06-23 12:28:27,269 [INFO] WebAuthority: SHUTDOWN REQUEST: Stop button or CLI triggered.
+2026-06-23 12:28:30,833 [INFO] WebAuthority: SHUTDOWN REQUEST: Stop button or CLI triggered.
+2026-06-23 12:28:54,511 [INFO] WebAuthority: SHUTDOWN REQUEST: Stop button or CLI triggered.
+2026-06-23 12:29:01,545 [INFO] WebAuthority: Initializing Static Assets from: C:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator\static
+2026-06-23 12:29:01,546 [INFO] WebAuthority: --------------------------------------------------
+2026-06-23 12:29:01,546 [INFO] WebAuthority:      NX-OS CONFIGURATION AUTHORITY (5.0.2)
+2026-06-23 12:29:01,546 [INFO] WebAuthority:            Web Platform — Offline Ready
+2026-06-23 12:29:01,546 [INFO] WebAuthority: --------------------------------------------------
+2026-06-23 12:29:03,576 [INFO] WebAuthority: Starting Production Server at http://127.0.0.1:9000
+2026-06-23 12:29:03,577 [INFO] WebAuthority: Session URL (bookmark this tab): http://127.0.0.1:9000/?token=ptygR3IlcdzibFVemRAKbwoWu953ffxA
+2026-06-23 12:29:04,158 [INFO] WebAuthority: SHUTDOWN REQUEST: Stop button or CLI triggered.
+2026-06-23 12:30:01,905 [INFO] WebAuthority: SHUTDOWN REQUEST: Stop button or CLI triggered.
+2026-06-23 12:30:08,984 [INFO] WebAuthority: Initializing Static Assets from: C:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator\static
+2026-06-23 12:30:08,985 [INFO] WebAuthority: --------------------------------------------------
+2026-06-23 12:30:08,985 [INFO] WebAuthority:      NX-OS CONFIGURATION AUTHORITY (5.0.3)
+2026-06-23 12:30:08,986 [INFO] WebAuthority:            Web Platform — Offline Ready
+2026-06-23 12:30:08,986 [INFO] WebAuthority: --------------------------------------------------
+2026-06-23 12:30:11,020 [INFO] WebAuthority: Starting Production Server at http://127.0.0.1:9000
+2026-06-23 12:30:11,020 [INFO] WebAuthority: Session URL (bookmark this tab): http://127.0.0.1:9000/?token=Xavbzt8uiDjWJFdld0-8lSS04PLVYnTo
+2026-06-23 12:30:11,569 [INFO] WebAuthority: SHUTDOWN REQUEST: Stop button or CLI triggered.
+2026-06-23 12:37:51,459 [INFO] WebAuthority: Initializing Static Assets from: C:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator\static
+2026-06-23 12:37:51,459 [INFO] WebAuthority: --------------------------------------------------
+2026-06-23 12:37:51,459 [INFO] WebAuthority:      NX-OS CONFIGURATION AUTHORITY (5.0.3)
+2026-06-23 12:37:51,459 [INFO] WebAuthority:            Web Platform — Offline Ready
+2026-06-23 12:37:51,459 [INFO] WebAuthority: --------------------------------------------------
+2026-06-23 12:37:53,490 [INFO] WebAuthority: Starting Production Server at http://127.0.0.1:9000
+2026-06-23 12:37:53,490 [INFO] WebAuthority: Session URL (bookmark this tab): http://127.0.0.1:9000/?token=QvLKSQ4oXE3tQCYxy19LpvsZjJsnmFUg
+2026-06-23 12:37:54,001 [INFO] WebAuthority: SHUTDOWN REQUEST: Stop button or CLI triggered.
+2026-06-23 12:37:57,715 [INFO] WebAuthority: SHUTDOWN REQUEST: Stop button or CLI triggered.
+2026-06-23 12:38:22,369 [INFO] WebAuthority: SHUTDOWN REQUEST: Stop button or CLI triggered.
+2026-06-23 12:38:29,839 [INFO] WebAuthority: Initializing Static Assets from: C:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator\static
+2026-06-23 12:38:29,840 [INFO] WebAuthority: --------------------------------------------------
+2026-06-23 12:38:29,840 [INFO] WebAuthority:      NX-OS CONFIGURATION AUTHORITY (5.0.3)
+2026-06-23 12:38:29,840 [INFO] WebAuthority:            Web Platform — Offline Ready
+2026-06-23 12:38:29,840 [INFO] WebAuthority: --------------------------------------------------
+2026-06-23 12:38:31,855 [INFO] WebAuthority: Starting Production Server at http://127.0.0.1:9000
+2026-06-23 12:38:31,855 [INFO] WebAuthority: Session URL (bookmark this tab): http://127.0.0.1:9000/?token=E5Q0CvCc3gUVy7eP0uL8b9dsi1_3zwsO
+2026-06-23 12:38:32,366 [INFO] WebAuthority: SHUTDOWN REQUEST: Stop button or CLI triggered.
+2026-06-25 08:44:24,667 [INFO] WebAuthority: Initializing Static Assets from: c:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator\static
+2026-06-25 08:44:24,669 [INFO] WebAuthority: --------------------------------------------------
+2026-06-25 08:44:24,669 [INFO] WebAuthority:      NX-OS CONFIGURATION AUTHORITY (6.1.0)
+2026-06-25 08:44:24,669 [INFO] WebAuthority:            Web Platform — Offline Ready
+2026-06-25 08:44:24,669 [INFO] WebAuthority: --------------------------------------------------
+2026-06-25 08:44:26,687 [INFO] WebAuthority: Starting Production Server at http://127.0.0.1:9000
+2026-06-25 08:44:26,687 [INFO] WebAuthority: Session URL (bookmark this tab): http://127.0.0.1:9000/
+2026-06-25 08:56:07,350 [INFO] WebAuthority: Initializing Static Assets from: c:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator\static
+2026-06-25 08:56:07,352 [INFO] WebAuthority: --------------------------------------------------
+2026-06-25 08:56:07,352 [INFO] WebAuthority:      NX-OS CONFIGURATION AUTHORITY (6.1.0)
+2026-06-25 08:56:07,352 [INFO] WebAuthority:            Web Platform — Offline Ready
+2026-06-25 08:56:07,352 [INFO] WebAuthority: --------------------------------------------------
+2026-06-25 08:56:07,388 [ERROR] WebAuthority: Port 9000 is already in use.
+Listening process PID(s): 11868
+PID file: c:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator\logs\nxos_configurator.pid (pid 11868)
+Close the console window, click Stop in the web UI, or run: scripts\stop_configurator.ps1
+To replace the running instance: re-launch with --replace
+2026-06-25 08:56:23,298 [INFO] WebAuthority: Initializing Static Assets from: c:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator\static
+2026-06-25 08:56:23,299 [INFO] WebAuthority: --------------------------------------------------
+2026-06-25 08:56:23,299 [INFO] WebAuthority:      NX-OS CONFIGURATION AUTHORITY (6.1.0)
+2026-06-25 08:56:23,299 [INFO] WebAuthority:            Web Platform — Offline Ready
+2026-06-25 08:56:23,299 [INFO] WebAuthority: --------------------------------------------------
+2026-06-25 08:56:25,320 [INFO] WebAuthority: Starting Production Server at http://127.0.0.1:9000
+2026-06-25 08:56:25,320 [INFO] WebAuthority: Session URL (bookmark this tab): http://127.0.0.1:9000/

@@ -1,0 +1,6 @@
+Site: nnn
+Role: access
+Model: N9K-C9336C-FX2
+Redundancy: standalone
+Access VLAN range: 10 to 13
+Interfaces generated: 48

@@ -1,0 +1,26 @@
+{
+    "hostname": "b",
+    "mgmt_ip": "10.1.1.2/24",
+    "mgmt_gw": "10.1.1.254",
+    "model": "Nexus 93180YC-EX  [48x10/25G + 6x40/100G]",
+    "vlans": [],
+    "interfaces": [],
+    "svis": [],
+    "static_routes": [],
+    "vpc": {
+        "domain_id": 20,
+        "role": "secondary",
+        "keepalive_vrf": "management",
+        "local_keepalive_ip": "10.0.0.2",
+        "remote_keepalive_ip": "10.0.0.1",
+        "peer_link_id": 1,
+        "peer_link_interfaces": [
+            "Ethernet1/53",
+            "Ethernet1/54"
+        ],
+        "system_priority": 32667
+    },
+    "motd": "Authorized Access Only",
+    "admin_user": "admin",
+    "admin_password": "ghjghjg"
+}

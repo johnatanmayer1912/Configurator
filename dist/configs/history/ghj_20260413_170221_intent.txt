@@ -1,0 +1,9 @@
+{
+  "hostname": "ghj",
+  "site_name": "nnn",
+  "role": "access",
+  "model": "N9K-C9336C-FX2",
+  "redundancy_mode": "standalone",
+  "security_tier": "standard",
+  "uplink_ports": []
+}

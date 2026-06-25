@@ -1,0 +1,157 @@
+# Institutional baseline — included in every generated config when toggled on.
+# Rendered via nxos_base.j2; exposed as checkboxes in the web wizard (category: baseline).
+
+baseline_options:
+  - id: baseline_cfs
+    label: "CFS Ethernet Distribute"
+    description: "cfs eth distribute — config sync across modules."
+    default: true
+    cli: "cfs eth distribute"
+
+  - id: baseline_copp
+    label: "CoPP Strict Profile"
+    description: "copp profile strict — control-plane policing."
+    default: true
+    cli: "copp profile strict"
+
+  - id: baseline_no_pwd_check
+    label: "Disable Password Strength Check"
+    description: "no password strength-check — lab/staging convenience."
+    default: true
+    cli: "no password strength-check"
+
+  - id: baseline_snmp_traps
+    label: "SNMP Trap Baseline"
+    description: "Standard trap enables (callhome, cfs, aaa, link, stp, syslog)."
+    default: true
+
+  - id: baseline_spanning_tree
+    label: "Spanning-Tree Root Priority"
+    description: "spanning-tree vlan 1-3967 priority 8192 on core/spine."
+    default: true
+
+  - id: baseline_cli_aliases
+    label: "CLI Aliases (wr, shint, shintd)"
+    description: "Operator shortcuts — wr, shint, shintd."
+    default: true
+
+  - id: baseline_icam
+    label: "ICAM Monitor Scale"
+    description: "icam monitor scale — scale monitoring."
+    default: true
+    cli: "icam monitor scale"
+
+  - id: baseline_vrf_keepalive
+    label: "Dedicated Keepalive VRF"
+    description: "vrf context VPC_Keep_Alive — separate from management."
+    default: false
+    requires_redundancy: vpc
+
+  - id: baseline_errdisable_recovery
+    label: "Errdisable Recovery"
+    description: "errdisable recovery interval — auto-recover from err-disabled state."
+    default: false
+    cli: |
+      errdisable recovery interval 300
+      errdisable recovery cause link-flap
+
+  - id: baseline_icmp_redirects
+    label: "Disable ICMP Redirects"
+    description: "no ip icmp redirect — global hardening on L3 interfaces."
+    default: false
+    cli: "no ip icmp redirect"
+
+  - id: baseline_vpc_delay_restore_vlan
+    label: "vPC Delay Restore SVI"
+    description: "delay restore interface-vlan 150 — stagger SVI restore after peer-link recovery."
+    default: false
+    requires_redundancy: vpc
+    cli: "delay restore interface-vlan 150"
+
+  - id: baseline_no_dns_lookup
+    label: "Disable DNS Lookup"
+    description: "no ip domain-lookup — prevents CLI hangs on typos (Cisco hardening)."
+    default: true
+    cli: "no ip domain-lookup"
+
+  - id: baseline_exec_timeout
+    label: "Idle Session Timeout"
+    description: "exec-timeout 15 min on console and vty lines."
+    default: false
+    cli: |
+      line console
+        exec-timeout 15 0
+      line vty
+        exec-timeout 15 0
+
+  - id: baseline_logging_source
+    label: "Syslog Source Interface"
+    description: "logging source-interface mgmt0 — consistent source IP in SIEM."
+    default: true
+    cli: "logging source-interface mgmt0"
+
+downlink_presets:
+  - id: downlink_10g_leaf
+    label: "10G Leaf Pair Downlink"
+    description: "Port-channel to dual-homed 10G leaf switches (Po20)."
+    default: true
+    po_id: 20
+    vpc_id: 20
+    description: "Connected_to_NET_LEAF_10G_SW1+SW2"
+    members: ["Ethernet1/1", "Ethernet1/2"]
+    mtu: 9216
+
+  - id: downlink_1g_leaf
+    label: "1G Leaf Pair Downlink"
+    description: "Port-channel to dual-homed 1G leaf switches (Po21)."
+    default: true
+    po_id: 21
+    vpc_id: 21
+    description: "Connected_to_NET_LEAF_1G_SW1+SW2"
+    members: ["Ethernet1/3", "Ethernet1/4"]
+    mtu: 9216
+
+  - id: downlink_extra
+    label: "Extra Trunk Port-Channel"
+    description: "Optional Po3 trunk (customize description in advanced)."
+    default: false
+    po_id: 3
+    vpc_id: 3
+    description: "to SOME_PORT_CHANNEL"
+    members: []
+    mtu: 9216
+
+uplink_presets:
+  - id: uplink_fiber_pair
+    label: "Fiber uplink pair (Po30)"
+    description: "Dual-homed spine uplink on SFP+/QSFP ports 49–50 (93180/9348). Peer-link and keepalive ports are auto-excluded."
+    default: true
+    po_id: 30
+    vpc_id: 30
+    link_kind: uplink
+    mode: trunk
+    description: "Connected_to_SPINE_PAIR"
+    members_from: fiber_pool
+
+  - id: uplink_fiber_quad
+    label: "Second fiber uplink (Po31)"
+    description: "Additional spine uplink on fiber ports 51–52 when available."
+    default: false
+    po_id: 31
+    vpc_id: 31
+    link_kind: uplink
+    mode: trunk
+    description: "Connected_to_SPINE_PAIR_2"
+    members_from: fiber_pool_secondary
+
+  - id: uplink_core_spine
+    label: "Spine uplink pair (Po10)"
+    description: "40G core uplinks toward spine — auto-picks highest QSFP ports not used by vPC wiring."
+    default: false
+    po_id: 10
+    vpc_id: 10
+    link_kind: uplink
+    mode: trunk
+    description: "Connected_to_SPINE"
+    members_from: core_pool
+    mtu: 9216

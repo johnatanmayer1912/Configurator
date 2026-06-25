@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Phase 4 — Full Polish</title>
+    <link rel="stylesheet" href="_shared.css">
+</head>
+<body>
+    <div class="demo-banner">
+        <span>Phase 4 · Visual hierarchy — one focal point per screen</span>
+        <a href="index.html">← Gallery</a>
+    </div>
+    <div class="container">
+        <header class="app-header">
+            <div>
+                <h1>Leaf Lab</h1>
+                <p class="subtitle">Step 3 of 3</p>
+            </div>
+            <span class="status-pill" style="margin:0">● Ready to paste in lab</span>
+        </header>
+
+        <div class="layout-main">
+            <div class="panel" style="display:flex;flex-direction:column;gap:1rem">
+                <p style="margin:0;color:var(--text-secondary)">DC-LEAF-01-A + B · vPC leaf · 93180</p>
+                <button class="btn btn-primary" type="button" style="padding:1rem;font-size:1.05rem">Build both configs</button>
+                <details>
+                    <summary class="btn-ghost" style="list-style:none;cursor:pointer">Advanced…</summary>
+                </details>
+                <p class="field-note" style="margin:0">One primary button. Preview always visible. No badge wall.</p>
+            </div>
+            <div class="panel" style="border-color:var(--accent-blue)">
+                <div style="font-size:0.75rem;text-transform:uppercase;letter-spacing:0.05em;color:var(--accent-blue);margin-bottom:0.5rem">Live preview</div>
+                <div class="cli-preview" style="max-height:480px">…</div>
+            </div>
+        </div>
+
+        <p class="field-note" style="margin-top:1.5rem;text-align:center">
+            Removed: Scenario badge · Identity badge · Global ready badge · 5-step nav · Restart (auto-reset instead)
+        </p>
+    </div>
+</body>
+</html>

@@ -1,0 +1,9 @@
+{
+  "hostname": "ghj",
+  "site_name": "jkljklj",
+  "role": "spine",
+  "model": "N9K-C9336C-FX2",
+  "redundancy_mode": "vpc",
+  "security_tier": "hardened",
+  "uplink_ports": []
+}

@@ -1,0 +1,9 @@
+{
+  "hostname": "INTENT-SW-01",
+  "site_name": "jkljklj",
+  "role": "leaf",
+  "model": "N9K-C9336C-FX2",
+  "redundancy_mode": "vpc",
+  "security_tier": "standard",
+  "uplink_ports": []
+}

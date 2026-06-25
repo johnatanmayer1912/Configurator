@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Phase 1 — Step 3: Build</title>
+    <link rel="stylesheet" href="_shared.css">
+</head>
+<body>
+    <div class="demo-banner">
+        <span>Phase 1 · Step 3 of 3 — Build (no separate Review step)</span>
+        <a href="index.html">← Gallery</a>
+    </div>
+    <div class="container">
+        <header class="app-header">
+            <div>
+                <h1>Leaf Lab</h1>
+                <p class="subtitle">DC-LEAF-01-A + B · vPC leaf pair</p>
+            </div>
+        </header>
+
+        <div class="wizard-nav">
+            <div class="step-btn done">1 · What to build</div>
+            <div class="step-btn done">2 · Identity</div>
+            <div class="step-btn active">3 · Build</div>
+        </div>
+
+        <div class="layout-main">
+            <div class="panel">
+                <span class="status-pill">● Ready to paste in lab</span>
+
+                <p style="margin:0 0 1rem;color:var(--text-secondary);font-size:0.9rem">
+                    Both switches in one build. No bulk access ports unless you add them below.
+                </p>
+
+                <details style="margin-bottom:1rem">
+                    <summary style="cursor:pointer;color:var(--accent-blue)">Need server ports? (optional)</summary>
+                    <div class="advanced-drawer" style="margin-top:0.75rem">
+                        <p class="field-note">Opens Interface Planner — see <a href="phase-3-planner-vpc-po.html" style="color:var(--accent-blue)">demo</a>.</p>
+                        <button class="btn btn-secondary btn-sm" type="button">+ Add interface</button>
+                    </div>
+                </details>
+
+                <button class="btn btn-primary" type="button" style="width:100%;padding:0.85rem;font-size:1rem">Build both configs</button>
+                <button class="btn btn-outline" type="button" style="width:100%;margin-top:0.5rem">Preview only</button>
+
+                <p class="field-note" style="margin-top:1rem">No JSON payload. No preflight checklist wall.</p>
+            </div>
+
+            <div class="panel">
+                <div style="font-weight:600;margin-bottom:0.5rem">Primary · DC-LEAF-01-A</div>
+                <div class="cli-preview">hostname DC-LEAF-01-A
+!
+vpc domain 100
+  role priority 4096
+  peer-keepalive destination 10.255.255.2
+  source 10.255.255.1 vrf management
+!
+interface port-channel1
+  vpc peer-link
+!
+interface Ethernet1/53
+  channel-group 1 mode active
+!
+interface Ethernet1/49
+  description Uplink_1
+  switchport mode trunk
+  switchport trunk allowed vlan 1-4094
+  no shutdown
+!
+interface mgmt0
+  ip address 10.10.10.10/24
+  no shutdown</div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

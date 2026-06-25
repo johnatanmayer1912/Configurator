@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>UI Concept A — Compact Accordion</title>
+  <style>
+    :root { --bg: #0f1419; --panel: #1a2332; --accent: #3b82f6; --text: #e8eef7; --muted: #8b9cb3; --ok: #22c55e; }
+    * { box-sizing: border-box; }
+    body { font-family: "Segoe UI", system-ui, sans-serif; background: var(--bg); color: var(--text); margin: 0; padding: 2rem; line-height: 1.5; }
+    h1 { font-size: 1.4rem; margin-bottom: 0.25rem; }
+    .tag { display: inline-block; background: #243044; color: var(--accent); padding: 0.2rem 0.6rem; border-radius: 999px; font-size: 0.75rem; margin-bottom: 1rem; }
+    .layout { max-width: 720px; margin: 0 auto; }
+    details { background: var(--panel); border: 1px solid #2a3a52; border-radius: 10px; margin-bottom: 0.75rem; }
+    summary { cursor: pointer; padding: 1rem 1.1rem; font-weight: 600; list-style: none; display: flex; justify-content: space-between; align-items: center; }
+    summary::-webkit-details-marker { display: none; }
+    .body { padding: 0 1.1rem 1rem; border-top: 1px solid #2a3a52; }
+    .row { display: flex; align-items: center; gap: 0.6rem; margin: 0.55rem 0; }
+    .row input { accent-color: var(--accent); width: 1rem; height: 1rem; }
+    .row label { flex: 1; cursor: pointer; }
+    .hint { color: var(--muted); font-size: 0.82rem; margin: 0.2rem 0 0 1.6rem; }
+    .ports { font-family: Consolas, monospace; font-size: 0.85rem; color: #93c5fd; }
+    .cta { margin-top: 1.5rem; display: flex; gap: 0.75rem; }
+    button { background: var(--accent); color: white; border: none; padding: 0.7rem 1.2rem; border-radius: 8px; font-weight: 600; cursor: pointer; }
+    .ghost { background: transparent; border: 1px solid #3d5270; color: var(--text); }
+    .pro { color: var(--ok); font-size: 0.85rem; margin-top: 1rem; }
+  </style>
+</head>
+<body>
+  <div class="layout">
+    <span class="tag">Concept A — Recommended for operators</span>
+    <h1>Core vPC — compact accordion</h1>
+    <p style="color: var(--muted); margin-bottom: 1.5rem;">Only open what you need. Defaults match <strong>CORE1_VPC</strong> production template. Model change auto-fills peer-link / keepalive ports.</p>
+
+    <details open>
+      <summary>Scenario <span class="ports">vPC Core Pair (40G)</span></summary>
+      <div class="body">
+        <div class="row"><input type="radio" name="sc" checked id="core"><label for="core">vPC Core Pair — Nexus 9336C-FX2</label></div>
+        <div class="row"><input type="radio" name="sc" id="leaf"><label for="leaf">vPC Leaf Pair — Nexus 93180YC-EX</label></div>
+      </div>
+    </details>
+
+    <details open>
+      <summary>Institutional baseline <span style="color:var(--ok)">8/8 on</span></summary>
+      <div class="body">
+        <div class="row"><input type="checkbox" checked><label>CLI aliases (wr, shint, shintd)</label></div>
+        <div class="row"><input type="checkbox" checked><label>SNMP trap baseline</label></div>
+        <div class="row"><input type="checkbox" checked><label>CoPP strict + CFS distribute</label></div>
+        <div class="row"><input type="checkbox" checked><label>Dedicated keepalive VRF</label></div>
+        <p class="hint">These ship in every config file — toggle off only for lab trims.</p>
+      </div>
+    </details>
+
+    <details>
+      <summary>vPC ports <span class="ports">9336C: 35-36 / 33-34</span></summary>
+      <div class="body">
+        <p class="hint">Peer-link: <span class="ports">Ethernet1/35, Ethernet1/36</span></p>
+        <p class="hint">Keepalive: <span class="ports">Ethernet1/33, Ethernet1/34</span> → Po2 · VRF VPC_Keep_Alive</p>
+        <div class="row"><input type="checkbox"><label>Override ports manually</label></div>
+      </div>
+    </details>
+
+    <details open>
+      <summary>Leaf downlinks</summary>
+      <div class="body">
+        <div class="row"><input type="checkbox" checked><label>10G leaf pair — Po20 (Eth1/1-2)</label></div>
+        <div class="row"><input type="checkbox" checked><label>1G leaf pair — Po21 (Eth1/3-4)</label></div>
+        <div class="row"><input type="checkbox"><label>Extra trunk Po3</label></div>
+      </div>
+    </details>
+
+    <div class="cta">
+      <button>Validate & Preview</button>
+      <button class="ghost">Safe defaults</button>
+    </div>
+    <p class="pro">✓ Fewest clicks · ✓ Progressive disclosure · ✓ Matches current wizard direction</p>
+  </div>
+</body>
+</html>

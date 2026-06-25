@@ -1,0 +1,9 @@
+{
+  "id": "mgmt_oob",
+  "name": "Out-of-Band Management",
+  "nxos_version": "9.3",
+  "features": [
+    "interface_vlan",
+    "lldp"
+  ]
+}

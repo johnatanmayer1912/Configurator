@@ -1,0 +1,9 @@
+{
+  "hostname": "ghjgjh",
+  "site_name": "jkljkljghjgjh",
+  "role": "leaf",
+  "model": "N9K-C9336C-FX2",
+  "redundancy_mode": "vpc",
+  "security_tier": "standard",
+  "uplink_ports": []
+}

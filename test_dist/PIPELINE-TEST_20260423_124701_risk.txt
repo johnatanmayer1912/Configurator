@@ -1,0 +1,39 @@
+==========================================
+       CONFIGURATION RISK ASSESSMENT      
+==========================================
+OVERALL RISK LEVEL: HIGH
+TOTAL FINDINGS: 16
+------------------------------------------
+[LOW] hostname PIPELINE-TEST
+   ↳ Matches risk pattern: 'hostname'
+[HIGH] feature interface-vlan
+   ↳ Matches risk pattern: 'vlan'
+[MEDIUM] feature interface-vlan
+   ↳ Matches risk pattern: 'interface'
+[HIGH] vlan 10
+   ↳ Matches risk pattern: 'vlan'
+[MEDIUM] interface Ethernet1/1
+   ↳ Matches risk pattern: 'interface'
+[HIGH] spanning-tree port type edge
+   ↳ Matches risk pattern: 'spanning-tree'
+[HIGH] storm-control action shutdown
+   ↳ Matches risk pattern: 'shutdown'
+[HIGH] shutdown
+   ↳ Matches risk pattern: 'shutdown'
+[MEDIUM] interface Ethernet1/2
+   ↳ Matches risk pattern: 'interface'
+[HIGH] spanning-tree port type edge
+   ↳ Matches risk pattern: 'spanning-tree'
+[HIGH] storm-control action shutdown
+   ↳ Matches risk pattern: 'shutdown'
+[HIGH] no shutdown
+   ↳ Matches risk pattern: 'shutdown'
+[MEDIUM] no shutdown
+   ↳ Matches risk pattern: 'no shutdown'
+[MEDIUM] interface mgmt0
+   ↳ Matches risk pattern: 'interface'
+[HIGH] no shutdown
+   ↳ Matches risk pattern: 'shutdown'
+[MEDIUM] no shutdown
+   ↳ Matches risk pattern: 'no shutdown'
+==========================================

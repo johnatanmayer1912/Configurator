@@ -1,0 +1,480 @@
+{
+    "hostname": "ghjgjh",
+    "mgmt_ip": "5.5.5.5/24",
+    "mgmt_gw": "5.1.1.1",
+    "model": "N9K-C9336C-FX2",
+    "vlans": [
+        {
+            "id": 5,
+            "name": "TRANSIT_5"
+        },
+        {
+            "id": 6,
+            "name": "TRANSIT_6"
+        },
+        {
+            "id": 7,
+            "name": "TRANSIT_7"
+        },
+        {
+            "id": 8,
+            "name": "TRANSIT_8"
+        },
+        {
+            "id": 9,
+            "name": "TRANSIT_9"
+        },
+        {
+            "id": 10,
+            "name": "TRANSIT_10"
+        },
+        {
+            "id": 11,
+            "name": "TRANSIT_11"
+        },
+        {
+            "id": 12,
+            "name": "TRANSIT_12"
+        },
+        {
+            "id": 13,
+            "name": "TRANSIT_13"
+        },
+        {
+            "id": 14,
+            "name": "TRANSIT_14"
+        },
+        {
+            "id": 15,
+            "name": "TRANSIT_15"
+        },
+        {
+            "id": 16,
+            "name": "TRANSIT_16"
+        },
+        {
+            "id": 17,
+            "name": "TRANSIT_17"
+        },
+        {
+            "id": 18,
+            "name": "TRANSIT_18"
+        },
+        {
+            "id": 19,
+            "name": "TRANSIT_19"
+        },
+        {
+            "id": 20,
+            "name": "TRANSIT_20"
+        },
+        {
+            "id": 21,
+            "name": "TRANSIT_21"
+        },
+        {
+            "id": 22,
+            "name": "TRANSIT_22"
+        },
+        {
+            "id": 23,
+            "name": "TRANSIT_23"
+        },
+        {
+            "id": 24,
+            "name": "TRANSIT_24"
+        }
+    ],
+    "interfaces": [
+        {
+            "name": "Ethernet1/1",
+            "mode": "routed",
+            "vlan": null,
+            "description": "INTENT_SPINE_PORT",
+            "shutdown": false,
+            "vpc_id": null
+        },
+        {
+            "name": "Ethernet1/2",
+            "mode": "routed",
+            "vlan": null,
+            "description": "INTENT_SPINE_PORT",
+            "shutdown": false,
+            "vpc_id": null
+        },
+        {
+            "name": "Ethernet1/3",
+            "mode": "routed",
+            "vlan": null,
+            "description": "INTENT_SPINE_PORT",
+            "shutdown": false,
+            "vpc_id": null
+        },
+        {
+            "name": "Ethernet1/4",
+            "mode": "routed",
+            "vlan": null,
+            "description": "INTENT_SPINE_PORT",
+            "shutdown": false,
+            "vpc_id": null
+        },
+        {
+            "name": "Ethernet1/5",
+            "mode": "routed",
+            "vlan": null,
+            "description": "INTENT_SPINE_PORT",
+            "shutdown": false,
+            "vpc_id": null
+        },
+        {
+            "name": "Ethernet1/6",
+            "mode": "routed",
+            "vlan": null,
+            "description": "INTENT_SPINE_PORT",
+            "shutdown": false,
+            "vpc_id": null
+        },
+        {
+            "name": "Ethernet1/7",
+            "mode": "routed",
+            "vlan": null,
+            "description": "INTENT_SPINE_PORT",
+            "shutdown": false,
+            "vpc_id": null
+        },
+        {
+            "name": "Ethernet1/8",
+            "mode": "routed",
+            "vlan": null,
+            "description": "INTENT_SPINE_PORT",
+            "shutdown": false,
+            "vpc_id": null
+        },
+        {
+            "name": "Ethernet1/9",
+            "mode": "routed",
+            "vlan": null,
+            "description": "INTENT_SPINE_PORT",
+            "shutdown": false,
+            "vpc_id": null
+        },
+        {
+            "name": "Ethernet1/10",
+            "mode": "routed",
+            "vlan": null,
+            "description": "INTENT_SPINE_PORT",
+            "shutdown": false,
+            "vpc_id": null
+        },
+        {
+            "name": "Ethernet1/11",
+            "mode": "routed",
+            "vlan": null,
+            "description": "INTENT_SPINE_PORT",
+            "shutdown": false,
+            "vpc_id": null
+        },
+        {
+            "name": "Ethernet1/12",
+            "mode": "routed",
+            "vlan": null,
+            "description": "INTENT_SPINE_PORT",
+            "shutdown": false,
+            "vpc_id": null
+        },
+        {
+            "name": "Ethernet1/13",
+            "mode": "routed",
+            "vlan": null,
+            "description": "INTENT_SPINE_PORT",
+            "shutdown": false,
+            "vpc_id": null
+        },
+        {
+            "name": "Ethernet1/14",
+            "mode": "routed",
+            "vlan": null,
+            "description": "INTENT_SPINE_PORT",
+            "shutdown": false,
+            "vpc_id": null
+        },
+        {
+            "name": "Ethernet1/15",
+            "mode": "routed",
+            "vlan": null,
+            "description": "INTENT_SPINE_PORT",
+            "shutdown": false,
+            "vpc_id": null
+        },
+        {
+            "name": "Ethernet1/16",
+            "mode": "routed",
+            "vlan": null,
+            "description": "INTENT_SPINE_PORT",
+            "shutdown": false,
+            "vpc_id": null
+        },
+        {
+            "name": "Ethernet1/17",
+            "mode": "routed",
+            "vlan": null,
+            "description": "INTENT_SPINE_PORT",
+            "shutdown": false,
+            "vpc_id": null
+        },
+        {
+            "name": "Ethernet1/18",
+            "mode": "routed",
+            "vlan": null,
+            "description": "INTENT_SPINE_PORT",
+            "shutdown": false,
+            "vpc_id": null
+        },
+        {
+            "name": "Ethernet1/19",
+            "mode": "routed",
+            "vlan": null,
+            "description": "INTENT_SPINE_PORT",
+            "shutdown": false,
+            "vpc_id": null
+        },
+        {
+            "name": "Ethernet1/20",
+            "mode": "routed",
+            "vlan": null,
+            "description": "INTENT_SPINE_PORT",
+            "shutdown": false,
+            "vpc_id": null
+        },
+        {
+            "name": "Ethernet1/21",
+            "mode": "routed",
+            "vlan": null,
+            "description": "INTENT_SPINE_PORT",
+            "shutdown": false,
+            "vpc_id": null
+        },
+        {
+            "name": "Ethernet1/22",
+            "mode": "routed",
+            "vlan": null,
+            "description": "INTENT_SPINE_PORT",
+            "shutdown": false,
+            "vpc_id": null
+        },
+        {
+            "name": "Ethernet1/23",
+            "mode": "routed",
+            "vlan": null,
+            "description": "INTENT_SPINE_PORT",
+            "shutdown": false,
+            "vpc_id": null
+        },
+        {
+            "name": "Ethernet1/24",
+            "mode": "routed",
+            "vlan": null,
+            "description": "INTENT_SPINE_PORT",
+            "shutdown": false,
+            "vpc_id": null
+        },
+        {
+            "name": "Ethernet1/25",
+            "mode": "routed",
+            "vlan": null,
+            "description": "INTENT_SPINE_PORT",
+            "shutdown": false,
+            "vpc_id": null
+        },
+        {
+            "name": "Ethernet1/26",
+            "mode": "routed",
+            "vlan": null,
+            "description": "INTENT_SPINE_PORT",
+            "shutdown": false,
+            "vpc_id": null
+        },
+        {
+            "name": "Ethernet1/27",
+            "mode": "routed",
+            "vlan": null,
+            "description": "INTENT_SPINE_PORT",
+            "shutdown": false,
+            "vpc_id": null
+        },
+        {
+            "name": "Ethernet1/28",
+            "mode": "routed",
+            "vlan": null,
+            "description": "INTENT_SPINE_PORT",
+            "shutdown": false,
+            "vpc_id": null
+        },
+        {
+            "name": "Ethernet1/29",
+            "mode": "routed",
+            "vlan": null,
+            "description": "INTENT_SPINE_PORT",
+            "shutdown": false,
+            "vpc_id": null
+        },
+        {
+            "name": "Ethernet1/30",
+            "mode": "routed",
+            "vlan": null,
+            "description": "INTENT_SPINE_PORT",
+            "shutdown": false,
+            "vpc_id": null
+        },
+        {
+            "name": "Ethernet1/31",
+            "mode": "routed",
+            "vlan": null,
+            "description": "INTENT_SPINE_PORT",
+            "shutdown": false,
+            "vpc_id": null
+        },
+        {
+            "name": "Ethernet1/32",
+            "mode": "routed",
+            "vlan": null,
+            "description": "INTENT_SPINE_PORT",
+            "shutdown": false,
+            "vpc_id": null
+        },
+        {
+            "name": "Ethernet1/33",
+            "mode": "routed",
+            "vlan": null,
+            "description": "INTENT_SPINE_PORT",
+            "shutdown": false,
+            "vpc_id": null
+        },
+        {
+            "name": "Ethernet1/34",
+            "mode": "routed",
+            "vlan": null,
+            "description": "INTENT_SPINE_PORT",
+            "shutdown": false,
+            "vpc_id": null
+        },
+        {
+            "name": "Ethernet1/35",
+            "mode": "routed",
+            "vlan": null,
+            "description": "INTENT_SPINE_PORT",
+            "shutdown": false,
+            "vpc_id": null
+        },
+        {
+            "name": "Ethernet1/36",
+            "mode": "routed",
+            "vlan": null,
+            "description": "INTENT_SPINE_PORT",
+            "shutdown": false,
+            "vpc_id": null
+        },
+        {
+            "name": "Ethernet1/37",
+            "mode": "routed",
+            "vlan": null,
+            "description": "INTENT_SPINE_PORT",
+            "shutdown": false,
+            "vpc_id": null
+        },
+        {
+            "name": "Ethernet1/38",
+            "mode": "routed",
+            "vlan": null,
+            "description": "INTENT_SPINE_PORT",
+            "shutdown": false,
+            "vpc_id": null
+        },
+        {
+            "name": "Ethernet1/39",
+            "mode": "routed",
+            "vlan": null,
+            "description": "INTENT_SPINE_PORT",
+            "shutdown": false,
+            "vpc_id": null
+        },
+        {
+            "name": "Ethernet1/40",
+            "mode": "routed",
+            "vlan": null,
+            "description": "INTENT_SPINE_PORT",
+            "shutdown": false,
+            "vpc_id": null
+        },
+        {
+            "name": "Ethernet1/41",
+            "mode": "routed",
+            "vlan": null,
+            "description": "INTENT_SPINE_PORT",
+            "shutdown": false,
+            "vpc_id": null
+        },
+        {
+            "name": "Ethernet1/42",
+            "mode": "routed",
+            "vlan": null,
+            "description": "INTENT_SPINE_PORT",
+            "shutdown": false,
+            "vpc_id": null
+        },
+        {
+            "name": "Ethernet1/43",
+            "mode": "routed",
+            "vlan": null,
+            "description": "INTENT_SPINE_PORT",
+            "shutdown": false,
+            "vpc_id": null
+        },
+        {
+            "name": "Ethernet1/44",
+            "mode": "routed",
+            "vlan": null,
+            "description": "INTENT_SPINE_PORT",
+            "shutdown": false,
+            "vpc_id": null
+        },
+        {
+            "name": "Ethernet1/45",
+            "mode": "routed",
+            "vlan": null,
+            "description": "INTENT_SPINE_PORT",
+            "shutdown": false,
+            "vpc_id": null
+        },
+        {
+            "name": "Ethernet1/46",
+            "mode": "routed",
+            "vlan": null,
+            "description": "INTENT_SPINE_PORT",
+            "shutdown": false,
+            "vpc_id": null
+        },
+        {
+            "name": "Ethernet1/47",
+            "mode": "routed",
+            "vlan": null,
+            "description": "INTENT_SPINE_PORT",
+            "shutdown": false,
+            "vpc_id": null
+        },
+        {
+            "name": "Ethernet1/48",
+            "mode": "routed",
+            "vlan": null,
+            "description": "INTENT_SPINE_PORT",
+            "shutdown": false,
+            "vpc_id": null
+        }
+    ],
+    "svis": [],
+    "static_routes": [],
+    "vpc": null,
+    "motd": "DEFAULT_SITE SPINE - Institutional Access",
+    "admin_user": "admin",
+    "admin_password": ""
+}

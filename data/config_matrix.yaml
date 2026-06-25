@@ -1,0 +1,103 @@
+# Scenario × model configuration matrix — drives UI badges and documentation.
+# hardware_profiles.yaml is source of truth for vPC ports and speed tiers.
+
+matrix:
+  - scenario_id: vpc_core_pair
+    speed_tier: "40G"
+    device_class: core
+    supported_models:
+      - Nexus 9336C-FX2
+      - Nexus 9364C-GX
+    default_model: Nexus 9336C-FX2
+    default_nxos: "9.3"
+    vpc_ports_from: hardware_profile
+    baseline_defaults: [baseline_cfs, baseline_copp, baseline_no_pwd_check, baseline_snmp_traps, baseline_spanning_tree, baseline_cli_aliases, baseline_icam, baseline_vrf_keepalive]
+    downlink_presets: [downlink_10g_leaf, downlink_1g_leaf]
+    uplink_presets: [uplink_core_spine]
+
+  - scenario_id: vpc_leaf_pair
+    speed_tier: "10G"
+    device_class: leaf_10g
+    supported_models:
+      - Nexus 93180YC-EX
+      - Nexus 9364C-GX
+    default_model: Nexus 93180YC-EX
+    default_nxos: "9.3"
+    vpc_ports_from: hardware_profile
+    baseline_defaults: [baseline_cfs, baseline_copp, baseline_cli_aliases, baseline_snmp_traps]
+    downlink_presets: []
+    uplink_presets: [uplink_fiber_pair, uplink_fiber_quad]
+
+  - scenario_id: standalone_leaf
+    speed_tier: "10G"
+    device_class: leaf_10g
+    supported_models:
+      - Nexus 93180YC-EX
+    default_model: Nexus 93180YC-EX
+    default_nxos: "9.3"
+    vpc_ports_from: none
+    baseline_defaults: [baseline_cli_aliases]
+    downlink_presets: []
+    uplink_presets: [uplink_fiber_pair]
+
+  - scenario_id: standalone_access
+    speed_tier: "1G"
+    device_class: leaf_1g
+    supported_models:
+      - Nexus 9348GC-FXP
+      - Nexus 92348GC-X
+    default_model: Nexus 9348GC-FXP
+    default_nxos: "9.3"
+    vpc_ports_from: none
+    baseline_defaults: [baseline_cfs, baseline_cli_aliases, baseline_snmp_traps]
+    downlink_presets: []
+    uplink_presets: [uplink_fiber_pair]
+
+  - scenario_id: vpc_access_pair
+    speed_tier: "1G"
+    device_class: leaf_1g
+    supported_models:
+      - Nexus 9348GC-FXP
+      - Nexus 92348GC-X
+    default_model: Nexus 9348GC-FXP
+    default_nxos: "9.3"
+    vpc_ports_from: hardware_profile
+    baseline_defaults: [baseline_cfs, baseline_cli_aliases, baseline_snmp_traps, baseline_copp]
+    downlink_presets: []
+    uplink_presets: [uplink_fiber_pair, uplink_fiber_quad]
+
+  - scenario_id: spine_core
+    speed_tier: "40G"
+    device_class: core
+    supported_models:
+      - Nexus 9336C-FX2
+    default_model: Nexus 9336C-FX2
+    default_nxos: "9.3"
+    vpc_ports_from: none
+    baseline_defaults: [baseline_spanning_tree]
+    downlink_presets: []
+    uplink_presets: [uplink_core_spine]
+
+  - scenario_id: vxlan_evpn_leaf
+    speed_tier: "10G"
+    device_class: leaf_10g
+    supported_models:
+      - Nexus 93180YC-EX
+    default_model: Nexus 93180YC-EX
+    default_nxos: "10.2"
+    vpc_ports_from: hardware_profile
+    baseline_defaults: [baseline_cfs, baseline_cli_aliases]
+    downlink_presets: []
+    uplink_presets: [uplink_fiber_pair, uplink_fiber_quad]
+
+  - scenario_id: mgmt_oob
+    speed_tier: "Multi"
+    device_class: hybrid
+    supported_models:
+      - Generic
+    default_model: Generic
+    default_nxos: "9.3"
+    vpc_ports_from: none
+    baseline_defaults: []
+    downlink_presets: []
+    uplink_presets: []

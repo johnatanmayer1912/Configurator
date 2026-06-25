@@ -1,0 +1,13 @@
+# Mandatory QA on every commit — fast on-change stages from data/release_qa_manifest.yaml
+# Install: pip install pre-commit && pre-commit install
+# Manual:  pre-commit run --all-files
+
+repos:
+  - repo: local
+    hooks:
+      - id: mandatory-qa-on-change
+        name: Mandatory QA (on-change)
+        entry: python scripts/run_mandatory_qa.py --on-change
+        language: system
+        pass_filenames: false
+        always_run: true

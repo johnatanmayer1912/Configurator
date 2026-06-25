@@ -1,0 +1,197 @@
+# Pre-built configuration scenarios — network engineer presets.
+# Selecting a scenario pre-fills the wizard with safe defaults.
+
+scenarios:
+  - id: standalone_access
+    name: "Standalone Access Switch"
+    icon: "access"
+    description: "Single switch, access ports, management VLAN, no vPC."
+    redundancy: standalone
+    role: access
+    help: "Use for IDF/access closets. Uplinks are trunk; user ports are access."
+    defaults:
+      model: "Nexus 9348GC-FXP"
+      nxos_version: "9.3"
+      base_access_vlan: 10
+      access_vlan_count: 4
+      interface_count: 48
+      motd: "Authorized Access Only — Standalone Access Switch"
+      features: [interface_vlan, lldp, lacp, storm_control, ntp, logging]
+      baseline_options: [baseline_cfs, baseline_cli_aliases, baseline_snmp_traps, baseline_copp]
+      uplink_ports: ["Ethernet1/49", "Ethernet1/50"]
+      bring_up_spare_ports: false
+      security_tier: standard
+
+  - id: vpc_access_pair
+    name: "vPC Access Pair (1G)"
+    icon: "vpc"
+    description: "Dual 1G IDF switches — vPC domain, peer-link, keepalive, uplink trunks."
+    redundancy: vpc
+    role: access
+    pair_mode: true
+    help: "Nexus 9348GC-FXP pair for closet redundancy. Peer-link Eth1/53–54 and keepalive Eth1/47–48 per hardware profile. Add closet ports via Interface Planner."
+    defaults:
+      model: "Nexus 9348GC-FXP"
+      nxos_version: "9.3"
+      base_access_vlan: 10
+      access_vlan_count: 4
+      interface_count: 0
+      vpc_domain_id: 100
+      vpc_peer_link_id: 1
+      keepalive_po_id: 2
+      vpc_system_priority: 32667
+      motd: "IDF Access — vPC Member"
+      features: [interface_vlan, lldp, lacp, vpc, storm_control, vpc_peer_gateway, vpc_auto_recovery, vpc_orphan_suspend, ntp, logging]
+      baseline_options: [baseline_cfs, baseline_cli_aliases, baseline_snmp_traps, baseline_copp]
+      uplink_ports: ["Ethernet1/49", "Ethernet1/50"]
+      bring_up_spare_ports: false
+      security_tier: standard
+
+  - id: standalone_leaf
+    name: "Standalone Leaf (No vPC)"
+    icon: "leaf"
+    description: "DC leaf without vPC — lab, staging, or single-homed designs."
+    redundancy: standalone
+    role: leaf
+    help: "Leaf role with L3 SVIs but no vPC domain. Good for PoC racks."
+    defaults:
+      model: "Nexus 93180YC-EX"
+      nxos_version: "9.3"
+      base_access_vlan: 100
+      access_vlan_count: 8
+      interface_count: 0
+      motd: "Data Center Leaf — Standalone Mode"
+      features: [interface_vlan, lldp, lacp, hsrp, storm_control, ntp, logging]
+      uplink_ports: ["Ethernet1/49", "Ethernet1/50"]
+      bring_up_spare_ports: false
+      security_tier: standard
+
+  - id: vpc_leaf_pair
+    name: "vPC Leaf Pair (Primary + Secondary)"
+    icon: "vpc"
+    description: "Dual leaf switches with vPC domain, peer-link, and keepalive."
+    redundancy: vpc
+    role: leaf
+    pair_mode: true
+    help: "Generates configs for Switch A (primary) and Switch B (secondary). Verify keepalive IPs on dedicated links."
+    defaults:
+      model: "Nexus 93180YC-EX"
+      nxos_version: "9.3"
+      base_access_vlan: 100
+      access_vlan_count: 8
+      interface_count: 0
+      vpc_domain_id: 100
+      vpc_peer_link_id: 1
+      keepalive_po_id: 2
+      vpc_system_priority: 32667
+      motd: "Data Center Leaf — vPC Member"
+      features: [interface_vlan, lldp, lacp, vpc, hsrp, storm_control, vpc_peer_gateway, vpc_auto_recovery, vpc_orphan_suspend, ntp, logging]
+      baseline_options: [baseline_cfs, baseline_copp, baseline_cli_aliases, baseline_snmp_traps]
+      downlink_options:
+        downlink_10g_leaf: false
+        downlink_1g_leaf: false
+        downlink_extra: false
+      uplink_ports: ["Ethernet1/49", "Ethernet1/50"]
+      bring_up_spare_ports: false
+      security_tier: standard
+
+  - id: spine_core
+    name: "Spine / Core Layer"
+    icon: "spine"
+    description: "Spine switch — routed uplinks, minimal access VLANs."
+    redundancy: standalone
+    role: spine
+    help: "Spine layer: focus on high-speed routed links. No access VLAN sprawl."
+    defaults:
+      model: "Nexus 9336C-FX2"
+      nxos_version: "9.3"
+      base_access_vlan: 999
+      access_vlan_count: 1
+      interface_count: 0
+      motd: "Data Center Spine — Core Access Restricted"
+      features: [interface_vlan, lldp, lacp]
+      uplink_ports: []
+      bring_up_spare_ports: false
+
+  - id: vpc_core_pair
+    name: "vPC Core Pair (40G)"
+    icon: "vpc"
+    description: "Dual 40G core switches — institutional baseline, leaf downlinks, model-aware vPC ports."
+    redundancy: vpc
+    role: spine
+    pair_mode: true
+    help: "Based on CORE1_VPC production template. Peer-link/keepalive ports auto-set per hardware model (9336C: Eth1/33-36). Toggle 10G/1G leaf downlinks on Step 4."
+    defaults:
+      model: "Nexus 9336C-FX2"
+      nxos_version: "9.3"
+      base_access_vlan: 10
+      access_vlan_count: 1
+      interface_count: 0
+      vpc_domain_id: 100
+      vpc_peer_link_id: 1
+      keepalive_po_id: 2
+      vpc_system_priority: 20000
+      role_priority_primary: 1000
+      role_priority_secondary: 2000
+      vpc_delay_restore: 150
+      keepalive_vrf: "VPC_Keep_Alive"
+      local_keepalive_ip: "1.1.1.1"
+      remote_keepalive_ip: "1.1.1.2"
+      motd: "Authorized Access Only"
+      network_name: ""
+      site_location: ""
+      snmp_contact: "NET-ENG-TEAM"
+      spanning_tree_priority: 8192
+      bring_up_spare_ports: false
+      downlink_mtu: 9216
+      baseline_options: [baseline_cfs, baseline_copp, baseline_no_pwd_check, baseline_snmp_traps, baseline_spanning_tree, baseline_cli_aliases, baseline_icam, baseline_vrf_keepalive, baseline_no_dns_lookup, baseline_logging_source]
+      downlink_options:
+        downlink_10g_leaf: true
+        downlink_1g_leaf: true
+        downlink_extra: false
+      features: [interface_vlan, lacp, vpc, vpc_peer_gateway, vpc_arp_sync, vpc_peer_switch, vpc_delay_restore, snmp, ntp, logging]
+      uplink_ports: []
+
+  - id: mgmt_oob
+    name: "Out-of-Band Management"
+    icon: "mgmt"
+    description: "Minimal config for mgmt-only or console-first provisioning."
+    redundancy: standalone
+    role: access
+    help: "Bare minimum: hostname, mgmt0, admin user, LLDP. Expand later."
+    defaults:
+      model: "Generic"
+      nxos_version: "9.3"
+      base_access_vlan: 10
+      access_vlan_count: 1
+      interface_count: 0
+      motd: "OOB Management — Initial Provisioning"
+      features: [interface_vlan, lldp]
+      uplink_ports: []
+
+  - id: vxlan_evpn_leaf
+    name: "VXLAN/EVPN Leaf (Foundation)"
+    icon: "leaf"
+    description: "Leaf with VXLAN overlay feature enabled — extend with fabric underlay in lab."
+    redundancy: vpc
+    role: leaf
+    pair_mode: true
+    help: "Enables nv overlay + vPC + HSRP baseline. Full BGP EVPN requires site-specific underlay — validate in lab before production."
+    defaults:
+      model: "Nexus 93180YC-EX"
+      nxos_version: "10.2"
+      base_access_vlan: 200
+      access_vlan_count: 4
+      interface_count: 0
+      vpc_domain_id: 200
+      vpc_peer_link_id: 200
+      motd: "VXLAN Leaf — Fabric Member"
+      features: [interface_vlan, lldp, lacp, vpc, hsrp, vxlan, bfd, storm_control, vpc_peer_gateway, vpc_auto_recovery, ntp, logging]
+      baseline_options: [baseline_cfs, baseline_copp, baseline_cli_aliases]
+      downlink_options:
+        downlink_10g_leaf: false
+        downlink_1g_leaf: false
+        downlink_extra: false
+      uplink_ports: ["Ethernet1/49", "Ethernet1/50"]
+      bring_up_spare_ports: false
+      security_tier: standard

@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Phase 1 — Step 2: Identity</title>
+    <link rel="stylesheet" href="_shared.css">
+</head>
+<body>
+    <div class="demo-banner">
+        <span>Phase 1 · Step 2 of 3 — Identity (auto-filled)</span>
+        <a href="phase-1-step1-role.html">← Back</a> · <a href="phase-1-step3-build.html">Next →</a>
+    </div>
+    <div class="container">
+        <header class="app-header">
+            <div>
+                <h1>Leaf Lab</h1>
+                <p class="subtitle">Building: <strong>vPC Leaf Pair · 10G</strong> · Nexus 93180YC-EX</p>
+            </div>
+        </header>
+
+        <div class="wizard-nav">
+            <div class="step-btn done">1 · What to build</div>
+            <div class="step-btn active">2 · Identity</div>
+            <div class="step-btn">3 · Build</div>
+        </div>
+
+        <div class="layout-main">
+            <div class="panel">
+                <h2 style="margin:0 0 1rem;font-size:1.2rem">Switch identity</h2>
+                <p class="field-note" style="margin-bottom:1rem">Only fields that block a lab paste. Everything else uses safe defaults.</p>
+
+                <div class="form-group">
+                    <label>Primary hostname</label>
+                    <input type="text" value="DC-LEAF-01-A" readonly>
+                    <div class="field-note">Secondary becomes DC-LEAF-01-B automatically.</div>
+                </div>
+                <div class="form-group">
+                    <label>Management IP (primary)</label>
+                    <input type="text" value="10.10.10.10/24">
+                </div>
+                <div class="form-group">
+                    <label>Default gateway</label>
+                    <input type="text" value="10.10.10.1">
+                </div>
+                <div class="form-group">
+                    <label>Site code (export filenames)</label>
+                    <input type="text" value="HQ_DC">
+                </div>
+
+                <p class="field-note">Peer-link Eth1/53–54 · Keepalive Eth1/47–48 · Uplinks Eth1/49–50 — <em>set automatically</em>.</p>
+
+                <div style="margin-top:1.25rem;display:flex;gap:0.5rem">
+                    <button class="btn btn-outline" type="button">← Back</button>
+                    <button class="btn btn-primary" type="button">Continue →</button>
+                </div>
+            </div>
+
+            <div class="panel">
+                <span class="status-pill">● Preview updating</span>
+                <div class="cli-preview">feature vpc
+feature lacp
+feature interface-vlan
+!
+vpc domain 100
+  peer-keepalive destination 10.255.255.2
+  source 10.255.255.1 vrf management
+!
+interface port-channel1
+  description Connected_To_DC-LEAF-01-B_Peer-Link
+  switchport mode trunk
+  vpc peer-link
+  no shutdown
+…</div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

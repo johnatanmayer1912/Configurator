@@ -1,0 +1,26 @@
+{
+  "project": "NX-OS Configuration Authority",
+  "native_skills": [
+    {
+      "id": "nxos-orchestrator",
+      "path": ".cursor/skills/nxos-orchestrator/SKILL.md",
+      "description": "Project orchestrator — routes to nxos and nst council skills"
+    },
+    {
+      "id": "nxos-config-engineer",
+      "path": ".cursor/skills/nxos-config-engineer/SKILL.md",
+      "description": "Cisco NX-OS config engine, vPC, templates, scenarios"
+    },
+    {
+      "id": "nxos-zero-trust-review-team",
+      "path": ".cursor/skills/nxos-zero-trust-review-team/SKILL.md",
+      "description": "Zero-trust QA council for Configurator releases"
+    },
+    {
+      "id": "nxos-field-engineer-council",
+      "path": ".cursor/skills/nxos-field-engineer-council/SKILL.md",
+      "description": "Field engineer team — real-life scenarios, usage gaps, professional UX audit"
+    }
+  ],
+  "catalog_note": "Full 4151-skill index in SKILL_CATALOG.json (V6 import). Native skills above take precedence."
+}

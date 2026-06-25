@@ -1,0 +1,51 @@
+# Institutional port-channel ID map — editable via Admin → Po Map.
+# Ranges are inclusive. Planner auto-assigns from ranges when conflicts occur.
+
+schema_version: 1
+default_ranges:
+  peer_link: [1, 1]
+  keepalive: [2, 2]
+  spare: [3, 9]
+  planner: [10, 19]
+  downlink: [20, 29]
+  uplink: [30, 49]
+
+models:
+  Nexus 9336C-FX2:
+    peer_link: [1, 1]
+    keepalive: [2, 2]
+    spare: [3, 9]
+    downlink: [20, 21]
+    uplink: [10, 15]
+    planner: [16, 19]
+  Nexus 93180YC-EX:
+    peer_link: [1, 1]
+    keepalive: [2, 2]
+    spare: [3, 9]
+    planner: [10, 19]
+    downlink: [20, 29]
+    uplink: [30, 39]
+  Nexus 9348GC-FXP:
+    peer_link: [1, 1]
+    keepalive: [2, 2]
+    spare: [3, 9]
+    planner: [10, 19]
+    downlink: [20, 29]
+    uplink: [30, 39]
+  Nexus 9364C-GX:
+    peer_link: [1, 1]
+    keepalive: [2, 2]
+    spare: [3, 9]
+    planner: [10, 19]
+    downlink: [20, 29]
+    uplink: [30, 39]
+  Nexus 92348GC-X:
+    peer_link: [1, 1]
+    keepalive: [2, 2]
+    spare: [3, 9]
+    planner: [10, 19]
+    uplink: [30, 39]
+  Generic:
+    peer_link: [1, 1]
+    keepalive: [2, 2]
+    planner: [10, 99]

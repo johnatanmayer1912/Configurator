@@ -1,0 +1,61 @@
+! -----------------------------------------------------------------------------
+! Configuration Authority System
+! Version: 2.0.0
+! Date:    2026-04-13 17:02:45
+! Mode:    vPC Pair
+! -----------------------------------------------------------------------------
+
+hostname ghj
+!
+banner motd # Institutional Access Only #
+!
+
+! Features
+feature interface-vlan
+feature hsrp
+feature lacp
+feature vpc
+feature lldp
+
+! VLAN Configuration
+vlan 5
+  name jkl
+
+! vPC Architecture
+vpc domain 100
+  role priority 10
+  system-priority 32667
+  peer-keepalive destination 10.255.255.2 source 10.255.255.1 vrf management
+  peer-gateway
+  auto-recovery
+  ip arp synchronize
+
+! vPC Peer-Link Members
+interface Ethernet1/49
+  description vPC Peer-Link Member
+  channel-group 100 mode active
+  no shutdown
+interface Ethernet1/50
+  description vPC Peer-Link Member
+  channel-group 100 mode active
+  no shutdown
+
+! vPC Peer-Link Infrastructure
+interface port-channel100
+  description vPC PEER-LINK
+  switchport mode trunk
+  vpc peer-link
+  spanning-tree port type network
+  no shutdown
+
+! L3 SVI Configuration
+
+! Interfaces & vPC Members
+
+! Management & Routing
+interface mgmt0
+  ip address 5.5.5.5/24
+  vrf member management
+vrf context management
+  ip route 0.0.0.0/0 5.1.1.1
+

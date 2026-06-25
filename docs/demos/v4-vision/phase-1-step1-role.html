@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Phase 1 — Step 1: Choose Role</title>
+    <link rel="stylesheet" href="_shared.css">
+</head>
+<body>
+    <div class="demo-banner">
+        <span>Phase 1 · Step 1 of 3 — Role</span>
+        <a href="index.html">← Gallery</a> · <a href="phase-1-step2-identity.html">Next →</a>
+    </div>
+    <div class="container">
+        <header class="app-header">
+            <div>
+                <h1>Leaf Lab</h1>
+                <p class="subtitle">Offline · Nexus 93180 · Primary + Secondary</p>
+            </div>
+            <div class="header-actions">
+                <button class="btn btn-outline" type="button">Help</button>
+            </div>
+        </header>
+
+        <div class="wizard-nav">
+            <div class="step-btn active">1 · What to build</div>
+            <div class="step-btn">2 · Identity</div>
+            <div class="step-btn">3 · Build</div>
+        </div>
+
+        <div class="layout-main">
+            <div class="panel">
+                <h2 style="margin:0 0 0.35rem;font-size:1.2rem">What are you building?</h2>
+                <p class="field-note" style="margin-bottom:1rem">Pick one. We configure model, vPC, and ports for you.</p>
+
+                <div class="choice-grid">
+                    <button type="button" class="choice-card selected">
+                        <strong>vPC Leaf Pair · 10G</strong>
+                        <span class="desc">Nexus 93180YC-EX · dual ToR · lab infra</span>
+                        <span class="hint">★ Recommended for new racks</span>
+                    </button>
+                    <button type="button" class="choice-card">
+                        <strong>vPC Core Pair · 40G</strong>
+                        <span class="desc">Nexus 9336C-FX2 · spine · optional downlinks</span>
+                    </button>
+                    <button type="button" class="choice-card">
+                        <strong>Access closet · 1G</strong>
+                        <span class="desc">Nexus 9348 · standalone IDF</span>
+                    </button>
+                </div>
+
+                <p style="margin-top:1.25rem;text-align:center">
+                    <button class="btn btn-ghost" type="button">Advanced — expert scenarios, paste config, more models →</button>
+                </p>
+            </div>
+
+            <div class="panel">
+                <div style="font-weight:600;margin-bottom:0.5rem">Live preview</div>
+                <p class="field-note">Select a role to see CLI.</p>
+                <div class="cli-preview" style="opacity:0.5">! Waiting for role…</div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

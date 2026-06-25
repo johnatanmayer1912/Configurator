@@ -1,0 +1,50 @@
+{
+  "schema_version": 1,
+  "product": "NX-OS Configuration Authority",
+  "app_version": "6.0.0",
+  "generated_at": "2026-06-23 14:34:32",
+  "site_name": "HQ_DC",
+  "scenario_id": "vpc_leaf_pair",
+  "scenario_name": "vPC Leaf Pair (Primary + Secondary)",
+  "nxos_version": "9.3",
+  "pair_mode": true,
+  "batch_folder": "HQ_DC_vpc_leaf_pair_20260623_143432",
+  "output_dir": "C:\\Users\\bbb12\\OneDrive\\Desktop\\Antigravity Projects Folder\\Configurator\\dist\\configs/history\\HQ_DC_vpc_leaf_pair_20260623_143432",
+  "lab_ready": true,
+  "summary_lines": [
+    "Site: HQ_DC",
+    "Role: leaf",
+    "Model: Nexus 93180YC-EX",
+    "Redundancy: vpc",
+    "Access VLAN range: 100 to 107",
+    "Interfaces generated: 0"
+  ],
+  "policy_flags": {},
+  "hosts": [
+    {
+      "hostname": "DC-LEAF-01-A",
+      "vpc_role": "primary",
+      "keepalive_local": "1.1.1.1",
+      "keepalive_remote": "1.1.1.2"
+    },
+    {
+      "hostname": "DC-LEAF-01-B",
+      "vpc_role": "secondary",
+      "keepalive_local": "1.1.1.2",
+      "keepalive_remote": "1.1.1.1"
+    }
+  ],
+  "files": [
+    "HQ_DC_vpc_leaf_pair_DC-LEAF-01-A_20260623_143432_device.json",
+    "HQ_DC_vpc_leaf_pair_DC-LEAF-01-A_20260623_143432_config.txt",
+    "HQ_DC_vpc_leaf_pair_DC-LEAF-01-A_20260623_143432_diff.txt",
+    "HQ_DC_vpc_leaf_pair_DC-LEAF-01-A_20260623_143432_risk.txt",
+    "HQ_DC_vpc_leaf_pair_DC-LEAF-01-A_20260623_143432_scenario.txt",
+    "HQ_DC_vpc_leaf_pair_DC-LEAF-01-A_20260623_143432_blueprint_summary.txt",
+    "HQ_DC_vpc_leaf_pair_DC-LEAF-01-B_20260623_143432_device.json",
+    "HQ_DC_vpc_leaf_pair_DC-LEAF-01-B_20260623_143432_config.txt",
+    "HQ_DC_vpc_leaf_pair_DC-LEAF-01-B_20260623_143432_diff.txt",
+    "HQ_DC_vpc_leaf_pair_DC-LEAF-01-B_20260623_143432_risk.txt",
+    "HQ_DC_vpc_leaf_pair_DC-LEAF-01-B_20260623_143432_scenario.txt"
+  ]
+}

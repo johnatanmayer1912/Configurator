@@ -1,0 +1,157 @@
+! -----------------------------------------------------------------------------
+! {{ metadata.system | default('Configuration Authority System') }}
+! Version: {{ metadata.version | default('2.9.0') }}
+! NX-OS:  {{ metadata.nxos_version | default('7.0') }} (LEGACY TEMPLATE)
+! Date:    {{ metadata.date | default('Unknown') }}
+! Mode:    {{ metadata.mode | default('Institutional') }}
+! Tier:    {{ device.security_tier | default('standard') }}
+! NOTE:    Validate in lab — peer-gateway/auto-recovery not available on 7.x.
+! -----------------------------------------------------------------------------
+
+hostname {{ device.hostname }}
+!
+banner motd # {{ device.motd }} #
+!
+{% if device.create_local_user and device.admin_user and device.admin_password %}
+! LAB ONLY — replace with TACACS+/RADIUS in production
+username {{ device.admin_user }} password {{ device.admin_password }} role network-admin
+{% endif %}
+
+! Features
+{% if features.interface_vlan %}
+feature interface-vlan
+{% endif %}
+{% if features.hsrp %}
+feature hsrp
+{% endif %}
+{% if features.lacp %}
+feature lacp
+{% endif %}
+{% if features.vpc and device.vpc is not none %}
+feature vpc
+{% endif %}
+{% if features.lldp %}
+feature lldp
+{% endif %}
+
+! VLAN Configuration
+{% for vlan in device.vlans %}
+vlan {{ vlan.id }}
+  name {{ vlan.name }}
+{% endfor %}
+
+{% if device.vpc is not none %}
+! vPC Architecture (Legacy — no peer-gateway/auto-recovery)
+vpc domain {{ device.vpc.domain_id }}
+  role priority {{ 4096 if device.vpc.role == 'primary' else 8192 }}
+  system-priority {{ device.vpc.system_priority }}
+  peer-keepalive destination {{ device.vpc.remote_keepalive_ip }} source {{ device.vpc.local_keepalive_ip }} vrf {{ device.vpc.keepalive_vrf }}
+  {% if features.vpc_arp_sync %}
+  ip arp synchronize
+  {% endif %}
+
+{% for intf in device.vpc.peer_link_interfaces %}
+interface {{ intf }}
+  description vPC Peer-Link Member
+  channel-group {{ device.vpc.peer_link_id }} mode active
+  no shutdown
+{% endfor %}
+
+interface port-channel{{ device.vpc.peer_link_id }}
+  description vPC PEER-LINK
+  switchport mode trunk
+  vpc peer-link
+  spanning-tree port type network
+  no shutdown
+{% endif %}
+
+! L3 SVI Configuration
+{% for svi in device.svis %}
+interface Vlan{{ svi.vlan_id }}
+  {% if svi.description %}description {{ svi.description }}
+  {% endif %}
+  {% if svi.vrf %}vrf member {{ svi.vrf }}
+  {% endif %}
+  no ip redirects
+  no ip proxy-arp
+  no shutdown
+  ip address {{ svi.ip_address }}
+  {% if svi.hsrp and features.hsrp %}
+  hsrp {{ svi.hsrp.group }}
+    priority {{ svi.hsrp.priority }}
+    {% if svi.hsrp.preempt %}preempt
+    {% endif %}
+    ip {{ svi.hsrp.vip }}
+  {% endif %}
+{% endfor %}
+
+! Interfaces & vPC Members
+{% for intf in device.interfaces %}
+interface {{ intf.name }}
+  {% if intf.description %}description {{ intf.description }}
+  {% endif %}
+  {% if intf.mode == 'access' %}
+  switchport mode access
+  {% if intf.vlan %}switchport access vlan {{ intf.vlan }}{% endif %}
+  spanning-tree port type edge
+  {% if features.storm_control %}
+  storm-control broadcast level 20.00
+  storm-control multicast level 20.00
+  storm-control action shutdown
+  {% endif %}
+  {% elif intf.mode == 'trunk' %}
+  switchport mode trunk
+  {% if intf.trunk_vlans %}switchport trunk allowed vlan {{ intf.trunk_vlans }}{% endif %}
+  {% elif intf.mode == 'routed' %}
+  no switchport
+  no ip redirects
+  {% endif %}
+  {% if intf.vpc_id %}vpc {{ intf.vpc_id }}{% endif %}
+  {% if intf.shutdown %}shutdown{% else %}no shutdown{% endif %}
+{% endfor %}
+
+! Management & Routing
+interface mgmt0
+  ip address {{ device.mgmt_ip }}
+  vrf member management
+  no shutdown
+vrf context management
+  ip route 0.0.0.0/0 {{ device.mgmt_gw }}
+
+{% if features.ntp and device.ntp_servers %}
+! NTP
+{% for server in device.ntp_servers %}
+ntp server {{ server }}{% if loop.first %} prefer use-vrf management{% endif %}
+{% endfor %}
+{% endif %}
+
+{% if features.logging and device.logging_hosts %}
+! Syslog
+{% for host in device.logging_hosts %}
+logging server {{ host }} 6 use-vrf management
+{% endfor %}
+logging timestamp milliseconds
+logging level info
+{% endif %}
+
+{% if features.snmp and device.snmp_location %}
+snmp-server location {{ device.snmp_location }}
+{% endif %}
+
+{% if device.static_routes %}
+! Static Routes
+{% set ns = namespace(cur_vrf='') %}
+{% for route in device.static_routes %}
+{% if route.vrf and route.vrf != ns.cur_vrf %}
+{% set ns.cur_vrf = route.vrf %}
+vrf context {{ route.vrf }}
+{% endif %}
+  ip route {{ route.prefix }} {{ route.next_hop }}
+{% endfor %}
+{% endif %}
+
+! --- POST-PASTE CHECKLIST (engineer) ---
+! 1) show running-config | sec vpc  — domain, peer-link, keepalive
+! 2) show vpc brief                  — both peers In-Sync
+! 3) show interface status err-disabled
+! 4) copy run start (after lab validation)

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Phase 3 — vPC Port-Channel</title>
+    <link rel="stylesheet" href="_shared.css">
+</head>
+<body>
+    <div class="demo-banner">
+        <span>Phase 3 · Interface Planner + vPC Po ≥ 10 · mirrored on B</span>
+        <a href="index.html">← Gallery</a>
+    </div>
+    <div class="container">
+        <div class="layout-main">
+            <div class="panel">
+                <h3 style="margin-top:0">Add server ports (optional)</h3>
+                <div class="iface-plan-card">
+                    <strong>Ethernet1/5</strong>
+                    <div class="field-note">Preset: Access — single VLAN</div>
+                    <label class="toggle-row" style="border:none">
+                        <span>Build vPC port-channel (Po ≥ 10)</span>
+                        <input type="checkbox" checked disabled>
+                    </label>
+                    <div class="field-note">Mode: Access · VLAN 250 SERVERS · Desc: Lab_Server_05</div>
+                </div>
+                <button class="btn btn-secondary btn-sm" type="button">+ Add interface</button>
+            </div>
+            <div class="panel">
+                <div class="field-note" style="margin-bottom:0.5rem">Primary A · Secondary B — same Po10</div>
+                <div class="cli-preview">interface port-channel10
+  description Lab_Server_05
+  switchport mode access
+  switchport access vlan 250
+  spanning-tree port type edge
+  vpc 10
+  no shutdown
+
+interface Ethernet1/5
+  description Part_Of_vPC10_Access_Eth1/5
+  channel-group 10 mode active
+  no shutdown
+
+vlan 250
+  name SERVERS</div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

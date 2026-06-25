@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Phase 3 — Planner Empty</title>
+    <link rel="stylesheet" href="_shared.css">
+</head>
+<body>
+    <div class="demo-banner">
+        <span>Phase 3 · Infra-only + optional CTA</span>
+        <a href="phase-3-planner-vpc-po.html">With server port →</a> · <a href="index.html">Gallery</a>
+    </div>
+    <div class="container">
+        <div class="layout-main">
+            <div class="panel">
+                <details open>
+                    <summary style="cursor:pointer;font-weight:600;color:var(--accent-blue)">Need server ports? (optional)</summary>
+                    <p class="field-note" style="margin:0.75rem 0">Default output is vPC + uplinks only — no Access_Port_* sprawl.</p>
+                    <p class="field-note" style="padding:0.75rem;background:rgba(0,0,0,0.2);border-radius:0.5rem">
+                        No custom interfaces yet. Click <strong>+ Add interface</strong> when a server plugs into a port.
+                    </p>
+                    <button class="btn btn-secondary btn-sm" type="button">+ Add interface</button>
+                </details>
+            </div>
+            <div class="panel">
+                <div class="cli-preview">hostname DC-LEAF-01-A
+!
+vpc domain 100
+!
+interface port-channel1
+  vpc peer-link
+!
+interface Ethernet1/53
+  channel-group 1 mode active
+!
+interface Ethernet1/49
+  switchport mode trunk
+  no shutdown
+!
+<span style="color:var(--accent-green)">! No Ethernet1/21 access blocks
+! No Access_Port_* descriptions</span></div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

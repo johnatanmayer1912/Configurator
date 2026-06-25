@@ -1,0 +1,48 @@
+! -----------------------------------------------------------------------------
+! Configuration Authority System
+! Version: 1.5.1
+! Date:    2026-04-12 14:12:33
+! Mode:    Standalone
+! -----------------------------------------------------------------------------
+
+hostname API-TEST-PASS
+!
+banner motd # Authorized Access Only #
+!
+
+! Features
+feature telnet
+feature bash-shell
+feature interface-vlan
+feature hsrp
+feature lacp
+feature lldp
+feature vpc
+nv overlay evpn
+
+! Aliases
+alias command wr copy running-config startup-config
+alias command shint show interface status
+alias command shintd show interface description
+
+! Management
+interface mgmt0
+  ip address 10.0.0.1/24
+  vrf member management
+vrf context management
+  ip route 0.0.0.0/0 10.0.0.254
+
+! VLAN Configuration
+vlan 10
+  name Data
+
+
+! L3 SVI Configuration
+
+! Static Routing
+
+! Interfaces
+interface Eth1/1
+  switchport mode access
+  switchport access vlan 10
+  no shutdown

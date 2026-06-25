@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>UI Concept B — Card Grid</title>
+  <style>
+    :root { --bg: #111827; --card: #1f2937; --accent: #10b981; --text: #f3f4f6; --muted: #9ca3af; }
+    body { font-family: Inter, system-ui, sans-serif; background: var(--bg); color: var(--text); margin: 0; padding: 2rem; }
+    .wrap { max-width: 960px; margin: 0 auto; }
+    h1 { font-size: 1.5rem; }
+    .sub { color: var(--muted); margin-bottom: 1.5rem; }
+    .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1rem; }
+    .card { background: var(--card); border-radius: 12px; padding: 1.1rem; border: 1px solid #374151; }
+    .card h2 { font-size: 0.95rem; margin: 0 0 0.75rem; color: var(--accent); text-transform: uppercase; letter-spacing: 0.04em; }
+    .toggle { display: flex; justify-content: space-between; align-items: center; padding: 0.45rem 0; border-bottom: 1px solid #374151; font-size: 0.92rem; }
+    .toggle:last-child { border: none; }
+    .switch { width: 42px; height: 24px; background: #4b5563; border-radius: 12px; position: relative; }
+    .switch.on { background: var(--accent); }
+    .switch::after { content: ""; width: 18px; height: 18px; background: white; border-radius: 50%; position: absolute; top: 3px; left: 3px; }
+    .switch.on::after { left: 21px; }
+    input[type=text] { width: 100%; background: #111827; border: 1px solid #4b5563; color: var(--text); padding: 0.5rem; border-radius: 6px; font-family: Consolas, monospace; font-size: 0.85rem; margin-top: 0.35rem; }
+    .model-badge { background: #064e3b; color: #6ee7b7; padding: 0.35rem 0.6rem; border-radius: 6px; font-size: 0.8rem; display: inline-block; margin-bottom: 0.75rem; }
+    .bar { margin-top: 1.5rem; display: flex; gap: 0.75rem; }
+    button { background: var(--accent); color: #042f1a; border: none; padding: 0.75rem 1.25rem; border-radius: 8px; font-weight: 700; cursor: pointer; }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <h1>UI Concept B — Card grid with toggles</h1>
+    <p class="sub">Everything visible on one screen. Good for power users who want to scan all options at once.</p>
+
+    <div class="grid">
+      <div class="card">
+        <h2>Platform</h2>
+        <span class="model-badge">Nexus 9336C-FX2</span>
+        <div class="toggle"><span>Generate vPC pair</span><div class="switch on"></div></div>
+        <div class="toggle"><span>NX-OS 9.3.x</span><div class="switch on"></div></div>
+        <label style="font-size:0.8rem;color:var(--muted)">Hostname</label>
+        <input type="text" value="CORE1-VPC">
+      </div>
+
+      <div class="card">
+        <h2>Baseline (every config)</h2>
+        <div class="toggle"><span>CLI aliases</span><div class="switch on"></div></div>
+        <div class="toggle"><span>SNMP traps</span><div class="switch on"></div></div>
+        <div class="toggle"><span>Spanning-tree priority</span><div class="switch on"></div></div>
+        <div class="toggle"><span>ICAM monitor</span><div class="switch on"></div></div>
+      </div>
+
+      <div class="card">
+        <h2>vPC wiring</h2>
+        <label style="font-size:0.8rem;color:var(--muted)">Peer-link (auto)</label>
+        <input type="text" value="Ethernet1/35, Ethernet1/36" readonly>
+        <label style="font-size:0.8rem;color:var(--muted)">Keepalive (auto)</label>
+        <input type="text" value="Ethernet1/33, Ethernet1/34" readonly>
+        <div class="toggle" style="margin-top:0.5rem"><span>peer-switch</span><div class="switch on"></div></div>
+        <div class="toggle"><span>delay restore 150</span><div class="switch on"></div></div>
+      </div>
+
+      <div class="card">
+        <h2>Downlinks</h2>
+        <div class="toggle"><span>Po20 → 10G leaf pair</span><div class="switch on"></div></div>
+        <div class="toggle"><span>Po21 → 1G leaf pair</span><div class="switch on"></div></div>
+        <div class="toggle"><span>Po3 extra trunk</span><div class="switch"></div></div>
+        <p style="font-size:0.8rem;color:var(--muted);margin:0.5rem 0 0">MTU 9216 on all downlink trunks</p>
+      </div>
+    </div>
+
+    <div class="bar">
+      <button>Build & Save pair</button>
+    </div>
+  </div>
+</body>
+</html>

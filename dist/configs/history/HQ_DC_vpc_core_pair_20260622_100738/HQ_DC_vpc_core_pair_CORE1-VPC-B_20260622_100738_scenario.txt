@@ -1,0 +1,19 @@
+{
+  "id": "vpc_core_pair",
+  "name": "vPC Core Pair (40G)",
+  "nxos_version": "9.3",
+  "features": [
+    "interface_vlan",
+    "lldp",
+    "lacp",
+    "vpc",
+    "storm_control",
+    "vpc_peer_gateway",
+    "vpc_arp_sync",
+    "logging",
+    "snmp",
+    "vpc_peer_switch"
+  ],
+  "vpc_role": "secondary",
+  "site_name": "HQ_DC"
+}

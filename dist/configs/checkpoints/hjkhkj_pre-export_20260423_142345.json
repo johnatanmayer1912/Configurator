@@ -1,0 +1,41 @@
+{
+    "hostname": "hjkhkj",
+    "mgmt_ip": "10.1.1.1/24",
+    "mgmt_gw": "1.1.1.1",
+    "model": "Nexus 9348GC-FXP  [48x1G + 4x10/25G + 2x40/100G]",
+    "vlans": [
+        {
+            "id": 15,
+            "name": "44"
+        }
+    ],
+    "interfaces": [
+        {
+            "name": "Ethernet1/1",
+            "mode": "trunk",
+            "vlan": null,
+            "description": "jkljkljkl",
+            "shutdown": true,
+            "vpc_id": null,
+            "trunk_vlans": null
+        }
+    ],
+    "svis": [],
+    "static_routes": [],
+    "vpc": {
+        "domain_id": 120,
+        "role": "primary",
+        "keepalive_vrf": "management",
+        "local_keepalive_ip": "5.5.5.1",
+        "remote_keepalive_ip": "5.5.5.2",
+        "peer_link_id": 1,
+        "peer_link_interfaces": [
+            "Ethernet1/53",
+            "Ethernet1/54"
+        ],
+        "system_priority": 32667
+    },
+    "motd": "Authorized Access Only",
+    "admin_user": "admin",
+    "admin_password": "dddddrrrrr"
+}

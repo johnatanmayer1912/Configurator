@@ -1,0 +1,52 @@
+! -----------------------------------------------------------------------------
+! Configuration Authority System
+! Version: 2.8.0
+! NX-OS:  9.3
+! Date:    2026-06-21 17:46:57
+! Mode:    Standalone
+! Tier:    hardened
+! -----------------------------------------------------------------------------
+
+hostname OOB1
+!
+banner motd # OOB Management — Initial Provisioning #
+!
+! Local user omitted — set admin password in wizard to create username (lab only).
+
+! Features
+feature interface-vlan
+feature lldp
+
+! VLAN Configuration
+vlan 10
+  name USER_10
+
+
+! L3 SVI Configuration
+interface Vlan10
+description INTENT_SVI_1
+  no ip redirects
+  no ip proxy-arp
+  no shutdown
+  ip address 10.10.0.1/24
+
+! Interfaces & vPC Members
+
+! Management & Routing
+interface mgmt0
+  ip address 192.168.1.1/24
+  vrf member management
+  no shutdown
+vrf context management
+  ip route 0.0.0.0/0 192.168.1.100/24
+
+! NTP
+ntp server 10.255.255.254 prefer use-vrf management
+! Logging
+logging server 10.255.255.254 6 use-vrf management
+logging timestamp milliseconds
+logging level info
+
+
+
+

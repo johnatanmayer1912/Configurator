@@ -1,0 +1,47 @@
+# Per-interface preset options for the Interface Planner (Configure step).
+presets:
+  - id: bring_up
+    label: "Bring up (admin only)"
+    description: "no shutdown only — no switchport or VLAN."
+    needs_vlan: false
+    needs_trunk: false
+    allows_vpc_po: false
+
+  - id: access_vlan
+    label: "Access port — single VLAN"
+    description: "switchport mode access, edge STP, storm-control when enabled."
+    needs_vlan: true
+    needs_trunk: false
+    allows_vpc_po: true
+
+  - id: trunk_all
+    label: "Trunk — all VLANs"
+    description: "switchport mode trunk, allowed vlan 1-4094."
+    needs_vlan: false
+    needs_trunk: false
+    default_trunk_vlans: "1-4094"
+    allows_vpc_po: true
+
+  - id: trunk_custom
+    label: "Trunk — custom VLAN list"
+    description: "switchport mode trunk with your VLAN list or range."
+    needs_vlan: false
+    needs_trunk: true
+    allows_vpc_po: true
+
+  - id: routed
+    label: "Routed (L3)"
+    description: "no switchport — L3 port."
+    needs_vlan: false
+    needs_trunk: false
+    allows_vpc_po: false
+
+  - id: custom
+    label: "Custom CLI"
+    description: "Paste NX-OS lines (indent optional) — merged under the interface."
+    needs_vlan: false
+    needs_trunk: false
+    allows_vpc_po: false
+    needs_custom_cli: true
+
+vpc_po_start: 10

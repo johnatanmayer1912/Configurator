@@ -1,0 +1,5 @@
+{
+  "stp_edge_defaults": "enabled",
+  "vpc_enabled": "no",
+  "security_tier": "standard"
+}

@@ -1,0 +1,31 @@
+{
+    "hostname": "ghj",
+    "mgmt_ip": "5.5.5.5/24",
+    "mgmt_gw": "10.1.1.1",
+    "model": "N9K-C9336C-FX2",
+    "vlans": [
+        {
+            "id": 20,
+            "name": "test_vlan"
+        }
+    ],
+    "interfaces": [],
+    "svis": [],
+    "static_routes": [],
+    "vpc": {
+        "domain_id": 100,
+        "role": "primary",
+        "keepalive_vrf": "management",
+        "local_keepalive_ip": "10.255.255.1",
+        "remote_keepalive_ip": "10.255.255.2",
+        "peer_link_id": 100,
+        "peer_link_interfaces": [
+            "Ethernet1/49",
+            "Ethernet1/50"
+        ],
+        "system_priority": 32667
+    },
+    "motd": "Institutional Access Only",
+    "admin_user": "admin",
+    "admin_password": ""
+}

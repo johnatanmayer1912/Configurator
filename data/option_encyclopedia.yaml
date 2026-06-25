@@ -1,0 +1,279 @@
+# Operator encyclopedia — rich help for wizard choices (shown in info popups).
+# Sources: Cisco NX-OS Hardening Guide, Nexus 9000 Fundamentals 9.3(x), CISA Cisco best practices.
+
+options:
+  mode_core:
+    title: Core / Spine
+    summary: "40G aggregation layer — routes between leaf pairs, often in a vPC pair."
+    why: "Core switches carry east-west and north-south traffic at the highest speed tier in your fabric."
+    when: "Choose for datacenter spine or institutional 40G core (e.g. Nexus 9336C)."
+    cli: "Typically vPC pair with peer-link, keepalive, and leaf downlink port-channels."
+    caution: "Peer-link must use dedicated ports — never reuse uplink or keepalive interfaces."
+
+  site_name:
+    title: Site code
+    summary: "Short site identifier used in export filenames and MOTD."
+    why: "Keeps vault folders organized per datacenter or campus."
+    when: "Set before Build — e.g. HQ_DC, LAB, DC1."
+    cli: "Appears in banner MOTD and export prefix HQ_DC_vpc_core_pair_..."
+
+  mode_leaf:
+    title: Leaf / Top-of-Rack
+    summary: "10G server-facing switch — connects hosts and uplinks to core/spine."
+    why: "Leaf layer is where most VLANs and port-channels terminate."
+    when: "Server racks, staging, or dual-homed designs with optional vPC to core."
+    cli: "feature vpc, lacp, interface-vlan; uplinks as LACP trunks to spine."
+
+  mode_access:
+    title: Access Switch
+    summary: "1G closet — standalone or dual-switch vPC pair (Nexus 9348)."
+    why: "IDF designs with optional closet redundancy via vPC."
+    when: "Single closet switch, or paired IDF switches with peer-link on Eth1/53–54."
+    cli: "Standalone: storm control on access ports. vPC pair: vpc domain, keepalive, uplink trunks."
+
+  mode_oob:
+    title: Out-of-Band Management
+    summary: "Bootstrap config — hostname, mgmt0, minimal services."
+    why: "Console-first or mgmt-only provisioning before full fabric config."
+    when: "New hardware racking, ZTP prep, or recovery after wipe."
+    cli: "hostname, vrf management, mgmt0 IP — expand later in Configure."
+
+  speed_40g:
+    title: 40G Core Tier
+    summary: "Nexus 9336C-FX2 — QSFP28, institutional vPC core or standalone spine."
+    why: "Highest speed tier — peer-link Eth1/35–36 on the 9336C hardware profile."
+    when: "Datacenter core pair or single spine; leaf downlinks Po20/Po21 on Configure."
+    cli: "vpc domain, peer-link, keepalive VRF, optional port-channel20/21"
+
+  speed_10g:
+    title: 10G Leaf Tier
+    summary: "Nexus 93180YC-EX — server access, uplinks Eth1/49–50, optional vPC pair."
+    why: "Standard ToR — storm control on access, HSRP on SVIs when enabled."
+    when: "Rack-facing leaf or dual-homed ToR pair."
+    cli: "feature vpc, storm-control, trunk uplinks"
+
+  speed_1g:
+    title: 1G Access Tier
+    summary: "Nexus 9348GC-FXP — standalone or vPC pair; uplinks Eth1/49–50."
+    why: "IDF closets — storm control; vPC optional for dual-homed closets."
+    when: "Wiring closet uplinked to distribution; choose vPC Yes for paired switches."
+    cli: "vpc domain + peer-link/keepalive when paired; access VLANs via Interface Planner"
+
+  vpc_yes:
+    title: vPC Pair
+    summary: "Two switches act as one logical device for port-channels and STP."
+    why: "Active-active dual-homing without spanning-tree blocking on member links."
+    when: "Core pairs, leaf pairs, or any design requiring MLAG to downstream devices."
+    cli: "vpc domain, peer-link port-channel, keepalive in dedicated VRF."
+    caution: "Domain ID, peer-link, and keepalive IPs must match across peers. Use LACP active on member Po."
+
+  vpc_no:
+    title: Standalone
+    summary: "Single switch — no vPC domain, peer-link, or keepalive."
+    why: "Simpler operations when redundancy is not required or device is a single spine."
+    when: "Lab, staging, OOB, or access closets."
+    cli: "No vpc domain block generated."
+
+  baseline_cfs:
+    title: CFS Ethernet Distribute
+    summary: "Config-sync across modules on the same chassis."
+    why: "Required on modular platforms so line cards receive consistent config."
+    when: "Almost always on production Nexus — leave enabled unless Cisco TAC advises otherwise."
+    cli: "cfs eth distribute"
+
+  baseline_copp:
+    title: CoPP Strict Profile
+    summary: "Control Plane Policing — rate-limits traffic to the CPU."
+    why: "Protects the switch from control-plane floods (ARP storms, ICMP, BGP churn)."
+    when: "Enable on every production device per Cisco security guidance."
+    cli: "copp profile strict"
+    source: "Cisco NX-OS Security Configuration Guide"
+
+  baseline_no_pwd_check:
+    title: Disable Password Strength Check
+    summary: "Relaxes local password complexity rules."
+    why: "Lab convenience — faster staging with simple passwords."
+    when: "Lab/staging only. Disable this (use strength-check) in production with TACACS+."
+    caution: "CISA recommends strong passwords and Type 8 hashing in production configs."
+
+  baseline_snmp_traps:
+    title: SNMP Trap Baseline
+    summary: "Standard SNMP trap enables for monitoring platforms."
+    why: "NMS (Spectrum, Prime, etc.) needs traps for link, STP, config-change events."
+    when: "Production — fill SNMPv3 user and trap hosts in Production details."
+    cli: "snmp-server enable traps … (callhome, link, stp, syslog, etc.)"
+
+  baseline_spanning_tree:
+    title: Spanning-Tree Root Priority
+    summary: "Sets STP priority 8192 — typical for core/spine root role."
+    why: "Ensures this switch is preferred as STP root in its region."
+    when: "Core/spine; adjust priority if you have a dedicated STP root elsewhere."
+    cli: "spanning-tree vlan 1-3967 priority 8192"
+
+  baseline_cli_aliases:
+    title: CLI Aliases
+    summary: "Shortcuts: wr, shint, shintd."
+    why: "Saves operator time during cutovers and troubleshooting."
+    when: "Standard on institutional builds — safe to keep enabled."
+    cli: "cli alias name wr copy running startup"
+
+  baseline_icam:
+    title: ICAM Monitor Scale
+    summary: "Internal CAM scale monitoring for large FIB/ACL deployments."
+    why: "Helps catch resource exhaustion before it impacts forwarding."
+    when: "Large fabrics or when your monitoring team uses ICAM thresholds."
+    cli: "icam monitor scale"
+
+  baseline_vrf_keepalive:
+    title: Dedicated Keepalive VRF
+    summary: "Separate VRF for vPC keepalive — not management VRF."
+    why: "Cisco best practice: keepalive on isolated path; survives mgmt issues."
+    when: "All production vPC pairs (matches CORE1-VPC template)."
+    cli: "vrf context VPC_Keep_Alive"
+
+  baseline_errdisable_recovery:
+    title: Errdisable Recovery
+    summary: "Auto-recover ports from err-disabled after 300 seconds."
+    why: "Reduces manual intervention after link-flap or storm-control shutdown."
+    when: "Access and leaf; review causes before enabling on critical uplinks."
+    cli: "errdisable recovery interval 300"
+
+  baseline_icmp_redirects:
+    title: Disable ICMP Redirects
+    summary: "Stops the switch from sending ICMP redirects on L3 interfaces."
+    why: "Security hardening — prevents redirect-based manipulation on L3 SVIs."
+    when: "Production L3 devices (core, leaf with SVIs)."
+    cli: "no ip icmp redirect"
+
+  baseline_vpc_delay_restore_vlan:
+    title: vPC Delay Restore SVI
+    summary: "Waits 150s before restoring SVIs after peer-link recovery."
+    why: "Prevents routing black-holes during vPC reconvergence."
+    when: "Core vPC pairs with SVIs — institutional standard."
+    cli: "delay restore interface-vlan 150"
+
+  baseline_no_dns_lookup:
+    title: Disable DNS Lookup
+    summary: "Prevents the switch from resolving mistyped commands as hostnames."
+    why: "Security and speed — typos won't hang the CLI on DNS timeouts."
+    when: "Recommended on all production switches (Cisco hardening guide)."
+    cli: "no ip domain-lookup"
+
+  baseline_exec_timeout:
+    title: Session Exec Timeout
+    summary: "Logs out idle console and SSH sessions after 15 minutes."
+    why: "Prevents unattended sessions on shared NOC terminals."
+    when: "Production — adjust timeout to your org policy."
+    cli: "line console exec-timeout 15 0 / line vty exec-timeout 15 0"
+
+  baseline_logging_source:
+    title: Syslog Source Interface
+    summary: "Sends syslog from mgmt0 for consistent source IP in SIEM."
+    why: "Log collectors can ACL and correlate by known management address."
+    when: "Whenever remote syslog is enabled."
+    cli: "logging source-interface mgmt0"
+
+  downlink_10g_leaf:
+    title: 10G Leaf Downlink
+    summary: "Port-channel 20 dual-homed to 10G leaf pair."
+    why: "Institutional core template — carries leaf traffic at 10G with vPC ID 20."
+    when: "40G core vPC pair scenario (CORE1-VPC style)."
+    cli: "interface port-channel20 … vpc 20"
+
+  downlink_1g_leaf:
+    title: 1G Leaf Downlink
+    summary: "Port-channel 21 dual-homed to 1G leaf pair."
+    why: "Secondary downlink tier for 1G access leaves."
+    when: "Core pairs serving mixed 10G/1G leaf plant."
+    cli: "interface port-channel21 … vpc 21"
+
+  interface_vlan:
+    title: interface-vlan
+    summary: "Enables routed SVI (Vlan interfaces)."
+    why: "Required for any L3 gateway on the switch."
+    when: "Almost always on leaf/core with SVIs."
+    cli: "feature interface-vlan"
+
+  lldp:
+    title: LLDP
+    summary: "Link Layer Discovery Protocol — neighbor discovery."
+    why: "Essential for troubleshooting: show lldp neighbors."
+    when: "Keep enabled unless security policy forbids (rare)."
+    cli: "feature lldp"
+
+  lacp:
+    title: LACP
+    summary: "802.3ad link aggregation — required for port-channels."
+    why: "vPC member ports and peer-links should use LACP active mode."
+    when: "Always when using port-channels or vPC."
+    cli: "feature lacp"
+
+  vpc_peer_gateway:
+    title: vPC Peer-Gateway
+    summary: "Either peer can route for the other's SVI MAC address."
+    why: "Fixes active-active FHRP/vPC traffic hairpin scenarios."
+    when: "Production vPC with SVIs — default on in institutional template."
+    cli: "peer-gateway"
+
+  vpc_peer_switch:
+    title: vPC Peer-Switch
+    summary: "Presents the vPC pair as one STP domain to the network."
+    why: "Required on core/spine vPC per Cisco validated designs."
+    when: "Core vPC pairs (40G institutional baseline)."
+    cli: "peer-switch"
+
+  vpc_orphan_suspend:
+    title: Orphan-Port Suspend
+    summary: "Suspends vPC member ports if peer-link fails."
+    why: "Prevents split-brain forwarding — datacenter best practice."
+    when: "Production vPC leaf/core — keep enabled."
+    cli: "orphan-port suspend"
+
+  ntp:
+    title: NTP
+    summary: "Synchronizes system clock via management VRF."
+    why: "Accurate timestamps for syslog, SNMP traps, and change audit."
+    when: "Always in production — use at least one reliable NTP server."
+    cli: "ntp server <ip> prefer use-vrf management"
+
+  logging:
+    title: Remote Syslog
+    summary: "Sends logs to central collector over management VRF."
+    why: "Required for security monitoring and post-incident analysis."
+    when: "Production — Hardened preset enforces this."
+    cli: "logging server <ip> 6 use-vrf management"
+
+  aaa_tacacs:
+    title: AAA / TACACS+
+    summary: "Placeholder block for centralized authentication."
+    why: "Production should use TACACS+ — not local-only passwords."
+    when: "Fill server IPs and shared secret before cutover; remove lab local user."
+    cli: "! aaa group server tacacs+ … / tacacs-server host …"
+    caution: "Never commit real shared secrets from this tool — paste on switch in secure session."
+
+  nxapi:
+    title: NX-API
+    summary: "On-box REST API for automation."
+    why: "Useful for Ansible/CI — increases attack surface if exposed."
+    when: "Automation VLAN only; disabled in Hardened preset."
+    cli: "feature nxapi"
+
+  hostname:
+    title: Hostname
+    summary: "Device identity in prompts, SNMP, and MOTD banner."
+    why: "Must be unique and DNS-safe in your NMS."
+    when: "Use hyphens only — e.g. CORE1-VPC, DC-LEAF-01-A."
+    caution: "Underscores are rejected by NX-OS and this configurator."
+
+  generate_pair:
+    title: Export primary + secondary files
+    summary: "Saves two config files in one build folder — does not change live preview."
+    why: "Secondary gets -B hostname suffix and swapped keepalive IPs for paste on switch B."
+    when: "vPC pair cutover — review both files before paste."
+
+  bring_up_ports:
+    title: Unused Ethernet Ports
+    summary: "Adds every hardware port not used by vPC/downlinks with no shutdown only."
+    why: "Matches production CORE templates — admin-up ports ready for cabling without L3 switchport config."
+    when: "Default ON — turn off to omit unused interfaces from generated config."
+    cli: "interface Ethernet1/x\n  no shutdown"

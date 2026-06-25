@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>UI Concept C — Role-first Wizard</title>
+  <style>
+    :root { --bg: #fafafa; --panel: #fff; --accent: #2563eb; --text: #111; --muted: #6b7280; --border: #e5e7eb; }
+    body { font-family: "Segoe UI", system-ui, sans-serif; background: var(--bg); color: var(--text); margin: 0; padding: 2rem; }
+    .shell { max-width: 640px; margin: 0 auto; background: var(--panel); border-radius: 16px; box-shadow: 0 8px 30px rgba(0,0,0,.08); overflow: hidden; }
+    .steps { display: flex; background: #f3f4f6; padding: 0.75rem 1rem; gap: 0.5rem; font-size: 0.8rem; }
+    .step { padding: 0.35rem 0.65rem; border-radius: 999px; color: var(--muted); }
+    .step.active { background: var(--accent); color: white; font-weight: 600; }
+    .content { padding: 1.5rem; }
+    h1 { font-size: 1.25rem; margin: 0 0 0.35rem; }
+    p.lead { color: var(--muted); margin: 0 0 1.25rem; font-size: 0.95rem; }
+    .choice { display: block; width: 100%; text-align: left; padding: 1rem; margin-bottom: 0.6rem; border: 2px solid var(--border); border-radius: 10px; background: white; cursor: pointer; }
+    .choice.selected { border-color: var(--accent); background: #eff6ff; }
+    .choice strong { display: block; margin-bottom: 0.2rem; }
+    .choice span { font-size: 0.85rem; color: var(--muted); }
+    .chip-row { display: flex; flex-wrap: wrap; gap: 0.5rem; margin: 1rem 0; }
+    .chip { padding: 0.4rem 0.75rem; border-radius: 999px; border: 1px solid var(--border); font-size: 0.85rem; cursor: pointer; }
+    .chip.on { background: #dbeafe; border-color: var(--accent); color: var(--accent); font-weight: 600; }
+    .footer { padding: 1rem 1.5rem; border-top: 1px solid var(--border); display: flex; justify-content: space-between; }
+    button { background: var(--accent); color: white; border: none; padding: 0.65rem 1.1rem; border-radius: 8px; font-weight: 600; cursor: pointer; }
+    .link { background: none; color: var(--muted); }
+    .note { font-size: 0.82rem; color: var(--muted); background: #f9fafb; padding: 0.75rem; border-radius: 8px; margin-top: 1rem; }
+  </style>
+</head>
+<body>
+  <div class="shell">
+    <div class="steps">
+      <span class="step">Role</span>
+      <span class="step">Model</span>
+      <span class="step active">Options</span>
+      <span class="step">Review</span>
+    </div>
+    <div class="content">
+      <h1>What does this core switch connect to?</h1>
+      <p class="lead">We already know you're building a <strong>40G vPC core</strong>. Pick downlinks — baseline items are pre-checked.</p>
+
+      <button class="choice selected" type="button">
+        <strong>10G + 1G leaf pairs (default)</strong>
+        <span>Po20 → dual 10G leaves · Po21 → dual 1G leaves · matches CORE1_VPC</span>
+      </button>
+      <button class="choice" type="button">
+        <strong>10G leaves only</strong>
+        <span>Disable 1G downlink Po21</span>
+      </button>
+      <button class="choice" type="button">
+        <strong>Custom downlinks</strong>
+        <span>Manual port-channel list in advanced step</span>
+      </button>
+
+      <p style="font-size:0.85rem;font-weight:600;margin:1.25rem 0 0.5rem">Institutional baseline (pre-checked)</p>
+      <div class="chip-row">
+        <span class="chip on">Aliases</span>
+        <span class="chip on">SNMP</span>
+        <span class="chip on">CoPP</span>
+        <span class="chip on">KA VRF</span>
+        <span class="chip on">peer-switch</span>
+      </div>
+
+      <div class="note">Ports auto-set for <strong>9336C-FX2</strong>: peer-link 35-36, keepalive 33-34. Change model on previous step to recalculate.</div>
+    </div>
+    <div class="footer">
+      <button class="link" type="button">← Back</button>
+      <button type="button">Next →</button>
+    </div>
+  </div>
+  <p style="text-align:center;color:var(--muted);font-size:0.85rem;margin-top:1rem">Concept C — Role-first wizard · Fewest fields per step · Best for new operators</p>
+</body>
+</html>

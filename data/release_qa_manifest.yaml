@@ -1,0 +1,203 @@
+# Mandatory QA manifest — single source of truth for pre-release and on-change gates.
+# Update this file when adding scenarios, UI surfaces, or release blockers.
+# Validated by: tests/mandatory/test_release_manifest.py
+
+schema_version: 1
+product: NX-OS Configuration Authority
+last_reviewed: 2026-06-23
+version: 5.0.3
+
+# Council ownership (see docs/06-quality-assurance/MANDATORY_RELEASE_TESTS.md)
+stakeholders:
+  - id: product_architect
+    focus: Scenario catalog, pair_mode matrix, offline bundle shape
+  - id: software_engineer
+    focus: API contracts, shutdown, imports, pytest discipline
+  - id: field_engineer
+    focus: vPC 40G/10G/1G, interface planner Po mirror, reserved ports
+  - id: operator_ux
+    focus: Wizard preflight, payload shape, stop/upgrade paths
+  - id: ui_ux
+    focus: Text input stability, delegated events, no focus-loss re-render
+  - id: release_engineer
+    focus: VERSION, prebuild, frozen sim, doc links, manifest integrity
+
+# When each stage runs (wired in scripts/enterprise_qa_gate.py + run_mandatory_qa.py)
+triggers:
+  on_change: Fast gate after code edits (pre-commit, local dev)
+  pre_release: Full gate before VERSION bump
+  pre_exe: Full gate immediately before utils/build_exe.py
+
+stages:
+  - id: manifest_integrity
+    label: Release manifest integrity
+    triggers: [on_change, pre_release, pre_exe]
+    blocker: true
+    type: pytest
+    paths:
+      - tests/mandatory/test_release_manifest.py
+
+  - id: release_blockers
+    label: Instance control / shutdown (port 9000)
+    triggers: [pre_release, pre_exe]
+    blocker: true
+    type: pytest
+    paths:
+      - tests/test_instance_control.py
+
+  - id: mandatory_ui_ux
+    label: UI/UX — text input stability & planner delegation
+    triggers: [on_change, pre_release, pre_exe]
+    blocker: true
+    type: pytest
+    paths:
+      - tests/mandatory/test_ui_text_input_stability.py
+
+  - id: mandatory_architecture
+    label: Product architect — scenario catalog & matrix parity
+    triggers: [on_change, pre_release, pre_exe]
+    blocker: true
+    type: pytest
+    paths:
+      - tests/mandatory/test_scenario_catalog_architecture.py
+
+  - id: mandatory_field_vpc
+    label: Field engineer — vPC tiers & interface planner regression
+    triggers: [pre_release, pre_exe]
+    blocker: true
+    type: pytest
+    paths:
+      - tests/mandatory/test_vpc_planner_mandatory.py
+
+  - id: mandatory_api_contracts
+    label: Software engineer — operator API contracts
+    triggers: [pre_release, pre_exe]
+    blocker: true
+    type: pytest
+    paths:
+      - tests/mandatory/test_operator_api_contracts.py
+
+  - id: mandatory_offline_bundle
+    label: Release engineer — offline exe bundle manifest
+    triggers: [pre_release, pre_exe]
+    blocker: true
+    type: pytest
+    paths:
+      - tests/mandatory/test_offline_bundle_manifest.py
+
+  - id: mandatory_wizard_preflight
+    label: Operator UX — wizard payload & planner preflight hooks
+    triggers: [on_change, pre_release, pre_exe]
+    blocker: true
+    type: pytest
+    paths:
+      - tests/mandatory/test_wizard_preflight_contract.py
+
+  - id: mandatory_generate_api
+    label: Field engineer — /scenario/generate pair export
+    triggers: [pre_release, pre_exe]
+    blocker: true
+    type: pytest
+    paths:
+      - tests/mandatory/test_scenario_generate_api.py
+
+  - id: mandatory_field_gaps
+    label: Field council P1/P2 gap regressions
+    triggers: [on_change, pre_release, pre_exe]
+    blocker: true
+    type: pytest
+    paths:
+      - tests/mandatory/test_field_gap_contracts.py
+
+  - id: mandatory_api_expanded
+    label: Software engineer — full API surface (all 24 endpoints + auth)
+    triggers: [pre_release, pre_exe]
+    blocker: true
+    type: pytest
+    paths:
+      - tests/mandatory/test_api_expanded_contracts.py
+
+  - id: mandatory_feature_render
+    label: Field engineer — every CLI feature renders in correct config block
+    triggers: [pre_release, pre_exe]
+    blocker: true
+    type: pytest
+    paths:
+      - tests/mandatory/test_feature_render_coverage.py
+
+  - id: mandatory_baseline_coverage
+    label: Product architect — all 14 institutional baseline options render
+    triggers: [pre_release, pre_exe]
+    blocker: true
+    type: pytest
+    paths:
+      - tests/mandatory/test_baseline_options_coverage.py
+
+  - id: mandatory_hardware_coverage
+    label: Field engineer — all 6 hardware profiles produce valid configs
+    triggers: [pre_release, pre_exe]
+    blocker: true
+    type: pytest
+    paths:
+      - tests/mandatory/test_hardware_profiles_coverage.py
+
+  - id: mandatory_intent_engine
+    label: Software engineer — IntentEngine all roles, vPC, hardened tier
+    triggers: [pre_release, pre_exe]
+    blocker: true
+    type: pytest
+    paths:
+      - tests/mandatory/test_intent_engine_coverage.py
+
+  - id: mandatory_vpc_link_planner
+    label: v4.1 Fabric Link Planner — downlinks, uplinks, fiber pool, DOM
+    triggers: [on_change, pre_release, pre_exe]
+    blocker: true
+    type: pytest
+    paths:
+      - tests/mandatory/test_vpc_link_planner.py
+
+  - id: mandatory_v5_professional_ux
+    label: v5 professional UX — Po guard, cable plan, admin map, DOM contracts
+    triggers: [on_change, pre_release, pre_exe]
+    blocker: true
+    type: pytest
+    paths:
+      - tests/mandatory/test_v5_professional_ux.py
+
+  - id: mandatory_v4_world_class
+    label: v4 world-class — change package, port map, fabric, vault, S-HERO
+    triggers: [on_change, pre_release, pre_exe]
+    blocker: true
+    type: pytest
+    paths:
+      - tests/mandatory/test_v4_world_class_contracts.py
+
+  - id: full_pytest_suite
+    label: Full pytest suite
+    triggers: [pre_release, pre_exe]
+    blocker: true
+    type: pytest
+    paths:
+      - tests/
+
+  - id: prebuild
+    label: Prebuild validation
+    triggers: [pre_release, pre_exe]
+    blocker: true
+    type: script
+    command: [_prebuild.py]
+
+  - id: doc_links
+    label: Markdown link check
+    triggers: [pre_release, pre_exe]
+    blocker: true
+    type: script
+    command: [scripts/validate_docs_links.py]
+
+  - id: frozen_bundle_sim
+    label: Frozen PyInstaller bundle simulation
+    triggers: [pre_release, pre_exe]
+    blocker: true
+    type: script
+    command: [scripts/audit_frozen_plugin_sim.py]

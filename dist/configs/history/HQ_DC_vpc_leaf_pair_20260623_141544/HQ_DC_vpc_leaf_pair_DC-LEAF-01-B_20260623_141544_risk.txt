@@ -1,0 +1,33 @@
+==========================================
+       CONFIGURATION RISK ASSESSMENT      
+==========================================
+OVERALL RISK LEVEL: HIGH
+TOTAL FINDINGS: 13
+------------------------------------------
+[LOW] hostname DC-LEAF-01-B
+   ↳ Matches risk pattern: 'hostname'
+[LOW] snmp-server location HQ_DC
+   ↳ Matches risk pattern: 'snmp-server location'
+[HIGH] vpc domain 100
+   ↳ Matches risk pattern: 'vpc domain'
+[LOW] interface port-channel1
+   ↳ Matches risk pattern: 'interface port-channel'
+[MEDIUM] spanning-tree port type network
+   ↳ Matches risk pattern: 'spanning-tree'
+[LOW] interface port-channel2
+   ↳ Matches risk pattern: 'interface port-channel'
+[LOW] interface port-channel22
+   ↳ Matches risk pattern: 'interface port-channel'
+[LOW] interface port-channel22
+   ↳ Matches risk pattern: 'interface port-channel'
+[LOW] interface port-channel30
+   ↳ Matches risk pattern: 'interface port-channel'
+[MEDIUM] channel-group 1 mode active
+   ↳ Matches risk pattern: 'channel-group 1 mode'
+[MEDIUM] channel-group 1 mode active
+   ↳ Matches risk pattern: 'channel-group 1 mode'
+[LOW] ntp server 10.255.255.254 prefer use-vrf management
+   ↳ Matches risk pattern: 'ntp server'
+[LOW] logging server 10.255.255.254 6 use-vrf management
+   ↳ Matches risk pattern: 'logging server'
+==========================================

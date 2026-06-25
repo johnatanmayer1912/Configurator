@@ -1,0 +1,6 @@
+Site: HQ_DC
+Role: leaf
+Model: Generic
+Redundancy: vpc
+Access VLAN range: 20 to 23
+Interfaces generated: 52

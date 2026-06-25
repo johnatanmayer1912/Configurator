@@ -1,0 +1,507 @@
+! -----------------------------------------------------------------------------
+! {{ metadata.system | default('Configuration Authority System') }}
+! Version: {{ metadata.version | default('3.0.0') }}
+! NX-OS:  {{ metadata.nxos_version | default('9.3') }}
+! Date:    {{ metadata.date | default('Unknown') }}
+! Mode:    {{ metadata.mode | default('Institutional') }}
+! Tier:    {{ device.security_tier | default('standard') }}
+! -----------------------------------------------------------------------------
+
+! Hostname & Global Services
+hostname {{ device.hostname }}
+!
+{% if features.baseline_cfs %}
+cfs eth distribute
+{% endif %}
+{% if features.baseline_no_pwd_check %}
+no password strength-check
+{% endif %}
+banner motd ^
+*********************************************************
+                {{ device.network_name | default('NETWORK_NAME') }}-{{ device.hostname }}
+                MGMT_IP: {{ device.mgmt_ip | default('MGMT_IP') }}
+                {{ device.site_location | default('NET_DEVICE_LOCATION') }}
+*********************************************************
+^
+!
+{% if device.site_location in ['', 'NET_DEVICE_LOCATION', 'LOCATION'] %}
+! ATTENTION: Set rack/location in Production details before production cutover
+{% endif %}
+{% if 'MGMT_IP' in (device.mgmt_ip | string) or not device.mgmt_ip %}
+! ATTENTION: Replace MGMT_IP with real management address/CIDR before production
+{% endif %}
+{% if device.create_local_user and device.admin_user and device.admin_password %}
+! WARNING: Local user with plaintext password — lab/staging only. Use TACACS+ in production.
+username {{ device.admin_user }} password {{ device.admin_password }} role network-admin
+{% elif device.admin_user and not device.admin_password %}
+! Local user omitted — set admin password in wizard to create username (lab only).
+{% endif %}
+{% if device.spectrum_user %}
+! Lab-only secondary admin — disable in production
+username spectrum password 5 $placeholder$ role network-admin
+{% endif %}
+{% if features.baseline_no_dns_lookup %}
+no ip domain-lookup
+{% else %}
+ip domain-lookup
+{% endif %}
+{% if features.baseline_icmp_redirects %}
+no ip icmp redirect
+{% endif %}
+{% if features.baseline_copp %}
+copp profile strict
+{% endif %}
+
+! Features
+{% if features.interface_vlan %}
+feature interface-vlan
+{% endif %}
+{% if features.hsrp %}
+feature hsrp
+{% endif %}
+{% if features.lacp %}
+feature lacp
+{% endif %}
+{% if features.vpc and device.vpc is not none %}
+feature vpc
+{% endif %}
+{% if features.lldp %}
+feature lldp
+{% endif %}
+{% if features.bfd %}
+feature bfd
+{% endif %}
+{% if features.nxapi %}
+feature nxapi
+{% endif %}
+{% if features.bash %}
+feature bash-shell
+{% endif %}
+{% if features.vxlan %}
+feature nv overlay
+{% endif %}
+
+{% if features.snmp or features.baseline_snmp_traps %}
+! SNMP
+{% if device.snmp_contact %}
+snmp-server contact {{ device.snmp_contact }}
+{% endif %}
+{% if device.snmp_location %}
+snmp-server location {{ device.snmp_location }}
+{% elif device.site_location %}
+snmp-server location {{ device.site_location }}
+{% endif %}
+snmp-server source-interface traps mgmt0
+{% if device.snmp_trap_host_1 and device.snmp_v3_user %}
+snmp-server host {{ device.snmp_trap_host_1 }} traps version 3 auth {{ device.snmp_v3_user }}
+{% if device.snmp_trap_host_2 %}
+snmp-server host {{ device.snmp_trap_host_2 }} traps version 3 auth {{ device.snmp_v3_user }}
+{% endif %}
+{% else %}
+! SNMP trap hosts — add in Production details when NMS is ready
+{% endif %}
+{% if features.baseline_snmp_traps %}
+rmon event 1 log trap public description FATAL(1) owner PMON@FATAL
+rmon event 2 log trap public description CRITICAL(2) owner PMON@CRITICAL
+rmon event 3 log trap public description ERROR(3) owner PMON@ERROR
+rmon event 4 log trap public description WARNING(4) owner PMON@WARNING
+rmon event 5 log trap public description INFORMATION(5) owner PMON@INFO
+snmp-server enable traps callhome event-notify
+snmp-server enable traps callhome smtp-send-fail
+snmp-server enable traps cfs state-change-notif
+snmp-server enable traps cfs merge-failure
+snmp-server enable traps aaa server-state-change
+snmp-server enable traps feature-control FeatureOpStatusChange
+snmp-server enable traps sysmgr cseFailSwCoreNotifyExtended
+snmp-server enable traps config ccmCLIRunningConfigChanged
+snmp-server enable traps snmp authentication
+snmp-server enable traps link cisco-xcvr-mon-status-chg
+snmp-server enable traps vtp notifs
+snmp-server enable traps vtp vlancreate
+snmp-server enable traps vtp vlandelete
+snmp-server enable traps bridge newroot
+snmp-server enable traps bridge topologychange
+snmp-server enable traps stpx inconsistency
+snmp-server enable traps stpx root-inconsistency
+snmp-server enable traps stpx loop-inconsistency
+snmp-server enable traps system Clock-change-notification
+snmp-server enable traps feature-control ciscoFeatOpStatusChange
+snmp-server enable traps mmode cseNormalModeChangeNotify
+snmp-server enable traps mmode cseMaintModeChangeNotify
+snmp-server enable traps syslog message-generated
+{% endif %}
+
+{% endif %}
+! VLAN Configuration
+{% for vlan in device.vlans %}
+vlan {{ vlan.id }}
+  name {{ vlan.name }}
+
+{% endfor %}
+{% if features.baseline_spanning_tree %}
+! Spanning Tree
+spanning-tree vlan 1-3967 priority {{ device.spanning_tree_priority }}
+
+{% endif %}
+{% if features.baseline_vrf_keepalive and device.vpc is not none %}
+! VRF — vPC Keepalive
+vrf context {{ device.vpc.keepalive_vrf }}
+
+{% endif %}
+{% if device.vpc is not none %}
+! vPC Domain
+vpc domain {{ device.vpc.domain_id }}
+  {% if features.vpc_peer_switch %}
+  peer-switch
+  {% endif %}
+  role priority {{ device.vpc.role_priority }}
+  system-priority {{ device.vpc.system_priority }}
+  peer-keepalive destination {{ device.vpc.remote_keepalive_ip }} source {{ device.vpc.local_keepalive_ip }} vrf {{ device.vpc.keepalive_vrf }}
+  {% if features.vpc_delay_restore and device.vpc.delay_restore %}
+  delay restore {{ device.vpc.delay_restore }}
+  {% endif %}
+  {% if features.baseline_vpc_delay_restore_vlan %}
+  delay restore interface-vlan 150
+  {% endif %}
+  {% if features.vpc_peer_gateway %}
+  peer-gateway
+  {% endif %}
+  {% if features.vpc_auto_recovery %}
+  auto-recovery
+  {% endif %}
+  {% if features.vpc_arp_sync %}
+  ip arp synchronize
+  {% endif %}
+  {% if features.vpc_orphan_suspend %}
+  orphan-port suspend
+  {% endif %}
+
+{% endif %}
+{% if device.svis %}
+! L3 SVI Configuration
+{% for svi in device.svis %}
+interface Vlan{{ svi.vlan_id }}
+  {% if svi.description %}
+  description {{ svi.description }}
+  {% endif %}
+  {% if svi.vrf %}
+  vrf member {{ svi.vrf }}
+  {% endif %}
+  no ip redirects
+  no ip proxy-arp
+  no shutdown
+  ip address {{ svi.ip_address }}
+  {% if svi.hsrp and features.hsrp %}
+  hsrp version {{ features.hsrp_version }}
+  hsrp {{ svi.hsrp.group }}
+    priority {{ svi.hsrp.priority }}
+    {% if svi.hsrp.preempt %}
+    preempt
+    {% endif %}
+    ip {{ svi.hsrp.vip }}
+  {% endif %}
+
+{% endfor %}
+{% endif %}
+{% if device.port_channels %}
+! Port-Channels
+{% for po in device.port_channels %}
+interface port-channel{{ po.number }}
+  description {{ po.description }}
+  {% if po.mode == 'access' %}
+  switchport
+  switchport mode access
+  {% if po.access_vlan %}
+  switchport access vlan {{ po.access_vlan }}
+  {% endif %}
+  spanning-tree port type edge
+  {% if features.storm_control %}
+  storm-control broadcast level 20.00
+  storm-control multicast level 20.00
+  storm-control action shutdown
+  {% endif %}
+  {% if po.vpc_id %}
+  vpc {{ po.vpc_id }}
+  {% endif %}
+  {% elif po.mode == 'trunk' %}
+  switchport
+  switchport mode trunk
+  {% if po.trunk_vlans %}
+  switchport trunk allowed vlan {{ po.trunk_vlans }}
+  {% endif %}
+  {% if po.mtu %}
+  mtu {{ po.mtu }}
+  {% endif %}
+  {% if po.spanning_tree_network %}
+  spanning-tree port type network
+  {% endif %}
+  {% if po.vpc_peer_link %}
+  vpc peer-link
+  {% elif po.vpc_id %}
+  vpc {{ po.vpc_id }}
+  {% endif %}
+  {% elif po.mode == 'l3' %}
+  {% if po.vrf %}
+  vrf member {{ po.vrf }}
+  {% endif %}
+  {% if po.ip_address %}
+  ip address {{ po.ip_address }}
+  {% endif %}
+  {% endif %}
+  no shutdown
+
+{% endfor %}
+! Ethernet Interfaces
+{% for intf in device.interfaces %}
+interface {{ intf.name }}
+  {% if intf.description %}
+  description {{ intf.description }}
+  {% endif %}
+  {% if intf.channel_group %}
+  {% if intf.mode == 'trunk' %}
+  switchport
+  switchport mode trunk
+  {% endif %}
+  {% if intf.mtu %}
+  mtu {{ intf.mtu }}
+  {% endif %}
+  channel-group {{ intf.channel_group }} mode {{ intf.channel_mode }}
+  {% elif intf.mode == 'access' %}
+  switchport mode access
+  {% if intf.vlan %}
+  switchport access vlan {{ intf.vlan }}
+  {% endif %}
+  spanning-tree port type edge
+  {% if features.storm_control %}
+  storm-control broadcast level 20.00
+  storm-control multicast level 20.00
+  storm-control action shutdown
+  {% endif %}
+  {% elif intf.mode == 'trunk' %}
+  switchport mode trunk
+  {% if intf.trunk_vlans %}
+  switchport trunk allowed vlan {{ intf.trunk_vlans }}
+  {% endif %}
+  {% elif intf.mode == 'routed' %}
+  no switchport
+  {% elif intf.mode == 'bare' %}
+  {% endif %}
+  {% if intf.custom_lines %}
+  {% for line in intf.custom_lines %}
+  {{ line }}
+  {% endfor %}
+  {% endif %}
+  {% if intf.vpc_id %}
+  vpc {{ intf.vpc_id }}
+  {% endif %}
+  {% if intf.shutdown %}
+  shutdown
+  {% else %}
+  no shutdown
+  {% endif %}
+
+{% endfor %}
+
+{% else %}
+{% if device.vpc is not none %}
+! vPC Peer-Link Members
+{% for intf in device.vpc.peer_link_interfaces %}
+interface {{ intf }}
+  description vPC Peer-Link Member
+  channel-group {{ device.vpc.peer_link_id }} mode active
+  no shutdown
+
+{% endfor %}
+! vPC Peer-Link Infrastructure
+interface port-channel{{ device.vpc.peer_link_id }}
+  description vPC PEER-LINK
+  switchport mode trunk
+  vpc peer-link
+  spanning-tree port type network
+  no shutdown
+
+{% endif %}
+! Ethernet Interfaces
+{% for intf in device.interfaces %}
+interface {{ intf.name }}
+  {% if intf.description %}
+  description {{ intf.description }}
+  {% endif %}
+  {% if intf.mode == 'access' %}
+  switchport mode access
+  {% if intf.vlan %}
+  switchport access vlan {{ intf.vlan }}
+  {% endif %}
+  spanning-tree port type edge
+  {% if features.storm_control %}
+  storm-control broadcast level 20.00
+  storm-control multicast level 20.00
+  storm-control action shutdown
+  {% endif %}
+  {% elif intf.mode == 'trunk' %}
+  switchport mode trunk
+  {% if intf.trunk_vlans %}
+  switchport trunk allowed vlan {{ intf.trunk_vlans }}
+  {% endif %}
+  {% elif intf.mode == 'routed' %}
+  no switchport
+  no ip redirects
+  {% elif intf.mode == 'bare' %}
+  {% endif %}
+  {% if intf.custom_lines %}
+  {% for line in intf.custom_lines %}
+  {{ line }}
+  {% endfor %}
+  {% endif %}
+  {% if intf.vpc_id %}
+  vpc {{ intf.vpc_id }}
+  {% endif %}
+  {% if intf.shutdown %}
+  shutdown
+  {% else %}
+  no shutdown
+  {% endif %}
+
+{% endfor %}
+{% endif %}
+! Management & Routing
+interface mgmt0
+  ip address {{ device.mgmt_ip }}
+  vrf member management
+  no shutdown
+vrf context management
+  ip route 0.0.0.0/0 {{ device.mgmt_gw }}
+
+{% if features.ntp and device.ntp_servers %}
+! NTP
+{% for server in device.ntp_servers %}
+ntp server {{ server }}{% if loop.first %} prefer use-vrf management{% endif %}
+
+{% endfor %}
+{% endif %}
+{% if features.logging and device.logging_hosts %}
+! Logging
+{% if features.baseline_logging_source %}
+logging source-interface mgmt0
+{% endif %}
+{% for host in device.logging_hosts %}
+logging server {{ host }} 6 use-vrf management
+{% endfor %}
+logging timestamp milliseconds
+logging level info
+
+{% endif %}
+{% if features.vxlan %}
+! VXLAN/EVPN Fabric Foundation (lab — extend BGP underlay per site design)
+feature bgp
+feature pim
+!
+interface loopback0
+  description VTEP_Router_ID
+  ip address {{ device.fabric_loopback }}
+  ip router bgp {{ device.fabric_bgp_asn }} router-id {{ device.fabric_loopback.split('/')[0] }}
+!
+router bgp {{ device.fabric_bgp_asn }}
+  router-id {{ device.fabric_loopback.split('/')[0] }}
+  address-family l2vpn evpn
+    retain route-target all
+  template peer EVPN
+    remote-as {{ device.fabric_bgp_asn }}
+    update-source loopback0
+    address-family l2vpn evpn
+      send-community
+      send-community extended
+!
+interface nve1
+  no shutdown
+  source-interface loopback0
+  member vni {{ device.fabric_vni }}
+    ingress-replication protocol bgp
+! Validate EVPN underlay (spine BGP sessions, route-targets) in lab before production.
+
+{% endif %}
+{% if metadata.cli_reference %}
+! CLI Reference Snippets (optional — review before apply)
+{% for block in metadata.cli_reference %}
+! {{ block.label }}: {{ block.description }}
+{{ block.snippet }}
+
+{% endfor %}
+{% endif %}
+{% if device.static_routes %}
+! Static Routes
+{% set ns = namespace(cur_vrf='') %}
+{% for route in device.static_routes %}
+{% if route.vrf and route.vrf != ns.cur_vrf %}
+{% set ns.cur_vrf = route.vrf %}
+vrf context {{ route.vrf }}
+{% endif %}
+  ip route {{ route.prefix }} {{ route.next_hop }}
+{% endfor %}
+
+{% endif %}
+{% if features.baseline_icam %}
+! ICAM
+icam monitor scale
+
+{% endif %}
+{% if features.baseline_errdisable_recovery %}
+! Errdisable Recovery
+errdisable recovery interval 300
+errdisable recovery cause link-flap
+
+{% endif %}
+{% if features.baseline_cli_aliases %}
+! CLI Aliases
+cli alias name wr copy running startup
+cli alias name shint show interface status
+cli alias name shintd show interface description
+
+{% endif %}
+{% if features.baseline_exec_timeout %}
+! Line Console / VTY
+line console
+  exec-timeout 15 0
+line vty
+  exec-timeout 15 0
+
+{% endif %}
+{% if features.aaa_tacacs %}
+! AAA / TACACS+
+{% if device.tacacs_server_1 %}
+aaa group server tacacs+ ACS-TACACS
+  server {{ device.tacacs_server_1 }}
+tacacs-server host {{ device.tacacs_server_1 }} key 7 {{ device.tacacs_key or 'PLACEHOLDER_ENCRYPTED_KEY' }}
+aaa authentication login default group ACS-TACACS local
+aaa authorization commands default group ACS-TACACS local
+aaa accounting default group ACS-TACACS local
+{% else %}
+! Fill TACACS server in Production details (remove lab local user before cutover)
+! aaa group server tacacs+ ACS-TACACS
+!   server TACACS_SERVER_1
+! tacacs-server host TACACS_SERVER_1 key 7 PLACEHOLDER_ENCRYPTED_KEY
+! aaa authentication login default group ACS-TACACS local
+! aaa authorization commands default group ACS-TACACS local
+! aaa accounting default group ACS-TACACS local
+{% endif %}
+
+{% endif %}
+! Boot System
+{% if device.boot_image %}
+boot nxos bootflash:/{{ device.boot_image }}
+{% elif metadata.boot_image %}
+boot nxos bootflash:/{{ metadata.boot_image }}
+{% else %}
+! ATTENTION: Confirm boot image matches show boot on target switch
+boot nxos bootflash:/nxos.9.3.5.bin
+{% endif %}
+
+line console
+line vty
+
+! POST-PASTE CHECKLIST (lab engineer — comments only)
+! 1) show running-config | sec vpc
+! 2) show vpc brief
+! 3) show interface status err-disabled
+! 4) show ip route vrf management
+! 5) copy run start (only after lab sign-off)

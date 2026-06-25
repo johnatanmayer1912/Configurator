@@ -1,0 +1,51 @@
+--- baseline
++++ proposed
+@@ -0,0 +1,48 @@
++! -----------------------------------------------------------------------------
++! Configuration Authority System
++! Version: 2.0.1
++! Date:    2026-04-23 12:47:01
++! Mode:    Standalone
++! -----------------------------------------------------------------------------
++
++hostname PIPELINE-TEST
++!
++banner motd # Authorized Access Only #
++!
++
++! Features
++feature interface-vlan
++feature lacp
++feature lldp
++
++! VLAN Configuration
++vlan 10
++  name Data
++
++
++! L3 SVI Configuration
++
++! Interfaces & vPC Members
++interface Ethernet1/1
++  switchport mode access
++  spanning-tree port type edge
++  storm-control broadcast level 20.00
++  storm-control multicast level 20.00
++  storm-control action shutdown
++  shutdown
++interface Ethernet1/2
++  switchport mode access
++  spanning-tree port type edge
++  storm-control broadcast level 20.00
++  storm-control multicast level 20.00
++  storm-control action shutdown
++  no shutdown
++
++! Management & Routing
++interface mgmt0
++  ip address 10.1.1.1
++  vrf member management
++  no shutdown
++vrf context management
++  ip route 0.0.0.0/0 10.1.1.254
++

@@ -1,0 +1,257 @@
+# NX-OS Configuration Authority — Hardware Profiles
+
+# Each profile defines port groups, vPC peer-link ports, and vPC keepalive ports.
+
+
+
+profiles:
+
+
+
+  - name: "Nexus 93180YC-EX  [48x10/25G + 6x40/100G]"
+
+    display_name: "Nexus 93180YC-EX"
+
+    device_class: leaf_10g
+
+    primary_speed_label: "10G"
+
+    speed_badges: ["10G", "40G"]
+
+    total_ports: 54
+
+    port_groups:
+
+      - speed: "10/25G"
+
+        start: 1
+
+        end: 48
+
+        type: "SFP+"
+
+      - speed: "40/100G"
+
+        start: 49
+
+        end: 54
+
+        type: "QSFP28"
+
+    vpc_peer_link:
+
+      - "Ethernet1/53"
+
+      - "Ethernet1/54"
+
+    vpc_keepalive:
+
+      - "Ethernet1/47"
+
+      - "Ethernet1/48"
+
+
+
+  - name: "Nexus 9336C-FX2  [36x40/100G]"
+
+    display_name: "Nexus 9336C-FX2"
+
+    device_class: core
+
+    primary_speed_label: "40G"
+
+    speed_badges: ["40G"]
+
+    total_ports: 36
+
+    port_groups:
+
+      - speed: "40/100G"
+
+        start: 1
+
+        end: 36
+
+        type: "QSFP28"
+
+    vpc_peer_link:
+
+      - "Ethernet1/35"
+
+      - "Ethernet1/36"
+
+    vpc_keepalive:
+
+      - "Ethernet1/33"
+
+      - "Ethernet1/34"
+
+
+
+  - name: "Nexus 9348GC-FXP  [48x1G + 4x10/25G + 2x40/100G]"
+
+    display_name: "Nexus 9348GC-FXP"
+
+    device_class: leaf_1g
+
+    primary_speed_label: "1G"
+
+    speed_badges: ["1G", "10G", "40G"]
+
+    total_ports: 54
+
+    port_groups:
+
+      - speed: "1G"
+
+        start: 1
+
+        end: 48
+
+        type: "Base-T"
+
+      - speed: "10/25G"
+
+        start: 49
+
+        end: 52
+
+        type: "SFP28"
+
+      - speed: "40/100G"
+
+        start: 53
+
+        end: 54
+
+        type: "QSFP28"
+
+    vpc_peer_link:
+
+      - "Ethernet1/53"
+
+      - "Ethernet1/54"
+
+    vpc_keepalive:
+
+      - "Ethernet1/47"
+
+      - "Ethernet1/48"
+
+
+
+  - name: "Generic  [custom port counts]"
+
+    display_name: "Generic"
+
+    device_class: hybrid
+
+    primary_speed_label: "Multi"
+
+    speed_badges: []
+
+    total_ports: 0
+
+    port_groups: []
+
+    vpc_peer_link: []
+
+    vpc_keepalive: []
+
+
+
+  - name: "Nexus 9364C-GX  [48x25G + 6x100G]"
+
+    display_name: "Nexus 9364C-GX"
+
+    device_class: leaf_10g
+
+    primary_speed_label: "25G"
+
+    speed_badges: ["25G", "100G"]
+
+    total_ports: 54
+
+    port_groups:
+
+      - speed: "25G"
+
+        start: 1
+
+        end: 48
+
+        type: "SFP28"
+
+      - speed: "100G"
+
+        start: 49
+
+        end: 54
+
+        type: "QSFP28"
+
+    vpc_peer_link:
+
+      - "Ethernet1/53"
+
+      - "Ethernet1/54"
+
+    vpc_keepalive:
+
+      - "Ethernet1/47"
+
+      - "Ethernet1/48"
+
+
+
+  - name: "Nexus 92348GC-X  [48x1G + 4x10G + 2x40G]"
+
+    display_name: "Nexus 92348GC-X"
+
+    device_class: leaf_1g
+
+    primary_speed_label: "1G"
+
+    speed_badges: ["1G", "10G", "40G"]
+
+    total_ports: 54
+
+    port_groups:
+
+      - speed: "1G"
+
+        start: 1
+
+        end: 48
+
+        type: "Base-T"
+
+      - speed: "10G"
+
+        start: 49
+
+        end: 52
+
+        type: "SFP+"
+
+      - speed: "40G"
+
+        start: 53
+
+        end: 54
+
+        type: "QSFP+"
+
+    vpc_peer_link:
+
+      - "Ethernet1/53"
+
+      - "Ethernet1/54"
+
+    vpc_keepalive:
+
+      - "Ethernet1/47"
+
+      - "Ethernet1/48"
+
+
