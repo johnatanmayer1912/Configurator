@@ -1,0 +1,23 @@
+==========================================
+       CONFIGURATION RISK ASSESSMENT      
+==========================================
+OVERALL RISK LEVEL: HIGH
+TOTAL FINDINGS: 8
+------------------------------------------
+[LOW] hostname c2-6
+   ↳ Matches risk pattern: 'hostname'
+[LOW] snmp-server location HQ
+   ↳ Matches risk pattern: 'snmp-server location'
+[MEDIUM] spanning-tree vlan 1-3967 priority 8192
+   ↳ Matches risk pattern: 'spanning-tree'
+[HIGH] vpc domain 10
+   ↳ Matches risk pattern: 'vpc domain'
+[LOW] interface port-channel1
+   ↳ Matches risk pattern: 'interface port-channel'
+[MEDIUM] spanning-tree port type network
+   ↳ Matches risk pattern: 'spanning-tree'
+[LOW] ntp server 10.255.255.254 prefer use-vrf management
+   ↳ Matches risk pattern: 'ntp server'
+[LOW] logging server 10.255.255.254 6 use-vrf management
+   ↳ Matches risk pattern: 'logging server'
+==========================================

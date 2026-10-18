@@ -33,10 +33,9 @@ def build_file_prefix(
     hostname: str,
     timestamp: str,
 ) -> str:
-    site = slugify(site_name)
-    scenario = slugify(scenario_slug)
     host = safe_hostname(hostname)
-    return f"{site}_{scenario}_{host}_{timestamp}"
+    # Shorter format: hostname_timestamp for better file identification
+    return f"{host}_{timestamp}"
 
 
 def pair_batch_folder(site_name: str, scenario_slug: str, timestamp: str) -> str:

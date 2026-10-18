@@ -40,15 +40,15 @@ profiles:
 
     vpc_peer_link:
 
-      - "Ethernet1/53"
+      - "Ethernet1/51"
 
-      - "Ethernet1/54"
+      - "Ethernet1/52"
 
     vpc_keepalive:
 
-      - "Ethernet1/47"
+      - "Ethernet1/49"
 
-      - "Ethernet1/48"
+      - "Ethernet1/50"
 
 
 
@@ -128,9 +128,9 @@ profiles:
 
     vpc_peer_link:
 
-      - "Ethernet1/53"
+      - "Ethernet1/51"
 
-      - "Ethernet1/54"
+      - "Ethernet1/52"
 
     vpc_keepalive:
 

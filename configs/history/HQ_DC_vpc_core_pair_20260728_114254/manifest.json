@@ -1,0 +1,50 @@
+{
+  "schema_version": 1,
+  "product": "NX-OS Configuration Authority",
+  "app_version": "6.38.0",
+  "generated_at": "2026-07-28 11:42:54",
+  "site_name": "HQ_DC",
+  "scenario_id": "vpc_core_pair",
+  "scenario_name": "vPC Core Pair (40G)",
+  "nxos_version": "9.3",
+  "pair_mode": true,
+  "batch_folder": "HQ_DC_vpc_core_pair_20260728_114254",
+  "output_dir": "C:\\Users\\bbb12\\OneDrive\\Desktop\\Antigravity Projects Folder\\Configurator - Copy\\configs/history\\HQ_DC_vpc_core_pair_20260728_114254",
+  "lab_ready": true,
+  "summary_lines": [
+    "Site: HQ_DC",
+    "Role: spine",
+    "Model: Nexus 9336C-FX2",
+    "Redundancy: vpc",
+    "Access VLAN range: 10 to 10",
+    "Interfaces generated: 0"
+  ],
+  "policy_flags": {},
+  "hosts": [
+    {
+      "hostname": "CORE1-VPC",
+      "vpc_role": "primary",
+      "keepalive_local": "1.1.1.1",
+      "keepalive_remote": "1.1.1.2"
+    },
+    {
+      "hostname": "k",
+      "vpc_role": "secondary",
+      "keepalive_local": "1.1.1.2",
+      "keepalive_remote": "1.1.1.1"
+    }
+  ],
+  "files": [
+    "CORE1-VPC_20260728_114254_device.json",
+    "CORE1-VPC_20260728_114254_config.txt",
+    "CORE1-VPC_20260728_114254_diff.txt",
+    "CORE1-VPC_20260728_114254_risk.txt",
+    "CORE1-VPC_20260728_114254_scenario.txt",
+    "CORE1-VPC_20260728_114254_blueprint_summary.txt",
+    "k_20260728_114254_device.json",
+    "k_20260728_114254_config.txt",
+    "k_20260728_114254_diff.txt",
+    "k_20260728_114254_risk.txt",
+    "k_20260728_114254_scenario.txt"
+  ]
+}

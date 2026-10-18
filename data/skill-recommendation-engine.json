@@ -1,0 +1,1299 @@
+{
+  "generatedAt": "2026-08-16T09:45:45.182Z",
+  "totalSkills": 1241,
+  "totalCategories": 17,
+  "sampleRecommendations": {
+    "Design a REST API for user authentication": [
+      {
+        "id": "product-design",
+        "name": "product-design",
+        "description": "Design de produto nivel Apple — sistemas visuais, UX flows, acessibilidade, linguagem visual proprietaria, design tokens, prototipagem e handoff. Cobre Figma, design systems, tipografia, cor, espacamento, motion design e principios de design cognitivo.",
+        "category": "architecture",
+        "qualityScore": 60,
+        "version": "1.0.0",
+        "status": "stable",
+        "recommendationScore": 93,
+        "tags": [
+          "design",
+          "ux",
+          "design-systems",
+          "accessibility",
+          "figma"
+        ],
+        "triggers": [
+          "design",
+          "ux",
+          "design-systems",
+          "accessibility",
+          "figma",
+          "product",
+          "de",
+          "produto",
+          "nivel",
+          "apple",
+          "sistemas",
+          "visuais"
+        ]
+      },
+      {
+        "id": "auth-implementation-patterns",
+        "name": "auth-implementation-patterns",
+        "description": "Master authentication and authorization patterns including JWT, OAuth2, session management, and RBAC to build secure, scalable access control systems. Use when implementing auth systems, securing APIs, or debugging security issues.",
+        "category": "security",
+        "qualityScore": 63,
+        "version": "1.0.0",
+        "status": "stable",
+        "recommendationScore": 86.5,
+        "tags": [
+          "auth"
+        ],
+        "triggers": [
+          "auth",
+          "authentication",
+          "authorization",
+          "including",
+          "jwt",
+          "oauth2",
+          "session",
+          "rbac",
+          "secure",
+          "scalable",
+          "access",
+          "control"
+        ]
+      },
+      {
+        "id": "broken-authentication",
+        "name": "broken-authentication",
+        "description": "Identify and exploit authentication and session management vulnerabilities in web applications. Broken authentication consistently ranks in the OWASP Top 10 and can lead to account takeover, identity theft, and unauthorized access to sensitive systems.",
+        "category": "security",
+        "qualityScore": 55,
+        "version": "1.0.0",
+        "status": "stable",
+        "recommendationScore": 84.5,
+        "tags": [
+          "broken",
+          "authentication"
+        ],
+        "triggers": [
+          "broken",
+          "authentication",
+          "identify",
+          "exploit",
+          "session",
+          "vulnerabilities",
+          "web",
+          "applications",
+          "consistently",
+          "ranks",
+          "owasp",
+          "top"
+        ]
+      },
+      {
+        "id": "system-architect",
+        "name": "system-architect",
+        "description": "System Architect - provides system-level architectural guidance, design patterns, and technical leadership for complex systems.",
+        "category": "architecture",
+        "qualityScore": 58,
+        "version": "1.0.0",
+        "status": "stable",
+        "recommendationScore": 84,
+        "tags": [
+          "system",
+          "architect",
+          "design",
+          "leadership"
+        ],
+        "triggers": [
+          "system",
+          "architect",
+          "design",
+          "leadership",
+          "provides",
+          "level",
+          "architectural",
+          "guidance",
+          "technical",
+          "complex"
+        ]
+      },
+      {
+        "id": "microsoft-azure-webjobs-extensions-authentication-events-dotnet",
+        "name": "microsoft-azure-webjobs-extensions-authentication-events-dotnet",
+        "description": "Microsoft Entra Authentication Events SDK for .NET. Azure Functions triggers for custom authentication extensions.",
+        "category": "security",
+        "qualityScore": 48,
+        "version": "1.0.0",
+        "status": "stable",
+        "recommendationScore": 81,
+        "tags": [
+          "microsoft",
+          "azure",
+          "webjobs",
+          "extensions",
+          "authentication",
+          "events",
+          "dotnet"
+        ],
+        "triggers": [
+          "microsoft",
+          "azure",
+          "webjobs",
+          "extensions",
+          "authentication",
+          "events",
+          "dotnet",
+          "entra",
+          "sdk",
+          "net",
+          "functions",
+          "triggers"
+        ]
+      }
+    ],
+    "Review this Python code for performance issues": [
+      {
+        "id": "python-performance-optimization",
+        "name": "python-performance-optimization",
+        "description": "Profile and optimize Python code using cProfile, memory profilers, and performance best practices. Use when debugging slow Python code, optimizing bottlenecks, or improving application performance.",
+        "category": "performance",
+        "qualityScore": 63,
+        "version": "1.0.0",
+        "status": "stable",
+        "recommendationScore": 105.5,
+        "tags": [
+          "python",
+          "performance",
+          "optimization"
+        ],
+        "triggers": [
+          "python",
+          "performance",
+          "optimization",
+          "profile",
+          "optimize",
+          "code",
+          "cprofile",
+          "memory",
+          "profilers",
+          "debugging",
+          "slow",
+          "optimizing"
+        ]
+      },
+      {
+        "id": "code-reviewer",
+        "name": "code-reviewer",
+        "description": "Elite code review expert specializing in modern AI-powered code analysis, security vulnerabilities, performance optimization, and production reliability. Masters static analysis tools, security scanning, and configuration review with 2024/2025 best practices. Use PROACTIVELY for code quality assurance.",
+        "category": "code-review",
+        "qualityScore": 76,
+        "version": "1.0.0",
+        "status": "stable",
+        "recommendationScore": 97,
+        "tags": [
+          "code"
+        ],
+        "triggers": [
+          "code",
+          "reviewer",
+          "elite",
+          "review",
+          "specializing",
+          "ai",
+          "powered",
+          "analysis",
+          "security",
+          "vulnerabilities",
+          "performance",
+          "optimization"
+        ]
+      },
+      {
+        "id": "python-pro",
+        "name": "python-pro",
+        "description": "Master Python 3.12+ with modern features, async programming, performance optimization, and production-ready practices. Expert in the latest Python ecosystem including uv, ruff, pydantic, and FastAPI. Use PROACTIVELY for Python development, optimization, or advanced Python patterns.",
+        "category": "architecture",
+        "qualityScore": 76,
+        "version": "1.0.0",
+        "status": "stable",
+        "recommendationScore": 93,
+        "tags": [
+          "python"
+        ],
+        "triggers": [
+          "python",
+          "pro",
+          "12",
+          "features",
+          "async",
+          "programming",
+          "performance",
+          "optimization",
+          "latest",
+          "ecosystem",
+          "including",
+          "uv"
+        ]
+      },
+      {
+        "id": "python-packaging",
+        "name": "python-packaging",
+        "description": "Create distributable Python packages with proper project structure, setup.py/pyproject.toml, and publishing to PyPI. Use when packaging Python libraries, creating CLI tools, or distributing Python code.",
+        "category": "programming-languages",
+        "qualityScore": 63,
+        "version": "1.0.0",
+        "status": "stable",
+        "recommendationScore": 90.5,
+        "tags": [
+          "python",
+          "packaging"
+        ],
+        "triggers": [
+          "python",
+          "packaging",
+          "distributable",
+          "packages",
+          "proper",
+          "structure",
+          "setup",
+          "py",
+          "pyproject",
+          "toml",
+          "publishing",
+          "pypi"
+        ]
+      },
+      {
+        "id": "application-performance-performance-optimization",
+        "name": "application-performance-performance-optimization",
+        "description": "Optimize end-to-end application performance with profiling, observability, and backend/frontend tuning. Use when coordinating performance optimization across the stack.",
+        "category": "performance",
+        "qualityScore": 66,
+        "version": "1.0.0",
+        "status": "stable",
+        "recommendationScore": 90,
+        "tags": [
+          "application",
+          "performance",
+          "optimization"
+        ],
+        "triggers": [
+          "application",
+          "performance",
+          "optimization",
+          "optimize",
+          "profiling",
+          "observability",
+          "backend",
+          "frontend",
+          "tuning",
+          "coordinating",
+          "stack"
+        ]
+      }
+    ],
+    "Create a database schema for e-commerce": [
+      {
+        "id": "database-architect",
+        "name": "database-architect",
+        "description": "Expert database architect specializing in data layer design from scratch, technology selection, schema modeling, and scalable database architectures. Masters SQL/NoSQL/TimeSeries database selection, normalization strategies, migration planning, and performance-first design. Handles both greenfield architectures and re-architecture of existing systems. Use PROACTIVELY for database architecture, technology selection, or data modeling decisions.",
+        "category": "database",
+        "qualityScore": 76,
+        "version": "1.0.0",
+        "status": "stable",
+        "recommendationScore": 109,
+        "tags": [
+          "database"
+        ],
+        "triggers": [
+          "database",
+          "architect",
+          "specializing",
+          "data",
+          "layer",
+          "scratch",
+          "technology",
+          "selection",
+          "schema",
+          "modeling",
+          "scalable",
+          "architectures"
+        ]
+      },
+      {
+        "id": "database-optimizer",
+        "name": "database-optimizer",
+        "description": "Expert database optimizer specializing in modern performance tuning, query optimization, and scalable architectures. Masters advanced indexing, N+1 resolution, multi-tier caching, partitioning strategies, and cloud database optimization. Handles complex query analysis, migration strategies, and performance monitoring. Use PROACTIVELY for database optimization, performance issues, or scalability challenges.",
+        "category": "database",
+        "qualityScore": 76,
+        "version": "1.0.0",
+        "status": "stable",
+        "recommendationScore": 105,
+        "tags": [
+          "database",
+          "optimizer"
+        ],
+        "triggers": [
+          "database",
+          "optimizer",
+          "specializing",
+          "performance",
+          "tuning",
+          "query",
+          "optimization",
+          "scalable",
+          "architectures",
+          "masters",
+          "indexing",
+          "resolution"
+        ]
+      },
+      {
+        "id": "database-migration",
+        "name": "database-migration",
+        "description": "Execute database migrations across ORMs and platforms with zero-downtime strategies, data transformation, and rollback procedures. Use when migrating databases, changing schemas, performing data transformations, or implementing zero-downtime deployment strategies.",
+        "category": "database",
+        "qualityScore": 66,
+        "version": "1.0.0",
+        "status": "stable",
+        "recommendationScore": 96,
+        "tags": [
+          "database",
+          "migration"
+        ],
+        "triggers": [
+          "database",
+          "migration",
+          "execute",
+          "migrations",
+          "orms",
+          "platforms",
+          "zero",
+          "downtime",
+          "data",
+          "transformation",
+          "rollback",
+          "procedures"
+        ]
+      },
+      {
+        "id": "database-migrations-sql-migrations",
+        "name": "database-migrations-sql-migrations",
+        "description": "SQL database migrations with zero-downtime strategies for PostgreSQL, MySQL, SQL Server",
+        "category": "database",
+        "qualityScore": 66,
+        "version": "1.0.0",
+        "status": "stable",
+        "recommendationScore": 96,
+        "tags": [
+          "database",
+          "sql",
+          "migrations",
+          "postgresql",
+          "mysql",
+          "flyway",
+          "liquibase",
+          "alembic",
+          "zero-downtime"
+        ],
+        "triggers": [
+          "database",
+          "sql",
+          "migrations",
+          "postgresql",
+          "mysql",
+          "flyway",
+          "liquibase",
+          "alembic",
+          "zero-downtime",
+          "zero",
+          "downtime",
+          "server"
+        ]
+      },
+      {
+        "id": "database",
+        "name": "database",
+        "description": "Database development and operations workflow covering SQL, NoSQL, database design, migrations, optimization, and data engineering.",
+        "category": "database",
+        "qualityScore": 53,
+        "version": "1.0.0",
+        "status": "stable",
+        "recommendationScore": 91.5,
+        "tags": [
+          "database"
+        ],
+        "triggers": [
+          "database",
+          "development",
+          "operations",
+          "covering",
+          "sql",
+          "nosql",
+          "migrations",
+          "optimization",
+          "data",
+          "engineering"
+        ]
+      }
+    ],
+    "Set up CI/CD pipeline for deployment": [
+      {
+        "id": "deployment-pipeline-design",
+        "name": "deployment-pipeline-design",
+        "description": "Design multi-stage CI/CD pipelines with approval gates, security checks, and deployment orchestration. Use when architecting deployment workflows, setting up continuous delivery, or implementing GitOps practices.",
+        "category": "devops",
+        "qualityScore": 66,
+        "version": "1.0.0",
+        "status": "stable",
+        "recommendationScore": 115,
+        "tags": [
+          "deployment",
+          "pipeline"
+        ],
+        "triggers": [
+          "deployment",
+          "pipeline",
+          "multi",
+          "stage",
+          "ci",
+          "cd",
+          "pipelines",
+          "approval",
+          "gates",
+          "security",
+          "checks",
+          "orchestration"
+        ]
+      },
+      {
+        "id": "deployment-engineer",
+        "name": "deployment-engineer",
+        "description": "Expert deployment engineer specializing in modern CI/CD pipelines, GitOps workflows, and advanced deployment automation. Masters GitHub Actions, ArgoCD/Flux, progressive delivery, container security, and platform engineering. Handles zero-downtime deployments, security scanning, and developer experience optimization. Use PROACTIVELY for CI/CD design, GitOps implementation, or deployment automation.",
+        "category": "devops",
+        "qualityScore": 76,
+        "version": "1.0.0",
+        "status": "stable",
+        "recommendationScore": 109,
+        "tags": [
+          "deployment"
+        ],
+        "triggers": [
+          "deployment",
+          "engineer",
+          "specializing",
+          "ci",
+          "cd",
+          "pipelines",
+          "gitops",
+          "automation",
+          "masters",
+          "github",
+          "actions",
+          "argocd"
+        ]
+      },
+      {
+        "id": "data-engineering-data-pipeline",
+        "name": "data-engineering-data-pipeline",
+        "description": "You are a data pipeline architecture expert specializing in scalable, reliable, and cost-effective data pipelines for batch and streaming data processing.",
+        "category": "devops",
+        "qualityScore": 71,
+        "version": "1.0.0",
+        "status": "stable",
+        "recommendationScore": 98.5,
+        "tags": [
+          "data",
+          "engineering",
+          "pipeline"
+        ],
+        "triggers": [
+          "data",
+          "engineering",
+          "pipeline",
+          "architecture",
+          "specializing",
+          "scalable",
+          "reliable",
+          "cost",
+          "effective",
+          "pipelines",
+          "batch",
+          "streaming"
+        ]
+      },
+      {
+        "id": "machine-learning-ops-ml-pipeline",
+        "name": "machine-learning-ops-ml-pipeline",
+        "description": "Design and implement a complete ML pipeline for: $ARGUMENTS",
+        "category": "devops",
+        "qualityScore": 66,
+        "version": "1.0.0",
+        "status": "stable",
+        "recommendationScore": 96,
+        "tags": [
+          "machine",
+          "learning",
+          "ops",
+          "ml",
+          "pipeline"
+        ],
+        "triggers": [
+          "machine",
+          "learning",
+          "ops",
+          "ml",
+          "pipeline",
+          "complete",
+          "arguments"
+        ]
+      },
+      {
+        "id": "expo-deployment",
+        "name": "expo-deployment",
+        "description": "Deploy Expo apps to production",
+        "category": "devops",
+        "qualityScore": 58,
+        "version": "1.0.0",
+        "status": "stable",
+        "recommendationScore": 92,
+        "tags": [
+          "expo",
+          "deployment"
+        ],
+        "triggers": [
+          "expo",
+          "deployment",
+          "deploy",
+          "apps"
+        ]
+      }
+    ],
+    "Analyze network topology for Cisco switches": [
+      {
+        "id": "native-data-fetching",
+        "name": "native-data-fetching",
+        "description": "Use when implementing or debugging ANY network request, API call, or data fetching. Covers fetch API, React Query, SWR, error handling, caching, offline support, and Expo Router data loaders (useLoaderData).",
+        "category": "network",
+        "qualityScore": 53,
+        "version": "1.0.0",
+        "status": "stable",
+        "recommendationScore": 90.5,
+        "tags": [
+          "native",
+          "data",
+          "fetching"
+        ],
+        "triggers": [
+          "native",
+          "data",
+          "fetching",
+          "implementing",
+          "debugging",
+          "any",
+          "network",
+          "request",
+          "api",
+          "call",
+          "covers",
+          "fetch"
+        ]
+      },
+      {
+        "id": "network-engineer",
+        "name": "network-engineer",
+        "description": "Expert network engineer specializing in modern cloud networking, security architectures, and performance optimization. Masters multi-cloud connectivity, service mesh, zero-trust networking, SSL/TLS, global load balancing, and advanced troubleshooting. Handles CDN optimization, network automation, and compliance. Use PROACTIVELY for network design, connectivity issues, or performance optimization.",
+        "category": "architecture",
+        "qualityScore": 76,
+        "version": "1.0.0",
+        "status": "stable",
+        "recommendationScore": 89,
+        "tags": [
+          "network"
+        ],
+        "triggers": [
+          "network",
+          "engineer",
+          "specializing",
+          "cloud",
+          "networking",
+          "security",
+          "architectures",
+          "performance",
+          "optimization",
+          "masters",
+          "multi",
+          "connectivity"
+        ]
+      },
+      {
+        "id": "create-branch",
+        "name": "create-branch",
+        "description": "Create a git branch following Sentry naming conventions. Use when asked to \"create a branch\", \"new branch\", \"start a branch\", \"make a branch\", \"switch to a new branch\", or when starting new work on the default branch.",
+        "category": "network",
+        "qualityScore": 53,
+        "version": "1.0.0",
+        "status": "stable",
+        "recommendationScore": 88.5,
+        "tags": [
+          "create",
+          "branch"
+        ],
+        "triggers": [
+          "create",
+          "branch",
+          "git",
+          "following",
+          "sentry",
+          "naming",
+          "conventions",
+          "asked",
+          "new",
+          "start",
+          "switch",
+          "starting"
+        ]
+      },
+      {
+        "id": "context-engineering",
+        "name": "context-engineering",
+        "description": "Optimizes agent context setup. Use when starting a new session, when agent output quality degrades, when switching between tasks, or when you need to configure rules files and context for a project.",
+        "category": "network",
+        "qualityScore": 48,
+        "version": "1.0.0",
+        "status": "stable",
+        "recommendationScore": 86,
+        "tags": [
+          "engineering"
+        ],
+        "triggers": [
+          "engineering",
+          "context",
+          "optimizes",
+          "agent",
+          "setup",
+          "starting",
+          "new",
+          "session",
+          "output",
+          "quality",
+          "degrades",
+          "switching"
+        ]
+      },
+      {
+        "id": "network-101",
+        "name": "network-101",
+        "description": "Configure and test common network services (HTTP, HTTPS, SNMP, SMB) for penetration testing lab environments. Enable hands-on practice with service enumeration, log analysis, and security testing against properly configured target systems.",
+        "category": "security",
+        "qualityScore": 55,
+        "version": "1.0.0",
+        "status": "stable",
+        "recommendationScore": 74.5,
+        "tags": [
+          "network",
+          "101"
+        ],
+        "triggers": [
+          "network",
+          "101",
+          "configure",
+          "test",
+          "common",
+          "http",
+          "https",
+          "snmp",
+          "smb",
+          "penetration",
+          "testing",
+          "lab"
+        ]
+      }
+    ],
+    "Implement React component with TypeScript": [
+      {
+        "id": "typescript-advanced-types",
+        "name": "typescript-advanced-types",
+        "description": "Master TypeScript's advanced type system including generics, conditional types, mapped types, template literals, and utility types for building type-safe applications. Use when implementing complex type logic, creating reusable type utilities, or ensuring compile-time type safety in TypeScript projects.",
+        "category": "frontend",
+        "qualityScore": 63,
+        "version": "1.0.0",
+        "status": "stable",
+        "recommendationScore": 111.5,
+        "tags": [
+          "typescript",
+          "advanced",
+          "types"
+        ],
+        "triggers": [
+          "typescript",
+          "advanced",
+          "types",
+          "type",
+          "including",
+          "generics",
+          "conditional",
+          "mapped",
+          "literals",
+          "utility",
+          "building",
+          "safe"
+        ]
+      },
+      {
+        "id": "fp-react",
+        "name": "fp-react",
+        "description": "Practical patterns for using fp-ts with React - hooks, state, forms, data fetching. Works with React 18/19, Next.js 14/15.",
+        "category": "frontend",
+        "qualityScore": 60,
+        "version": "2.0.0",
+        "status": "stable",
+        "recommendationScore": 110,
+        "tags": [
+          "fp-ts",
+          "react",
+          "typescript",
+          "hooks",
+          "state-management",
+          "forms",
+          "data-fetching",
+          "remote-data",
+          "react-19",
+          "next-js"
+        ],
+        "triggers": [
+          "fp-ts",
+          "react",
+          "typescript",
+          "hooks",
+          "state-management",
+          "forms",
+          "data-fetching",
+          "remote-data",
+          "react-19",
+          "next-js",
+          "fp",
+          "practical"
+        ]
+      },
+      {
+        "id": "react-component-performance",
+        "name": "react-component-performance",
+        "description": "Diagnose slow React components and suggest targeted performance fixes.",
+        "category": "frontend",
+        "qualityScore": 53,
+        "version": "1.0.0",
+        "status": "stable",
+        "recommendationScore": 104.5,
+        "tags": [
+          "react",
+          "component",
+          "performance"
+        ],
+        "triggers": [
+          "react",
+          "component",
+          "performance",
+          "diagnose",
+          "slow",
+          "components",
+          "suggest",
+          "targeted",
+          "fixes"
+        ]
+      },
+      {
+        "id": "c4-component",
+        "name": "c4-component",
+        "description": "Expert C4 Component-level documentation specialist. Synthesizes C4 Code-level documentation into Component-level architecture, defining component boundaries, interfaces, and relationships. Creates component diagrams and documentation. Use when synthesizing code-level documentation into logical components.",
+        "category": "frontend",
+        "qualityScore": 71,
+        "version": "1.0.0",
+        "status": "stable",
+        "recommendationScore": 100.5,
+        "tags": [
+          "c4",
+          "component"
+        ],
+        "triggers": [
+          "c4",
+          "component",
+          "level",
+          "documentation",
+          "synthesizes",
+          "code",
+          "architecture",
+          "defining",
+          "boundaries",
+          "interfaces",
+          "relationships",
+          "creates"
+        ]
+      },
+      {
+        "id": "react-modernization",
+        "name": "react-modernization",
+        "description": "Upgrade React applications to latest versions, migrate from class components to hooks, and adopt concurrent features. Use when modernizing React codebases, migrating to React Hooks, or upgrading to latest React versions.",
+        "category": "frontend",
+        "qualityScore": 63,
+        "version": "1.0.0",
+        "status": "stable",
+        "recommendationScore": 100.5,
+        "tags": [
+          "react",
+          "modernization"
+        ],
+        "triggers": [
+          "react",
+          "modernization",
+          "upgrade",
+          "applications",
+          "latest",
+          "versions",
+          "migrate",
+          "class",
+          "components",
+          "hooks",
+          "adopt",
+          "concurrent"
+        ]
+      }
+    ],
+    "Add security to authentication system": [
+      {
+        "id": "security-auditor",
+        "name": "security-auditor",
+        "description": "Expert security auditor specializing in DevSecOps, comprehensive cybersecurity, and compliance frameworks. Masters vulnerability assessment, threat modeling, secure authentication (OAuth2/OIDC), OWASP standards, cloud security, and security automation. Handles DevSecOps integration, compliance (GDPR/HIPAA/SOC2), and incident response. Use PROACTIVELY for security audits, DevSecOps, or compliance implementation.",
+        "category": "security",
+        "qualityScore": 76,
+        "version": "1.0.0",
+        "status": "stable",
+        "recommendationScore": 107,
+        "tags": [
+          "security",
+          "auditor"
+        ],
+        "triggers": [
+          "security",
+          "auditor",
+          "specializing",
+          "devsecops",
+          "cybersecurity",
+          "compliance",
+          "frameworks",
+          "masters",
+          "vulnerability",
+          "assessment",
+          "threat",
+          "modeling"
+        ]
+      },
+      {
+        "id": "backend-security-coder",
+        "name": "backend-security-coder",
+        "description": "Expert in secure backend coding practices specializing in input validation, authentication, and API security. Use PROACTIVELY for backend security implementations or security code reviews.",
+        "category": "security",
+        "qualityScore": 76,
+        "version": "1.0.0",
+        "status": "stable",
+        "recommendationScore": 103,
+        "tags": [
+          "backend",
+          "security",
+          "coder"
+        ],
+        "triggers": [
+          "backend",
+          "security",
+          "coder",
+          "secure",
+          "coding",
+          "specializing",
+          "input",
+          "validation",
+          "authentication",
+          "api",
+          "proactively",
+          "implementations"
+        ]
+      },
+      {
+        "id": "security-scanning-security-sast",
+        "name": "security-scanning-security-sast",
+        "description": "Static Application Security Testing (SAST) for code vulnerability analysis across multiple languages and frameworks",
+        "category": "security",
+        "qualityScore": 71,
+        "version": "1.0.0",
+        "status": "stable",
+        "recommendationScore": 98.5,
+        "tags": [
+          "security",
+          "scanning",
+          "sast"
+        ],
+        "triggers": [
+          "security",
+          "scanning",
+          "sast",
+          "static",
+          "application",
+          "testing",
+          "code",
+          "vulnerability",
+          "analysis",
+          "multiple",
+          "languages",
+          "frameworks"
+        ]
+      },
+      {
+        "id": "auth-implementation-patterns",
+        "name": "auth-implementation-patterns",
+        "description": "Master authentication and authorization patterns including JWT, OAuth2, session management, and RBAC to build secure, scalable access control systems. Use when implementing auth systems, securing APIs, or debugging security issues.",
+        "category": "security",
+        "qualityScore": 63,
+        "version": "1.0.0",
+        "status": "stable",
+        "recommendationScore": 96.5,
+        "tags": [
+          "auth"
+        ],
+        "triggers": [
+          "auth",
+          "authentication",
+          "authorization",
+          "including",
+          "jwt",
+          "oauth2",
+          "session",
+          "rbac",
+          "secure",
+          "scalable",
+          "access",
+          "control"
+        ]
+      },
+      {
+        "id": "openclaw-github-repo-commander",
+        "name": "openclaw-github-repo-commander",
+        "description": "7-stage super workflow for GitHub repo audit, cleanup, PR review, and competitor analysis",
+        "category": "security",
+        "qualityScore": 70,
+        "version": "1.0.0",
+        "status": "stable",
+        "recommendationScore": 96,
+        "tags": [
+          "github",
+          "git",
+          "repository",
+          "audit",
+          "cleanup",
+          "workflow",
+          "devtools",
+          "automation",
+          "code-review",
+          "security"
+        ],
+        "triggers": [
+          "github",
+          "git",
+          "repository",
+          "audit",
+          "cleanup",
+          "workflow",
+          "devtools",
+          "automation",
+          "code-review",
+          "security",
+          "openclaw",
+          "repo"
+        ]
+      }
+    ],
+    "Optimize database queries for performance": [
+      {
+        "id": "database-optimizer",
+        "name": "database-optimizer",
+        "description": "Expert database optimizer specializing in modern performance tuning, query optimization, and scalable architectures. Masters advanced indexing, N+1 resolution, multi-tier caching, partitioning strategies, and cloud database optimization. Handles complex query analysis, migration strategies, and performance monitoring. Use PROACTIVELY for database optimization, performance issues, or scalability challenges.",
+        "category": "database",
+        "qualityScore": 76,
+        "version": "1.0.0",
+        "status": "stable",
+        "recommendationScore": 103,
+        "tags": [
+          "database",
+          "optimizer"
+        ],
+        "triggers": [
+          "database",
+          "optimizer",
+          "specializing",
+          "performance",
+          "tuning",
+          "query",
+          "optimization",
+          "scalable",
+          "architectures",
+          "masters",
+          "indexing",
+          "resolution"
+        ]
+      },
+      {
+        "id": "database-architect",
+        "name": "database-architect",
+        "description": "Expert database architect specializing in data layer design from scratch, technology selection, schema modeling, and scalable database architectures. Masters SQL/NoSQL/TimeSeries database selection, normalization strategies, migration planning, and performance-first design. Handles both greenfield architectures and re-architecture of existing systems. Use PROACTIVELY for database architecture, technology selection, or data modeling decisions.",
+        "category": "database",
+        "qualityScore": 76,
+        "version": "1.0.0",
+        "status": "stable",
+        "recommendationScore": 99,
+        "tags": [
+          "database"
+        ],
+        "triggers": [
+          "database",
+          "architect",
+          "specializing",
+          "data",
+          "layer",
+          "scratch",
+          "technology",
+          "selection",
+          "schema",
+          "modeling",
+          "scalable",
+          "architectures"
+        ]
+      },
+      {
+        "id": "database-cloud-optimization-cost-optimize",
+        "name": "database-cloud-optimization-cost-optimize",
+        "description": "You are a cloud cost optimization expert specializing in reducing infrastructure expenses while maintaining performance and reliability. Analyze cloud spending, identify savings opportunities, and implement cost-effective architectures across AWS, Azure, and GCP.",
+        "category": "devops",
+        "qualityScore": 66,
+        "version": "1.0.0",
+        "status": "stable",
+        "recommendationScore": 95,
+        "tags": [
+          "database",
+          "cloud",
+          "optimization",
+          "cost",
+          "optimize"
+        ],
+        "triggers": [
+          "database",
+          "cloud",
+          "optimization",
+          "cost",
+          "optimize",
+          "specializing",
+          "reducing",
+          "infrastructure",
+          "expenses",
+          "while",
+          "maintaining",
+          "performance"
+        ]
+      },
+      {
+        "id": "application-performance-performance-optimization",
+        "name": "application-performance-performance-optimization",
+        "description": "Optimize end-to-end application performance with profiling, observability, and backend/frontend tuning. Use when coordinating performance optimization across the stack.",
+        "category": "performance",
+        "qualityScore": 66,
+        "version": "1.0.0",
+        "status": "stable",
+        "recommendationScore": 92,
+        "tags": [
+          "application",
+          "performance",
+          "optimization"
+        ],
+        "triggers": [
+          "application",
+          "performance",
+          "optimization",
+          "optimize",
+          "profiling",
+          "observability",
+          "backend",
+          "frontend",
+          "tuning",
+          "coordinating",
+          "stack"
+        ]
+      },
+      {
+        "id": "database-admin",
+        "name": "database-admin",
+        "description": "Expert database administrator specializing in modern cloud databases, automation, and reliability engineering. Masters AWS/Azure/GCP database services, Infrastructure as Code, high availability, disaster recovery, performance optimization, and compliance. Handles multi-cloud strategies, container databases, and cost optimization. Use PROACTIVELY for database architecture, operations, or reliability engineering.",
+        "category": "devops",
+        "qualityScore": 76,
+        "version": "1.0.0",
+        "status": "stable",
+        "recommendationScore": 91,
+        "tags": [
+          "database",
+          "admin"
+        ],
+        "triggers": [
+          "database",
+          "admin",
+          "administrator",
+          "specializing",
+          "cloud",
+          "databases",
+          "automation",
+          "reliability",
+          "engineering",
+          "masters",
+          "aws",
+          "azure"
+        ]
+      }
+    ],
+    "Write unit tests for API endpoints": [
+      {
+        "id": "unit-testing-test-generate",
+        "name": "unit-testing-test-generate",
+        "description": "Generate comprehensive, maintainable unit tests across languages with strong coverage and edge case focus.",
+        "category": "testing",
+        "qualityScore": 66,
+        "version": "1.0.0",
+        "status": "stable",
+        "recommendationScore": 80,
+        "tags": [
+          "unit",
+          "generate"
+        ],
+        "triggers": [
+          "unit",
+          "generate",
+          "testing",
+          "test",
+          "maintainable",
+          "tests",
+          "languages",
+          "strong",
+          "coverage",
+          "edge",
+          "case"
+        ]
+      },
+      {
+        "id": "customer-support",
+        "name": "customer-support",
+        "description": "Elite AI-powered customer support specialist mastering conversational AI, automated ticketing, sentiment analysis, and omnichannel support experiences. Integrates modern support tools, chatbot platforms, and CX optimization with 2024/2025 best practices. Use PROACTIVELY for comprehensive customer experience management.",
+        "category": "backend",
+        "qualityScore": 76,
+        "version": "1.0.0",
+        "status": "stable",
+        "recommendationScore": 76,
+        "tags": [
+          "customer",
+          "support"
+        ],
+        "triggers": [
+          "customer",
+          "support",
+          "elite",
+          "ai",
+          "powered",
+          "mastering",
+          "conversational",
+          "automated",
+          "ticketing",
+          "sentiment",
+          "analysis",
+          "omnichannel"
+        ]
+      },
+      {
+        "id": "dotnet-architect",
+        "name": "dotnet-architect",
+        "description": "Expert .NET backend architect specializing in C#, ASP.NET Core, Entity Framework, Dapper, and enterprise application patterns. Masters async/await, dependency injection, caching strategies, and performance optimization. Use PROACTIVELY for .NET API development, code review, or architecture decisions.",
+        "category": "backend",
+        "qualityScore": 76,
+        "version": "1.0.0",
+        "status": "stable",
+        "recommendationScore": 76,
+        "tags": [
+          "dotnet"
+        ],
+        "triggers": [
+          "dotnet",
+          "architect",
+          "net",
+          "backend",
+          "specializing",
+          "asp",
+          "core",
+          "entity",
+          "framework",
+          "dapper",
+          "enterprise",
+          "application"
+        ]
+      },
+      {
+        "id": "fastapi-pro",
+        "name": "fastapi-pro",
+        "description": "Build high-performance async APIs with FastAPI, SQLAlchemy 2.0, and Pydantic V2. Master microservices, WebSockets, and modern Python async patterns. Use PROACTIVELY for FastAPI development, async optimization, or API architecture.",
+        "category": "backend",
+        "qualityScore": 76,
+        "version": "1.0.0",
+        "status": "stable",
+        "recommendationScore": 76,
+        "tags": [
+          "fastapi"
+        ],
+        "triggers": [
+          "fastapi",
+          "pro",
+          "high",
+          "performance",
+          "async",
+          "apis",
+          "sqlalchemy",
+          "pydantic",
+          "v2",
+          "microservices",
+          "websockets",
+          "python"
+        ]
+      },
+      {
+        "id": "odoo-automated-tests",
+        "name": "odoo-automated-tests",
+        "description": "Write and run Odoo automated tests using TransactionCase, HttpCase, and browser tour tests. Covers test data setup, mocking, and CI integration.",
+        "category": "testing",
+        "qualityScore": 53,
+        "version": "1.0.0",
+        "status": "stable",
+        "recommendationScore": 75.5,
+        "tags": [
+          "odoo",
+          "automated",
+          "tests"
+        ],
+        "triggers": [
+          "odoo",
+          "automated",
+          "tests",
+          "write",
+          "run",
+          "transactioncase",
+          "httpcase",
+          "browser",
+          "tour",
+          "covers",
+          "test",
+          "data"
+        ]
+      }
+    ]
+  }
+}

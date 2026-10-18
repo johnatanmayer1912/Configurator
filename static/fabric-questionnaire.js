@@ -89,34 +89,34 @@ function renderQuestionnaireStep() {
             title: "How many downlink bundles?",
             html: `<p class="field-note">Core switches: Po toward leaf pairs. Leaf/access: usually 0.</p>
                 <div class="choice-grid choice-grid-3">
-                    ${[0, 1, 2].map((n) => `<button type="button" class="choice-card" onclick="questionnairePick('downlink_count',${n})">${n}</button>`).join("")}
+                    ${[0, 1, 2].map((n) => `<button type="button" class="choice-card" data-action="questionnaire-pick" data-key="downlink_count" data-value="${n}">${n}</button>`).join("")}
                 </div>`,
         },
         {
             title: "Downlink description (optional)",
             html: `<input type="text" id="qDownName" class="full-width" placeholder="Connected_to_NET_LEAF_10G_SW1+SW2" value="${questionnaireAnswers.downlink_name || ""}">
-                <button type="button" class="btn-secondary btn-sm" onclick="questionnaireAnswers.downlink_name=document.getElementById('qDownName').value;questionnaireNext()">Continue</button>`,
+                <button type="button" class="btn-secondary btn-sm" data-action="questionnaire-downlink-continue">Continue</button>`,
         },
         {
             title: "How many uplink bundles toward spine?",
             html: `<p class="field-note">Fiber ports 49–54 on 93180/9348 (peer-link excluded automatically).</p>
                 <div class="choice-grid choice-grid-3">
-                    ${[0, 1, 2].map((n) => `<button type="button" class="choice-card" onclick="questionnairePick('uplink_count',${n})">${n}</button>`).join("")}
+                    ${[0, 1, 2].map((n) => `<button type="button" class="choice-card" data-action="questionnaire-pick" data-key="uplink_count" data-value="${n}">${n}</button>`).join("")}
                 </div>`,
         },
         {
             title: "Auto-suggest free ports?",
             html: `<p class="field-note">We fill member ports from the hardware budget — you can edit after.</p>
-                <button type="button" class="btn-primary" onclick="questionnaireAnswers.auto_ports=true;applyQuestionnaireToPlanner()">Yes, suggest ports</button>
-                <button type="button" class="btn-outline" onclick="questionnaireAnswers.auto_ports=false;applyQuestionnaireToPlanner()">No, I'll type members</button>`,
+                <button type="button" class="btn-primary" data-action="questionnaire-auto-ports" data-auto="true">Yes, suggest ports</button>
+                <button type="button" class="btn-outline" data-action="questionnaire-auto-ports" data-auto="false">No, I'll type members</button>`,
         },
     ];
     const step = steps[questionnaireStep] || steps[steps.length - 1];
     if (body) {
         body.innerHTML = `<h4>${escapeHtml(step.title)}</h4>${step.html}
             <div class="questionnaire-nav">
-                <button type="button" class="btn-ghost btn-sm" onclick="skipFabricQuestionnaire()">Skip — use defaults</button>
-                ${questionnaireStep > 0 ? `<button type="button" class="btn-outline btn-sm" onclick="questionnairePrev()">Back</button>` : ""}
+                <button type="button" class="btn-ghost btn-sm" data-action="skip-fabric-questionnaire">Skip — use defaults</button>
+                ${questionnaireStep > 0 ? `<button type="button" class="btn-outline btn-sm" data-action="questionnaire-prev">Back</button>` : ""}
             </div>`;
     }
 }

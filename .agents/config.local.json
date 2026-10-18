@@ -1,0 +1,11 @@
+{
+  "permissions": {
+    "allow": [
+      "Exec(powershell)",
+      "Exec(mkdir)",
+      "Exec(cd)",
+      "Exec(python)",
+      "Exec(pip install)"
+    ]
+  }
+}

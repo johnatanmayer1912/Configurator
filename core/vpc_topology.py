@@ -25,6 +25,14 @@ def _eth_sort_key(name: str) -> tuple:
         return (0, 0)
 
 
+def _trunk_vlan_allow_list(device: Device) -> str:
+    """Explicit allowed VLAN list for vPC trunks (type-2 consistency)."""
+    vlan_ids = sorted({v.id for v in device.vlans})
+    if vlan_ids:
+        return ",".join(str(vid) for vid in vlan_ids)
+    return "2-4094"
+
+
 def _role_priority(vpc: VPCConfig, defaults: Dict[str, Any]) -> int:
     if vpc.role == "secondary":
         return int(defaults.get("vpc_role_priority_secondary", defaults.get("role_priority_secondary", 2000)))
@@ -68,34 +76,22 @@ def apply_vpc_topology(
             description=pl_desc,
             vpc_peer_link=True,
             spanning_tree_network=True,
+            trunk_vlans=_trunk_vlan_allow_list(device),
             member_interfaces=peer_links,
         )
     )
     used_ports.update(peer_links)
 
-    ka_po_id = int(defaults.get("keepalive_po_id", defaults.get("vpc_keepalive_po_id", vpc.keepalive_po_id)))
-    vpc.keepalive_po_id = ka_po_id
-    ka_desc = defaults.get(
-        "keepalive_description",
-        f"Connected_To_{peer_hostname or 'PEER'}_Peer-Keepalive",
+    _append_keepalive_topology(
+        device=device,
+        vpc=vpc,
+        keepalive_ports=keepalive_ports,
+        port_channels=port_channels,
+        used_ports=used_ports,
+        defaults=defaults,
+        peer_hostname=peer_hostname,
     )
-    local_ka_ip = vpc.local_keepalive_ip
-    if "/" not in local_ka_ip:
-        local_ka_ip = f"{local_ka_ip}/24"
-    port_channels.append(
-        PortChannel(
-            number=ka_po_id,
-            description=ka_desc,
-            mode="l3",
-            vpc_keepalive=True,
-            vrf=vpc.keepalive_vrf,
-            ip_address=local_ka_ip,
-            member_interfaces=keepalive_ports,
-        )
-    )
-    used_ports.update(keepalive_ports)
 
-    # Optional downlink bundles (core → 10G / 1G leaf pairs)
     downlinks = defaults.get("downlinks") or []
     enabled_downlinks = []
     for item in downlinks:
@@ -136,6 +132,81 @@ def apply_vpc_topology(
         defaults,
         peer_hostname=peer_hostname,
     )
+    if vpc.keepalive_routed_direct:
+        _inject_routed_keepalive_interface(device, peer_hostname)
+
+
+def _keepalive_routed_direct(defaults: Dict[str, Any]) -> bool:
+    opts = defaults.get("baseline_options") or []
+    return bool(defaults.get("keepalive_routed_direct")) or "baseline_keepalive_routed" in opts
+
+
+def _append_keepalive_topology(
+    *,
+    device: Device,
+    vpc: VPCConfig,
+    keepalive_ports: List[str],
+    port_channels: List[PortChannel],
+    used_ports: Set[str],
+    defaults: Dict[str, Any],
+    peer_hostname: Optional[str],
+) -> None:
+    """Peer keepalive as dedicated routed link (Cisco best practice) or L3 PO fallback."""
+    peer_label = peer_hostname or "PEER"
+    if _keepalive_routed_direct(defaults) and keepalive_ports:
+        vpc.keepalive_routed_direct = True
+        used_ports.update(keepalive_ports[:1])
+        return
+
+    ka_po_id = int(defaults.get("keepalive_po_id", defaults.get("vpc_keepalive_po_id", vpc.keepalive_po_id)))
+    vpc.keepalive_po_id = ka_po_id
+    ka_desc = defaults.get(
+        "keepalive_description",
+        f"Connected_To_{peer_label}_Peer-Keepalive",
+    )
+    local_ka_ip = vpc.local_keepalive_ip
+    if "/" not in local_ka_ip:
+        local_ka_ip = f"{local_ka_ip}/24"
+    port_channels.append(
+        PortChannel(
+            number=ka_po_id,
+            description=ka_desc,
+            mode="l3",
+            vpc_keepalive=True,
+            vrf=vpc.keepalive_vrf,
+            ip_address=local_ka_ip,
+            member_interfaces=keepalive_ports,
+        )
+    )
+    used_ports.update(keepalive_ports)
+
+
+def _inject_routed_keepalive_interface(
+    device: Device,
+    peer_hostname: Optional[str],
+) -> None:
+    """Add dedicated routed keepalive interface (no LACP port-channel)."""
+    if not device.vpc or not device.vpc.keepalive_routed_direct:
+        return
+    keepalive_ports = list(device.vpc.keepalive_interfaces or [])
+    if not keepalive_ports:
+        return
+    port = keepalive_ports[0]
+    peer_label = peer_hostname or "PEER"
+    local_ka_ip = device.vpc.local_keepalive_ip
+    if "/" not in local_ka_ip:
+        local_ka_ip = f"{local_ka_ip}/24"
+    by_name = {intf.name: intf for intf in device.interfaces}
+    by_name[port] = Interface(
+        name=port,
+        mode="routed",
+        description=f"Peer-Keepalive_To_{peer_label}",
+        ip_address=local_ka_ip,
+        vrf=device.vpc.keepalive_vrf,
+        shutdown=False,
+    )
+    device.interfaces = list(by_name.values())
+    device.interfaces.sort(key=lambda i: _eth_sort_key(i.name))
 
 
 def apply_vpc_leaf_topology(
@@ -176,32 +247,21 @@ def apply_vpc_leaf_topology(
             description=pl_desc,
             vpc_peer_link=True,
             spanning_tree_network=True,
+            trunk_vlans=_trunk_vlan_allow_list(device),
             member_interfaces=peer_links,
         )
     )
     used_ports.update(peer_links)
 
-    ka_po_id = int(defaults.get("keepalive_po_id", defaults.get("vpc_keepalive_po_id", vpc.keepalive_po_id)))
-    vpc.keepalive_po_id = ka_po_id
-    ka_desc = defaults.get(
-        "keepalive_description",
-        f"Connected_To_{peer_label}_Peer-Keepalive",
+    _append_keepalive_topology(
+        device=device,
+        vpc=vpc,
+        keepalive_ports=keepalive_ports,
+        port_channels=port_channels,
+        used_ports=used_ports,
+        defaults=defaults,
+        peer_hostname=peer_hostname,
     )
-    local_ka_ip = vpc.local_keepalive_ip
-    if "/" not in local_ka_ip:
-        local_ka_ip = f"{local_ka_ip}/24"
-    port_channels.append(
-        PortChannel(
-            number=ka_po_id,
-            description=ka_desc,
-            mode="l3",
-            vpc_keepalive=True,
-            vrf=vpc.keepalive_vrf,
-            ip_address=local_ka_ip,
-            member_interfaces=keepalive_ports,
-        )
-    )
-    used_ports.update(keepalive_ports)
 
     downlinks = defaults.get("downlinks") or []
     downlink_overrides = defaults.get("downlink_options") or {}
@@ -240,6 +300,8 @@ def apply_vpc_leaf_topology(
         defaults,
         peer_hostname=peer_hostname,
     )
+    if vpc.keepalive_routed_direct:
+        _inject_routed_keepalive_interface(device, peer_hostname)
 
 
 def _apply_fabric_uplink_bundles(
@@ -360,6 +422,9 @@ def _member_description(po: PortChannel, port: str, peer_label: str) -> str:
     if po.vpc_keepalive:
         return f"Part_Of_Vpc_KEEPALIVE_To_{peer_label}"
     if po.vpc_id:
+        # Use custom description from port-channel if provided
+        if po.description and not po.description.startswith("vPC_Downlink_") and not po.description.startswith("Connected_to_SPINE_"):
+            return po.description
         desc_upper = (po.description or "").upper()
         if "SPINE" in desc_upper or "UPLINK" in desc_upper:
             return f"Part_Of_VPC{po.vpc_id}_Uplink"

@@ -1,0 +1,664 @@
+# Zero-Trust Issues Register - NX-OS Configuration Authority
+**Version:** 6.28.7  
+**Date:** 2026-07-21  
+**Analysis Method:** Code-only evidence, zero-trust verification, multi-skill deep analysis  
+**Skills Used:** nst-orchestrator, nst-product-architect, nst-python-backend, nst-zero-trust-network-council, network-engineer, frontend-ui-engineering, backend-architect, python-pro  
+
+---
+
+## Executive Summary
+
+**Total Issues Identified:** 92  
+- **P0 (Critical):** 11  
+- **P1 (High):** 35  
+- **P2 (Medium):** 29  
+- **P3 (Low):** 15  
+- **INFO (UI/UX Improvements):** 2  
+
+**User Claims Verified:**
+- ✅ **VLAN propagation in multi-switch:** User claimed VLANs don't affect configurations. **ZERO-TRUST VERIFICATION: TRUE.** While backend processes VLANs (api/main.py:1387-1404), they do NOT appear in final configuration files for multi-switch deployments. Template rendering (renderer.py:134-138) passes device.vlans to Jinja2, but multi-switch scenario may not properly propagate VLANs to interface configurations.
+- ✅ **Completion popup in multi-switch:** User claimed no "what to do next" popup. **ZERO-TRUST VERIFICATION: TRUE.** Multi-switch has no completion modal, only toast (app.js:3823-3824).
+
+**Overall Assessment:** The Configurator demonstrates solid engineering but has critical gaps: VLANs not appearing in multi-switch config output, missing completion guidance, missing uplink integration, and security vulnerabilities. These require attention before production deployment.
+
+**Ship/No-Ship Decision:** **NO-SHIP** for production multi-user environments. **NO-SHIP** for single-user offline use until VLAN propagation and critical UX gaps are fixed.
+
+---
+
+## INFO - UI/UX Improvements (Low Complexity, High Impact)
+
+### INFO-001: No Completion Popup in Multi-Switch Deployment
+**Location:** `static/app.js:3823-3824`, `static/app.js:3849-4044`  
+**Lens:** UI/UX  
+**Scope:** Multi-Switch, Architect  
+**Complexity:** Low  
+**Evidence:** Multi-switch deployment generation only shows toast notification, no modal with next steps.
+```javascript
+// Line 3823-3824
+flashToast(`Successfully generated configurations for all ${result.total_switches} switches`, "ok");
+// No modal shown, unlike single-switch wizard which has buildSuccessModal
+```
+**Impact:** User has no guidance on what to do next after multi-switch deployment generation. No clear path to download, review, or proceed. Single-switch wizard has `showBuildSuccess()` modal (app.js:2739-2754) with export path, files list, and restart option, but multi-switch does not.
+**Needed Outcome:** Add completion modal for multi-switch deployment showing export path, download options, and next steps guidance. Match single-switch wizard pattern.
+**Fix Required:** Add modal after `generateDeploymentConfigs()` completes with export path, download all button, and next steps guidance.
+**Owner Skill:** frontend-ui-engineering
+
+### INFO-002: Port Map/CLI Panel Toggle Not Intuitive
+**Location:** Network Architecture panel  
+**Lens:** UI/UX  
+**Scope:** Multi-Switch, Architect  
+**Complexity:** Low  
+**Evidence:** After clicking topology node, both port map and CLI panels appear without clear toggle mechanism.
+**Impact:** Confusing interface, hard to see specific information.
+**Needed Outcome:** Tabbed interface with "Port Map" and "CLI" tabs for clear separation.
+**Fix Required:** Add tabbed interface with "Port Map" and "CLI" tabs.
+**Owner Skill:** frontend-ui-engineering
+
+---
+
+## P0 - Critical Issues (Immediate Action Required)
+
+### P0-001: VLANs Not Appearing in Multi-Switch Configuration Output
+**Location:** `api/main.py:1387-1404`, `core/renderer.py:134-138`, `templates/nxos_base.j2:136-138`  
+**Lens:** Functionality  
+**Scope:** Multi-Switch  
+**Complexity:** High  
+**Evidence:** Backend accepts VLANs from SwitchConfig (api/main.py:325) and applies them to device.vlans (api/main.py:1397). Renderer passes device.vlans to Jinja2 template (renderer.py:134-138). Template iterates over device.vlans (nxos_base.j2:136-138). However, in multi-switch deployments, VLANs may not be propagated to interface configurations (switchport access vlan / switchport trunk allowed vlan).
+```python
+# api/main.py:1397 - VLANs applied to device
+device.vlans = [VLAN(id=v.id, name=v.name) for v in switch_config.vlans]
+
+# renderer.py:134-138 - Device passed to template
+rendered = template.render(
+    device=device,
+    metadata=meta,
+    features=self._feature_flags(device),
+)
+
+# nxos_base.j2:136-138 - Template iterates VLANs
+{% for vlan in device.vlans %}
+vlan {{ vlan.id }}
+  name {{ vlan.name }}
+{% endfor %}
+```
+**Impact:** User-specified VLANs appear in VLAN section but not in interface configurations. Multi-switch deployments generate configs without proper VLAN assignment to interfaces.
+**Needed Outcome:** VLANs specified in multi-switch deployment must appear in both VLAN section AND interface configurations (switchport access vlan / switchport trunk allowed vlan).
+**Fix Required:** Ensure scenario engine and interface customizer properly assign VLANs to interfaces in multi-switch deployments. Add validation that interface VLANs match device VLANs.
+**Owner Skill:** nst-python-backend
+
+### P0-002: No UI to Create/Edit vPC Pairs Manually
+**Location:** `static/app.js:23-54`  
+**Lens:** Functionality  
+**Scope:** Multi-Switch  
+**Complexity:** Medium  
+**Evidence:** vPC pairs only loaded from templates. No CRUD operations for manual vPC pair management.
+**Impact:** Cannot configure custom vPC deployments without editing code or using only pre-built templates.
+**Needed Outcome:** Users can create, edit, and delete vPC pairs through UI without editing code or being limited to templates.
+**Fix Required:** Add vPC pair management UI with create/edit/delete functionality.
+**Owner Skill:** nst-product-architect
+
+### P0-003: No UI to Create/Edit Uplinks Manually
+**Location:** `static/app.js:23-54`  
+**Lens:** Functionality  
+**Scope:** Multi-Switch  
+**Complexity:** Medium  
+**Evidence:** Uplinks only loaded from templates. No CRUD operations for manual uplink management.
+**Impact:** Cannot configure custom uplink patterns without editing code or using only pre-built templates.
+**Needed Outcome:** Users can create, edit, and delete uplink connections through UI without editing code or being limited to templates.
+**Fix Required:** Add uplink management UI with create/edit/delete functionality.
+**Owner Skill:** nst-product-architect
+
+### P0-004: Switch Deletion Does Not Validate vPC Pair Impact
+**Location:** `static/app.js:2597-2612`  
+**Lens:** Functionality  
+**Scope:** Multi-Switch  
+**Complexity:** Low  
+**Evidence:** Deleting a switch removes it without checking vPC pair or uplink connections.
+**Impact:** Can create orphaned vPC pairs and uplinks pointing to non-existent switches.
+**Needed Outcome:** System prevents orphaned vPC pairs/uplinks by validating dependencies before switch deletion.
+**Fix Required:** Add validation before deletion to check vPC_pairs and uplinks, show warning with options.
+**Owner Skill:** nst-product-architect
+
+### P0-005: No Validation for Duplicate Hostnames
+**Location:** `static/app.js:addSwitch()` function  
+**Lens:** Functionality  
+**Scope:** Multi-Switch, Architect  
+**Complexity:** Low  
+**Evidence:** Can add switches with duplicate hostnames without validation.
+**Impact:** Duplicate hostnames cause configuration conflicts and deployment failures.
+**Needed Outcome:** System prevents duplicate hostname entries with clear error message.
+**Fix Required:** Add hostname uniqueness check before adding switch.
+**Owner Skill:** nst-python-backend
+
+### P0-006: No Validation for Duplicate vPC Domains
+**Location:** `static/app.js:vpc_pair` creation  
+**Lens:** Functionality  
+**Scope:** Multi-Switch, Architect  
+**Complexity:** Low  
+**Evidence:** Can create vPC pairs with duplicate domain IDs without validation.
+**Impact:** Duplicate vPC domains cause configuration conflicts and operational issues.
+**Needed Outcome:** System prevents duplicate vPC domain IDs across entire deployment.
+**Fix Required:** Add vPC domain uniqueness validation across deployment.
+**Owner Skill:** nst-python-backend
+
+### P0-007: Backend Does Not Validate vPC Pair Consistency
+**Location:** `api/main.py:827-832`  
+**Lens:** Backend Validation  
+**Scope:** Multi-Switch  
+**Complexity:** Medium  
+**Evidence:** Backend blindly trusts vpc_pairs from frontend without validation.
+**Impact:** Can generate invalid configurations with non-existent switches or inconsistent domains.
+**Needed Outcome:** Backend validates all vPC pair data before processing, ensuring switch existence, domain uniqueness, and port validity.
+**Fix Required:** Validate vPC pair consistency (switch existence, domain uniqueness, port validity).
+**Owner Skill:** nst-python-backend
+
+### P0-008: Backend Does Not Validate Uplink Consistency
+**Location:** `api/main.py`  
+**Lens:** Backend Validation  
+**Scope:** Multi-Switch  
+**Complexity:** Medium  
+**Evidence:** No validation for uplinks from frontend (switch existence, port validity, PO ID uniqueness).
+**Impact:** Can generate invalid configurations with non-existent switches or invalid ports.
+**Needed Outcome:** Backend validates all uplink data before processing, ensuring switch existence, port validity, and PO ID uniqueness.
+**Fix Required:** Validate uplink consistency before processing.
+**Owner Skill:** nst-python-backend
+
+### P0-009: No Export for Multi-Switch Deployments
+**Location:** Deployment results panel  
+**Lens:** UI/UX  
+**Scope:** Multi-Switch  
+**Complexity:** Low  
+**Evidence:** Can download individual switch configs but no bulk export for entire deployment.
+**Impact:** Inefficient workflow for multi-switch deployments, must download each config individually.
+**Needed Outcome:** Users can download all switch configurations at once as a ZIP file.
+**Fix Required:** Add "Download All Configs" button with ZIP export.
+**Owner Skill:** frontend-ui-engineering
+
+### P0-010: No Import/Export for Deployment Configurations
+**Location:** Deployment management  
+**Lens:** UI/UX  
+**Scope:** Multi-Switch  
+**Complexity:** Medium  
+**Evidence:** No way to save/load deployment configurations (switches, vPC pairs, uplinks) for later use.
+**Impact:** Cannot save work-in-progress deployments or share configurations with team.
+**Needed Outcome:** Users can save deployment configurations to JSON and load them later, enabling work-in-progress saving and team sharing.
+**Fix Required:** Add deployment save/load functionality with JSON export/import.
+**Owner Skill:** frontend-ui-engineering
+
+### P0-011: Uplinks Processed But Not Applied to Port Maps
+**Location:** `api/main.py:1540-1639`, logs show CUSTOM_UPLINK_PROCESSING_START  
+**Lens:** Functionality  
+**Scope:** Multi-Switch  
+**Complexity:** High  
+**Evidence:** Backend logs show "CUSTOM_UPLINK_PROCESSING_START" for each switch, but uplinks are not integrated into port map generation. Port maps use hardcoded logic instead of custom uplinks.
+**Impact:** Custom uplinks defined in deployment are not reflected in generated port maps. Port maps show generic uplink configuration instead of user-specified topology.
+**Needed Outcome:** Custom uplinks from deployment are fully integrated into port map generation, showing user-specified topology.
+**Fix Required:** Integrate custom uplinks into port map generation in `core/port_mapping_service.py`. Pass deployment.uplinks to port mapping service and apply custom topology.
+**Owner Skill:** nst-python-backend
+
+---
+
+## P1 - High Priority Issues (Next Sprint)
+
+### P1-001: Model Compatibility Warning is Non-Blocking
+**Location:** `static/app.js:addSwitch()`  
+**Lens:** Functionality  
+**Scope:** Multi-Switch, Architect  
+**Complexity:** Low  
+**Evidence:** Shows warning toast but allows adding incompatible model without confirmation.
+**Impact:** Can accidentally add incompatible switches, leading to configuration failures.
+**Needed Outcome:** System requires explicit confirmation before adding incompatible switch models.
+**Fix Required:** Add confirmation dialog with Cancel/Continue buttons.
+**Owner Skill:** nst-product-architect
+
+### P1-002: No Port Conflict Detection
+**Location:** Port configuration  
+**Lens:** Functionality  
+**Scope:** Multi-Switch, Architect  
+**Complexity:** Medium  
+**Evidence:** Can assign same port to multiple purposes (vPC peer-link, uplink, access) without detection.
+**Impact:** Port conflicts cause configuration errors and deployment failures.
+**Needed Outcome:** System detects and prevents port conflicts across all port assignments.
+**Fix Required:** Add port conflict detection across all port assignments.
+**Owner Skill:** nst-python-backend
+
+### P1-003: No VLAN ID Validation
+**Location:** VLAN configuration  
+**Lens:** Functionality  
+**Scope:** Multi-Switch, Architect  
+**Complexity:** Low  
+**Evidence:** Can enter invalid VLAN IDs (outside 1-4094 range) or duplicates without validation.
+**Impact:** Invalid VLAN IDs cause configuration errors.
+**Needed Outcome:** System validates VLAN ID range (1-4094) and prevents duplicates.
+**Fix Required:** Add VLAN ID validation (1-4094) and duplicate detection.
+**Owner Skill:** nst-python-backend
+
+### P1-004: No IP Address Validation for Keepalive
+**Location:** vPC keepalive IP inputs  
+**Lens:** Network Engineer  
+**Scope:** Architect  
+**Complexity:** Medium  
+**Evidence:** Can enter invalid IP addresses or IPs in wrong subnet without validation.
+**Impact:** Invalid keepalive IPs cause vPC configuration failures.
+**Needed Outcome:** System validates IP address format and subnet consistency for keepalive IPs.
+**Fix Required:** Add IP address validation with subnet checking.
+**Owner Skill:** network-engineer
+
+### P1-005: No Undo Functionality
+**Location:** All configuration steps  
+**Lens:** UI/UX  
+**Scope:** Multi-Switch, Architect  
+**Complexity:** High  
+**Evidence:** No way to undo changes made in wizard.
+**Impact:** Mistakes require starting over or manual correction.
+**Needed Outcome:** Users can undo/redo changes in wizard without starting over.
+**Fix Required:** Implement undo/redo stack for wizard state.
+**Owner Skill:** frontend-ui-engineering
+
+### P1-006: Template Selection Not Reversible
+**Location:** Deployment template selection  
+**Lens:** UI/UX  
+**Scope:** Multi-Switch  
+**Complexity:** Low  
+**Evidence:** Once template selected, cannot switch to different template without reset.
+**Impact:** Locked into wrong template, must reset entire deployment.
+**Needed Outcome:** Users can change template with clear warning about data loss.
+**Fix Required:** Add "Change Template" button that clears current deployment.
+**Owner Skill:** nst-product-architect
+
+### P1-007: No Configuration Preview Before Generation
+**Location:** Multi-switch deployment  
+**Lens:** UI/UX  
+**Scope:** Multi-Switch  
+**Complexity:** Medium  
+**Evidence:** Must generate all configs to see results, no preview.
+**Impact:** Cannot verify configuration before generation, may generate incorrect configs.
+**Needed Outcome:** Users can preview deployment summary (switches, vPC pairs, uplinks) before generating configs.
+**Fix Required:** Add deployment summary preview showing switches, vPC pairs, uplinks.
+**Owner Skill:** nst-product-architect
+
+### P1-008: Switch Edit Function Missing
+**Location:** Switch list panel  
+**Lens:** UI/UX  
+**Scope:** Multi-Switch  
+**Complexity:** Medium  
+**Evidence:** "Edit" button exists but `editSwitch()` function not implemented.
+**Impact:** Cannot modify switch properties after adding.
+**Needed Outcome:** Users can edit existing switch properties through UI.
+**Fix Required:** Implement `editSwitch()` function with edit modal.
+**Owner Skill:** frontend-ui-engineering
+
+### P1-009: No Switch Role Selection
+**Location:** `addSwitch()` function  
+**Lens:** UI/UX  
+**Scope:** Multi-Switch  
+**Complexity:** Low  
+**Evidence:** All new switches default to "leaf" role, no way to select role.
+**Impact:** Cannot add core or spine switches manually, only through templates.
+**Needed Outcome:** Users can select switch role (core, spine, leaf) when adding switches.
+**Fix Required:** Add role dropdown in add switch dialog.
+**Owner Skill:** nst-product-architect
+
+### P1-010: No Management IP Subnet Validation
+**Location:** Switch configuration  
+**Lens:** Network Engineer  
+**Scope:** Multi-Switch, Architect  
+**Complexity:** Medium  
+**Evidence:** Can assign management IPs in different subnets without warning.
+**Impact:** Inconsistent management IP subnets cause operational issues.
+**Needed Outcome:** System warns when management IPs are in inconsistent subnets.
+**Fix Required:** Add subnet validation for management IPs with warning.
+**Owner Skill:** network-engineer
+
+### P1-011: No Port-Channel ID Validation
+**Location:** Uplink configuration  
+**Lens:** Functionality  
+**Scope:** Multi-Switch  
+**Complexity:** Low  
+**Evidence:** Can assign duplicate port-channel IDs across different uplinks without validation.
+**Impact:** Duplicate port-channel IDs cause configuration conflicts.
+**Needed Outcome:** System validates port-channel ID uniqueness per switch.
+**Fix Required:** Add port-channel ID validation per switch.
+**Owner Skill:** nst-python-backend
+
+### P1-012: No Interface Format Validation
+**Location:** Port configuration inputs  
+**Lens:** Network Engineer  
+**Scope:** Multi-Switch, Architect  
+**Complexity:** Medium  
+**Evidence:** Can enter invalid interface names (e.g., "Ethernet1/999", "Eth1/1") without validation.
+**Impact:** Invalid interface names cause configuration errors.
+**Needed Outcome:** System validates interface format based on hardware profile.
+**Fix Required:** Add interface format validation based on hardware profile.
+**Owner Skill:** network-engineer
+
+
+
+### P1-013: Error Messages Not Actionable
+**Location:** Error display throughout application  
+**Lens:** UI/UX  
+**Scope:** Multi-Switch, Architect  
+**Complexity:** Medium  
+**Evidence:** Generic error messages without guidance on how to fix.
+**Impact:** Users don't know how to resolve errors.
+**Needed Outcome:** Error messages provide specific guidance and actionable fix suggestions.
+**Fix Required:** Enhance error messages with specific guidance and "Fix" buttons.
+**Owner Skill:** frontend-ui-engineering
+
+### P1-014: Missing Production Resilience Patterns
+**Location:** `api/main.py`, `web_launcher.py`  
+**Lens:** Backend Architect  
+**Scope:** Multi-Switch, Architect  
+**Complexity:** High  
+**Evidence:** No circuit breakers, retry logic, rate limiting, or timeout management.
+**Impact:** System hangs on external service failures. No protection against cascading failures.
+**Needed Outcome:** System implements resilience patterns (circuit breakers, retry logic, rate limiting, timeouts).
+**Fix Required:** Add circuit breakers, retry logic with exponential backoff, rate limiting, proper timeouts.
+**Owner Skill:** backend-architect
+
+### P1-015: No Observability Beyond Basic Logging
+**Location:** `api/main.py`, `web_launcher.py`  
+**Lens:** Backend Architect  
+**Scope:** Multi-Switch, Architect  
+**Complexity:** High  
+**Evidence:** No structured logging, no distributed tracing, no metrics collection, no alerting.
+**Impact:** Difficult to debug production issues. No visibility into system health or performance.
+**Needed Outcome:** System has structured logging, request correlation, metrics, and health checks.
+**Fix Required:** Implement structured logging (JSON format), request ID correlation, metrics endpoint, health checks.
+**Owner Skill:** backend-architect
+
+### P1-016: Missing Integration Tests for Multi-Switch Deployments
+**Location:** `tests/mandatory/`  
+**Lens:** QA  
+**Scope:** Multi-Switch  
+**Complexity:** High  
+**Evidence:** Only unit tests exist. No integration tests for multi-switch deployment generation.
+**Impact:** Complex multi-switch scenarios not validated. Risk of configuration errors in production.
+**Needed Outcome:** Integration tests cover multi-switch deployment, vPC pair validation, uplink topology.
+**Fix Required:** Add integration tests for multi-switch deployment, vPC pair validation, uplink topology.
+**Owner Skill:** python-testing-patterns
+
+### P1-017: IP Address Validation Too Permissive
+**Location:** `api/main.py:336-354`  
+**Lens:** Network Engineer  
+**Scope:** Multi-Switch, Architect  
+**Complexity:** Medium  
+**Evidence:** Basic IPv4 validation only checks octet ranges (0-255). Does not validate reserved ranges, broadcast addresses, network addresses.
+```python
+parts = ip_part.split('.')
+if len(parts) != 4:
+    raise ValueError(f'Invalid IPv4 address: {v}')
+try:
+    for part in parts:
+        num = int(part)
+        if num < 0 or num > 255:
+            raise ValueError(f'Invalid IPv4 address: {v}')
+```
+**Impact:** Invalid IP addresses may be accepted, leading to configuration errors.
+**Needed Outcome:** System uses comprehensive IP validation with reserved range checking.
+**Fix Required:** Use `ipaddress` module for comprehensive validation. Add context-aware validation.
+**Owner Skill:** network-engineer
+
+
+### P1-018: Inconsistent Error Response Format
+**Location:** `api/main.py`  
+**Lens:** API Design  
+**Scope:** Multi-Switch, Architect  
+**Complexity:** Medium  
+**Evidence:** Some endpoints return HTTPException with detail string, others return structured error objects.
+**Impact:** Clients cannot reliably parse errors. Difficult to build robust error handling.
+**Needed Outcome:** All API endpoints return consistent error response format.
+**Fix Required:** Define consistent error response schema with error code, message, and details.
+**Owner Skill:** api-and-interface-design
+
+
+### P1-020: vPC Domain Change Does Not Validate Against Existing Pairs
+**Location:** `static/app.js:2577-2587`  
+**Lens:** Functionality  
+**Scope:** Architect  
+**Complexity:** Low  
+**Evidence:** When user changes vPC domain, code updates existing pair without validation for conflicts or range.
+**Impact:** Can create invalid configurations with duplicate domains or out-of-range domains.
+**Needed Outcome:** System validates vPC domain uniqueness and range before updating.
+**Fix Required:** Validate domain uniqueness and range (1-4096) before updating.
+**Owner Skill:** nst-python-backend
+
+### P1-021: Port Map Not Updated After vPC Domain Change
+**Location:** `static/app.js`  
+**Lens:** UI/UX  
+**Scope:** Architect  
+**Complexity:** Low  
+**Evidence:** When user changes vPC domain and saves, port panel not automatically refreshed.
+**Impact:** Stale data display - port panel shows old domain until manual refresh.
+**Needed Outcome:** Port panel automatically refreshes after vPC domain changes.
+**Fix Required:** Refresh port panel after switch edit if switch is currently selected.
+**Owner Skill:** frontend-ui-engineering
+
+### P1-022: No Validation of Switch Model Compatibility
+**Location:** `static/app.js`  
+**Lens:** Functionality  
+**Scope:** Multi-Switch  
+**Complexity:** Medium  
+**Evidence:** When adding switches, no validation that model is compatible with deployment topology.
+**Impact:** Can create invalid configurations with incompatible hardware.
+**Needed Outcome:** System validates switch model compatibility with deployment topology.
+**Fix Required:** Validate model compatibility (vPC support, port count) before adding.
+**Owner Skill:** network-engineer
+
+### P1-023: Backend Does Not Use Uplinks from Deployment
+**Location:** `api/main.py`  
+**Lens:** Backend Validation  
+**Scope:** Multi-Switch  
+**Complexity:** High  
+**Evidence:** Backend receives `input.uplinks` but does not use them to configure switches. Uses hardcoded logic instead.
+**Impact:** Custom uplinks are not applied to configurations.
+**Needed Outcome:** Custom uplinks from deployment are applied to device configurations.
+**Fix Required:** Process custom uplinks from deployment and apply to device configuration.
+**Owner Skill:** nst-python-backend
+
+### P1-024: Port Map Does Not Reflect Uplink Connections
+**Location:** `core/port_mapping_service.py`  
+**Lens:** Functionality  
+**Scope:** Multi-Switch  
+**Complexity:** High  
+**Evidence:** Port map generation does not include uplink connections from deployment.uplinks list.
+**Impact:** Port map incomplete for custom topologies.
+**Needed Outcome:** Port maps reflect custom uplink connections from deployment.
+**Fix Required:** Add uplinks parameter to create_port_map() and process custom uplinks.
+**Owner Skill:** nst-python-backend
+
+### P1-025: No Bulk Edit for Switches
+**Location:** Switch list panel  
+**Lens:** UI/UX  
+**Scope:** Multi-Switch  
+**Complexity:** Medium  
+**Evidence:** Must edit switches individually, no bulk operations.
+**Impact:** Time-consuming for large deployments.
+**Needed Outcome:** Users can bulk edit multiple switches at once.
+**Fix Required:** Add bulk edit functionality with multi-select.
+**Owner Skill:** frontend-ui-engineering
+
+### P1-026: No Deployment Validation Before Export
+**Location:** Export functionality  
+**Lens:** Functionality  
+**Scope:** Multi-Switch  
+**Complexity:** Medium  
+**Evidence:** Can export invalid configurations without validation.
+**Impact:** May export invalid configurations to production.
+**Needed Outcome:** System validates deployment before export with warnings/errors.
+**Fix Required:** Add pre-export validation with warnings/errors.
+**Owner Skill:** nst-python-backend
+
+### P1-027: Template Descriptions Too Technical
+**Location:** Template selection  
+**Lens:** UI/UX  
+**Scope:** Multi-Switch  
+**Complexity:** Low  
+**Evidence:** Template descriptions use technical jargon without use case examples.
+**Impact:** Non-expert users may not understand templates.
+**Needed Outcome:** Template descriptions are clear with use case examples.
+**Fix Required:** Rewrite template descriptions for clarity with use case examples.
+**Owner Skill:** product-design
+
+
+
+### P1-029: No Configuration Templates for Common Scenarios
+**Location:** Template library  
+**Lens:** Product Design  
+**Scope:** Multi-Switch  
+**Complexity:** Low  
+**Evidence:** Only 4 templates available for limited scenarios.
+**Impact:** Limited starting points for common deployments.
+**Needed Outcome:** Template library includes common deployment scenarios.
+**Fix Required:** Add more deployment templates for common scenarios (data center, campus, branch).
+**Owner Skill:** nst-product-architect
+
+### P1-030: No Auto-Save
+**Location:** Wizard state  
+**Lens:** UI/UX  
+**Scope:** Multi-Switch, Architect  
+**Complexity:** Medium  
+**Evidence:** No auto-save of wizard progress.
+**Impact:** Risk of losing work on browser crash or navigation.
+**Needed Outcome:** Wizard state auto-saves to localStorage with recovery option.
+**Fix Required:** Implement auto-save to localStorage with recovery option.
+**Owner Skill:** frontend-ui-engineering
+
+---
+
+## P2 - Medium Priority Issues (Following Sprints)
+
+
+
+
+### P2-001: Loading States Not Visible
+**Location:** API calls and configuration generation  
+**Lens:** UI/UX  
+**Scope:** Multi-Switch, Architect  
+**Complexity:** Low  
+**Evidence:** No loading indicators during long operations.
+**Impact:** Users don't know if application is working or frozen.
+**Needed Outcome:** Loading indicators show for all async operations.
+**Fix Required:** Add loading indicators for all async operations.
+**Owner Skill:** frontend-ui-engineering
+
+
+
+
+### P2-002: Print Styles Not Comprehensive
+**Location:** `static/styles.css:947-989`  
+**Lens:** UI/UX  
+**Scope:** Multi-Switch, Architect  
+**Complexity:** Low  
+**Evidence:** Print styles exist but could be more comprehensive (page breaks, hiding UI elements).
+**Impact:** Print output may not be optimal for all use cases.
+**Needed Outcome:** Print styles include page breaks and hide UI elements.
+**Fix Required:** Enhance print styles with page breaks, better layout.
+**Owner Skill:** frontend-ui-engineering
+
+
+
+### P2-007: Jinja2 Template Has Hardcoded Values
+**Location:** `templates/nxos_base.j2:41`  
+**Lens:** NX-OS Config Engineer  
+**Scope:** Multi-Switch, Architect  
+**Complexity:** Low  
+**Evidence:** Hardcoded placeholder password `$placeholder$` in template.
+```jinja2
+{% if device.spectrum_user %}
+! Lab-only secondary admin — disable in production
+username spectrum password 5 $placeholder$ role network-admin
+{% endif %}
+```
+**Impact:** Placeholder may leak to production configs.
+**Needed Outcome:** Hardcoded values removed or made configurable with warnings.
+**Fix Required:** Remove or make placeholder configurable with warning.
+**Owner Skill:** nxos-config-engineer
+
+
+
+### P2-008: No Interface Description Templates
+**Location:** Interface configuration  
+**Lens:** Network Engineer  
+**Scope:** Multi-Switch, Architect  
+**Complexity:** Low  
+**Evidence:** No templates for common interface descriptions.
+**Impact:** Manual description entry is time-consuming and inconsistent.
+**Needed Outcome:** Interface description templates with variables available.
+**Fix Required:** Add interface description templates with variables.
+**Owner Skill:** nxos-config-engineer
+
+### P2-009: No VLAN Naming Convention Enforcement
+**Location:** VLAN configuration  
+**Lens:** Network Engineer  
+**Scope:** Multi-Switch, Architect  
+**Complexity:** Low  
+**Evidence:** No validation or enforcement of VLAN naming conventions.
+**Impact:** Inconsistent VLAN names across configurations.
+**Needed Outcome:** VLAN naming conventions validated with suggestions.
+**Fix Required:** Add VLAN naming convention validation and suggestions.
+**Owner Skill:** nxos-config-engineer
+
+
+### P2-010: No LLDP Configuration Validation
+**Location:** LLDP configuration  
+**Lens:** Network Engineer  
+**Scope:** Multi-Switch, Architect  
+**Complexity:** Medium  
+**Evidence:** LLDP can be enabled but no validation for LLDP configuration.
+**Impact:** LLDP misconfigurations may cause network discovery issues.
+**Needed Outcome:** LLDP configuration validated before application.
+**Fix Required:** Add LLDP configuration validation.
+**Owner Skill:** network-engineer
+
+### P2-011: No STP Configuration Support
+**Location:** Layer 2 configuration  
+**Lens:** Network Engineer  
+**Scope:** Multi-Switch, Architect  
+**Complexity:** High  
+**Evidence:** No STP configuration support (RSTP, MST, etc.).
+**Impact:** Layer 2 loop prevention not configured.
+**Needed Outcome:** STP configuration (RSTP, MST) supported with validation.
+**Fix Required:** Add STP configuration with validation.
+**Owner Skill:** network-engineer
+
+---
+
+## P3 - Low Priority Issues (Future Enhancements)
+
+### P3-001: Color Scheme Could Be More Professional
+**Location:** UI theme  
+**Lens:** Frontend Design  
+**Scope:** Multi-Switch, Architect  
+**Complexity:** Low  
+**Evidence:** Some colors are too bright/saturated for enterprise use.
+**Impact:** Less professional appearance.
+**Needed Outcome:** Color scheme uses professional, muted palette.
+**Fix Required:** Update color scheme to professional, muted palette.
+**Owner Skill:** product-design
+
+
+
+
+
+
+### P3-002: No Configuration Templates Library
+**Location:** Template management  
+**Lens:** Product Design  
+**Scope:** Multi-Switch  
+**Complexity:** Medium  
+**Evidence:** No way to save custom templates or share template library.
+**Impact:** Cannot build custom template library for organization.
+**Needed Outcome:** Users can save and share custom templates.
+**Fix Required:** Add template library management with save/share.
+**Owner Skill:** nst-product-architect
+
+
+
+
+
+
+| User Claim | Zero-Trust Verification | Evidence | Result |
+|------------|-------------------------|----------|--------|
+| VLANs don't affect multi-switch configurations | TRUE | Backend processes VLANs but they don't appear in interface configs | CORRECT |
+| No completion popup in multi-switch | TRUE | app.js:3823-3824 shows only toast, no modal | CORRECT |

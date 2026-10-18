@@ -1,0 +1,239 @@
+{
+  "hostname": "HQ-LEAF1",
+  "mgmt_ip": "10.0.0.11/24",
+  "mgmt_gw": "10.0.0.254",
+  "model": "Nexus 93180YC-EX",
+  "vlans": [
+    {
+      "id": 100,
+      "name": "FABRIC_100"
+    },
+    {
+      "id": 101,
+      "name": "FABRIC_101"
+    },
+    {
+      "id": 102,
+      "name": "FABRIC_102"
+    },
+    {
+      "id": 103,
+      "name": "FABRIC_103"
+    },
+    {
+      "id": 104,
+      "name": "FABRIC_104"
+    },
+    {
+      "id": 105,
+      "name": "FABRIC_105"
+    },
+    {
+      "id": 106,
+      "name": "FABRIC_106"
+    },
+    {
+      "id": 107,
+      "name": "FABRIC_107"
+    },
+    {
+      "id": 108,
+      "name": "FABRIC_108"
+    },
+    {
+      "id": 109,
+      "name": "FABRIC_109"
+    }
+  ],
+  "interfaces": [
+    {
+      "name": "Ethernet1/53",
+      "mode": "trunk",
+      "vlan": null,
+      "description": "to DR-SPINE1",
+      "shutdown": false,
+      "vpc_id": null,
+      "trunk_vlans": "1-4094",
+      "channel_group": 20,
+      "channel_mode": "active",
+      "mtu": null,
+      "ip_address": null,
+      "vrf": null,
+      "custom_lines": []
+    },
+    {
+      "name": "Ethernet1/54",
+      "mode": "trunk",
+      "vlan": null,
+      "description": "to DR-SPINE1",
+      "shutdown": false,
+      "vpc_id": null,
+      "trunk_vlans": "1-4094",
+      "channel_group": 20,
+      "channel_mode": "active",
+      "mtu": null,
+      "ip_address": null,
+      "vrf": null,
+      "custom_lines": []
+    },
+    {
+      "name": "Ethernet1/55",
+      "mode": "trunk",
+      "vlan": null,
+      "description": "to HQ-SPINE2",
+      "shutdown": false,
+      "vpc_id": null,
+      "trunk_vlans": null,
+      "channel_group": 10,
+      "channel_mode": "active",
+      "mtu": null,
+      "ip_address": null,
+      "vrf": null,
+      "custom_lines": []
+    },
+    {
+      "name": "Ethernet1/56",
+      "mode": "trunk",
+      "vlan": null,
+      "description": "to HQ-SPINE2",
+      "shutdown": false,
+      "vpc_id": null,
+      "trunk_vlans": null,
+      "channel_group": 10,
+      "channel_mode": "active",
+      "mtu": null,
+      "ip_address": null,
+      "vrf": null,
+      "custom_lines": []
+    }
+  ],
+  "svis": [
+    {
+      "vlan_id": 100,
+      "ip_address": "10.100.0.1/24",
+      "description": "SVI_FABRIC_100",
+      "hsrp": {
+        "group": 100,
+        "vip": "10.100.0.1",
+        "priority": 110,
+        "preempt": true
+      },
+      "vrf": null
+    },
+    {
+      "vlan_id": 101,
+      "ip_address": "10.101.0.1/24",
+      "description": "SVI_FABRIC_101",
+      "hsrp": {
+        "group": 101,
+        "vip": "10.101.0.1",
+        "priority": 110,
+        "preempt": true
+      },
+      "vrf": null
+    }
+  ],
+  "static_routes": [],
+  "vpc": null,
+  "motd": "Data Center Leaf \u2014 Standalone Mode",
+  "admin_user": "admin",
+  "admin_password": "",
+  "nxos_version": "9.3",
+  "enabled_features": [
+    "hsrp",
+    "interface_vlan",
+    "lacp",
+    "lldp",
+    "logging",
+    "ntp",
+    "storm_control"
+  ],
+  "security_tier": "standard",
+  "ntp_servers": [
+    "10.255.255.254"
+  ],
+  "logging_hosts": [
+    "10.255.255.254"
+  ],
+  "snmp_location": "",
+  "snmp_contact": "",
+  "network_name": "HQ",
+  "site_location": "HQ",
+  "snmp_trap_host_1": "",
+  "snmp_trap_host_2": "",
+  "snmp_v3_user": "",
+  "boot_image": "",
+  "tacacs_server_1": "",
+  "tacacs_key": "",
+  "spectrum_user": false,
+  "create_local_user": false,
+  "port_channels": [],
+  "spanning_tree_priority": 8192,
+  "baseline_options": [],
+  "fabric_bgp_asn": 65001,
+  "fabric_loopback": "10.255.0.1/32",
+  "fabric_vni": 10000,
+  "uplink_config": [
+    {
+      "interface": "Ethernet1/53",
+      "description": "to HQ-SPINE1",
+      "mode": "trunk",
+      "port_channel": 10
+    },
+    {
+      "interface": "Ethernet1/54",
+      "description": "to HQ-SPINE1",
+      "mode": "trunk",
+      "port_channel": 10
+    },
+    {
+      "interface": "Ethernet1/55",
+      "description": "to HQ-SPINE2",
+      "mode": "trunk",
+      "port_channel": 10
+    },
+    {
+      "interface": "Ethernet1/56",
+      "description": "to HQ-SPINE2",
+      "mode": "trunk",
+      "port_channel": 10
+    },
+    {
+      "interface": "Ethernet1/53",
+      "description": "to HQ-SPINE1",
+      "mode": "trunk",
+      "port_channel": 20
+    },
+    {
+      "interface": "Ethernet1/54",
+      "description": "to HQ-SPINE1",
+      "mode": "trunk",
+      "port_channel": 20
+    },
+    {
+      "interface": "Ethernet1/53",
+      "description": "to HQ-SPINE2",
+      "mode": "trunk",
+      "port_channel": 20
+    },
+    {
+      "interface": "Ethernet1/54",
+      "description": "to HQ-SPINE2",
+      "mode": "trunk",
+      "port_channel": 20
+    },
+    {
+      "interface": "Ethernet1/53",
+      "description": "to DR-SPINE1",
+      "mode": "trunk",
+      "port_channel": 20
+    },
+    {
+      "interface": "Ethernet1/54",
+      "description": "to DR-SPINE1",
+      "mode": "trunk",
+      "port_channel": 20
+    }
+  ],
+  "downlink_config": []
+}

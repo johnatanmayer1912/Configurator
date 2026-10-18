@@ -63,7 +63,8 @@ def test_catalog_endpoints_are_public_no_auth_required():
 @pytest.mark.mandatory
 def test_non_loopback_gets_403_on_privileged_mutation_endpoint():
     """/validate is a privileged endpoint — non-loopback must get 403."""
-    res = client.post("/validate", json=MINIMAL_DEVICE)
+    with patch("api.main._is_loopback", return_value=False):
+        res = client.post("/validate", json=MINIMAL_DEVICE)
     assert res.status_code == 403, (
         f"/validate must reject non-loopback client; got {res.status_code}"
     )
@@ -72,15 +73,16 @@ def test_non_loopback_gets_403_on_privileged_mutation_endpoint():
 @pytest.mark.mandatory
 def test_non_loopback_gets_403_on_scenario_preview():
     """/scenario/preview is privileged — non-loopback must get 403."""
-    res = client.post(
-        "/scenario/preview",
-        json={
-            "scenario_id": "vpc_leaf_pair",
-            "hostname": "TEST-LEAF-01",
-            "mgmt_ip": "10.0.0.1/24",
-            "mgmt_gw": "10.0.0.254",
-        },
-    )
+    with patch("api.main._is_loopback", return_value=False):
+        res = client.post(
+            "/scenario/preview",
+            json={
+                "scenario_id": "vpc_leaf_pair",
+                "hostname": "TEST-LEAF-01",
+                "mgmt_ip": "10.0.0.1/24",
+                "mgmt_gw": "10.0.0.254",
+            },
+        )
     assert res.status_code == 403
 
 

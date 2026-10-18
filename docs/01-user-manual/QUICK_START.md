@@ -50,6 +50,11 @@ Checkboxes map directly to `feature` commands and vPC options. Hover for descrip
 
 Peer-link ports auto-fill from hardware profile. Override only if your cabling differs.
 
+**v6.14.0+ Features:**
+- **Keepalive IP Options**: Choose manual entry or auto-generation based on vPC domain
+- **Domain ID Edit**: Modify vPC domain ID in multi-switch environments
+- **Enhanced Validation**: Automatic validation of keepalive IPs and domain IDs
+
 ### 5. Review
 
 - **Validate Scenario** — dry-run, no files written
@@ -66,3 +71,18 @@ Each build creates:
 ## Stop the program
 
 Click **Stop Program** in the UI or close the console window.
+
+## v6.14.0 New Features
+
+### Multi-Switch Deployment
+- **Automatic Port Configuration**: Leaf switches automatically configure uplink ports based on model type
+  - 1GB leaf (Nexus 9348GC-FXP): Uplinks on ports 51-52
+  - 10GB leaf (Nexus 93180YC-EX): Uplinks on ports 53-54
+- **Core Downlink Logic**: Core switches automatically configure downlinks for mixed 10GB/1GB deployments
+  - 10GB leaf downlinks: Ports 1-10
+  - 1GB leaf downlinks: Ports 11-20
+
+### Keepalive IP Management
+- **Auto-Generation**: "Use default keepalive IP for vPC" checkbox generates IPs based on domain ID
+- **Validation**: Ensures keepalive IPs are present, valid, and unique within each vPC domain (IPs can be reused across different vPC domains per Cisco NX-OS behavior)
+- **Manual Override**: Option to specify custom keepalive IPs when needed

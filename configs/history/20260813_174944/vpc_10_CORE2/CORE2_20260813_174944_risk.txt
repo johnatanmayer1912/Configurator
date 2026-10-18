@@ -1,0 +1,483 @@
+==========================================
+       CONFIGURATION RISK ASSESSMENT      
+==========================================
+OVERALL RISK LEVEL: HIGH
+TOTAL FINDINGS: 238
+------------------------------------------
+[LOW] hostname CORE2
+   ↳ Matches risk pattern: 'hostname'
+[LOW] interface port-channel1
+   ↳ Matches risk pattern: 'interface port-channel'
+[MEDIUM] spanning-tree port type network
+   ↳ Matches risk pattern: 'spanning-tree'
+[LOW] interface port-channel2
+   ↳ Matches risk pattern: 'interface port-channel'
+[HIGH] vpc domain 10
+   ↳ Matches risk pattern: 'vpc domain'
+[MEDIUM] channel-group 1 mode active
+   ↳ Matches risk pattern: 'channel-group 1 mode'
+[MEDIUM] spanning-tree port type edge
+   ↳ Matches risk pattern: 'spanning-tree'
+[MEDIUM] storm-control broadcast level 20.00
+   ↳ Matches risk pattern: 'storm-control'
+[MEDIUM] storm-control multicast level 20.00
+   ↳ Matches risk pattern: 'storm-control'
+[HIGH] storm-control action shutdown
+   ↳ Matches risk pattern: 'shutdown'
+[MEDIUM] storm-control action shutdown
+   ↳ Matches risk pattern: 'storm-control'
+[MEDIUM] spanning-tree port type edge
+   ↳ Matches risk pattern: 'spanning-tree'
+[MEDIUM] storm-control broadcast level 20.00
+   ↳ Matches risk pattern: 'storm-control'
+[MEDIUM] storm-control multicast level 20.00
+   ↳ Matches risk pattern: 'storm-control'
+[HIGH] storm-control action shutdown
+   ↳ Matches risk pattern: 'shutdown'
+[MEDIUM] storm-control action shutdown
+   ↳ Matches risk pattern: 'storm-control'
+[MEDIUM] spanning-tree port type edge
+   ↳ Matches risk pattern: 'spanning-tree'
+[MEDIUM] storm-control broadcast level 20.00
+   ↳ Matches risk pattern: 'storm-control'
+[MEDIUM] storm-control multicast level 20.00
+   ↳ Matches risk pattern: 'storm-control'
+[HIGH] storm-control action shutdown
+   ↳ Matches risk pattern: 'shutdown'
+[MEDIUM] storm-control action shutdown
+   ↳ Matches risk pattern: 'storm-control'
+[MEDIUM] spanning-tree port type edge
+   ↳ Matches risk pattern: 'spanning-tree'
+[MEDIUM] storm-control broadcast level 20.00
+   ↳ Matches risk pattern: 'storm-control'
+[MEDIUM] storm-control multicast level 20.00
+   ↳ Matches risk pattern: 'storm-control'
+[HIGH] storm-control action shutdown
+   ↳ Matches risk pattern: 'shutdown'
+[MEDIUM] storm-control action shutdown
+   ↳ Matches risk pattern: 'storm-control'
+[MEDIUM] spanning-tree port type edge
+   ↳ Matches risk pattern: 'spanning-tree'
+[MEDIUM] storm-control broadcast level 20.00
+   ↳ Matches risk pattern: 'storm-control'
+[MEDIUM] storm-control multicast level 20.00
+   ↳ Matches risk pattern: 'storm-control'
+[HIGH] storm-control action shutdown
+   ↳ Matches risk pattern: 'shutdown'
+[MEDIUM] storm-control action shutdown
+   ↳ Matches risk pattern: 'storm-control'
+[MEDIUM] spanning-tree port type edge
+   ↳ Matches risk pattern: 'spanning-tree'
+[MEDIUM] storm-control broadcast level 20.00
+   ↳ Matches risk pattern: 'storm-control'
+[MEDIUM] storm-control multicast level 20.00
+   ↳ Matches risk pattern: 'storm-control'
+[HIGH] storm-control action shutdown
+   ↳ Matches risk pattern: 'shutdown'
+[MEDIUM] storm-control action shutdown
+   ↳ Matches risk pattern: 'storm-control'
+[MEDIUM] spanning-tree port type edge
+   ↳ Matches risk pattern: 'spanning-tree'
+[MEDIUM] storm-control broadcast level 20.00
+   ↳ Matches risk pattern: 'storm-control'
+[MEDIUM] storm-control multicast level 20.00
+   ↳ Matches risk pattern: 'storm-control'
+[HIGH] storm-control action shutdown
+   ↳ Matches risk pattern: 'shutdown'
+[MEDIUM] storm-control action shutdown
+   ↳ Matches risk pattern: 'storm-control'
+[MEDIUM] spanning-tree port type edge
+   ↳ Matches risk pattern: 'spanning-tree'
+[MEDIUM] storm-control broadcast level 20.00
+   ↳ Matches risk pattern: 'storm-control'
+[MEDIUM] storm-control multicast level 20.00
+   ↳ Matches risk pattern: 'storm-control'
+[HIGH] storm-control action shutdown
+   ↳ Matches risk pattern: 'shutdown'
+[MEDIUM] storm-control action shutdown
+   ↳ Matches risk pattern: 'storm-control'
+[MEDIUM] spanning-tree port type edge
+   ↳ Matches risk pattern: 'spanning-tree'
+[MEDIUM] storm-control broadcast level 20.00
+   ↳ Matches risk pattern: 'storm-control'
+[MEDIUM] storm-control multicast level 20.00
+   ↳ Matches risk pattern: 'storm-control'
+[HIGH] storm-control action shutdown
+   ↳ Matches risk pattern: 'shutdown'
+[MEDIUM] storm-control action shutdown
+   ↳ Matches risk pattern: 'storm-control'
+[MEDIUM] spanning-tree port type edge
+   ↳ Matches risk pattern: 'spanning-tree'
+[MEDIUM] storm-control broadcast level 20.00
+   ↳ Matches risk pattern: 'storm-control'
+[MEDIUM] storm-control multicast level 20.00
+   ↳ Matches risk pattern: 'storm-control'
+[HIGH] storm-control action shutdown
+   ↳ Matches risk pattern: 'shutdown'
+[MEDIUM] storm-control action shutdown
+   ↳ Matches risk pattern: 'storm-control'
+[MEDIUM] spanning-tree port type edge
+   ↳ Matches risk pattern: 'spanning-tree'
+[MEDIUM] storm-control broadcast level 20.00
+   ↳ Matches risk pattern: 'storm-control'
+[MEDIUM] storm-control multicast level 20.00
+   ↳ Matches risk pattern: 'storm-control'
+[HIGH] storm-control action shutdown
+   ↳ Matches risk pattern: 'shutdown'
+[MEDIUM] storm-control action shutdown
+   ↳ Matches risk pattern: 'storm-control'
+[MEDIUM] spanning-tree port type edge
+   ↳ Matches risk pattern: 'spanning-tree'
+[MEDIUM] storm-control broadcast level 20.00
+   ↳ Matches risk pattern: 'storm-control'
+[MEDIUM] storm-control multicast level 20.00
+   ↳ Matches risk pattern: 'storm-control'
+[HIGH] storm-control action shutdown
+   ↳ Matches risk pattern: 'shutdown'
+[MEDIUM] storm-control action shutdown
+   ↳ Matches risk pattern: 'storm-control'
+[MEDIUM] spanning-tree port type edge
+   ↳ Matches risk pattern: 'spanning-tree'
+[MEDIUM] storm-control broadcast level 20.00
+   ↳ Matches risk pattern: 'storm-control'
+[MEDIUM] storm-control multicast level 20.00
+   ↳ Matches risk pattern: 'storm-control'
+[HIGH] storm-control action shutdown
+   ↳ Matches risk pattern: 'shutdown'
+[MEDIUM] storm-control action shutdown
+   ↳ Matches risk pattern: 'storm-control'
+[MEDIUM] spanning-tree port type edge
+   ↳ Matches risk pattern: 'spanning-tree'
+[MEDIUM] storm-control broadcast level 20.00
+   ↳ Matches risk pattern: 'storm-control'
+[MEDIUM] storm-control multicast level 20.00
+   ↳ Matches risk pattern: 'storm-control'
+[HIGH] storm-control action shutdown
+   ↳ Matches risk pattern: 'shutdown'
+[MEDIUM] storm-control action shutdown
+   ↳ Matches risk pattern: 'storm-control'
+[MEDIUM] spanning-tree port type edge
+   ↳ Matches risk pattern: 'spanning-tree'
+[MEDIUM] storm-control broadcast level 20.00
+   ↳ Matches risk pattern: 'storm-control'
+[MEDIUM] storm-control multicast level 20.00
+   ↳ Matches risk pattern: 'storm-control'
+[HIGH] storm-control action shutdown
+   ↳ Matches risk pattern: 'shutdown'
+[MEDIUM] storm-control action shutdown
+   ↳ Matches risk pattern: 'storm-control'
+[MEDIUM] spanning-tree port type edge
+   ↳ Matches risk pattern: 'spanning-tree'
+[MEDIUM] storm-control broadcast level 20.00
+   ↳ Matches risk pattern: 'storm-control'
+[MEDIUM] storm-control multicast level 20.00
+   ↳ Matches risk pattern: 'storm-control'
+[HIGH] storm-control action shutdown
+   ↳ Matches risk pattern: 'shutdown'
+[MEDIUM] storm-control action shutdown
+   ↳ Matches risk pattern: 'storm-control'
+[MEDIUM] spanning-tree port type edge
+   ↳ Matches risk pattern: 'spanning-tree'
+[MEDIUM] storm-control broadcast level 20.00
+   ↳ Matches risk pattern: 'storm-control'
+[MEDIUM] storm-control multicast level 20.00
+   ↳ Matches risk pattern: 'storm-control'
+[HIGH] storm-control action shutdown
+   ↳ Matches risk pattern: 'shutdown'
+[MEDIUM] storm-control action shutdown
+   ↳ Matches risk pattern: 'storm-control'
+[MEDIUM] spanning-tree port type edge
+   ↳ Matches risk pattern: 'spanning-tree'
+[MEDIUM] storm-control broadcast level 20.00
+   ↳ Matches risk pattern: 'storm-control'
+[MEDIUM] storm-control multicast level 20.00
+   ↳ Matches risk pattern: 'storm-control'
+[HIGH] storm-control action shutdown
+   ↳ Matches risk pattern: 'shutdown'
+[MEDIUM] storm-control action shutdown
+   ↳ Matches risk pattern: 'storm-control'
+[MEDIUM] spanning-tree port type edge
+   ↳ Matches risk pattern: 'spanning-tree'
+[MEDIUM] storm-control broadcast level 20.00
+   ↳ Matches risk pattern: 'storm-control'
+[MEDIUM] storm-control multicast level 20.00
+   ↳ Matches risk pattern: 'storm-control'
+[HIGH] storm-control action shutdown
+   ↳ Matches risk pattern: 'shutdown'
+[MEDIUM] storm-control action shutdown
+   ↳ Matches risk pattern: 'storm-control'
+[MEDIUM] spanning-tree port type edge
+   ↳ Matches risk pattern: 'spanning-tree'
+[MEDIUM] storm-control broadcast level 20.00
+   ↳ Matches risk pattern: 'storm-control'
+[MEDIUM] storm-control multicast level 20.00
+   ↳ Matches risk pattern: 'storm-control'
+[HIGH] storm-control action shutdown
+   ↳ Matches risk pattern: 'shutdown'
+[MEDIUM] storm-control action shutdown
+   ↳ Matches risk pattern: 'storm-control'
+[MEDIUM] spanning-tree port type edge
+   ↳ Matches risk pattern: 'spanning-tree'
+[MEDIUM] storm-control broadcast level 20.00
+   ↳ Matches risk pattern: 'storm-control'
+[MEDIUM] storm-control multicast level 20.00
+   ↳ Matches risk pattern: 'storm-control'
+[HIGH] storm-control action shutdown
+   ↳ Matches risk pattern: 'shutdown'
+[MEDIUM] storm-control action shutdown
+   ↳ Matches risk pattern: 'storm-control'
+[MEDIUM] spanning-tree port type edge
+   ↳ Matches risk pattern: 'spanning-tree'
+[MEDIUM] storm-control broadcast level 20.00
+   ↳ Matches risk pattern: 'storm-control'
+[MEDIUM] storm-control multicast level 20.00
+   ↳ Matches risk pattern: 'storm-control'
+[HIGH] storm-control action shutdown
+   ↳ Matches risk pattern: 'shutdown'
+[MEDIUM] storm-control action shutdown
+   ↳ Matches risk pattern: 'storm-control'
+[MEDIUM] spanning-tree port type edge
+   ↳ Matches risk pattern: 'spanning-tree'
+[MEDIUM] storm-control broadcast level 20.00
+   ↳ Matches risk pattern: 'storm-control'
+[MEDIUM] storm-control multicast level 20.00
+   ↳ Matches risk pattern: 'storm-control'
+[HIGH] storm-control action shutdown
+   ↳ Matches risk pattern: 'shutdown'
+[MEDIUM] storm-control action shutdown
+   ↳ Matches risk pattern: 'storm-control'
+[MEDIUM] spanning-tree port type edge
+   ↳ Matches risk pattern: 'spanning-tree'
+[MEDIUM] storm-control broadcast level 20.00
+   ↳ Matches risk pattern: 'storm-control'
+[MEDIUM] storm-control multicast level 20.00
+   ↳ Matches risk pattern: 'storm-control'
+[HIGH] storm-control action shutdown
+   ↳ Matches risk pattern: 'shutdown'
+[MEDIUM] storm-control action shutdown
+   ↳ Matches risk pattern: 'storm-control'
+[MEDIUM] spanning-tree port type edge
+   ↳ Matches risk pattern: 'spanning-tree'
+[MEDIUM] storm-control broadcast level 20.00
+   ↳ Matches risk pattern: 'storm-control'
+[MEDIUM] storm-control multicast level 20.00
+   ↳ Matches risk pattern: 'storm-control'
+[HIGH] storm-control action shutdown
+   ↳ Matches risk pattern: 'shutdown'
+[MEDIUM] storm-control action shutdown
+   ↳ Matches risk pattern: 'storm-control'
+[MEDIUM] spanning-tree port type edge
+   ↳ Matches risk pattern: 'spanning-tree'
+[MEDIUM] storm-control broadcast level 20.00
+   ↳ Matches risk pattern: 'storm-control'
+[MEDIUM] storm-control multicast level 20.00
+   ↳ Matches risk pattern: 'storm-control'
+[HIGH] storm-control action shutdown
+   ↳ Matches risk pattern: 'shutdown'
+[MEDIUM] storm-control action shutdown
+   ↳ Matches risk pattern: 'storm-control'
+[MEDIUM] spanning-tree port type edge
+   ↳ Matches risk pattern: 'spanning-tree'
+[MEDIUM] storm-control broadcast level 20.00
+   ↳ Matches risk pattern: 'storm-control'
+[MEDIUM] storm-control multicast level 20.00
+   ↳ Matches risk pattern: 'storm-control'
+[HIGH] storm-control action shutdown
+   ↳ Matches risk pattern: 'shutdown'
+[MEDIUM] storm-control action shutdown
+   ↳ Matches risk pattern: 'storm-control'
+[MEDIUM] spanning-tree port type edge
+   ↳ Matches risk pattern: 'spanning-tree'
+[MEDIUM] storm-control broadcast level 20.00
+   ↳ Matches risk pattern: 'storm-control'
+[MEDIUM] storm-control multicast level 20.00
+   ↳ Matches risk pattern: 'storm-control'
+[HIGH] storm-control action shutdown
+   ↳ Matches risk pattern: 'shutdown'
+[MEDIUM] storm-control action shutdown
+   ↳ Matches risk pattern: 'storm-control'
+[MEDIUM] spanning-tree port type edge
+   ↳ Matches risk pattern: 'spanning-tree'
+[MEDIUM] storm-control broadcast level 20.00
+   ↳ Matches risk pattern: 'storm-control'
+[MEDIUM] storm-control multicast level 20.00
+   ↳ Matches risk pattern: 'storm-control'
+[HIGH] storm-control action shutdown
+   ↳ Matches risk pattern: 'shutdown'
+[MEDIUM] storm-control action shutdown
+   ↳ Matches risk pattern: 'storm-control'
+[MEDIUM] spanning-tree port type edge
+   ↳ Matches risk pattern: 'spanning-tree'
+[MEDIUM] storm-control broadcast level 20.00
+   ↳ Matches risk pattern: 'storm-control'
+[MEDIUM] storm-control multicast level 20.00
+   ↳ Matches risk pattern: 'storm-control'
+[HIGH] storm-control action shutdown
+   ↳ Matches risk pattern: 'shutdown'
+[MEDIUM] storm-control action shutdown
+   ↳ Matches risk pattern: 'storm-control'
+[MEDIUM] spanning-tree port type edge
+   ↳ Matches risk pattern: 'spanning-tree'
+[MEDIUM] storm-control broadcast level 20.00
+   ↳ Matches risk pattern: 'storm-control'
+[MEDIUM] storm-control multicast level 20.00
+   ↳ Matches risk pattern: 'storm-control'
+[HIGH] storm-control action shutdown
+   ↳ Matches risk pattern: 'shutdown'
+[MEDIUM] storm-control action shutdown
+   ↳ Matches risk pattern: 'storm-control'
+[MEDIUM] spanning-tree port type edge
+   ↳ Matches risk pattern: 'spanning-tree'
+[MEDIUM] storm-control broadcast level 20.00
+   ↳ Matches risk pattern: 'storm-control'
+[MEDIUM] storm-control multicast level 20.00
+   ↳ Matches risk pattern: 'storm-control'
+[HIGH] storm-control action shutdown
+   ↳ Matches risk pattern: 'shutdown'
+[MEDIUM] storm-control action shutdown
+   ↳ Matches risk pattern: 'storm-control'
+[MEDIUM] spanning-tree port type edge
+   ↳ Matches risk pattern: 'spanning-tree'
+[MEDIUM] storm-control broadcast level 20.00
+   ↳ Matches risk pattern: 'storm-control'
+[MEDIUM] storm-control multicast level 20.00
+   ↳ Matches risk pattern: 'storm-control'
+[HIGH] storm-control action shutdown
+   ↳ Matches risk pattern: 'shutdown'
+[MEDIUM] storm-control action shutdown
+   ↳ Matches risk pattern: 'storm-control'
+[MEDIUM] spanning-tree port type edge
+   ↳ Matches risk pattern: 'spanning-tree'
+[MEDIUM] storm-control broadcast level 20.00
+   ↳ Matches risk pattern: 'storm-control'
+[MEDIUM] storm-control multicast level 20.00
+   ↳ Matches risk pattern: 'storm-control'
+[HIGH] storm-control action shutdown
+   ↳ Matches risk pattern: 'shutdown'
+[MEDIUM] storm-control action shutdown
+   ↳ Matches risk pattern: 'storm-control'
+[MEDIUM] spanning-tree port type edge
+   ↳ Matches risk pattern: 'spanning-tree'
+[MEDIUM] storm-control broadcast level 20.00
+   ↳ Matches risk pattern: 'storm-control'
+[MEDIUM] storm-control multicast level 20.00
+   ↳ Matches risk pattern: 'storm-control'
+[HIGH] storm-control action shutdown
+   ↳ Matches risk pattern: 'shutdown'
+[MEDIUM] storm-control action shutdown
+   ↳ Matches risk pattern: 'storm-control'
+[MEDIUM] spanning-tree port type edge
+   ↳ Matches risk pattern: 'spanning-tree'
+[MEDIUM] storm-control broadcast level 20.00
+   ↳ Matches risk pattern: 'storm-control'
+[MEDIUM] storm-control multicast level 20.00
+   ↳ Matches risk pattern: 'storm-control'
+[HIGH] storm-control action shutdown
+   ↳ Matches risk pattern: 'shutdown'
+[MEDIUM] storm-control action shutdown
+   ↳ Matches risk pattern: 'storm-control'
+[MEDIUM] spanning-tree port type edge
+   ↳ Matches risk pattern: 'spanning-tree'
+[MEDIUM] storm-control broadcast level 20.00
+   ↳ Matches risk pattern: 'storm-control'
+[MEDIUM] storm-control multicast level 20.00
+   ↳ Matches risk pattern: 'storm-control'
+[HIGH] storm-control action shutdown
+   ↳ Matches risk pattern: 'shutdown'
+[MEDIUM] storm-control action shutdown
+   ↳ Matches risk pattern: 'storm-control'
+[MEDIUM] spanning-tree port type edge
+   ↳ Matches risk pattern: 'spanning-tree'
+[MEDIUM] storm-control broadcast level 20.00
+   ↳ Matches risk pattern: 'storm-control'
+[MEDIUM] storm-control multicast level 20.00
+   ↳ Matches risk pattern: 'storm-control'
+[HIGH] storm-control action shutdown
+   ↳ Matches risk pattern: 'shutdown'
+[MEDIUM] storm-control action shutdown
+   ↳ Matches risk pattern: 'storm-control'
+[MEDIUM] spanning-tree port type edge
+   ↳ Matches risk pattern: 'spanning-tree'
+[MEDIUM] storm-control broadcast level 20.00
+   ↳ Matches risk pattern: 'storm-control'
+[MEDIUM] storm-control multicast level 20.00
+   ↳ Matches risk pattern: 'storm-control'
+[HIGH] storm-control action shutdown
+   ↳ Matches risk pattern: 'shutdown'
+[MEDIUM] storm-control action shutdown
+   ↳ Matches risk pattern: 'storm-control'
+[MEDIUM] spanning-tree port type edge
+   ↳ Matches risk pattern: 'spanning-tree'
+[MEDIUM] storm-control broadcast level 20.00
+   ↳ Matches risk pattern: 'storm-control'
+[MEDIUM] storm-control multicast level 20.00
+   ↳ Matches risk pattern: 'storm-control'
+[HIGH] storm-control action shutdown
+   ↳ Matches risk pattern: 'shutdown'
+[MEDIUM] storm-control action shutdown
+   ↳ Matches risk pattern: 'storm-control'
+[MEDIUM] spanning-tree port type edge
+   ↳ Matches risk pattern: 'spanning-tree'
+[MEDIUM] storm-control broadcast level 20.00
+   ↳ Matches risk pattern: 'storm-control'
+[MEDIUM] storm-control multicast level 20.00
+   ↳ Matches risk pattern: 'storm-control'
+[HIGH] storm-control action shutdown
+   ↳ Matches risk pattern: 'shutdown'
+[MEDIUM] storm-control action shutdown
+   ↳ Matches risk pattern: 'storm-control'
+[MEDIUM] spanning-tree port type edge
+   ↳ Matches risk pattern: 'spanning-tree'
+[MEDIUM] storm-control broadcast level 20.00
+   ↳ Matches risk pattern: 'storm-control'
+[MEDIUM] storm-control multicast level 20.00
+   ↳ Matches risk pattern: 'storm-control'
+[HIGH] storm-control action shutdown
+   ↳ Matches risk pattern: 'shutdown'
+[MEDIUM] storm-control action shutdown
+   ↳ Matches risk pattern: 'storm-control'
+[MEDIUM] spanning-tree port type edge
+   ↳ Matches risk pattern: 'spanning-tree'
+[MEDIUM] storm-control broadcast level 20.00
+   ↳ Matches risk pattern: 'storm-control'
+[MEDIUM] storm-control multicast level 20.00
+   ↳ Matches risk pattern: 'storm-control'
+[HIGH] storm-control action shutdown
+   ↳ Matches risk pattern: 'shutdown'
+[MEDIUM] storm-control action shutdown
+   ↳ Matches risk pattern: 'storm-control'
+[MEDIUM] spanning-tree port type edge
+   ↳ Matches risk pattern: 'spanning-tree'
+[MEDIUM] storm-control broadcast level 20.00
+   ↳ Matches risk pattern: 'storm-control'
+[MEDIUM] storm-control multicast level 20.00
+   ↳ Matches risk pattern: 'storm-control'
+[HIGH] storm-control action shutdown
+   ↳ Matches risk pattern: 'shutdown'
+[MEDIUM] storm-control action shutdown
+   ↳ Matches risk pattern: 'storm-control'
+[MEDIUM] spanning-tree port type edge
+   ↳ Matches risk pattern: 'spanning-tree'
+[MEDIUM] storm-control broadcast level 20.00
+   ↳ Matches risk pattern: 'storm-control'
+[MEDIUM] storm-control multicast level 20.00
+   ↳ Matches risk pattern: 'storm-control'
+[HIGH] storm-control action shutdown
+   ↳ Matches risk pattern: 'shutdown'
+[MEDIUM] storm-control action shutdown
+   ↳ Matches risk pattern: 'storm-control'
+[MEDIUM] spanning-tree port type edge
+   ↳ Matches risk pattern: 'spanning-tree'
+[MEDIUM] storm-control broadcast level 20.00
+   ↳ Matches risk pattern: 'storm-control'
+[MEDIUM] storm-control multicast level 20.00
+   ↳ Matches risk pattern: 'storm-control'
+[HIGH] storm-control action shutdown
+   ↳ Matches risk pattern: 'shutdown'
+[MEDIUM] storm-control action shutdown
+   ↳ Matches risk pattern: 'storm-control'
+[LOW] ntp server 10.255.255.254 prefer use-vrf management
+   ↳ Matches risk pattern: 'ntp server'
+[LOW] logging server 10.255.255.254 6 use-vrf management
+   ↳ Matches risk pattern: 'logging server'
+==========================================

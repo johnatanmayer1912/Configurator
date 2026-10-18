@@ -1,0 +1,126 @@
+--- baseline
++++ proposed
+@@ -0,0 +1,123 @@
++! -----------------------------------------------------------------------------
++! Configuration Authority System
++! Version: 6.34.0
++! NX-OS:  9.3
++! Date:    2026-07-26 13:42:04
++! Mode:    vPC Pair
++! Tier:    standard
++! -----------------------------------------------------------------------------
++
++! Hostname & Global Services
++hostname CORE1
++!
++banner motd ^
++*********************************************************
++                HQ-CORE1
++                MGMT_IP: 10.10.10.1/24
++                HQ
++*********************************************************
++^
++!
++! Local user omitted — set admin password in wizard to create username (lab only).
++ip domain-lookup
++
++! Features
++feature interface-vlan
++feature hsrp
++feature lacp
++feature lldp
++
++! VLAN Configuration
++vlan 10
++  name FABRIC_10
++
++vlan 11
++  name FABRIC_11
++
++vlan 12
++  name FABRIC_12
++
++vlan 13
++  name FABRIC_13
++
++! vPC Domain
++vpc domain 10
++  role priority 4096
++  system-priority 32667
++  peer-keepalive destination 10.10.10.2 source 10.10.10.1 vrf management
++
++! L3 SVI Configuration
++interface Vlan10
++  description SVI_FABRIC_10
++  no ip redirects
++  no ip proxy-arp
++  no shutdown
++  ip address 10.10.0.1/24
++  hsrp version 2
++  hsrp 10
++    priority 110
++    preempt
++    ip 10.10.0.1
++
++interface Vlan11
++  description SVI_FABRIC_11
++  no ip redirects
++  no ip proxy-arp
++  no shutdown
++  ip address 10.11.0.1/24
++  hsrp version 2
++  hsrp 11
++    priority 110
++    preempt
++    ip 10.11.0.1
++
++! vPC Peer-Link Members
++interface E1/35
++  description vPC Peer-Link Member
++  channel-group 1 mode active
++  no shutdown
++
++interface E1/36
++  description vPC Peer-Link Member
++  channel-group 1 mode active
++  no shutdown
++
++! vPC Peer-Link Infrastructure
++interface port-channel1
++  description vPC PEER-LINK
++  switchport mode trunk
++  vpc peer-link
++  spanning-tree port type network
++  no shutdown
++
++
++
++
++! Ethernet Interfaces
++! Management & Routing
++interface mgmt0
++  ip address 10.10.10.1/24
++  vrf member management
++  no shutdown
++vrf context management
++  ip route 0.0.0.0/0 10.0.0.1
++
++! NTP
++ntp server 10.255.255.254 prefer use-vrf management
++! Logging
++logging server 10.255.255.254 6 use-vrf management
++logging timestamp milliseconds
++logging level info
++
++! Boot System
++boot nxos bootflash:/nxos.9.3.5.bin
++
++line console
++line vty
++
++! POST-PASTE CHECKLIST (lab engineer — comments only)
++! 1) show running-config | sec vpc
++! 2) show vpc brief
++! 3) show interface status err-disabled
++! 4) show ip route vrf management
++! 5) copy run start (only after lab sign-off)

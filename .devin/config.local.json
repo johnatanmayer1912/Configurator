@@ -1,0 +1,9 @@
+{
+  "permissions": {
+    "allow": []
+  },
+  "secrets": {
+    "api_keys": {},
+    "tokens": {}
+  }
+}

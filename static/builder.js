@@ -54,7 +54,7 @@ function renderBuilderQuestion() {
         html += `<div class="builder-choices">`;
         (q.options || []).forEach((opt) => {
             const sel = val === opt.value ? " selected" : "";
-            html += `<button type="button" class="builder-choice${sel}" data-value="${escapeHtml(opt.value)}" onclick="pickBuilderChoice('${q.id}', '${opt.value}')">${escapeHtml(opt.label)}</button>`;
+            html += `<button type="button" class="builder-choice${sel}" data-value="${escapeHtml(opt.value)}" data-action="pick-builder-choice" data-question="${q.id}">${escapeHtml(opt.label)}</button>`;
         });
         html += `</div>`;
     } else if (q.type === "textarea") {

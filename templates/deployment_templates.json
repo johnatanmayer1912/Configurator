@@ -1,0 +1,173 @@
+{
+  "_metadata": {
+    "version": "1.0.0",
+    "source": "deployment_templates.json",
+    "description": "Deployment templates loaded from external JSON file",
+    "last_updated": "2026-07-27"
+  },
+  "templates": {
+    "vpc_core_leaf": {
+      "id": "vpc_core_leaf",
+      "name": "vPC Core + Leaf Pairs",
+      "description": "Best for data centers needing high availability. Two core switches with redundant connections to leaf switches.",
+      "use_case": "Production data center",
+      "use_case_category": "production_dc",
+      "switch_count": 4,
+      "vpc_domain_count": 2,
+      "vlan_range": "10-50",
+      "complexity": "medium",
+      "hardware_compatibility": ["Nexus 9336C-FX2", "Nexus 93180YC-EX", "Nexus 9348GC-FXP"],
+      "nxos_version_min": "9.2",
+      "nxos_version_max": "10.2",
+      "best_practice_badge": true,
+      "switches": [
+        { "role": "core", "model": "Nexus 9336C-FX2", "hostname": "CORE1", "mgmt_ip": "10.0.0.1/24", "vpc_domain": "10", "base_access_vlan": 10, "access_vlan_count": 4, "local_ka": "10.0.0.1" },
+        { "role": "core", "model": "Nexus 9336C-FX2", "hostname": "CORE2", "mgmt_ip": "10.0.0.2/24", "vpc_domain": "10", "base_access_vlan": 10, "access_vlan_count": 4, "local_ka": "10.0.0.2" },
+        { "role": "leaf", "model": "Nexus 93180YC-EX", "hostname": "LEAF10G-1", "mgmt_ip": "10.0.0.11/24", "vpc_domain": "100", "base_access_vlan": 100, "access_vlan_count": 4, "local_ka": "10.0.0.1" },
+        { "role": "leaf", "model": "Nexus 93180YC-EX", "hostname": "LEAF10G-2", "mgmt_ip": "10.0.0.12/24", "vpc_domain": "100", "base_access_vlan": 100, "access_vlan_count": 4, "local_ka": "10.0.0.2" }
+      ],
+      "vpc_pairs": [
+        { "domain": "10", "primary": "CORE1", "secondary": "CORE2", "peer_link_ports": "E1/35-36" },
+        { "domain": "100", "primary": "LEAF10G-1", "secondary": "LEAF10G-2", "peer_link_ports": "E1/51-52" }
+      ],
+      "uplinks": [
+        { "from": "LEAF10G-1", "to": "CORE1", "ports": "E1/53", "to_ports": "E1/1", "po_id": "10" },
+        { "from": "LEAF10G-1", "to": "CORE2", "ports": "E1/54", "to_ports": "E1/1", "po_id": "10" },
+        { "from": "LEAF10G-2", "to": "CORE1", "ports": "E1/53", "to_ports": "E1/2", "po_id": "10" },
+        { "from": "LEAF10G-2", "to": "CORE2", "ports": "E1/54", "to_ports": "E1/2", "po_id": "10" }
+      ],
+      "global_vlans": [
+        { "id": 10, "name": "Data-VLAN-10" },
+        { "id": 20, "name": "Data-VLAN-20" },
+        { "id": 30, "name": "Data-VLAN-30" },
+        { "id": 40, "name": "Data-VLAN-40" },
+        { "id": 50, "name": "Data-VLAN-50" }
+      ]
+    },
+    "spine_leaf": {
+      "id": "spine_leaf",
+      "name": "Spine-Leaf Fabric",
+      "description": "Modern data center design with simple Layer 3 routing. No vPC complexity, just equal-cost multi-path routing.",
+      "use_case": "Cloud/VM environment",
+      "use_case_category": "cloud_vm",
+      "switch_count": 4,
+      "vpc_domain_count": 0,
+      "vlan_range": "10-50",
+      "complexity": "simple",
+      "hardware_compatibility": ["Nexus 9336C-FX2", "Nexus 93180YC-EX", "Nexus 9348GC-FXP"],
+      "nxos_version_min": "9.2",
+      "nxos_version_max": "10.2",
+      "best_practice_badge": true,
+      "switches": [
+        { "role": "spine", "model": "Nexus 9336C-FX2", "hostname": "SPINE1", "mgmt_ip": "10.0.0.1/24", "base_access_vlan": 10, "access_vlan_count": 4 },
+        { "role": "spine", "model": "Nexus 9336C-FX2", "hostname": "SPINE2", "mgmt_ip": "10.0.0.2/24", "base_access_vlan": 10, "access_vlan_count": 4 },
+        { "role": "leaf", "model": "Nexus 93180YC-EX", "hostname": "LEAF1", "mgmt_ip": "10.0.0.11/24", "base_access_vlan": 100, "access_vlan_count": 4 },
+        { "role": "leaf", "model": "Nexus 93180YC-EX", "hostname": "LEAF2", "mgmt_ip": "10.0.0.12/24", "base_access_vlan": 100, "access_vlan_count": 4 }
+      ],
+      "vpc_pairs": [],
+      "uplinks": [
+        { "from": "LEAF1", "to": "SPINE1", "ports": "E1/1-2", "po_id": "1" },
+        { "from": "LEAF1", "to": "SPINE2", "ports": "E1/3-4", "po_id": "1" },
+        { "from": "LEAF2", "to": "SPINE1", "ports": "E1/1-2", "po_id": "2" },
+        { "from": "LEAF2", "to": "SPINE2", "ports": "E1/3-4", "po_id": "2" }
+      ],
+      "global_vlans": [
+        { "id": 10, "name": "Data-VLAN-10" },
+        { "id": 20, "name": "Data-VLAN-20" },
+        { "id": 30, "name": "Data-VLAN-30" },
+        { "id": 40, "name": "Data-VLAN-40" },
+        { "id": 50, "name": "Data-VLAN-50" }
+      ]
+    },
+    "six_switch_fabric": {
+      "id": "six_switch_fabric",
+      "name": "6-Switch Fabric (2 Spine + 4 Leaf)",
+      "description": "Larger spine-leaf fabric for bigger deployments. Two spine switches connect to four leaf switches for high availability and scale.",
+      "use_case": "Medium/Large data center",
+      "use_case_category": "production_dc",
+      "switch_count": 6,
+      "vpc_domain_count": 2,
+      "vlan_range": "10-200",
+      "complexity": "complex",
+      "hardware_compatibility": ["Nexus 9336C-FX2", "Nexus 93180YC-EX", "Nexus 9348GC-FXP"],
+      "nxos_version_min": "9.3",
+      "nxos_version_max": "10.2",
+      "best_practice_badge": true,
+      "switches": [
+        { "role": "spine", "model": "Nexus 9336C-FX2", "hostname": "SPINE1", "mgmt_ip": "10.0.0.1/24", "base_access_vlan": 10, "access_vlan_count": 4 },
+        { "role": "spine", "model": "Nexus 9336C-FX2", "hostname": "SPINE2", "mgmt_ip": "10.0.0.2/24", "base_access_vlan": 10, "access_vlan_count": 4 },
+        { "role": "leaf", "model": "Nexus 93180YC-EX", "hostname": "LEAF1", "mgmt_ip": "10.0.0.11/24", "vpc_domain": "100", "base_access_vlan": 100, "access_vlan_count": 4, "local_ka": "10.0.0.1" },
+        { "role": "leaf", "model": "Nexus 93180YC-EX", "hostname": "LEAF2", "mgmt_ip": "10.0.0.12/24", "vpc_domain": "100", "base_access_vlan": 100, "access_vlan_count": 4, "local_ka": "10.0.0.2" },
+        { "role": "leaf", "model": "Nexus 93180YC-EX", "hostname": "LEAF3", "mgmt_ip": "10.0.0.13/24", "vpc_domain": "200", "base_access_vlan": 200, "access_vlan_count": 4, "local_ka": "10.0.0.1" },
+        { "role": "leaf", "model": "Nexus 93180YC-EX", "hostname": "LEAF4", "mgmt_ip": "10.0.0.14/24", "vpc_domain": "200", "base_access_vlan": 200, "access_vlan_count": 4, "local_ka": "10.0.0.2" }
+      ],
+      "vpc_pairs": [
+        { "domain": "100", "primary": "LEAF1", "secondary": "LEAF2", "peer_link_ports": "E1/49-50" },
+        { "domain": "200", "primary": "LEAF3", "secondary": "LEAF4", "peer_link_ports": "E1/49-50" }
+      ],
+      "uplinks": [
+        { "from": "LEAF1", "to": "SPINE1", "ports": "E1/1-2", "po_id": "10" },
+        { "from": "LEAF1", "to": "SPINE2", "ports": "E1/3-4", "po_id": "10" },
+        { "from": "LEAF2", "to": "SPINE1", "ports": "E1/1-2", "po_id": "10" },
+        { "from": "LEAF2", "to": "SPINE2", "ports": "E1/3-4", "po_id": "10" },
+        { "from": "LEAF3", "to": "SPINE1", "ports": "E1/1-2", "po_id": "20" },
+        { "from": "LEAF3", "to": "SPINE2", "ports": "E1/3-4", "po_id": "20" },
+        { "from": "LEAF4", "to": "SPINE1", "ports": "E1/1-2", "po_id": "20" },
+        { "from": "LEAF4", "to": "SPINE2", "ports": "E1/3-4", "po_id": "20" }
+      ],
+      "global_vlans": [
+        { "id": 10, "name": "Data-VLAN-10" },
+        { "id": 20, "name": "Data-VLAN-20" },
+        { "id": 30, "name": "Data-VLAN-30" },
+        { "id": 40, "name": "Data-VLAN-40" },
+        { "id": 50, "name": "Data-VLAN-50" },
+        { "id": 100, "name": "Leaf-VLAN-100" },
+        { "id": 200, "name": "Leaf-VLAN-200" }
+      ]
+    },
+    "dual_core_fabric": {
+      "id": "dual_core_fabric",
+      "name": "Dual Core + Access Layer",
+      "description": "Three-tier design for campus networks. Core switches connect to distribution switches, which connect to access switches for end devices.",
+      "use_case": "Enterprise campus",
+      "use_case_category": "campus",
+      "switch_count": 6,
+      "vpc_domain_count": 3,
+      "vlan_range": "10-200",
+      "complexity": "complex",
+      "hardware_compatibility": ["Nexus 9336C-FX2", "Nexus 93180YC-EX", "Nexus 9348GC-FXP"],
+      "nxos_version_min": "9.2",
+      "nxos_version_max": "10.2",
+      "best_practice_badge": true,
+      "switches": [
+        { "role": "core", "model": "Nexus 9336C-FX2", "hostname": "CORE1", "mgmt_ip": "10.0.0.1/24", "vpc_domain": "10", "base_access_vlan": 10, "access_vlan_count": 4, "local_ka": "10.0.0.1" },
+        { "role": "core", "model": "Nexus 9336C-FX2", "hostname": "CORE2", "mgmt_ip": "10.0.0.2/24", "vpc_domain": "10", "base_access_vlan": 10, "access_vlan_count": 4, "local_ka": "10.0.0.2" },
+        { "role": "spine", "model": "Nexus 9336C-FX2", "hostname": "DIST1", "mgmt_ip": "10.0.0.11/24", "vpc_domain": "100", "base_access_vlan": 100, "access_vlan_count": 4, "local_ka": "10.0.0.1" },
+        { "role": "spine", "model": "Nexus 9336C-FX2", "hostname": "DIST2", "mgmt_ip": "10.0.0.12/24", "vpc_domain": "100", "base_access_vlan": 100, "access_vlan_count": 4, "local_ka": "10.0.0.2" },
+        { "role": "leaf", "model": "Nexus 93180YC-EX", "hostname": "ACCESS1", "mgmt_ip": "10.0.0.21/24", "vpc_domain": "200", "base_access_vlan": 200, "access_vlan_count": 4, "local_ka": "10.0.0.1" },
+        { "role": "leaf", "model": "Nexus 93180YC-EX", "hostname": "ACCESS2", "mgmt_ip": "10.0.0.22/24", "vpc_domain": "200", "base_access_vlan": 200, "access_vlan_count": 4, "local_ka": "10.0.0.2" }
+      ],
+      "vpc_pairs": [
+        { "domain": "10", "primary": "CORE1", "secondary": "CORE2", "peer_link_ports": "E1/35-36" },
+        { "domain": "100", "primary": "DIST1", "secondary": "DIST2", "peer_link_ports": "E1/35-36" },
+        { "domain": "200", "primary": "ACCESS1", "secondary": "ACCESS2", "peer_link_ports": "E1/51-52" }
+      ],
+      "uplinks": [
+        { "from": "DIST1", "to": "CORE1", "ports": "E1/1", "to_ports": "E1/3", "po_id": "10" },
+        { "from": "DIST1", "to": "CORE2", "ports": "E1/2", "to_ports": "E1/3", "po_id": "10" },
+        { "from": "DIST2", "to": "CORE1", "ports": "E1/1", "to_ports": "E1/4", "po_id": "10" },
+        { "from": "DIST2", "to": "CORE2", "ports": "E1/2", "to_ports": "E1/4", "po_id": "10" },
+        { "from": "ACCESS1", "to": "DIST1", "ports": "E1/53", "to_ports": "E1/5", "po_id": "20" },
+        { "from": "ACCESS1", "to": "DIST2", "ports": "E1/54", "to_ports": "E1/5", "po_id": "20" },
+        { "from": "ACCESS2", "to": "DIST1", "ports": "E1/53", "to_ports": "E1/6", "po_id": "20" },
+        { "from": "ACCESS2", "to": "DIST2", "ports": "E1/54", "to_ports": "E1/6", "po_id": "20" }
+      ],
+      "global_vlans": [
+        { "id": 10, "name": "Core-VLAN-10" },
+        { "id": 20, "name": "Core-VLAN-20" },
+        { "id": 100, "name": "Dist-VLAN-100" },
+        { "id": 200, "name": "Access-VLAN-200" }
+      ]
+    }
+  }
+}

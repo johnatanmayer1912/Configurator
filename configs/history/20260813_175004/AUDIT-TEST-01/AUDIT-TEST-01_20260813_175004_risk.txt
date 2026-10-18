@@ -1,0 +1,13 @@
+==========================================
+       CONFIGURATION RISK ASSESSMENT      
+==========================================
+OVERALL RISK LEVEL: LOW
+TOTAL FINDINGS: 3
+------------------------------------------
+[LOW] hostname AUDIT-TEST-01
+   ↳ Matches risk pattern: 'hostname'
+[LOW] ntp server 10.255.255.254 prefer use-vrf management
+   ↳ Matches risk pattern: 'ntp server'
+[LOW] logging server 10.255.255.254 6 use-vrf management
+   ↳ Matches risk pattern: 'logging server'
+==========================================

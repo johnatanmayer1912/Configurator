@@ -1,0 +1,599 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QA Testing Checklist - Multi-Switch User Flow</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: #f5f5f5;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        header {
+            background: linear-gradient(135deg, #28a745 0%, #218838 100%);
+            color: white;
+            padding: 30px 20px;
+            margin-bottom: 30px;
+        }
+        
+        header h1 {
+            font-size: 2em;
+            margin-bottom: 10px;
+        }
+        
+        .breadcrumb {
+            background: white;
+            padding: 15px 20px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        
+        .breadcrumb a {
+            color: #667eea;
+            text-decoration: none;
+        }
+        
+        .breadcrumb a:hover {
+            text-decoration: underline;
+        }
+        
+        .section {
+            background: white;
+            padding: 30px;
+            border-radius: 8px;
+            margin-bottom: 30px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        
+        .section h2 {
+            color: #28a745;
+            margin-bottom: 20px;
+            font-size: 1.5em;
+            border-bottom: 2px solid #28a745;
+            padding-bottom: 10px;
+        }
+        
+        .section h3 {
+            color: #333;
+            margin: 20px 0 10px 0;
+            font-size: 1.2em;
+        }
+        
+        .checklist-item {
+            background: #f8f9fa;
+            border: 1px solid #dee2e6;
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 15px;
+        }
+        
+        .checklist-item h4 {
+            color: #28a745;
+            margin-bottom: 15px;
+            font-size: 1.1em;
+        }
+        
+        .checklist-item ul {
+            margin-left: 20px;
+        }
+        
+        .checklist-item li {
+            margin: 8px 0;
+            padding-left: 25px;
+            position: relative;
+        }
+        
+        .checklist-item li::before {
+            content: "☐";
+            position: absolute;
+            left: 0;
+            color: #28a745;
+            font-weight: bold;
+        }
+        
+        .checklist-item li.checked::before {
+            content: "☑";
+        }
+        
+        .step-section {
+            background: #e3f2fd;
+            border-left: 4px solid #2196f3;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 4px;
+        }
+        
+        .step-section h4 {
+            color: #1976d2;
+            margin-bottom: 10px;
+        }
+        
+        .navigation {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 30px;
+        }
+        
+        .navigation a {
+            display: inline-block;
+            background: #28a745;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 5px;
+            text-decoration: none;
+            transition: background 0.3s ease;
+        }
+        
+        .navigation a:hover {
+            background: #218838;
+        }
+        
+        .navigation .prev {
+            background: #dc3545;
+        }
+        
+        .navigation .prev:hover {
+            background: #c82333;
+        }
+        
+        .ui-mockup {
+            background: white;
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+            padding: 20px;
+            margin: 20px 0;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+        
+        .ui-mockup-header {
+            background: linear-gradient(135deg, #28a745 0%, #218838 100%);
+            color: white;
+            padding: 15px 20px;
+            border-radius: 6px;
+            margin-bottom: 15px;
+        }
+        
+        .ui-mockup-header h3 {
+            margin: 0;
+            font-size: 1.2em;
+        }
+        
+        .mockup-browser {
+            background: #f8f9fa;
+            border: 1px solid #dee2e6;
+            border-radius: 6px;
+            overflow: hidden;
+        }
+        
+        .mockup-browser-bar {
+            background: #e9ecef;
+            padding: 8px 12px;
+            border-bottom: 1px solid #dee2e6;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .mockup-browser-bar .dots {
+            display: flex;
+            gap: 6px;
+        }
+        
+        .mockup-browser-bar .dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+        }
+        
+        .mockup-browser-bar .dot.red { background: #ff5f57; }
+        .mockup-browser-bar .dot.yellow { background: #febc2e; }
+        .mockup-browser-bar .dot.green { background: #28c840; }
+        
+        .mockup-browser-bar .url {
+            flex: 1;
+            background: white;
+            border: 1px solid #ced4da;
+            border-radius: 4px;
+            padding: 4px 8px;
+            font-size: 12px;
+            color: #495057;
+            font-family: monospace;
+        }
+        
+        .mockup-content {
+            padding: 20px;
+            background: white;
+        }
+        
+        .mockup-checklist {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 6px;
+            border: 1px solid #e9ecef;
+        }
+        
+        .mockup-checklist h3 {
+            margin: 0 0 15px 0;
+            color: #333;
+        }
+        
+        .mockup-check-item {
+            background: white;
+            border: 1px solid #dee2e6;
+            border-radius: 4px;
+            padding: 12px 15px;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .mockup-checkbox {
+            width: 18px;
+            height: 18px;
+            border: 2px solid #28a745;
+            border-radius: 3px;
+            background: white;
+        }
+        
+        .mockup-checkbox.checked {
+            background: #28a745;
+            position: relative;
+        }
+        
+        .mockup-checkbox.checked::after {
+            content: '✓';
+            color: white;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 12px;
+        }
+        
+        .mockup-check-item span {
+            color: #333;
+            font-size: 0.9em;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>QA Testing Checklist</h1>
+            <p>Multi-Switch User Flow Documentation</p>
+        </div>
+    </header>
+    
+    <div class="container">
+        <div class="breadcrumb">
+            <a href="index.html">← Back to Index</a>
+        </div>
+        
+        <div class="section">
+            <h2>General Testing Guidelines</h2>
+            <div class="checklist-item">
+                <h4>For each step, verify:</h4>
+                <ul>
+                    <li>HTML structure matches expected</li>
+                    <li>All buttons have correct data-action attributes</li>
+                    <li>All ARIA attributes are present</li>
+                    <li>JavaScript functions execute without errors</li>
+                    <li>Expected UI state changes occur</li>
+                    <li>Data objects update correctly</li>
+                    <li>API calls use correct endpoints and payloads</li>
+                    <li>Error handling works as expected</li>
+                    <li>Toast messages appear correctly</li>
+                    <li>Modals open/close properly</li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="section">
+            <h2>Step-by-Step Verification</h2>
+            
+            <div class="step-section">
+                <h4>Step 1: Application Launch</h4>
+                <ul>
+                    <li>Application loads at http://127.0.0.1:9000</li>
+                    <li>Header shows version 6.38.1</li>
+                    <li>Offline Ready badge is visible</li>
+                    <li>Mode dropdown shows "Mode: Quick"</li>
+                    <li>Wizard panel shows Step 1</li>
+                    <li>Template gallery is hidden</li>
+                </ul>
+            </div>
+            
+            <div class="step-section">
+                <h4>Step 2: Enable Multi-Switch Mode</h4>
+                <ul>
+                    <li>Mode dropdown changes to "Mode: Multi-Switch"</li>
+                    <li>Template gallery becomes visible</li>
+                    <li>All templates are displayed</li>
+                    <li>Filter buttons are present</li>
+                    <li>Configuration editor remains hidden</li>
+                </ul>
+            </div>
+            
+            <div class="step-section">
+                <h4>Step 3: Template Selection</h4>
+                <ul>
+                    <li>Template cards display correctly</li>
+                    <li>Template metadata is accurate</li>
+                    <li>Apply Template button works</li>
+                    <li>Loading spinner appears</li>
+                    <li>Deployment object is populated</li>
+                    <li>Validations run successfully</li>
+                </ul>
+            </div>
+            
+            <div class="step-section">
+                <h4>Step 4: Template Success Screen</h4>
+                <ul>
+                    <li>Success icon appears</li>
+                    <li>Template name is displayed</li>
+                    <li>Topology SVG renders correctly</li>
+                    <li>Configuration summary is accurate</li>
+                    <li>All action buttons work</li>
+                </ul>
+            </div>
+            
+            <div class="step-section">
+                <h4>Step 5A: Configuration Editor</h4>
+                <ul>
+                    <li>Template gallery hides</li>
+                    <li>Configuration editor appears</li>
+                    <li>Topology canvas shows network</li>
+                    <li>All switches are listed</li>
+                    <li>Edit/Clone/Remove buttons work</li>
+                    <li>Editor header buttons work</li>
+                </ul>
+            </div>
+            
+            <div class="step-section">
+                <h4>Step 5B: Direct Generation</h4>
+                <ul>
+                    <li>Loading overlay appears</li>
+                    <li>Deployment input is constructed correctly</li>
+                    <li>API call is made</li>
+                    <li>Loading overlay is removed</li>
+                </ul>
+            </div>
+            
+            <div class="step-section">
+                <h4>Step 6: Tab Navigation</h4>
+                <ul>
+                    <li>All tabs are present</li>
+                    <li>Tab switching works</li>
+                    <li>Panel content updates correctly</li>
+                    <li>ARIA attributes update</li>
+                </ul>
+            </div>
+            
+            <div class="step-section">
+                <h4>Step 7: Switch Editing</h4>
+                <ul>
+                    <li>Edit modal opens</li>
+                    <li>Form fields show current values</li>
+                    <li>All fields are editable</li>
+                    <li>Save button updates deployment</li>
+                    <li>Cancel button closes modal</li>
+                </ul>
+            </div>
+            
+            <div class="step-section">
+                <h4>Step 8: Generate Configuration</h4>
+                <ul>
+                    <li>API request is correct</li>
+                    <li>Request payload is valid</li>
+                    <li>Response is parsed correctly</li>
+                    <li>Toast message appears</li>
+                    <li>Results display appears</li>
+                </ul>
+            </div>
+            
+            <div class="step-section">
+                <h4>Step 9: Results Display</h4>
+                <ul>
+                    <li>All switches are shown</li>
+                    <li>Status badges are correct</li>
+                    <li>Action buttons work</li>
+                    <li>Summary is accurate</li>
+                    <li>Open Folder button works</li>
+                </ul>
+            </div>
+            
+            <div class="step-section">
+                <h4>Step 10: Success Modal</h4>
+                <ul>
+                    <li>Modal appears</li>
+                    <li>Summary is correct</li>
+                    <li>Output directory is shown</li>
+                    <li>Created files are listed</li>
+                    <li>All modal buttons work</li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="section">
+            <h2>Alternative Paths Testing</h2>
+            <div class="checklist-item">
+                <h4>Path A: Manual Configuration</h4>
+                <ul>
+                    <li>"Use Manual Configuration" button works</li>
+                    <li>Editor appears empty</li>
+                    <li>Add Switch button works</li>
+                    <li>Manual configuration flow works</li>
+                </ul>
+            </div>
+            
+            <div class="checklist-item">
+                <h4>Path B: Change Template</h4>
+                <ul>
+                    <li>"Change Template" button works</li>
+                    <li>Deployment is cleared</li>
+                    <li>Template gallery re-appears</li>
+                    <li>New template can be selected</li>
+                </ul>
+            </div>
+            
+            <div class="checklist-item">
+                <h4>Path C: Save Custom Template</h4>
+                <ul>
+                    <li>"Save as Template" button works</li>
+                    <li>Prompt for name appears</li>
+                    <li>Template is saved to localStorage</li>
+                    <li>Custom template appears in gallery</li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="section">
+            <h2>Error Handling Testing</h2>
+            <div class="checklist-item">
+                <h4>Error 1: Template Application Failure</h4>
+                <ul>
+                    <li>Error toast appears</li>
+                    <li>Error message is descriptive</li>
+                    <li>Template gallery re-appears</li>
+                    <li>Deployment is unchanged</li>
+                    <li>Recovery options work</li>
+                </ul>
+            </div>
+            
+            <div class="checklist-item">
+                <h4>Error 2: Configuration Generation Failure</h4>
+                <ul>
+                    <li>Warning toast appears</li>
+                    <li>Partial success is shown</li>
+                    <li>Error details are displayed</li>
+                    <li>Successful configs are saved</li>
+                    <li>Retry option works</li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="section">
+            <h2>Cross-Browser Testing</h2>
+            <div class="checklist-item">
+                <h4>Test in:</h4>
+                <ul>
+                    <li>Chrome (latest)</li>
+                    <li>Firefox (latest)</li>
+                    <li>Edge (latest)</li>
+                    <li>Safari (if available)</li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="section">
+            <h2>Accessibility Testing</h2>
+            <div class="checklist-item">
+                <h4>Verify:</h4>
+                <ul>
+                    <li>Keyboard navigation works</li>
+                    <li>Screen reader compatibility</li>
+                    <li>ARIA labels are correct</li>
+                    <li>Focus management is proper</li>
+                    <li>Color contrast meets WCAG AA</li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="section">
+            <h2>Visual UI Mockup</h2>
+            <div class="ui-mockup">
+                <div class="ui-mockup-header">
+                    <h3>User Interface - What the User Sees</h3>
+                </div>
+                <div class="mockup-browser">
+                    <div class="mockup-browser-bar">
+                        <div class="dots">
+                            <div class="dot red"></div>
+                            <div class="dot yellow"></div>
+                            <div class="dot green"></div>
+                        </div>
+                        <div class="url">http://127.0.0.1:9000</div>
+                    </div>
+                    <div class="mockup-content">
+                        <div class="mockup-checklist">
+                            <h3>QA Testing Checklist</h3>
+                            
+                            <div class="mockup-check-item">
+                                <div class="mockup-checkbox checked"></div>
+                                <span>Application loads at http://127.0.0.1:9000</span>
+                            </div>
+                            
+                            <div class="mockup-check-item">
+                                <div class="mockup-checkbox checked"></div>
+                                <span>Header shows version 6.38.1</span>
+                            </div>
+                            
+                            <div class="mockup-check-item">
+                                <div class="mockup-checkbox checked"></div>
+                                <span>Mode dropdown changes to Multi-Switch</span>
+                            </div>
+                            
+                            <div class="mockup-check-item">
+                                <div class="mockup-checkbox"></div>
+                                <span>Template gallery becomes visible</span>
+                            </div>
+                            
+                            <div class="mockup-check-item">
+                                <div class="mockup-checkbox"></div>
+                                <span>Template selection works correctly</span>
+                            </div>
+                            
+                            <div class="mockup-check-item">
+                                <div class="mockup-checkbox"></div>
+                                <span>Configuration editor appears</span>
+                            </div>
+                            
+                            <div class="mockup-check-item">
+                                <div class="mockup-checkbox"></div>
+                                <span>Generate Config button works</span>
+                            </div>
+                            
+                            <div class="mockup-check-item">
+                                <div class="mockup-checkbox"></div>
+                                <span>Results display shows all switches</span>
+                            </div>
+                            
+                            <div class="mockup-check-item">
+                                <div class="mockup-checkbox"></div>
+                                <span>Success modal appears</span>
+                            </div>
+                            
+                            <div class="mockup-check-item">
+                                <div class="mockup-checkbox"></div>
+                                <span>Config files saved to output directory</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="navigation">
+            <a href="error-2-generation-failure.html" class="prev">← Previous</a>
+            <a href="index.html">Back to Index →</a>
+        </div>
+    </div>
+</body>
+</html>

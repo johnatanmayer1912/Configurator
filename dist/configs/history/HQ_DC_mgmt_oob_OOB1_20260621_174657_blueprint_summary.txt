@@ -1,6 +1,0 @@
-Site: HQ_DC
-Role: access
-Model: Generic
-Redundancy: standalone
-Access VLAN range: 10 to 10
-Interfaces generated: 0

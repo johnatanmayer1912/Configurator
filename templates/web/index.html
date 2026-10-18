@@ -7,9 +7,26 @@
     <title>NX-OS Configurator | Configuration Authority</title>
     <link rel="icon" href="/static/favicon.svg" type="image/svg+xml">
     <link rel="stylesheet" href="/static/styles.css">
+    <!-- UX-007 FIX: Component-based CSS organization -->
+    <link rel="stylesheet" href="/static/components.css">
+    <script src="/static/audit_logger.js"></script>
+    <script src="/static/validation-ui.js"></script>
 </head>
 <body>
+    <!-- UX-002 FIX: Skip navigation link for keyboard users -->
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+    
     <div id="toast" class="toast" role="status" aria-live="polite"></div>
+    <div id="validationPanel" class="validation-panel" role="alert" aria-live="assertive">
+        <div class="validation-summary">
+            <span class="count"><strong id="validationCount">0</strong> configuration issues</span>
+            <button type="button" class="dismiss-btn" id="dismissValidationBtn">Dismiss</button>
+        </div>
+        <h4>Configuration Issues</h4>
+        <div id="validationItems"></div>
+    </div>
+    <!-- UX-008 FIX: External UI event handlers -->
+    <script src="/static/ui-handlers.js"></script>
     <div class="container">
         <header class="app-header">
             <div>
@@ -21,111 +38,297 @@
                 </div>
             </div>
             <div class="header-actions">
-                <div class="wizard-mode-toggle" role="group" aria-label="Wizard mode">
-                    <button type="button" class="btn-outline btn-sm" data-wizard-mode="quick">Quick</button>
-                    <button type="button" class="btn-outline btn-sm" data-wizard-mode="architect">Architect</button>
+                <div class="header-dropdown">
+                    <button type="button" class="btn-outline btn-sm dropdown-toggle" id="modeDropdownBtn" aria-expanded="false" aria-haspopup="true">
+                        Mode: Quick <span class="dropdown-arrow">▾</span>
+                    </button>
+                    <div class="dropdown-menu" id="modeDropdown" role="menu" aria-labelledby="modeDropdownBtn">
+                        <button type="button" class="dropdown-item" role="menuitem" data-action="set-wizard-mode" data-mode="quick">Quick</button>
+                        <button type="button" class="dropdown-item" role="menuitem" data-action="set-wizard-mode" data-mode="architect">Architect</button>
+                        <button type="button" class="dropdown-item" role="menuitem" data-action="toggle-multi-switch">Multi-Switch</button>
+                        <button type="button" class="dropdown-item" role="menuitem" data-action="toggle-training" id="trainingModeToggle">Training</button>
+                    </div>
                 </div>
-                <button type="button" class="btn-outline btn-sm" id="trainingModeToggle" onclick="toggleTrainingMode()" aria-pressed="false" title="Training mode">Train</button>
-                <button type="button" class="btn-outline btn-sm" onclick="showReleaseNotesModal()" title="Release notes">What's new</button>
-                <a href="/admin" id="adminLink" class="btn-outline btn-sm" title="Po map admin">Admin</a>
-                <button type="button" class="btn-outline" onclick="restartConfiguration()" aria-label="Restart configuration wizard">Restart</button>
-                <button type="button" class="btn-outline" onclick="openHelp()" aria-label="Open help">Help</button>
-                <button type="button" class="btn-danger" onclick="shutdownSystem()">Stop</button>
+                <div class="header-dropdown">
+                    <button type="button" class="btn-outline btn-sm dropdown-toggle" id="actionsDropdownBtn" aria-expanded="false" aria-haspopup="true">
+                        Actions <span class="dropdown-arrow">▾</span>
+                    </button>
+                    <div class="dropdown-menu" id="actionsDropdown" role="menu" aria-labelledby="actionsDropdownBtn">
+                        <button type="button" class="dropdown-item" role="menuitem" data-action="restart-config">Restart</button>
+                        <a href="/admin" class="dropdown-item" role="menuitem" id="adminLink">Admin</a>
+                        <button type="button" class="dropdown-item" role="menuitem" data-action="open-config-builder">Config Builder</button>
+                        <div class="dropdown-divider"></div>
+                        <button type="button" class="dropdown-item" role="menuitem" data-action="show-release-notes">What's New</button>
+                    </div>
+                </div>
+                <div class="header-dropdown">
+                    <button type="button" class="btn-outline btn-sm dropdown-toggle" id="helpDropdownBtn" aria-expanded="false" aria-haspopup="true">
+                        Help <span class="dropdown-arrow">▾</span>
+                    </button>
+                    <div class="dropdown-menu" id="helpDropdown" role="menu" aria-labelledby="helpDropdownBtn">
+                        <button type="button" class="dropdown-item" role="menuitem" data-action="open-help">Documentation</button>
+                        <button type="button" class="dropdown-item" role="menuitem" data-action="show-release-notes">Release Notes</button>
+                        <button type="button" class="dropdown-item" role="menuitem" data-action="open-support">Support</button>
+                    </div>
+                </div>
+                <button type="button" class="btn-danger" data-action="shutdown-system" aria-label="Stop the configurator">Stop</button>
             </div>
         </header>
 
-        <div class="wizard-tip-bar" id="wizardTipBox" role="note">Loading guidance...</div>
+        <div class="wizard-tip-bar" id="configurePathBanner" role="note">Loading guidance...</div>
+        <div class="wizard-tip-bar" id="wizardTipBox" hidden role="note"></div>
         <div class="first-run-hint" id="firstRunHint" role="note" hidden>
             <span>Configs save to <code id="vaultPathHint">configs/history/</code> next to this program. Use <strong>Config Builder</strong> to paste a running-config or start fresh.</span>
-            <button type="button" class="btn-outline btn-sm" onclick="dismissFirstRunHint()">Got it</button>
+            <button type="button" class="btn-outline btn-sm" data-action="dismiss-first-run">Got it</button>
         </div>
 
-        <div class="layout-main">
-            <section class="panel wizard-panel" aria-label="Configuration wizard">
-                <nav class="wizard-nav" aria-label="Wizard steps">
+        <div class="layout-main" id="main-content">
+            <section class="panel wizard-panel" id="wizardPanel" aria-label="Configuration wizard">
+                <nav class="wizard-nav" id="wizardNav" aria-label="Wizard steps">
                     <button type="button" class="step-btn active" data-step="1" aria-current="step">1 Mode</button>
                     <button type="button" class="step-btn" data-step="2">2 vPC</button>
-                    <button type="button" class="step-btn" data-step="3">3 Speed</button>
-                    <button type="button" class="step-btn" data-step="4">4 Configure</button>
-                    <button type="button" class="step-btn" data-step="5">5 Review</button>
+                    <button type="button" class="step-btn" data-step="3">3 Platform</button>
+                    <button type="button" class="step-btn" data-step="4">4 Features</button>
+                    <button type="button" class="step-btn" data-step="5">5 VLANs</button>
+                    <button type="button" class="step-btn" data-step="6">6 Interfaces</button>
+                    <button type="button" class="step-btn" data-step="7">7 Links</button>
+                    <button type="button" class="step-btn" data-step="8">8 Review</button>
                 </nav>
 
+                <!-- Multi-Switch Results Panel: shown after Generate Config, replaces editor -->
+                <div id="multiSwitchResultsPanel" class="hidden" role="region" aria-label="Deployment results">
+                </div>
+
                 <p id="roadmapSummary" class="roadmap-summary" aria-live="polite">Answer each step to build your path.</p>
+                <div id="configurePathDetail" class="field-note" hidden></div>
+                <button type="button" class="btn-ghost btn-sm" id="configurePathMore" hidden data-action="toggle-configure-detail">More info</button>
 
                 <div class="wizard-step active" id="step-1">
                     <h2 class="step-title">What is this switch's role?</h2>
                     <p class="step-desc">One decision at a time — we map the rest automatically.</p>
-                    <div id="modeGrid" class="choice-grid"></div>
-                    <details class="advanced-block expert-scenarios">
+                    
+                    <!-- Template Gallery for Multi-Switch Mode -->
+                    <div id="templateGallery" class="template-gallery hidden" role="region" aria-label="Template Gallery">
+                        <h3 class="gallery-title">Multi-Switch Deployment Templates</h3>
+                        <p class="gallery-desc">Choose a starting point for your network — one click to full configuration</p>
+                        <div id="templateGrid" class="template-grid" role="list" aria-label="Available templates"></div>
+                        <button type="button" class="btn-outline btn-sm" data-action="hide-template-gallery" aria-label="Use manual configuration instead of templates">Use Manual Configuration</button>
+                    </div>
+                    
+                    <!-- Single-Screen Configuration Editor -->
+                    <div id="configurationEditor" class="configuration-editor hidden" role="region" aria-label="Configuration Editor">
+                        <div class="editor-header">
+                            <h3>Network Configuration Editor</h3>
+                            <div class="editor-actions">
+                                <button type="button" class="btn-ghost btn-sm" data-action="validate-topology" aria-label="Validate current topology configuration">Validate</button>
+                                <button type="button" class="btn-ghost btn-sm" data-action="reset-to-template" aria-label="Reset to original template">Reset</button>
+                                <button type="button" class="btn-ghost btn-sm" id="editorSaveTemplateBtn" data-action="save-custom-template" aria-label="Save current configuration as custom template">Save as Template</button>
+                                <button type="button" class="btn-primary btn-sm" data-action="generate-config" aria-label="Generate configuration files">Generate Config</button>
+                            </div>
+                        </div>
+                        
+                        <div id="topologyValidationResults" class="topology-validation-results hidden" role="region" aria-live="polite"></div>
+                        
+                        <div class="editor-layout">
+                            <!-- Topology Canvas -->
+                            <div class="topology-canvas" role="img" aria-label="Network topology visualization">
+                                <div id="editorTopologyContainer"></div>
+                                <div class="canvas-actions">
+                                    <button type="button" class="btn-sm" data-action="add-switch" aria-label="Add new switch to topology">+ Add Switch</button>
+                                    <button type="button" class="btn-sm" data-action="add-vpc-domain" aria-label="Add new vPC domain">+ Add vPC Domain</button>
+                                </div>
+                            </div>
+                            
+                            <!-- Configuration Panels -->
+                            <div class="config-panels" role="tablist" aria-label="Configuration panels">
+                                <div class="panel-tabs" role="tablist">
+                                    <button class="tab-btn active" data-tab="switches" role="tab" aria-selected="true" aria-controls="panel-switches">Switches</button>
+                                    <button class="tab-btn" data-tab="vpc" role="tab" aria-selected="false" aria-controls="panel-vpc">vPC Domains</button>
+                                    <button class="tab-btn" data-tab="vlans" role="tab" aria-selected="false" aria-controls="panel-vlans">VLANs</button>
+                                    <button class="tab-btn" data-tab="interfaces" role="tab" aria-selected="false" aria-controls="panel-interfaces">Interfaces</button>
+                                    <button class="tab-btn" data-tab="uplinks" role="tab" aria-selected="false" aria-controls="panel-uplinks">Uplinks</button>
+                                </div>
+                                
+                                <div class="panel-content">
+                                    <div id="panel-switches" class="tab-panel active" role="tabpanel" aria-labelledby="switches">
+                                        <div class="panel-header">
+                                            <h4>Switches</h4>
+                                            <button type="button" class="btn-sm" data-action="add-switch" aria-label="Add new switch">+ Add Switch</button>
+                                        </div>
+                                        <div id="switchesList" role="list" aria-label="List of configured switches"></div>
+                                    </div>
+                                    
+                                    <div id="panel-vpc" class="tab-panel hidden" role="tabpanel" aria-labelledby="vpc">
+                                        <div class="panel-header">
+                                            <h4>vPC Domains</h4>
+                                            <button type="button" class="btn-sm" data-action="add-vpc-domain" aria-label="Add new vPC domain">+ Add vPC Domain</button>
+                                        </div>
+                                        <div id="vpcList" role="list" aria-label="List of vPC domains"></div>
+                                    </div>
+                                    
+                                    <div id="panel-vlans" class="tab-panel hidden" role="tabpanel" aria-labelledby="vlans">
+                                        <div class="panel-header">
+                                            <h4>VLAN Configuration</h4>
+                                            <button type="button" class="btn-sm" data-action="bulk-add-vlans" aria-label="Bulk add VLANs">Bulk Add</button>
+                                        </div>
+                                        <div id="vlanList" role="list" aria-label="List of configured VLANs"></div>
+                                    </div>
+                                    
+                                    <div id="panel-interfaces" class="tab-panel hidden" role="tabpanel" aria-labelledby="interfaces">
+                                        <div class="panel-header">
+                                            <h4>Interface Templates</h4>
+                                        </div>
+                                        <div class="interface-templates" role="group" aria-label="Interface template presets">
+                                            <button class="template-btn" data-action="apply-interface-template" data-template="server" aria-label="Apply server port template">Server Port</button>
+                                            <button class="template-btn" data-action="apply-interface-template" data-template="phone" aria-label="Apply IP phone port template">IP Phone</button>
+                                            <button class="template-btn" data-action="apply-interface-template" data-template="ap" aria-label="Apply access point port template">AP Port</button>
+                                            <button class="template-btn" data-action="apply-interface-template" data-template="iscsi" aria-label="Apply iSCSI storage port template">iSCSI Storage</button>
+                                            <button class="template-btn" data-action="apply-interface-template" data-template="mgmt" aria-label="Apply management port template">Management</button>
+                                            <button class="template-btn" data-action="apply-interface-template" data-template="lacp" aria-label="Apply LACP port template">LACP</button>
+                                        </div>
+                                    </div>
+                                    
+                                    <div id="panel-uplinks" class="tab-panel hidden" role="tabpanel" aria-labelledby="uplinks">
+                                        <div class="panel-header">
+                                            <h4>Uplinks</h4>
+                                            <button type="button" class="btn-sm" data-action="add-uplink" aria-label="Add new uplink">+ Add Uplink</button>
+                                        </div>
+                                        <div id="uplinkList" role="list" aria-label="List of configured uplinks"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div id="modeGrid" class="choice-grid ms-hide"></div>
+                    <div id="speedGrid" class="choice-grid hidden ms-hide"></div>
+                    <div id="presetStrip" class="preset-strip hidden ms-hide"></div>
+                    
+                    <div id="switchListPanel" class="switch-list-panel hidden ms-hide">
+                        <div class="switch-list-header">
+                            <h3>Deployment Switches</h3>
+                            <button type="button" class="btn-primary btn-sm" data-action="add-switch">+ Add Switch</button>
+                        </div>
+                        <div id="topologyContainer"></div>
+                        <div id="switchListContainer"></div>
+                    </div>
+                    
+                    <details class="advanced-block expert-scenarios ms-hide">
                         <summary>Expert — pick a scenario template directly</summary>
                         <p class="field-note expert-vxlan-note">Advanced fabric: select <strong>VXLAN/EVPN Leaf (Foundation)</strong> below — not on the guided Mode path. Validate BGP EVPN underlay in lab before production.</p>
                         <p class="field-note" id="expertHardwareNote">Hardware profiles: loading…</p>
                         <div id="scenarioGrid" class="scenario-grid">Loading scenarios...</div>
                         <div class="info-box" id="scenarioHelp">Select a scenario to override the guided path.</div>
                     </details>
-                    <div class="builder-launch-row">
-                        <button type="button" class="btn-outline builder-launch" onclick="openConfigBuilder()">Config Builder — paste running-config</button>
+                    <div class="builder-launch-row ms-hide">
+                        <button type="button" class="btn-outline builder-launch" data-action="open-config-builder" aria-label="Open config builder to paste running-config">Config Builder — paste running-config</button>
                     </div>
                 </div>
 
                 <div class="wizard-step" id="step-2">
-                    <h2 class="step-title">vPC pair?</h2>
-                    <p class="step-desc">Dual switches with peer-link and keepalive, or a single standalone device.</p>
+                    <h2 class="step-title">Role & vPC</h2>
+                    <p class="step-desc">Select switch role and configure vPC if needed.</p>
                     <div id="vpcChoiceSection">
                         <div id="vpcChoiceGrid" class="choice-grid choice-grid-2"></div>
+                    </div>
+                    
+                    <!-- Consolidated vPC Configuration Card -->
+                    <div id="vpcConfigCard" class="vpc-card" hidden>
+                        <h4>vPC Configuration</h4>
+                        <div class="form-grid">
+                            <div class="form-group required">
+                                <label for="vpc_domain">Domain ID</label>
+                                <input type="number" id="vpc_domain" placeholder="100" min="1" max="4096">
+                                <div class="field-note">Valid range: 1-4096</div>
+                            </div>
+                            <div class="form-group optional">
+                                <label for="vpc_role_priority">Role Priority</label>
+                                <input type="number" id="vpc_role_priority" placeholder="1000" min="1" max="65535">
+                                <div class="field-note">Lower value = higher priority</div>
+                            </div>
+                            <div class="form-group required">
+                                <label for="vpc_pl_ints">Peer-Link Ports</label>
+                                <input type="text" id="vpc_pl_ints" readonly class="readonly-field" aria-describedby="vpcPortHint">
+                                <div class="field-note" id="vpcPortHint">Auto-filled from hardware profile</div>
+                            </div>
+                            <div class="form-group required">
+                                <label for="vpc_ka_ints">Keepalive Ports</label>
+                                <input type="text" id="vpc_ka_ints" readonly class="readonly-field" aria-describedby="vpcKaHint">
+                                <div class="field-note" id="vpcKaHint">Auto-filled from hardware profile</div>
+                            </div>
+                            <div class="form-group required">
+                                <label for="local_ka">Local Keepalive IP</label>
+                                <input type="text" id="local_ka" placeholder="10.255.255.1">
+                            </div>
+                            <div class="form-group required">
+                                <label for="remote_ka">Remote Keepalive IP</label>
+                                <input type="text" id="remote_ka" placeholder="10.255.255.2">
+                            </div>
+                        </div>
+                        <label class="toggle-row">
+                            <span class="toggle-label-wrap">
+                                <span>Use default keepalive IP for vPC</span>
+                                <button type="button" class="info-btn" aria-label="Keepalive IP help" data-action="show-option-info" data-option="keepalive_ip">i</button>
+                            </span>
+                            <input type="checkbox" id="useDefaultKa" class="toggle-input" data-action="toggle-keepalive-inputs">
+                        </label>
+                        <div class="field-note">When enabled, keepalive IPs are auto-generated based on vPC domain ID</div>
                     </div>
                 </div>
 
                 <div class="wizard-step" id="step-3">
-                    <h2 class="step-title">Port speed tier</h2>
-                    <p class="step-desc">Maps to Nexus hardware — 40G core, 10G leaf, or 1G access.</p>
-                    <p class="field-note speed-auto-note" id="speedStepNote" hidden></p>
-                    <div id="speedSection">
-                        <div id="speedGrid" class="choice-grid choice-grid-3"></div>
-                    </div>
-                </div>
-
-                <div class="wizard-step" id="step-4">
-                    <h2 class="step-title">Configure your switch</h2>
-                    <p class="step-desc">Live preview updates on the right. Tap <span class="info-btn info-btn-inline">i</span> on any option for what it does and the CLI it adds.</p>
-                    <div class="configure-toolbar">
-                        <div class="configure-path-banner" id="configurePathBanner" role="status" aria-live="polite"></div>
-                        <button type="button" class="btn-ghost btn-sm configure-path-more" id="configurePathMore" hidden onclick="toggleConfigurePathDetail()">Details</button>
-                    </div>
-                    <p class="configure-path-detail field-note" id="configurePathDetail" hidden></p>
-                    <div class="preset-strip" id="presetStrip">
-                        <span class="preset-label">Quick preset:</span>
-                        <button type="button" class="btn-outline btn-sm" onclick="applyConfigPreset('standard')">Standard</button>
-                        <button type="button" class="btn-outline btn-sm" onclick="applyConfigPreset('hardened')">Hardened</button>
-                    </div>
+                    <h2 class="step-title">Platform & Identity</h2>
+                    <p class="step-desc">Hostname, management IP, switch model, and NX-OS version.</p>
                     <div class="config-card-grid option-b-grid">
                         <div class="config-card" id="cardPlatform">
                             <h3 class="config-card-title">Platform</h3>
                             <span id="configureModelBadge" class="model-badge" title="Selected hardware tier"></span>
-                            <div class="form-group">
+                            <div class="form-group required">
                                 <label for="hostname">Hostname</label>
                                 <div class="label-with-info">
                                     <input type="text" id="hostname" placeholder="CORE1-VPC" autocomplete="off" data-why-default="hostname">
-                                    <button type="button" class="info-btn" aria-label="Hostname help" onclick="showOptionInfo('hostname')">i</button>
+                                    <button type="button" class="info-btn" aria-label="Hostname help" data-action="show-option-info" data-option="hostname">i</button>
                                 </div>
                                 <div class="field-note" id="hostname_note">Letters, numbers, and hyphens only.</div>
                                 <div class="field-note hostname-hint-box" id="hostname_hint_box"></div>
                             </div>
                             <div class="grid-2 grid-2-equal">
-                                <div class="form-group">
-                                    <label for="mgmt_ip">Management IP</label>
+                                <div class="form-group required">
+                                    <label for="mgmt_ip">Management IP (Primary)</label>
                                     <input type="text" id="mgmt_ip" placeholder="10.10.10.10/24" autocomplete="off">
                                 </div>
-                                <div class="form-group">
+                                <div class="form-group optional">
                                     <label for="mgmt_gw">Default gateway</label>
                                     <input type="text" id="mgmt_gw" placeholder="10.10.10.1" autocomplete="off">
                                 </div>
                             </div>
-                            <div class="form-group">
+                            <div class="grid-2 grid-2-equal" id="secondaryMgmtRow" hidden>
+                                <div class="form-group optional">
+                                    <label for="mgmt_ip_secondary">Management IP (Secondary)</label>
+                                    <input type="text" id="mgmt_ip_secondary" placeholder="10.10.10.11/24" autocomplete="off">
+                                    <div class="field-note">Used when exporting vPC pair secondary file</div>
+                                </div>
+                                <div class="form-group optional">
+                                    <label for="hostname_secondary">Hostname (Secondary)</label>
+                                    <input type="text" id="hostname_secondary" placeholder="CORE2-VPC" autocomplete="off">
+                                    <div class="field-note">Auto-generated from primary if empty</div>
+                                </div>
+                            </div>
+                            <div class="form-group required">
                                 <label for="model">Switch model</label>
                                 <select id="model" class="select-full-label" title="Hardware profile"></select>
                             </div>
-                            <div class="form-group">
+                            <div class="form-group required">
+                                <label for="switch_role">Switch role</label>
+                                <select id="switch_role" class="select-full-label" title="Switch role in topology">
+                                    <option value="access">Access</option>
+                                    <option value="leaf">Leaf</option>
+                                    <option value="spine">Spine</option>
+                                    <option value="core">Core</option>
+                                </select>
+                                <div class="field-note">Role determines default VLAN ranges and feature sets</div>
+                            </div>
+                            <div class="form-group required">
                                 <label for="nxos_version">NX-OS version</label>
                                 <select id="nxos_version" class="select-full-label"></select>
                                 <div class="field-note" id="versionNote"></div>
@@ -134,14 +337,14 @@
                             <label class="toggle-row">
                                 <span class="toggle-label-wrap">
                                     <span>Bring up unused Ethernet ports (no shutdown)</span>
-                                    <button type="button" class="info-btn" aria-label="Port default help" onclick="event.stopPropagation(); showOptionInfo('bring_up_ports')">i</button>
+                                    <button type="button" class="info-btn" aria-label="Port default help" data-action="show-option-info" data-option="bring_up_ports">i</button>
                                 </span>
                                 <input type="checkbox" id="bring_up_spare_ports" class="toggle-input">
                             </label>
                             <label class="toggle-row" id="generatePairRow">
                                 <span class="toggle-label-wrap">
                                     <span>Export primary + secondary files</span>
-                                    <button type="button" class="info-btn" aria-label="vPC pair export help" onclick="event.stopPropagation(); showOptionInfo('generate_pair')">i</button>
+                                    <button type="button" class="info-btn" aria-label="vPC pair export help" data-action="show-option-info" data-option="generate_pair">i</button>
                                 </span>
                                 <input type="checkbox" id="generate_pair" class="toggle-input">
                             </label>
@@ -150,25 +353,125 @@
                                 <label for="site_name">Site code</label>
                                 <div class="label-with-info">
                                     <input type="text" id="site_name" value="HQ_DC" placeholder="HQ_DC" autocomplete="off">
-                                    <button type="button" class="info-btn" aria-label="Site code help" onclick="showOptionInfo('site_name')">i</button>
+                                    <button type="button" class="info-btn" aria-label="Site code help" data-action="show-option-info" data-option="site_name">i</button>
                                 </div>
                                 <div class="field-note">Used in export filenames and MOTD when Network Name is empty.</div>
                             </div>
                             <input type="hidden" id="motd" value="Authorized Access Only">
                         </div>
+                    </div>
+                </div>
 
+                <div class="wizard-step" id="step-4">
+                    <h2 class="step-title">Features</h2>
+                    <p class="step-desc">Baseline options and optional NX-OS features.</p>
+                    <div class="config-card-grid option-b-grid">
                         <div class="config-card" id="cardBaseline">
                             <h3 class="config-card-title">Baseline (every config)</h3>
                             <p class="field-note">Institutional standard — aliases, SNMP traps, CoPP.</p>
                             <div id="baselineGrid" class="toggle-list"></div>
                         </div>
-
-                        <div class="config-card" id="cardVpcWiring">
-                            <h3 class="config-card-title">vPC wiring</h3>
-                            <label class="toggle-row port-map-toggle">
-                                <span>Customize port map</span>
-                                <input type="checkbox" id="customPortMapToggle" class="toggle-input" onchange="onCustomPortMapToggle()">
+                        <div class="config-card">
+                            <h3 class="config-card-title">Optional NX-OS Features</h3>
+                            <div id="featureGrid" class="toggle-list"></div>
+                            <label class="checkbox-row">
+                                <input type="checkbox" id="inject_cli_reference">
+                                <span>Append CLI reference snippets (commented)</span>
                             </label>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="wizard-step" id="step-5">
+                    <h2 class="step-title">VLANs</h2>
+                    <p class="step-desc">Configure VLANs and SVI interfaces.</p>
+                    <div class="config-card">
+                        <h3 class="config-card-title">VLAN / SVI Configuration</h3>
+                        
+                        <!-- VLAN Template Quick-Add -->
+                        <div class="vlan-templates-section">
+                            <label class="form-label">Quick-Add Templates</label>
+                            <div class="vlan-templates">
+                                <button type="button" class="vlan-template" data-action="apply-vlan-template" data-template="datacenter">
+                                    <h5>Data Center</h5>
+                                    <p>VLANs 10-50</p>
+                                </button>
+                                <button type="button" class="vlan-template" data-action="apply-vlan-template" data-template="campus">
+                                    <h5>Campus</h5>
+                                    <p>VLANs 100-199</p>
+                                </button>
+                                <button type="button" class="vlan-template" data-action="apply-vlan-template" data-template="dmz">
+                                    <h5>DMZ</h5>
+                                    <p>VLANs 200-299</p>
+                                </button>
+                                <button type="button" class="vlan-template" data-action="apply-vlan-template" data-template="custom">
+                                    <h5>Custom</h5>
+                                    <p>Manual entry</p>
+                                </button>
+                            </div>
+                            <div class="field-note">Select a template to auto-populate VLANs, then customize as needed</div>
+                        </div>
+                        
+                        <div id="vlanList" role="list" aria-label="VLAN list"></div>
+                        <button type="button" class="btn-secondary" data-action="add-vlan" aria-label="Add new VLAN or SVI">+ Add VLAN/SVI</button>
+                    </div>
+                    <details class="advanced-block">
+                        <summary>Manual overrides (VLANs, interfaces)</summary>
+                        <div class="form-group">
+                            <label for="rangeInput">Interface Range</label>
+                            <div class="inline-row">
+                                <input type="text" id="rangeInput" placeholder="Eth1/1-48" aria-describedby="rangeHelp">
+                                <button type="button" class="btn-secondary" data-action="expand-range" aria-label="Expand interface range">Expand</button>
+                            </div>
+                            <div class="field-note" id="rangeHelp">Enter interface range (e.g., Eth1/1-48) to expand individual ports</div>
+                        </div>
+                        <textarea id="interfacesArea" rows="2" hidden aria-label="Expanded interfaces"></textarea>
+                    </details>
+                    <div id="aliasList" class="alias-list" hidden></div>
+                    <div id="vpcSection" hidden></div>
+                </div>
+
+                <div class="wizard-step" id="step-6">
+                    <h2 class="step-title">Interfaces</h2>
+                    <p class="step-desc">Ethernet and port-channel customizations.</p>
+                    <div class="config-card-grid option-b-grid">
+                        <div class="config-card" id="cardInterfacePlanner">
+                            <h3 class="config-card-title">Interface Customizations</h3>
+                            <p class="field-note">Defaults are vPC + uplinks only. Add ports here with presets, vPC port-channels (mirrored on pair builds), or custom CLI.</p>
+                            <!-- Interface planner: addInterfacePlanRow() via data-action add-interface-plan -->
+                            <div id="interfacePlanList" class="iface-plan-list" role="list" aria-label="Interface customizations"></div>
+                            <button type="button" class="btn-secondary btn-sm" data-action="add-interface-plan" aria-label="Add new interface customization">+ Add interface</button>
+                        </div>
+                        <div class="config-card" id="cardHsrpGateway" hidden>
+                            <h3 class="config-card-title">Gateway SVI (HSRP)</h3>
+                            <p class="field-note">Shown when HSRP feature is enabled — adds an L3 SVI with standby VIP on this switch (and pair secondary when exported).</p>
+                            <div class="grid-2">
+                                <div class="form-group">
+                                    <label for="hsrp_vlan_id">VLAN ID</label>
+                                    <input type="number" id="hsrp_vlan_id" min="1" max="4094" placeholder="100">
+                                </div>
+                                <div class="form-group">
+                                    <label for="hsrp_svi_ip">SVI IP (CIDR)</label>
+                                    <input type="text" id="hsrp_svi_ip" placeholder="10.100.100.2/24" autocomplete="off">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="wizard-step" id="step-7">
+                    <h2 class="step-title">Links</h2>
+                    <p class="step-desc">Configure uplinks and downlinks (fabric links).</p>
+                    <div class="config-card-grid option-b-grid">
+                        <div class="config-card" id="cardVpcWiring">
+                            <h3 class="config-card-title">vPC Wiring</h3>
+                            <label class="toggle-row port-map-toggle">
+                                <span class="toggle-label-wrap">
+                                    <span>Customize port map</span>
+                                </span>
+                                <input type="checkbox" id="customPortMapToggle" class="toggle-input" data-action="custom-port-map-toggle" aria-describedby="portMapHelp">
+                            </label>
+                            <div class="field-note" id="portMapHelp">Enable to manually specify peer-link and keepalive ports</div>
                             <p class="field-note">Auto-filled from hardware profile. Enable customize for Generic models or non-standard cabling.</p>
                             <div class="form-group">
                                 <label for="vpc_pl_ints">Peer-link ports</label>
@@ -187,7 +490,7 @@
                                     <label for="portMapPeerInput">Peer-link (edit)</label>
                                     <div class="port-map-input-row">
                                         <input type="text" id="portMapPeerInput" placeholder="Ethernet1/53, Ethernet1/54 or Ethernet1/53-54" autocomplete="off">
-                                        <button type="button" class="btn-outline btn-sm" onclick="expandPortMapRange('peer')">Expand</button>
+                                        <button type="button" class="btn-outline btn-sm" data-action="expand-port-map-range" data-type="peer">Expand</button>
                                     </div>
                                 </div>
                                 <div class="port-chip-row" id="keepaliveChips" aria-label="Keepalive port chips"></div>
@@ -195,12 +498,20 @@
                                     <label for="portMapKaInput">Keepalive (edit)</label>
                                     <div class="port-map-input-row">
                                         <input type="text" id="portMapKaInput" placeholder="Ethernet1/47, Ethernet1/48" autocomplete="off">
-                                        <button type="button" class="btn-outline btn-sm" onclick="expandPortMapRange('ka')">Expand</button>
+                                        <button type="button" class="btn-outline btn-sm" data-action="expand-port-map-range" data-type="ka">Expand</button>
                                     </div>
                                 </div>
-                                <button type="button" class="btn-secondary btn-sm" onclick="syncPortFieldsFromEditor()">Apply port map</button>
+                                <button type="button" class="btn-secondary btn-sm" data-action="sync-port-fields">Apply port map</button>
                             </div>
                             <div class="grid-2">
+                                <div class="form-group">
+                                    <label class="checkbox-row">
+                                        <input type="checkbox" id="useDefaultKa" data-action="toggle-keepalive-inputs">
+                                        <span>Use default keepalive IP for vPC</span>
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="grid-2" id="keepaliveIpGroup">
                                 <div class="form-group">
                                     <label for="local_ka">Local keepalive IP</label>
                                     <input type="text" id="local_ka" placeholder="10.255.255.1">
@@ -210,7 +521,11 @@
                                     <input type="text" id="remote_ka" placeholder="10.255.255.2">
                                 </div>
                             </div>
-                            <input type="hidden" id="vpc_domain" value="100">
+                            <div class="field-row">
+                                <label for="vpc_domain">vPC Domain ID</label>
+                                <input type="number" id="vpc_domain" value="100" min="1" max="4096" placeholder="100">
+                                <span class="field-note">Unique domain ID (1-4096)</span>
+                            </div>
                             <input type="hidden" id="vpc_pl_id" value="100">
                             <input type="hidden" id="keepalive_vrf" value="VPC_Keep_Alive">
                             <input type="hidden" id="vpc_ka_po" value="2">
@@ -218,19 +533,19 @@
 
                         <div class="config-card" id="cardVpcLinks">
                             <div class="link-planner-header">
-                                <h3 class="config-card-title">Fabric links</h3>
-                                <button type="button" class="btn-outline btn-sm" id="linkPlannerExpertToggle" onclick="toggleLinkPlannerExpert()">Customize links (expert)</button>
+                                <h3 class="config-card-title">Fabric Links</h3>
+                                <button type="button" class="btn-outline btn-sm" id="linkPlannerExpertToggle" data-action="toggle-link-planner-expert">Customize links (expert)</button>
                             </div>
-                            <p class="field-note" id="linkPlannerHint">Downlinks and uplinks — defaults follow hardware profile.</p>
+                            <p class="field-note" id="linkPlannerHint">Downlinks and uplinks — defaults follow hardware profile. <strong>Preset</strong> = hardware profile template, <strong>Description</strong> = your custom label (e.g., "To Spine A").</p>
                             <div id="fabricQuestionnaireCard" class="questionnaire-launch" hidden>
-                                <button type="button" class="btn-primary btn-sm" onclick="startFabricQuestionnaire()">Guided link setup</button>
+                                <button type="button" class="btn-primary btn-sm" data-action="start-fabric-questionnaire">Guided link setup</button>
                                 <span class="field-note">Architect mode — answer a few questions or skip.</span>
                             </div>
                             <div id="linkPlannerExpertBody" hidden>
                             <div id="linkSectionDown" class="link-plan-section">
                                 <div class="link-plan-header">
                                     <h4>Downlinks</h4>
-                                    <button type="button" class="btn-secondary btn-sm" onclick="addCustomLinkRow('downlink')">+ Add downlink</button>
+                                    <button type="button" class="btn-secondary btn-sm" data-action="add-custom-link" data-link-type="downlink" aria-label="Add new downlink">+ Add downlink</button>
                                 </div>
                                 <div class="link-plan-table-wrap">
                                     <table class="link-plan-table" aria-label="Downlink port-channels">
@@ -252,7 +567,7 @@
                             <div id="linkSectionUp" class="link-plan-section">
                                 <div class="link-plan-header">
                                     <h4>Uplinks</h4>
-                                    <button type="button" class="btn-secondary btn-sm" onclick="addCustomLinkRow('uplink')">+ Add uplink</button>
+                                    <button type="button" class="btn-secondary btn-sm" data-action="add-custom-link" data-link-type="uplink" aria-label="Add new uplink">+ Add uplink</button>
                                 </div>
                                 <div class="link-plan-table-wrap">
                                     <table class="link-plan-table" aria-label="Uplink port-channels">
@@ -272,7 +587,7 @@
                                 </div>
                             </div>
                             </div>
-                            <button type="button" class="btn-ghost btn-sm undo-control" id="undoControl" hidden onclick="restoreUndo()">Undo</button>
+                            <button type="button" class="btn-ghost btn-sm undo-control" id="undoControl" hidden data-action="restore-undo">Undo</button>
                         </div>
 
                         <div class="config-card" id="topologyPanel" hidden>
@@ -282,45 +597,96 @@
                                 <div id="topologySvg" class="topology-host"></div>
                             </div>
                         </div>
+                    </div>
+                </div>
 
-                        <div class="config-card" id="cardHsrpGateway" hidden>
-                            <h3 class="config-card-title">Gateway SVI (HSRP)</h3>
-                            <p class="field-note">Shown when HSRP feature is enabled — adds an L3 SVI with standby VIP on this switch (and pair secondary when exported).</p>
-                            <div class="grid-2">
-                                <div class="form-group">
-                                    <label for="hsrp_vlan_id">VLAN ID</label>
-                                    <input type="number" id="hsrp_vlan_id" min="1" max="4094" placeholder="100">
-                                </div>
-                                <div class="form-group">
-                                    <label for="hsrp_svi_ip">SVI IP (CIDR)</label>
-                                    <input type="text" id="hsrp_svi_ip" placeholder="10.100.100.2/24" autocomplete="off">
-                                </div>
+                <div class="wizard-step" id="step-8">
+                    <h2 class="step-title">Configuration Review</h2>
+                    <p class="step-desc">Review your configuration before building.</p>
+                    
+                    <div class="status-badges" id="statusBadges">
+                        <span class="badge err" id="globalReadyBadge">Incomplete</span>
+                        <span class="badge err" id="scenarioBadge">Scenario: —</span>
+                        <span class="badge err" id="identityBadge">Identity: Pending</span>
+                    </div>
+                    
+                    <div class="config-card-grid" style="margin-top: 1rem;">
+                        <div class="config-card" id="finalTopologyPanel">
+                            <h3 class="config-card-title">Network Architecture</h3>
+                            <div class="topology-scroll-wrap">
+                                <div id="finalTopologySvg" class="topology-host"></div>
                             </div>
                         </div>
-
-                        <div class="config-card" id="cardInterfacePlanner">
-                            <h3 class="config-card-title">Interface customizations</h3>
-                            <p class="field-note">Defaults are vPC + uplinks only. Add ports here with presets, vPC port-channels (mirrored on pair builds), or custom CLI.</p>
-                            <div id="interfacePlanList" class="iface-plan-list"></div>
-                            <button type="button" class="btn-secondary btn-sm" onclick="addInterfacePlanRow()">+ Add interface</button>
+                    </div>
+                    
+                    <div class="preflight-panel">
+                        <h3 class="sub-title">Configuration Checklist</h3>
+                        <ul id="preflightList" class="preflight-list" role="list"><li>Complete wizard steps above.</li></ul>
+                    </div>
+                    
+                    <!-- Tabbed Configuration Display -->
+                    <div class="tabbed-panel">
+                        <div class="tab-nav" role="tablist">
+                            <button type="button" class="tab-btn active" role="tab" aria-selected="true" aria-controls="portMapTab" id="portMapTabBtn" data-tab="portMap">Port Map</button>
+                            <button type="button" class="tab-btn" role="tab" aria-selected="false" aria-controls="cliTab" id="cliTabBtn" data-tab="cli">CLI Output</button>
+                        </div>
+                        
+                        <div id="portMapTab" class="tab-content active" role="tabpanel" aria-labelledby="portMapTabBtn">
+                            <div id="deploymentResults" class="deployment-results">
+                                <!-- Port map will be displayed here -->
+                            </div>
+                            <div id="switchPortPanel"></div>
+                        </div>
+                        
+                        <div id="cliTab" class="tab-content" role="tabpanel" aria-labelledby="cliTabBtn" hidden>
+                            <div id="switchConfigPanel"></div>
                         </div>
                     </div>
-
-                    <details class="advanced-block" id="featuresAdvanced">
-                        <summary>Optional NX-OS features</summary>
-                        <div id="featureGrid" class="toggle-list"></div>
-                        <label class="checkbox-row">
-                            <input type="checkbox" id="inject_cli_reference">
-                            <span>Append CLI reference snippets (commented)</span>
-                        </label>
+                    
+                    <details>
+                        <summary>Technical payload (JSON)</summary>
+                        <pre id="payloadReview" class="review-box">Payload appears when you open Review.</pre>
                     </details>
+                    
+                    <details class="compare-block">
+                        <summary>Compare against existing running-config</summary>
+                        <p class="field-note">Paste a device's running-config to diff against the last preview or build output.</p>
+                        <textarea id="baselineConfig" rows="5" placeholder="Paste existing running-config here..." aria-label="Baseline running config"></textarea>
+                        <button type="button" class="btn-secondary btn-sm" data-action="compare-config">Run Diff</button>
+                        <pre id="diffOutput" class="diff-output" aria-live="polite"></pre>
+                    </details>
+                    
+                    <div class="btn-row">
+                        <button type="button" class="btn-secondary" data-action="run-scenario" data-scenario="preview" aria-label="Validate configuration and preview CLI output">Validate & Preview CLI</button>
+                        <!-- Build: requestBuild() gates hardened tier via confirmHardenedBuild() -->
+                        <button type="button" class="btn-primary" id="generateBtn" data-action="request-build" aria-label="Build and save configuration files">Build & Save</button>
+                    </div>
+                </div>
 
+                <div class="wizard-step" id="step-4">
+                    <h2 class="step-title">Features</h2>
+                    <p class="step-desc">Baseline options and optional NX-OS features.</p>
+                    <div class="config-card-grid option-b-grid">
+                        <div class="config-card" id="cardBaseline">
+                            <h3 class="config-card-title">Baseline (every config)</h3>
+                            <p class="field-note">Institutional standard — aliases, SNMP traps, CoPP.</p>
+                            <div id="baselineGrid" class="toggle-list"></div>
+                        </div>
+                        <div class="config-card">
+                            <h3 class="config-card-title">Optional NX-OS Features</h3>
+                            <div id="featureGrid" class="toggle-list"></div>
+                            <label class="checkbox-row">
+                                <input type="checkbox" id="inject_cli_reference">
+                                <span>Append CLI reference snippets (commented)</span>
+                            </label>
+                        </div>
+                    </div>
                     <details class="advanced-block">
                         <summary>Production details (SNMP, syslog, security)</summary>
                         <div class="grid-2">
                             <div class="form-group">
                                 <label for="security_tier">Security Tier</label>
-                                <select id="security_tier" onchange="onSecurityTierChange()">
+                                <select id="security_tier" data-action="security-tier-change">
                                     <option value="standard">Standard</option>
                                     <option value="hardened">Hardened</option>
                                 </select>
@@ -384,64 +750,12 @@
                         <input type="hidden" id="boot_image" value="">
                         <input type="hidden" id="spectrum_user" value="">
                     </details>
-
-                    <details class="advanced-block">
-                        <summary>Manual overrides (VLANs, interfaces)</summary>
-                        <div class="form-group">
-                            <label for="rangeInput">Interface Range</label>
-                            <div class="inline-row">
-                                <input type="text" id="rangeInput" placeholder="Eth1/1-48">
-                                <button type="button" class="btn-secondary" onclick="expandRange()">Expand</button>
-                            </div>
-                        </div>
-                        <textarea id="interfacesArea" rows="2" hidden></textarea>
-                        <div id="vlanList"></div>
-                        <button type="button" class="btn-outline" onclick="addVlanRow()">+ VLAN/SVI</button>
-                    </details>
-                    <div id="aliasList" class="alias-list" hidden></div>
-                    <div id="vpcSection" hidden></div>
-                </div>
-
-                <div class="wizard-step" id="step-5">
-                    <h2 class="step-title">Preflight review</h2>
-                    <div class="status-badges" id="statusBadges">
-                        <span class="badge err" id="globalReadyBadge">Incomplete</span>
-                        <span class="badge err" id="scenarioBadge">Scenario: —</span>
-                        <span class="badge err" id="identityBadge">Identity: Pending</span>
-                    </div>
-                    <div class="config-card-grid" style="margin-top: 1rem;">
-                        <div class="config-card" id="finalTopologyPanel">
-                            <h3 class="config-card-title">Network Architecture</h3>
-                            <div class="topology-scroll-wrap">
-                                <div id="finalTopologySvg" class="topology-host"></div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="preflight-panel">
-                        <div class="sub-title">Checklist</div>
-                        <ul id="preflightList" class="preflight-list"><li>Complete wizard steps above.</li></ul>
-                    </div>
-                    <details>
-                        <summary>Technical payload (JSON)</summary>
-                        <pre id="payloadReview" class="review-box">Payload appears when you open Review.</pre>
-                    </details>
-                    <details class="compare-block">
-                        <summary>Compare against existing running-config</summary>
-                        <p class="field-note">Paste a device's running-config to diff against the last preview or build output.</p>
-                        <textarea id="baselineConfig" rows="5" placeholder="Paste existing running-config here..." aria-label="Baseline running config"></textarea>
-                        <button type="button" class="btn-secondary btn-sm" onclick="compareConfig()">Run Diff</button>
-                        <pre id="diffOutput" class="diff-output" aria-live="polite"></pre>
-                    </details>
-                    <div class="btn-row">
-                        <button type="button" class="btn-secondary" onclick="runScenario('preview')">Validate & Preview CLI</button>
-                        <button type="button" class="btn-primary" id="generateBtn" onclick="requestBuild()">Build & Save</button>
-                    </div>
                 </div>
 
                 <div class="wizard-footer">
-                    <button type="button" class="btn-outline" onclick="wizardNav(-1)">← Back</button>
-                    <button type="button" class="btn-secondary" onclick="applySafeDefaults()">Safe Defaults</button>
-                    <button type="button" class="btn-primary" onclick="wizardNav(1)">Next →</button>
+                    <button type="button" class="btn-outline" data-action="wizard-nav" data-direction="-1">← Back</button>
+                    <button type="button" class="btn-secondary" data-action="apply-safe-defaults">Safe Defaults</button>
+                    <button type="button" class="btn-primary" data-action="wizard-nav" data-direction="1">Next →</button>
                 </div>
             </section>
 
@@ -466,14 +780,14 @@
                     <div class="panel-title panel-title-row">
                         <span>Live CLI Preview</span>
                         <span id="livePreviewStatus" class="live-preview-status"></span>
-                        <button type="button" class="btn-outline btn-sm" onclick="copyOutput()">Copy</button>
+                        <button type="button" class="btn-outline btn-sm" data-action="copy-output">Copy</button>
                     </div>
                     <pre id="liveCliOutput" class="cli-output">Complete the wizard — preview updates as you change options.</pre>
                 </div>
                 <div class="panel output-panel" style="display:none;">
                     <div class="panel-title">
                         CLI Output
-                        <button type="button" class="btn-outline btn-sm" onclick="copyOutput()">Copy</button>
+                        <button type="button" class="btn-outline btn-sm" data-action="copy-output">Copy</button>
                     </div>
                     <p class="field-note output-hint">Validate shows preview without saving. Build writes to Configuration Vault.</p>
                     <pre id="statusOutput" class="cli-output">Complete the wizard, then Validate or Build.</pre>
@@ -483,48 +797,51 @@
                     <div id="complianceList"></div>
                 </div>
                 <div class="panel">
-                    <div class="panel-title">Checkpoints</div>
-                    <p class="field-note">Saved device snapshots before each build. View or restore wizard fields.</p>
-                    <div id="checkpointList" class="vault-list">Loading...</div>
-                </div>
-                <div class="panel">
                     <div class="panel-title">
-                        Configuration Vault
-                        <button type="button" class="btn-outline btn-sm" onclick="openVaultFolder()" title="Open vault folder">Open folder</button>
+                        <button type="button" class="btn-outline btn-sm" data-action="toggle-vault-checkpoints">Vault & Checkpoints</button>
                     </div>
-                    <p class="field-note">Saved configs, diffs, and risk reports — newest first.</p>
-                    <div class="form-group">
-                        <label for="exportDir">Export to (optional)</label>
-                        <input type="text" id="exportDir" placeholder="Leave blank for default vault folder" onchange="saveExportDir()">
-                        <div class="field-note">Custom path on this PC, e.g. D:\NetworkConfigs</div>
+                    <div id="vaultCheckpointsPanel" style="display:none;">
+                        <div class="panel-title">Checkpoints</div>
+                        <p class="field-note">Saved device snapshots before each build. View or restore wizard fields.</p>
+                        <div id="checkpointList" class="vault-list">Loading...</div>
+                        <div class="panel-title">
+                            Configuration Vault
+                            <button type="button" class="btn-outline btn-sm" data-action="open-vault-folder" title="Open vault folder">Open folder</button>
+                        </div>
+                        <p class="field-note">Saved configs, diffs, and risk reports — newest first.</p>
+                        <div class="form-group">
+                            <label for="exportDir">Export to (optional)</label>
+                            <input type="text" id="exportDir" placeholder="Leave blank for default vault folder" data-action="save-export-dir">
+                            <div class="field-note">Custom path on this PC, e.g. D:\NetworkConfigs</div>
+                        </div>
+                        <div class="vault-filters grid-2">
+                            <div class="form-group">
+                                <label for="vaultFilter">Hostname</label>
+                                <select id="vaultFilter" data-action="fetch-vault" aria-label="Filter vault by hostname">
+                                    <option value="">All devices</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="vaultSiteFilter">Site</label>
+                                <input type="text" id="vaultSiteFilter" placeholder="HQ_DC" data-action="fetch-vault" aria-label="Filter vault by site">
+                            </div>
+                            <div class="form-group">
+                                <label for="vaultScenarioFilter">Scenario</label>
+                                <input type="text" id="vaultScenarioFilter" placeholder="vpc_leaf_pair" data-action="fetch-vault" aria-label="Filter vault by scenario">
+                            </div>
+                            <div class="form-group">
+                                <label for="vaultTypeFilter">Artifact type</label>
+                                <select id="vaultTypeFilter" data-action="fetch-vault" aria-label="Filter vault by artifact type">
+                                    <option value="">All types</option>
+                                    <option value="config">Config (.txt)</option>
+                                    <option value="manifest">Manifest (.json)</option>
+                                    <option value="package">Change package (.md)</option>
+                                    <option value="json">Device JSON</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div id="vaultList" class="vault-list">Loading...</div>
                     </div>
-                    <div class="vault-filters grid-2">
-                        <div class="form-group">
-                            <label for="vaultFilter">Hostname</label>
-                            <select id="vaultFilter" onchange="fetchVault()" aria-label="Filter vault by hostname">
-                                <option value="">All devices</option>
-                            </select>
-                        </div>
-                        <div class="form-group">
-                            <label for="vaultSiteFilter">Site</label>
-                            <input type="text" id="vaultSiteFilter" placeholder="HQ_DC" onchange="fetchVault()" aria-label="Filter vault by site">
-                        </div>
-                        <div class="form-group">
-                            <label for="vaultScenarioFilter">Scenario</label>
-                            <input type="text" id="vaultScenarioFilter" placeholder="vpc_leaf_pair" onchange="fetchVault()" aria-label="Filter vault by scenario">
-                        </div>
-                        <div class="form-group">
-                            <label for="vaultTypeFilter">Artifact type</label>
-                            <select id="vaultTypeFilter" onchange="fetchVault()" aria-label="Filter vault by artifact type">
-                                <option value="">All types</option>
-                                <option value="config">Config (.txt)</option>
-                                <option value="manifest">Manifest (.json)</option>
-                                <option value="package">Change package (.md)</option>
-                                <option value="json">Device JSON</option>
-                            </select>
-                        </div>
-                    </div>
-                    <div id="vaultList" class="vault-list">Loading...</div>
                 </div>
             </aside>
         </div>
@@ -535,8 +852,8 @@
             <h2 id="hardenedSecretsTitle">Cleartext secrets in config</h2>
             <p class="field-note">Hardened builds may include TACACS keys or local passwords in generated CLI. Confirm this is for <strong>lab use only</strong> before saving.</p>
             <div class="btn-row">
-                <button type="button" class="btn-primary" onclick="confirmHardenedBuild()">Lab only — Build &amp; Save</button>
-                <button type="button" class="btn-outline" onclick="closeHardenedSecretsModal()">Cancel</button>
+                <button type="button" class="btn-primary" data-action="confirm-hardened-build">Lab only — Build &amp; Save</button>
+                <button type="button" class="btn-outline" data-action="close-hardened-secrets-modal">Cancel</button>
             </div>
         </div>
     </div>
@@ -548,10 +865,10 @@
             <ul id="buildSuccessFiles" class="preflight-list"></ul>
             <p class="field-note">Start a new configuration? Your saved files remain in the vault.</p>
             <div class="btn-row">
-                <button type="button" class="btn-primary" onclick="restartFromBuildSuccess()">Start new configuration</button>
-                <button type="button" class="btn-secondary" onclick="copyPrimaryConfig()">Copy primary config</button>
-                <button type="button" class="btn-secondary" onclick="openLastExportFolder()">Open folder</button>
-                <button type="button" class="btn-outline" onclick="closeBuildSuccess()">Stay on this build</button>
+                <button type="button" class="btn-primary" data-action="restart-from-build-success">Start new configuration</button>
+                <button type="button" class="btn-secondary" data-action="copy-primary-config">Copy primary config</button>
+                <button type="button" class="btn-secondary" data-action="open-last-export-folder">Open folder</button>
+                <button type="button" class="btn-outline" data-action="close-build-success">Stay on this build</button>
             </div>
         </div>
     </div>
@@ -563,9 +880,9 @@
             <div id="builderProgress" class="builder-progress"></div>
             <div id="builderBody" class="builder-body"></div>
             <div class="btn-row">
-                <button type="button" class="btn-outline" onclick="builderBack()">← Back</button>
-                <button type="button" class="btn-outline" onclick="closeConfigBuilder()">Cancel</button>
-                <button type="button" class="btn-primary" onclick="builderNext()">Next →</button>
+                <button type="button" class="btn-outline" data-action="builder-back">← Back</button>
+                <button type="button" class="btn-outline" data-action="close-config-builder">Cancel</button>
+                <button type="button" class="btn-primary" data-action="builder-next">Next →</button>
             </div>
         </div>
     </div>
@@ -575,8 +892,8 @@
             <h2>Port-channel conflict</h2>
             <p id="poConflictMessage" class="field-note"></p>
             <div class="btn-row">
-                <button type="button" class="btn-primary" onclick="resolvePoConflict(true)">Use next available Po</button>
-                <button type="button" class="btn-outline" onclick="resolvePoConflict(false)">I'll choose another</button>
+                <button type="button" class="btn-primary" data-action="resolve-po-conflict" data-resolve="true">Use next available Po</button>
+                <button type="button" class="btn-outline" data-action="resolve-po-conflict" data-resolve="false">I'll choose another</button>
             </div>
         </div>
     </div>
@@ -592,7 +909,7 @@
         <div class="modal-content modal-wide">
             <h2>Release notes</h2>
             <pre id="releaseNotesBody" class="release-notes-body"></pre>
-            <button type="button" class="btn-outline" onclick="closeReleaseNotesModal()">Close</button>
+            <button type="button" class="btn-outline" data-action="close-release-notes-modal">Close</button>
         </div>
     </div>
 
@@ -611,7 +928,7 @@
             </ul>
             <p>Documentation: <code>docs/00-START-HERE.md</code></p>
             <p>Zero-trust QA: <code>docs/06-quality-assurance/zero-trust-review/</code></p>
-            <button type="button" class="btn-primary" onclick="closeHelp()">Close</button>
+            <button type="button" class="btn-primary" data-action="close-help">Close</button>
         </div>
     </div>
 
@@ -619,7 +936,222 @@
         <div class="modal-content modal-wide">
             <h2 id="optionInfoTitle">Option details</h2>
             <div id="optionInfoBody" class="option-info-body"></div>
-            <button type="button" class="btn-primary" onclick="closeOptionInfo()">Got it</button>
+            <button type="button" class="btn-primary" data-action="close-option-info">Got it</button>
+        </div>
+    </div>
+
+    <div id="editSwitchModal" class="modal hidden" role="dialog" aria-modal="true" aria-labelledby="editSwitchTitle">
+        <div class="modal-content modal-wide">
+            <h2 id="editSwitchTitle">Edit Switch</h2>
+            <div class="form-group required">
+                <label for="edit_hostname">Hostname</label>
+                <input type="text" id="edit_hostname" autocomplete="off" data-action="validate-hostname">
+                <div class="validation-message" id="edit_hostname_validation"></div>
+            </div>
+            <div class="form-group required">
+                <label for="edit_mgmt_ip">Management IP</label>
+                <input type="text" id="edit_mgmt_ip" autocomplete="off" data-action="validate-ip">
+                <div class="validation-message" id="edit_mgmt_ip_validation"></div>
+            </div>
+            <div class="form-group required">
+                <label for="edit_mgmt_gw">Default gateway</label>
+                <input type="text" id="edit_mgmt_gw" autocomplete="off" data-action="validate-ip">
+                <div class="validation-message" id="edit_mgmt_gw_validation"></div>
+            </div>
+            <div class="form-group required">
+                <label for="edit_model">Switch model</label>
+                <select id="edit_model" class="select-full-label"></select>
+            </div>
+            <div class="form-group required">
+                <label for="edit_switch_role">Switch role</label>
+                <select id="edit_switch_role" class="select-full-label">
+                    <option value="access">Access</option>
+                    <option value="leaf">Leaf</option>
+                    <option value="spine">Spine</option>
+                    <option value="core">Core</option>
+                </select>
+            </div>
+            <div class="form-group required">
+                <label for="edit_nxos_version">NX-OS version</label>
+                <select id="edit_nxos_version" class="select-full-label"></select>
+            </div>
+            <div class="form-group optional">
+                <label for="edit_vpc_domain">vPC domain</label>
+                <input type="text" id="edit_vpc_domain" autocomplete="off" data-action="validate-vpc-domain">
+                <div class="validation-message" id="edit_vpc_domain_validation"></div>
+                <div class="field-note">Leave empty for standalone switches</div>
+            </div>
+            <div class="form-group optional" id="keepalive_field_group">
+                <label for="edit_local_ka">vPC Keepalive IP</label>
+                <input type="text" id="edit_local_ka" autocomplete="off" data-action="validate-ip">
+                <div class="validation-message" id="edit_local_ka_validation"></div>
+                <div class="field-note" id="partner_info"></div>
+            </div>
+            <div class="form-group optional">
+                <label for="edit_site_name">Site name</label>
+                <input type="text" id="edit_site_name" autocomplete="off">
+            </div>
+            <div class="btn-row">
+                <button type="button" class="btn-primary" data-action="save-switch-edit">Save Changes</button>
+                <button type="button" class="btn-outline" data-action="close-edit-switch-modal">Cancel</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="editVPCModal" class="modal hidden" role="dialog" aria-modal="true" aria-labelledby="editVpcTitle">
+        <div class="modal-content">
+            <h2 id="editVpcTitle">Edit vPC Domain</h2>
+            <p id="editVpcHint" class="field-note">Change the domain ID for this pair — both peers stay synchronized.</p>
+            <div id="editVpcError" class="form-error hidden" role="alert"></div>
+            <div class="form-group required">
+                <label for="editVpcDomainId">Domain ID</label>
+                <input type="number" id="editVpcDomainId" min="1" max="4095" autocomplete="off">
+            </div>
+            <div class="form-group required">
+                <label for="editVpcPrimary">Primary Switch</label>
+                <select id="editVpcPrimary" autocomplete="off"></select>
+            </div>
+            <div class="form-group required">
+                <label for="editVpcSecondary">Secondary Switch</label>
+                <select id="editVpcSecondary" autocomplete="off"></select>
+            </div>
+            <div class="form-group">
+                <label for="editVpcPeerLink">Peer-Link Ports</label>
+                <input type="text" id="editVpcPeerLink" placeholder="E1/49-50" autocomplete="off">
+            </div>
+            <div class="btn-row">
+                <button type="button" class="btn-primary" data-action="save-vpc-edit">Save Changes</button>
+                <button type="button" class="btn-outline" data-action="close-edit-vpc-modal">Cancel</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="addVPCModal" class="modal hidden" role="dialog" aria-modal="true" aria-labelledby="addVpcTitle">
+        <div class="modal-content">
+            <h2 id="addVpcTitle">Add vPC Domain</h2>
+            <p id="addVpcHint" class="field-note">Pair two switches that are not already in a vPC. To change an existing domain ID, use Edit on the pair.</p>
+            <div id="addVpcError" class="form-error hidden" role="alert"></div>
+            <div class="form-group required">
+                <label for="newVpcDomain">Domain ID</label>
+                <input type="number" id="newVpcDomain" min="1" max="4095" autocomplete="off">
+            </div>
+            <div class="form-group required">
+                <label for="newVpcPrimary">Primary Switch</label>
+                <select id="newVpcPrimary" autocomplete="off">
+                    <option value="">Select a switch...</option>
+                </select>
+            </div>
+            <div class="form-group required">
+                <label for="newVpcSecondary">Secondary Switch</label>
+                <select id="newVpcSecondary" autocomplete="off">
+                    <option value="">Select a switch...</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="newVpcPeerLink">Peer-Link Ports</label>
+                <input type="text" id="newVpcPeerLink" placeholder="E1/49-50" autocomplete="off">
+            </div>
+            <div class="btn-row">
+                <button type="button" class="btn-primary" data-action="save-new-vpc">Add</button>
+                <button type="button" class="btn-outline" data-action="close-add-vpc-modal">Cancel</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="bulkAddVLANsModal" class="modal hidden" role="dialog" aria-modal="true" aria-labelledby="bulkAddVlansTitle">
+        <div class="modal-content">
+            <h2 id="bulkAddVlansTitle">Bulk Add VLANs</h2>
+            <div class="form-group required">
+                <label for="vlanRangeStart">VLAN Range Start</label>
+                <input type="number" id="vlanRangeStart" autocomplete="off">
+            </div>
+            <div class="form-group required">
+                <label for="vlanRangeEnd">VLAN Range End</label>
+                <input type="number" id="vlanRangeEnd" autocomplete="off">
+            </div>
+            <div class="form-group required">
+                <label for="vlanNamePrefix">Name Prefix</label>
+                <input type="text" id="vlanNamePrefix" autocomplete="off">
+            </div>
+            <div class="btn-row">
+                <button type="button" class="btn-primary" data-action="save-bulk-vlans">Add VLANs</button>
+                <button type="button" class="btn-outline" data-action="close-bulk-add-vlans-modal">Cancel</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="editVLANModal" class="modal hidden" role="dialog" aria-modal="true" aria-labelledby="editVlanTitle">
+        <div class="modal-content">
+            <h2 id="editVlanTitle">Edit VLAN</h2>
+            <div class="form-group required">
+                <label for="editVlanName">VLAN Name</label>
+                <input type="text" id="editVlanName" autocomplete="off">
+            </div>
+            <div class="form-group">
+                <label for="editVlanDesc">Description</label>
+                <input type="text" id="editVlanDesc" autocomplete="off">
+            </div>
+            <div class="btn-row">
+                <button type="button" class="btn-primary" data-action="save-vlan-edit">Save Changes</button>
+                <button type="button" class="btn-outline" data-action="close-edit-vlan-modal">Cancel</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="addUplinkModal" class="modal hidden" role="dialog" aria-modal="true" aria-labelledby="addUplinkTitle">
+        <div class="modal-content">
+            <h2 id="addUplinkTitle">Add Uplink</h2>
+            <div class="form-group required">
+                <label for="newUplinkFrom">From Switch</label>
+                <input type="text" id="newUplinkFrom" autocomplete="off">
+            </div>
+            <div class="form-group required">
+                <label for="newUplinkTo">To Switch</label>
+                <input type="text" id="newUplinkTo" autocomplete="off">
+            </div>
+            <div class="form-group required">
+                <label for="newUplinkPorts">Ports</label>
+                <input type="text" id="newUplinkPorts" autocomplete="off">
+            </div>
+            <div class="btn-row">
+                <button type="button" class="btn-primary" data-action="save-new-uplink">Add</button>
+                <button type="button" class="btn-outline" data-action="close-add-uplink-modal">Cancel</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="editUplinkModal" class="modal hidden" role="dialog" aria-modal="true" aria-labelledby="editUplinkTitle">
+        <div class="modal-content">
+            <h2 id="editUplinkTitle">Edit Uplink</h2>
+            <div class="form-group required">
+                <label for="editUplinkFrom">From Switch</label>
+                <input type="text" id="editUplinkFrom" autocomplete="off">
+            </div>
+            <div class="form-group required">
+                <label for="editUplinkTo">To Switch</label>
+                <input type="text" id="editUplinkTo" autocomplete="off">
+            </div>
+            <div class="form-group required">
+                <label for="editUplinkPorts">Ports</label>
+                <input type="text" id="editUplinkPorts" autocomplete="off">
+            </div>
+            <div class="btn-row">
+                <button type="button" class="btn-primary" data-action="save-uplink-edit">Save Changes</button>
+                <button type="button" class="btn-outline" data-action="close-edit-uplink-modal">Cancel</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="deploymentCompletionModal" class="modal hidden" role="dialog" aria-modal="true" aria-labelledby="deploymentCompletionTitle">
+        <div class="modal-content modal-wide">
+            <h2 id="deploymentCompletionTitle">Multi-Switch Deployment Complete</h2>
+            <div id="deploymentCompletionSummary" class="deployment-summary"></div>
+            <div id="deploymentCompletionSwitches" class="deployment-switches-list"></div>
+            <div id="deploymentCompletionErrors" class="deployment-errors" hidden></div>
+            <div class="btn-row">
+                <button type="button" class="btn-secondary" data-action="close-deployment-completion-modal">Close</button>
+                <button type="button" class="btn-primary" data-action="download-all-deployment-configs">Download All Configs</button>
+            </div>
         </div>
     </div>
 

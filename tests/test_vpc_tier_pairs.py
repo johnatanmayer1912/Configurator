@@ -47,7 +47,7 @@ def test_1g_vpc_access_pair_hardware_ports():
     result, cfg = _cfg("vpc_access_pair", "ACCESS-SW-01-A")
     vpc = result["device"].vpc
     assert vpc is not None
-    assert vpc.peer_link_interfaces == ["Ethernet1/53", "Ethernet1/54"]
+    assert vpc.peer_link_interfaces == ["Ethernet1/51", "Ethernet1/52"]
     assert vpc.keepalive_interfaces == ["Ethernet1/47", "Ethernet1/48"]
     assert "feature vpc" in cfg
     assert "interface port-channel1" in cfg
@@ -65,7 +65,7 @@ def test_1g_vpc_access_pair_secondary_mirrored():
     assert pri.vpc.remote_keepalive_ip == sec.vpc.local_keepalive_ip
     pri_pl = next(po for po in pri.port_channels if po.vpc_peer_link)
     sec_pl = next(po for po in sec.port_channels if po.vpc_peer_link)
-    assert pri_pl.member_interfaces == sec_pl.member_interfaces == ["Ethernet1/53", "Ethernet1/54"]
+    assert pri_pl.member_interfaces == sec_pl.member_interfaces == ["Ethernet1/51", "Ethernet1/52"]
 
 
 def test_1g_vpc_access_infra_only_no_bulk_access():
@@ -108,7 +108,7 @@ def test_1g_vpc_access_interface_planner_po_mirrored():
 def test_1g_vpc_reserved_peer_port_not_overridden_by_planner():
     plans = [
         {
-            "interface": "Ethernet1/53",
+            "interface": "Ethernet1/51",  # Changed from 53 to actual reserved peer-link port
             "preset": "access_vlan",
             "vpc_port_channel": True,
             "mode": "access",
@@ -122,7 +122,7 @@ def test_1g_vpc_reserved_peer_port_not_overridden_by_planner():
         uplink_options={"uplink_fiber_pair": False, "uplink_fiber_quad": False},
     )
     assert not any(po.number >= 10 for po in result["device"].port_channels)
-    intf = next(i for i in result["device"].interfaces if i.name == "Ethernet1/53")
+    intf = next(i for i in result["device"].interfaces if i.name == "Ethernet1/51")
     assert intf.channel_group == 1
 
 

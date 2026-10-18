@@ -1,0 +1,15 @@
+{
+  "name": "pytest_fabric",
+  "description": "test",
+  "updated_at": "2026-08-16T11:52:28.358325+00:00",
+  "deployment": {},
+  "switches": [
+    {
+      "hostname": "SW1",
+      "model": "Nexus 9336C-FX2",
+      "role": "leaf"
+    }
+  ],
+  "vpc_pairs": [],
+  "uplinks": []
+}

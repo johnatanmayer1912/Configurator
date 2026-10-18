@@ -1,0 +1,26 @@
+{
+  "hooks": {
+    "before_edit": [
+      {
+        "skill": "python-excellence",
+        "trigger": "always"
+      }
+    ],
+    "after_edit": [
+      {
+        "skill": "qa-deep",
+        "trigger": "file_changed"
+      }
+    ],
+    "before_commit": [
+      {
+        "skill": "python-excellence",
+        "trigger": "always"
+      },
+      {
+        "skill": "qa-deep",
+        "trigger": "always"
+      }
+    ]
+  }
+}

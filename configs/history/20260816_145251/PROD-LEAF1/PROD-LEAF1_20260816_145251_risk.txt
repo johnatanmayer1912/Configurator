@@ -1,0 +1,15 @@
+==========================================
+       CONFIGURATION RISK ASSESSMENT      
+==========================================
+OVERALL RISK LEVEL: LOW
+TOTAL FINDINGS: 4
+------------------------------------------
+[LOW] hostname PROD-LEAF1
+   ↳ Matches risk pattern: 'hostname'
+[LOW] snmp-server location PROD
+   ↳ Matches risk pattern: 'snmp-server location'
+[LOW] ntp server 10.255.255.254 prefer use-vrf management
+   ↳ Matches risk pattern: 'ntp server'
+[LOW] logging server 10.255.255.254 6 use-vrf management
+   ↳ Matches risk pattern: 'logging server'
+==========================================

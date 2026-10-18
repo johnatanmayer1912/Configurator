@@ -1,6 +1,0 @@
-Site: jkljkljghjgjh
-Role: leaf
-Model: N9K-C9336C-FX2
-Redundancy: vpc
-Access VLAN range: 5 to 24
-Interfaces generated: 48

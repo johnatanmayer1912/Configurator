@@ -1,6 +1,0 @@
-Site: HQ_DC
-Role: leaf
-Model: Nexus 93180YC-EX
-Redundancy: vpc
-Access VLAN range: 100 to 107
-Interfaces generated: 0

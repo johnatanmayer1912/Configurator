@@ -1,0 +1,508 @@
+{
+  "hostname": "MAX-VLAN-SWITCH",
+  "mgmt_ip": "10.0.0.1/24",
+  "mgmt_gw": "10.0.0.254",
+  "model": "Nexus 93180YC-EX",
+  "vlans": [
+    {
+      "id": 100,
+      "name": "FABRIC_100"
+    },
+    {
+      "id": 101,
+      "name": "FABRIC_101"
+    },
+    {
+      "id": 102,
+      "name": "FABRIC_102"
+    },
+    {
+      "id": 103,
+      "name": "FABRIC_103"
+    },
+    {
+      "id": 104,
+      "name": "FABRIC_104"
+    },
+    {
+      "id": 105,
+      "name": "FABRIC_105"
+    },
+    {
+      "id": 106,
+      "name": "FABRIC_106"
+    },
+    {
+      "id": 107,
+      "name": "FABRIC_107"
+    },
+    {
+      "id": 108,
+      "name": "FABRIC_108"
+    },
+    {
+      "id": 109,
+      "name": "FABRIC_109"
+    },
+    {
+      "id": 110,
+      "name": "FABRIC_110"
+    },
+    {
+      "id": 111,
+      "name": "FABRIC_111"
+    },
+    {
+      "id": 112,
+      "name": "FABRIC_112"
+    },
+    {
+      "id": 113,
+      "name": "FABRIC_113"
+    },
+    {
+      "id": 114,
+      "name": "FABRIC_114"
+    },
+    {
+      "id": 115,
+      "name": "FABRIC_115"
+    },
+    {
+      "id": 116,
+      "name": "FABRIC_116"
+    },
+    {
+      "id": 117,
+      "name": "FABRIC_117"
+    },
+    {
+      "id": 118,
+      "name": "FABRIC_118"
+    },
+    {
+      "id": 119,
+      "name": "FABRIC_119"
+    },
+    {
+      "id": 120,
+      "name": "FABRIC_120"
+    },
+    {
+      "id": 121,
+      "name": "FABRIC_121"
+    },
+    {
+      "id": 122,
+      "name": "FABRIC_122"
+    },
+    {
+      "id": 123,
+      "name": "FABRIC_123"
+    },
+    {
+      "id": 124,
+      "name": "FABRIC_124"
+    },
+    {
+      "id": 125,
+      "name": "FABRIC_125"
+    },
+    {
+      "id": 126,
+      "name": "FABRIC_126"
+    },
+    {
+      "id": 127,
+      "name": "FABRIC_127"
+    },
+    {
+      "id": 128,
+      "name": "FABRIC_128"
+    },
+    {
+      "id": 129,
+      "name": "FABRIC_129"
+    },
+    {
+      "id": 130,
+      "name": "FABRIC_130"
+    },
+    {
+      "id": 131,
+      "name": "FABRIC_131"
+    },
+    {
+      "id": 132,
+      "name": "FABRIC_132"
+    },
+    {
+      "id": 133,
+      "name": "FABRIC_133"
+    },
+    {
+      "id": 134,
+      "name": "FABRIC_134"
+    },
+    {
+      "id": 135,
+      "name": "FABRIC_135"
+    },
+    {
+      "id": 136,
+      "name": "FABRIC_136"
+    },
+    {
+      "id": 137,
+      "name": "FABRIC_137"
+    },
+    {
+      "id": 138,
+      "name": "FABRIC_138"
+    },
+    {
+      "id": 139,
+      "name": "FABRIC_139"
+    },
+    {
+      "id": 140,
+      "name": "FABRIC_140"
+    },
+    {
+      "id": 141,
+      "name": "FABRIC_141"
+    },
+    {
+      "id": 142,
+      "name": "FABRIC_142"
+    },
+    {
+      "id": 143,
+      "name": "FABRIC_143"
+    },
+    {
+      "id": 144,
+      "name": "FABRIC_144"
+    },
+    {
+      "id": 145,
+      "name": "FABRIC_145"
+    },
+    {
+      "id": 146,
+      "name": "FABRIC_146"
+    },
+    {
+      "id": 147,
+      "name": "FABRIC_147"
+    },
+    {
+      "id": 148,
+      "name": "FABRIC_148"
+    },
+    {
+      "id": 149,
+      "name": "FABRIC_149"
+    },
+    {
+      "id": 150,
+      "name": "FABRIC_150"
+    },
+    {
+      "id": 151,
+      "name": "FABRIC_151"
+    },
+    {
+      "id": 152,
+      "name": "FABRIC_152"
+    },
+    {
+      "id": 153,
+      "name": "FABRIC_153"
+    },
+    {
+      "id": 154,
+      "name": "FABRIC_154"
+    },
+    {
+      "id": 155,
+      "name": "FABRIC_155"
+    },
+    {
+      "id": 156,
+      "name": "FABRIC_156"
+    },
+    {
+      "id": 157,
+      "name": "FABRIC_157"
+    },
+    {
+      "id": 158,
+      "name": "FABRIC_158"
+    },
+    {
+      "id": 159,
+      "name": "FABRIC_159"
+    },
+    {
+      "id": 160,
+      "name": "FABRIC_160"
+    },
+    {
+      "id": 161,
+      "name": "FABRIC_161"
+    },
+    {
+      "id": 162,
+      "name": "FABRIC_162"
+    },
+    {
+      "id": 163,
+      "name": "FABRIC_163"
+    },
+    {
+      "id": 164,
+      "name": "FABRIC_164"
+    },
+    {
+      "id": 165,
+      "name": "FABRIC_165"
+    },
+    {
+      "id": 166,
+      "name": "FABRIC_166"
+    },
+    {
+      "id": 167,
+      "name": "FABRIC_167"
+    },
+    {
+      "id": 168,
+      "name": "FABRIC_168"
+    },
+    {
+      "id": 169,
+      "name": "FABRIC_169"
+    },
+    {
+      "id": 170,
+      "name": "FABRIC_170"
+    },
+    {
+      "id": 171,
+      "name": "FABRIC_171"
+    },
+    {
+      "id": 172,
+      "name": "FABRIC_172"
+    },
+    {
+      "id": 173,
+      "name": "FABRIC_173"
+    },
+    {
+      "id": 174,
+      "name": "FABRIC_174"
+    },
+    {
+      "id": 175,
+      "name": "FABRIC_175"
+    },
+    {
+      "id": 176,
+      "name": "FABRIC_176"
+    },
+    {
+      "id": 177,
+      "name": "FABRIC_177"
+    },
+    {
+      "id": 178,
+      "name": "FABRIC_178"
+    },
+    {
+      "id": 179,
+      "name": "FABRIC_179"
+    },
+    {
+      "id": 180,
+      "name": "FABRIC_180"
+    },
+    {
+      "id": 181,
+      "name": "FABRIC_181"
+    },
+    {
+      "id": 182,
+      "name": "FABRIC_182"
+    },
+    {
+      "id": 183,
+      "name": "FABRIC_183"
+    },
+    {
+      "id": 184,
+      "name": "FABRIC_184"
+    },
+    {
+      "id": 185,
+      "name": "FABRIC_185"
+    },
+    {
+      "id": 186,
+      "name": "FABRIC_186"
+    },
+    {
+      "id": 187,
+      "name": "FABRIC_187"
+    },
+    {
+      "id": 188,
+      "name": "FABRIC_188"
+    },
+    {
+      "id": 189,
+      "name": "FABRIC_189"
+    },
+    {
+      "id": 190,
+      "name": "FABRIC_190"
+    },
+    {
+      "id": 191,
+      "name": "FABRIC_191"
+    },
+    {
+      "id": 192,
+      "name": "FABRIC_192"
+    },
+    {
+      "id": 193,
+      "name": "FABRIC_193"
+    },
+    {
+      "id": 194,
+      "name": "FABRIC_194"
+    },
+    {
+      "id": 195,
+      "name": "FABRIC_195"
+    },
+    {
+      "id": 196,
+      "name": "FABRIC_196"
+    },
+    {
+      "id": 197,
+      "name": "FABRIC_197"
+    },
+    {
+      "id": 198,
+      "name": "FABRIC_198"
+    },
+    {
+      "id": 199,
+      "name": "FABRIC_199"
+    }
+  ],
+  "interfaces": [
+    {
+      "name": "Ethernet1/53",
+      "mode": "trunk",
+      "vlan": null,
+      "description": "Uplink_1",
+      "shutdown": false,
+      "vpc_id": null,
+      "trunk_vlans": "1-4094",
+      "channel_group": null,
+      "channel_mode": "active",
+      "mtu": null,
+      "ip_address": null,
+      "vrf": null,
+      "custom_lines": []
+    },
+    {
+      "name": "Ethernet1/54",
+      "mode": "trunk",
+      "vlan": null,
+      "description": "Uplink_2",
+      "shutdown": false,
+      "vpc_id": null,
+      "trunk_vlans": "1-4094",
+      "channel_group": null,
+      "channel_mode": "active",
+      "mtu": null,
+      "ip_address": null,
+      "vrf": null,
+      "custom_lines": []
+    }
+  ],
+  "svis": [
+    {
+      "vlan_id": 100,
+      "ip_address": "10.100.0.1/24",
+      "description": "SVI_FABRIC_100",
+      "hsrp": {
+        "group": 100,
+        "vip": "10.100.0.1",
+        "priority": 110,
+        "preempt": true
+      },
+      "vrf": null
+    },
+    {
+      "vlan_id": 101,
+      "ip_address": "10.101.0.1/24",
+      "description": "SVI_FABRIC_101",
+      "hsrp": {
+        "group": 101,
+        "vip": "10.101.0.1",
+        "priority": 110,
+        "preempt": true
+      },
+      "vrf": null
+    }
+  ],
+  "static_routes": [],
+  "vpc": null,
+  "motd": "Data Center Leaf \u2014 Standalone Mode",
+  "admin_user": "admin",
+  "admin_password": "",
+  "nxos_version": "9.3",
+  "enabled_features": [
+    "hsrp",
+    "interface_vlan",
+    "lacp",
+    "lldp",
+    "logging",
+    "ntp",
+    "storm_control"
+  ],
+  "security_tier": "standard",
+  "ntp_servers": [
+    "10.255.255.254"
+  ],
+  "logging_hosts": [
+    "10.255.255.254"
+  ],
+  "snmp_location": "",
+  "snmp_contact": "",
+  "network_name": "HQ",
+  "site_location": "HQ",
+  "snmp_trap_host_1": "",
+  "snmp_trap_host_2": "",
+  "snmp_v3_user": "",
+  "boot_image": "",
+  "tacacs_server_1": "",
+  "tacacs_key": "",
+  "spectrum_user": false,
+  "create_local_user": false,
+  "port_channels": [],
+  "spanning_tree_priority": 8192,
+  "baseline_options": [],
+  "fabric_bgp_asn": 65001,
+  "fabric_loopback": "10.255.0.1/32",
+  "fabric_vni": 10000,
+  "uplink_config": [],
+  "downlink_config": []
+}

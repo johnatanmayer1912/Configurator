@@ -1,0 +1,113 @@
+! -----------------------------------------------------------------------------
+! Configuration Authority System
+! Version: 6.36.0
+! NX-OS:  9.3
+! Date:    2026-07-27 09:15:30
+! Mode:    Standalone
+! Tier:    standard
+! -----------------------------------------------------------------------------
+
+! Hostname & Global Services
+hostname SWITCH
+!
+banner motd ^
+*********************************************************
+                HQ-SWITCH
+                MGMT_IP: 10.0.0.1/24
+                HQ
+*********************************************************
+^
+!
+! Local user omitted — set admin password in wizard to create username (lab only).
+ip domain-lookup
+
+! Features
+feature interface-vlan
+feature hsrp
+feature lacp
+feature lldp
+
+! VLAN Configuration
+vlan 100
+  name FABRIC_100
+
+vlan 101
+  name FABRIC_101
+
+vlan 102
+  name FABRIC_102
+
+vlan 103
+  name FABRIC_103
+
+vlan 104
+  name FABRIC_104
+
+! L3 SVI Configuration
+interface Vlan100
+  description SVI_FABRIC_100
+  no ip redirects
+  no ip proxy-arp
+  no shutdown
+  ip address 10.100.0.1/24
+  hsrp version 2
+  hsrp 100
+    priority 110
+    preempt
+    ip 10.100.0.1
+
+interface Vlan101
+  description SVI_FABRIC_101
+  no ip redirects
+  no ip proxy-arp
+  no shutdown
+  ip address 10.101.0.1/24
+  hsrp version 2
+  hsrp 101
+    priority 110
+    preempt
+    ip 10.101.0.1
+
+
+
+
+! Ethernet Interfaces
+interface Ethernet1/53
+  description Uplink_1
+  switchport mode trunk
+  switchport trunk allowed vlan 1-4094
+  no shutdown
+
+interface Ethernet1/54
+  description Uplink_2
+  switchport mode trunk
+  switchport trunk allowed vlan 1-4094
+  no shutdown
+
+! Management & Routing
+interface mgmt0
+  ip address 10.0.0.1/24
+  vrf member management
+  no shutdown
+vrf context management
+  ip route 0.0.0.0/0 10.0.0.254
+
+! NTP
+ntp server 10.255.255.254 prefer use-vrf management
+! Logging
+logging server 10.255.255.254 6 use-vrf management
+logging timestamp milliseconds
+logging level info
+
+! Boot System
+boot nxos bootflash:/nxos.9.3.5.bin
+
+line console
+line vty
+
+! POST-PASTE CHECKLIST (lab engineer — comments only)
+! 1) show running-config | sec vpc
+! 2) show vpc brief
+! 3) show interface status err-disabled
+! 4) show ip route vrf management
+! 5) copy run start (only after lab sign-off)

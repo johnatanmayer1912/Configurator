@@ -214,12 +214,12 @@ function renderModeChoices() {
         btn.innerHTML = `
             <span class="choice-top">
                 <span class="choice-badge">${escapeHtml(m.icon)}</span>
-                <button type="button" class="info-btn" aria-label="Learn more" onclick="event.stopPropagation(); showOptionInfo('mode_${m.id}')">i</button>
+                <button type="button" class="info-btn" aria-label="Learn more" data-action="show-option-info" data-option="mode_${m.id}">i</button>
             </span>
             <strong>${escapeHtml(m.label)}</strong>
             <span class="choice-desc">${escapeHtml(m.desc)}</span>
             <span class="choice-model-hint">${escapeHtml(m.model)}</span>`;
-        btn.onclick = () => {
+        btn.addEventListener('click', () => {
             roadmap.mode = m.id;
             roadmap.vpc = null;
             roadmap.speed = m.speeds[0] === "Multi" ? "Multi" : null;
@@ -227,7 +227,7 @@ function renderModeChoices() {
             updateRoadmapSummary();
             refreshVpcPortsFromRoadmap();
             if (m.id === "oob") applyRoadmapToWizard();
-        };
+        });
         grid.appendChild(btn);
     });
 }
@@ -237,6 +237,7 @@ function renderModeChoices() {
 function renderVpcChoices() {
     const grid = document.getElementById("vpcChoiceGrid");
     const section = document.getElementById("vpcChoiceSection");
+    const vpcCard = document.getElementById("vpcConfigCard");
     if (!grid || !section) {
         console.error("vpcChoiceGrid or vpcChoiceSection element not found");
         return;
@@ -245,6 +246,7 @@ function renderVpcChoices() {
     if (roadmap.mode === "oob") {
         section.hidden = true;
         roadmap.vpc = false;
+        if (vpcCard) vpcCard.hidden = true;
         return;
     }
     
@@ -258,15 +260,24 @@ function renderVpcChoices() {
         const btn = document.createElement("button");
         btn.type = "button";
         btn.className = `choice-card${roadmap.vpc === opt.id ? " selected" : ""}`;
-        btn.innerHTML = `<div class="choice-top"><strong>${escapeHtml(opt.label)}</strong><button type="button" class="info-btn" aria-label="Learn more" onclick="event.stopPropagation(); showOptionInfo('${opt.helpId}')">i</button></div><span class="choice-desc">${escapeHtml(opt.desc)}</span>`;
-        btn.onclick = () => {
+        btn.innerHTML = `<div class="choice-top"><strong>${escapeHtml(opt.label)}</strong><button type="button" class="info-btn" aria-label="Learn more" data-action="show-option-info" data-option="${opt.helpId}">i</button></div><span class="choice-desc">${escapeHtml(opt.desc)}</span>`;
+        btn.addEventListener('click', () => {
             roadmap.vpc = opt.id;
             renderVpcChoices();
             updateRoadmapSummary();
             refreshVpcPortsFromRoadmap();
-        };
+            // Show/hide consolidated vPC configuration card
+            if (vpcCard) {
+                vpcCard.hidden = !opt.id;
+            }
+        });
         grid.appendChild(btn);
     });
+    
+    // Show/hide vPC card based on current selection
+    if (vpcCard) {
+        vpcCard.hidden = !roadmap.vpc;
+    }
 }
 
 
@@ -307,7 +318,7 @@ function renderSpeedChoices() {
     const grid = document.getElementById("speedGrid");
     const section = document.getElementById("speedSection");
     if (!grid || !section) {
-        console.error("speedGrid or speedSection element not found");
+        console.log("speedGrid or speedSection element not found - skipping speed choices (not in Architect mode)");
         return;
     }
     
@@ -331,7 +342,7 @@ function renderSpeedChoices() {
         btn.type = "button";
         btn.className = `choice-card${roadmap.speed === sp ? " selected" : ""}`;
 
-        const infoBtn = info.helpId ? `<button type="button" class="info-btn" aria-label="Learn more" onclick="event.stopPropagation(); showOptionInfo('${info.helpId}')">i</button>` : "";
+        const infoBtn = info.helpId ? `<button type="button" class="info-btn" aria-label="Learn more" data-action="show-option-info" data-option="${info.helpId}">i</button>` : "";
         btn.innerHTML = `
             <span class="choice-top">
                 <span class="choice-badge">${escapeHtml(sp)}</span>
@@ -340,12 +351,12 @@ function renderSpeedChoices() {
             <strong>${escapeHtml(info.label || sp + " fabric")}</strong>
             <span class="choice-desc">${escapeHtml(info.desc)}</span>
             <span class="choice-model-hint">${escapeHtml(info.model)}</span>`;
-        btn.onclick = () => {
+        btn.addEventListener('click', () => {
             roadmap.speed = sp;
             renderSpeedChoices();
             updateRoadmapSummary();
             refreshVpcPortsFromRoadmap();
-        };
+        });
         grid.appendChild(btn);
     });
 }

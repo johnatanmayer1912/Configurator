@@ -1,7 +1,5 @@
-# NX-OS Configurator — Role Activation Matrix
+# NST Role Activation Matrix
 
-**Project:** Configuration Authority / NX-OS Configurator  
-**Imported from:** Net Management Tool V6 (adapted 2026-06-21)  
 Auto-activate without user naming roles. Err on **inclusion**.
 
 ## Layer 0 — Always (every session)
@@ -9,71 +7,69 @@ Auto-activate without user naming roles. Err on **inclusion**.
 | Skill / Rule | Path |
 |--------------|------|
 | NST Orchestrator | `.cursor/skills/nst-orchestrator/SKILL.md` |
-| NX-OS Config Engineer | `.cursor/skills/nxos-config-engineer/SKILL.md` |
 | G-18 Governance | `.devin/skills/global-master-prompt-rules/SKILL.md` |
 | G-00 Index | `.devin/skills/index-prompt/SKILL.md` |
 | G-13 Activation | `.devin/skills/prompt-activation-policy/SKILL.md` |
 | G-CC Command center | `.devin/skills/prompt-command-center/SKILL.md` |
 
-## Layer 1 — Configurator native (by file / task)
+## Layer 1 — NST native (by file / task)
 
 | Trigger | Activate |
 |---------|----------|
-| `api/main.py`, `web_launcher.py`, `core/*`, `pipelines/*` | `nst-python-backend`, `nxos-config-engineer`, `backend-architect` |
-| `templates/web/*`, `static/*` | `nst-product-architect`, `frontend-ui-engineering`, `02-nst-ui-ux` |
-| `templates/nxos*.j2`, `data/*.yaml`, `hardware_profiles.yaml` | `nxos-config-engineer`, `nst-network-operations`, `network-engineer` |
-| `tests/`, `utils/build_exe.py`, `*.spec` | `nst-release-engineer`, `python-testing-patterns` |
-| `/generate-config`, `/scenario/*`, auth, credentials | `nst-security-ops`, `security-auditor` |
-| `.cursor/`, skills, rules, audits | `nst-orchestrator`, `nst-multi-advisor` |
-| "user-friendly", "network team", operator, dummy-proof | `nst-network-operations`, `nst-product-architect` |
-| audit, gap analysis, zero trust, production readiness | `nst-zero-trust-network-council`, `nxos-zero-trust-review-team` |
-| field review, real-life scenarios, network team evaluation, professional UX | `nxos-field-engineer-council` |
-| fix gaps, roadmap P0/P1, council remediation | `nst-gap-remediation-workflow` |
-| vPC, standalone, scenario, NX-OS version | `nxos-config-engineer`, `network-engineer` |
+| `vlan_checker_web.py`, `modules/adapters.py`, `modules/vlan_*` | `nst-python-backend`, `nst-network-operations`, `network-engineer` |
+| `modules/web/templates/index.html` | `nst-product-architect`, `ui-ux-designer`, `frontend-developer` |
+| `utils/*formatter*.py`, `output_paths` | `nst-network-operations`, `product-inventor` |
+| `tests/`, `_prebuild.py`, `*.spec` | `nst-release-engineer`, `python-testing-patterns` |
+| credentials, backup, `/api/execute` mutations | `nst-security-ops`, `security-auditor` |
+| `.cursor/`, `AGENTS.md`, skills, rules | `nst-orchestrator`, `nst-multi-advisor`, `antigravity-skill-orchestrator` |
+| "user-friendly", "network team", operator | `nst-network-operations`, `nst-product-architect` |
+| tradeoff, "best way", architecture debate | `nst-multi-advisor` → board table in skill |
+| audit, gap analysis, zero trust, production readiness, "network team review" | `nst-zero-trust-network-council` (+ all Layer 1 NST skills) |
+| fix gaps, roadmap P0/P1, council remediation, implement audit findings | `nst-gap-remediation-workflow` → owner skills per gap type |
 
 ## Layer 2 — Deep skills (read on demand)
 
-Pull from `.cursor/SKILL_CATALOG.json`:
+Pull from `.cursor/SKILL_CATALOG.json` or junctions when Layer 1 is insufficient.
 
 | Domain signal | Deep skill IDs |
 |---------------|----------------|
-| API design | `api-and-interface-design`, `api-design-principles` |
-| Documentation | `documentation-and-adrs` |
-| Testing | `python-testing-patterns`, `test-driven-development` |
-| Deployment | `deployment-engineer` |
-| Security | `security-auditor`, `007` |
-| UI polish | `frontend-ui-engineering`, `product-inventor` |
-
-Resolve via: `python scripts/resolve_skill.py <id>`
+| API design | `api-design-principles`, `api-patterns` |
+| Observability | `observability-engineer`, `structured logging` in repo |
+| Incident | `incident-responder`, `debugger` |
+| Search relevance | `hybrid-search-implementation` |
+| Documentation | `documentation-and-adrs`, `docs-architect` |
+| Innovation | `elon-musk`, `product-inventor` |
+| Startup/product strategy | `sam-altman`, `product-manager` |
 
 ## Layer 3 — Advisor boards
 
 | Situation | Board |
 |-----------|-------|
-| New wizard step / scenario | **NXOS_FEATURE** (product + network-ops + config-engineer) |
-| vPC / template CLI change | **NXOS_CHANGE** (network-ops + config-engineer + release) |
-| Web UI redesign | **NXOS_UX** (product-architect + frontend-ui-engineering) |
-| Zero-trust 360° audit | **NXOS_AUDIT_BOARD** (zero-trust council + nxos-zero-trust-review-team + release + security) |
-| Gap remediation | **NXOS_REMEDIATION** (gap-remediation-workflow + owner skills) |
+| New feature for operators | **NST_FEATURE** |
+| VLAN / IM / config change | **NST_CHANGE** |
+| Plugin or module split | **NST_PLATFORM** |
+| Skills / AI IDE setup | **NST_AI_IDE** |
+| Critical ambiguous decision | **FULL_NST_BOARD** (all NST native + network-engineer + security + product) |
+| Zero-trust 360° product audit | **NST_AUDIT_BOARD** (council + release + security + product) |
+| Gap remediation execution | **NST_REMEDIATION** (orchestrator routes per gap lens) |
 
 ## Dependency chain
 
 ```
-Context resync (VERSION, CHANGELOG)
+Context resync
   → Product (if scope/UX)
   → Architect (if structure)
-  → nxos-config-engineer (if CLI/template)
   → Developer
-  → QA (pytest)
+  → QA
   → Security (if mutations/secrets)
-  → Docs (docs/06-quality-assurance/)
-  → Release (VERSION, build_exe)
+  → Docs (if user-facing change)
+  → Release (if VERSION/spec)
 ```
 
-## Cursor rules
+## Cursor rules enforcing this
 
 - `00-nst-mandatory-governance.mdc` — alwaysApply
 - `03-nst-auto-orchestrator.mdc` — alwaysApply
-- `01-nxos-network-engineering.mdc` — globs: core, templates, data
-- `02-nst-ui-ux.mdc` — globs: templates/web, static
-- `04-nst-release-security.mdc` — globs: tests, spec, api auth
+- `01-nst-network-engineering.mdc` — globs: `modules/**/*.py`, `vlan_checker_web.py`
+- `02-nst-ui-ux.mdc` — globs: templates, formatters
+- `04-nst-release-security.mdc` — globs: tests, spec, credentials

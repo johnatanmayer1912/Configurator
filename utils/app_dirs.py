@@ -40,3 +40,7 @@ def get_checkpoints_dir() -> str:
 
 def get_logs_dir() -> str:
     return get_output_dir("logs")
+
+
+def get_vault_dir() -> str:
+    return get_output_dir("configs/vault")

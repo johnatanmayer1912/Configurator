@@ -1,0 +1,9 @@
+==========================================
+       CONFIGURATION RISK ASSESSMENT      
+==========================================
+OVERALL RISK LEVEL: LOW
+TOTAL FINDINGS: 1
+------------------------------------------
+[LOW] hostname CORE1
+   ↳ Matches risk pattern: 'hostname'
+==========================================

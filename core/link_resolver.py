@@ -86,6 +86,7 @@ def resolve_link_plans(
     catalog,
     hw_profile: Dict[str, Any],
     kind: str,
+    deployment_switches: Optional[List[Dict[str, Any]]] = None,
 ) -> List[Dict[str, Any]]:
     """Resolve downlink or uplink preset list for a scenario."""
     explicit_key = "downlinks" if kind == "downlink" else "uplinks"
@@ -124,9 +125,55 @@ def resolve_link_plans(
             entry["link_kind"] = "downlink"
         else:
             entry["link_kind"] = "uplink"
+        
+        # Replace generic preset descriptions with actual hostnames in multi-switch deployments
+        if deployment_switches and entry.get("description"):
+            entry["description"] = _replace_preset_description_with_hostnames(
+                entry["description"], 
+                preset_id, 
+                deployment_switches, 
+                kind,
+                catalog
+            )
+        
         resolved.append(entry)
 
     return resolved
+
+
+def _replace_preset_description_with_hostnames(
+    description: str, 
+    preset_id: str, 
+    deployment_switches: List[Dict[str, Any]], 
+    kind: str,
+    catalog
+) -> str:
+    """Replace generic preset descriptions with actual switch hostnames."""
+    # For downlink presets, replace generic leaf references with actual hostnames
+    if kind == "downlink":
+        if "NET_LEAF_10G" in description:
+            # Find 10G leaf switches
+            leaf_10g = [s for s in deployment_switches if s.model and catalog.get_hardware_profile(s.model) and catalog.get_hardware_profile(s.model).get("device_class") == "leaf_10g"]
+            if leaf_10g:
+                hostnames = " + ".join([s.hostname for s in leaf_10g])
+                return description.replace("NET_LEAF_10G_SW1+SW2", hostnames)
+        elif "NET_LEAF_1G" in description:
+            # Find 1G leaf switches
+            leaf_1g = [s for s in deployment_switches if s.model and catalog.get_hardware_profile(s.model) and catalog.get_hardware_profile(s.model).get("device_class") == "leaf_1g"]
+            if leaf_1g:
+                hostnames = " + ".join([s.hostname for s in leaf_1g])
+                return description.replace("NET_LEAF_1G_SW1+SW2", hostnames)
+    
+    # For uplink presets, replace generic spine references with actual hostnames
+    if kind == "uplink":
+        if "SPINE" in description:
+            # Find spine switches (handle both spine and core device classes)
+            spine = [s for s in deployment_switches if s.model and catalog.get_hardware_profile(s.model) and catalog.get_hardware_profile(s.model).get("device_class") in ["spine", "core"]]
+            if spine:
+                hostnames = " + ".join([s.hostname for s in spine])
+                return description.replace("SPINE_PAIR", hostnames).replace("SPINE", hostnames)
+    
+    return description
 
 
 def _normalize_link_entry(item: Dict[str, Any], hw_profile: Dict[str, Any]) -> Dict[str, Any]:

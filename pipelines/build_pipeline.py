@@ -105,6 +105,8 @@ class ConfigurationPipeline:
             "timestamp": timestamp,
             "hostname": device.hostname,
             "config_preview": config_text,
+            "cli": config_text,
+            "config": config_text,
         }
 
     @staticmethod
@@ -116,6 +118,50 @@ class ConfigurationPipeline:
         b_lines = b.splitlines(keepends=True)
         diff = difflib.unified_diff(a_lines, b_lines, fromfile="baseline", tofile="proposed")
         return "".join(diff)
+    
+    def generate_structured_diff(self, a: str, b: str) -> dict:
+        """Generate a structured diff for better UI rendering."""
+        a_lines = a.splitlines()
+        b_lines = b.splitlines()
+        matcher = difflib.SequenceMatcher(None, a_lines, b_lines)
+        
+        changes = []
+        additions = 0
+        removals = 0
+        modifications = 0
+        
+        for tag, i1, i2, j1, j2 in matcher.get_opcodes():
+            if tag == 'equal':
+                continue
+            elif tag == 'replace':
+                changes.append({
+                    'type': 'modified',
+                    'old_lines': a_lines[i1:i2],
+                    'new_lines': b_lines[j1:j2]
+                })
+                modifications += max(len(a_lines[i1:i2]), len(b_lines[j1:j2]))
+            elif tag == 'delete':
+                changes.append({
+                    'type': 'removed',
+                    'lines': a_lines[i1:i2]
+                })
+                removals += len(a_lines[i1:i2])
+            elif tag == 'insert':
+                changes.append({
+                    'type': 'added',
+                    'lines': b_lines[j1:j2]
+                })
+                additions += len(b_lines[j1:j2])
+        
+        return {
+            'changes': changes,
+            'summary': {
+                'additions': additions,
+                'removals': removals,
+                'modifications': modifications,
+                'total': additions + removals + modifications
+            }
+        }
 
     def _write_file(self, filename: str, content: str, output_dir: Optional[str] = None):
         dir_to_use = output_dir if output_dir is not None else self.output_dir

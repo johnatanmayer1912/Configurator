@@ -1,0 +1,16 @@
+---
+inclusion: fileMatch
+fileMatchPattern: ['modules/**/*.py', 'utils/**/*.py', 'vlan_checker_web.py']
+---
+
+# Network Engineering Context
+
+When editing adapters, plugins, or web routes for device operations:
+
+- Support Cisco IOS, IOS-XE, NX-OS, and Juniper Junos command variants
+- VLAN add/rename/delete must use `vlan_mgmt_production` with dry-run validation first
+- Interface changes require validation pipeline parity (dry-run, syntax, platform, conflict, approval)
+- Reports and diagnostics go to `outputs/<category>/<date>/<run_id>/` via `prepare_run_output()`
+- Log actionable paths in the operator console (`[Output] ... folder:`)
+
+Reference skill: `.devin/skills/network-engineer/SKILL.md`

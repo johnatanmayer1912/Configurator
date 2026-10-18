@@ -1,0 +1,64 @@
+{
+    "hostname": "LEAF4",
+    "mgmt_ip": "10.0.0.14/24",
+    "mgmt_gw": "10.0.0.254",
+    "model": "Nexus 93180YC-EX",
+    "vlans": [],
+    "interfaces": [],
+    "svis": [],
+    "static_routes": [],
+    "vpc": null,
+    "motd": "Authorized Access Only",
+    "admin_user": "admin",
+    "admin_password": "",
+    "nxos_version": "9.3",
+    "enabled_features": [],
+    "security_tier": "standard",
+    "ntp_servers": [],
+    "logging_hosts": [],
+    "snmp_location": "",
+    "snmp_contact": "",
+    "network_name": "",
+    "site_location": "",
+    "snmp_trap_host_1": "",
+    "snmp_trap_host_2": "",
+    "snmp_v3_user": "",
+    "boot_image": "",
+    "tacacs_server_1": "",
+    "tacacs_key": "",
+    "spectrum_user": false,
+    "create_local_user": false,
+    "port_channels": [],
+    "spanning_tree_priority": 8192,
+    "baseline_options": [],
+    "fabric_bgp_asn": 65001,
+    "fabric_loopback": "10.255.0.1/32",
+    "fabric_vni": 10000,
+    "uplink_config": [
+        {
+            "interface": "E1/1",
+            "description": "to SPINE1",
+            "mode": "trunk",
+            "port_channel": "20"
+        },
+        {
+            "interface": "E1/2",
+            "description": "to SPINE1",
+            "mode": "trunk",
+            "port_channel": "20"
+        },
+        {
+            "interface": "E1/3",
+            "description": "to SPINE2",
+            "mode": "trunk",
+            "port_channel": "20"
+        },
+        {
+            "interface": "E1/4",
+            "description": "to SPINE2",
+            "mode": "trunk",
+            "port_channel": "20"
+        }
+    ],
+    "downlink_config": []
+}

@@ -20,6 +20,7 @@ class VPCConfig:
     role_priority: int = 4096
     peer_switch: bool = False
     delay_restore: Optional[int] = None
+    keepalive_routed_direct: bool = False
 
 @dataclass
 class Device:
@@ -58,3 +59,33 @@ class Device:
     fabric_bgp_asn: int = 65001
     fabric_loopback: str = "10.255.0.1/32"
     fabric_vni: int = 10000
+    # Multi-switch deployment attributes
+    uplink_config: List[dict] = field(default_factory=list)
+    downlink_config: List[dict] = field(default_factory=list)
+
+    def __post_init__(self):
+        """Sort interfaces by name for consistent CLI output."""
+        self.sort_interfaces()
+
+    def sort_interfaces(self):
+        """Sort interfaces by interface name in natural order."""
+        def interface_sort_key(iface):
+            """Extract numeric parts from interface name for sorting."""
+            name = iface.name
+            # Handle interface names like Ethernet1/1, Ethernet1/35-36, mgmt0
+            if name.startswith("Ethernet"):
+                parts = name.replace("Ethernet", "").split("/")
+                if len(parts) == 2:
+                    # Handle ranges like "35-36" by taking the first number
+                    second_part = parts[1].split("-")[0]
+                    return (0, int(parts[0]), int(second_part))
+                return (0, int(parts[0]), 0)
+            elif name.startswith("Port-channel"):
+                return (1, int(name.replace("Port-channel", "")))
+            elif name.startswith("Vlan"):
+                return (2, int(name.replace("Vlan", "")))
+            elif name.startswith("mgmt"):
+                return (3, 0)
+            return (4, name)
+
+        self.interfaces.sort(key=interface_sort_key)

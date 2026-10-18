@@ -1,0 +1,21 @@
+---
+description: Mandatory NST governance and skill activation (G-00, G-13, G-18, G-CC)
+alwaysApply: true
+---
+
+# Network Swiss Tool Pro — Mandatory Governance
+
+Always apply (see `.devin/SKILL_ACTIVATION_SYSTEM.md` and `.cursor/ROLE_ACTIVATION_MATRIX.md`):
+
+1. **Orchestrator first** — `.cursor/skills/nst-orchestrator/SKILL.md` on every task
+2. Read `.devin/skills/global-master-prompt-rules/SKILL.md` before structural changes
+3. Use `.devin/skills/index-prompt/SKILL.md` as entry framework
+4. Activate professional roles by domain **without** user naming them
+5. Knowledge base: `skillss/` + `.devin/skills/` via junctions — never modify those trees
+6. Network mutations: `network-engineer` + `nst-network-operations` + `nst-security-ops`
+7. UI/UX: `ui-ux-designer` + `nst-product-architect` + sickn33 `product-inventor`
+8. Innovation/simplify: elon-musk **principles** + `nst-product-architect` (not persona roleplay)
+9. Outputs: `utils/output_paths.py` — never install/CWD
+10. PyInstaller/offline compatibility for core features
+
+Sync KB: `powershell -ExecutionPolicy Bypass -File scripts/sync_knowledge_base.ps1`

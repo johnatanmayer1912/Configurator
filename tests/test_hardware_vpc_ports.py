@@ -29,9 +29,9 @@ def test_each_hardware_profile_has_distinct_vpc_ports():
         }
     assert by_model["Nexus 9336C-FX2"]["peer"] == ("Ethernet1/35", "Ethernet1/36")
     assert by_model["Nexus 9336C-FX2"]["keepalive"] == ("Ethernet1/33", "Ethernet1/34")
-    assert by_model["Nexus 93180YC-EX"]["peer"] == ("Ethernet1/53", "Ethernet1/54")
-    assert by_model["Nexus 93180YC-EX"]["keepalive"] == ("Ethernet1/47", "Ethernet1/48")
-    assert by_model["Nexus 9348GC-FXP"]["peer"] == ("Ethernet1/53", "Ethernet1/54")
+    assert by_model["Nexus 93180YC-EX"]["peer"] == ("Ethernet1/51", "Ethernet1/52")
+    assert by_model["Nexus 93180YC-EX"]["keepalive"] == ("Ethernet1/49", "Ethernet1/50")
+    assert by_model["Nexus 9348GC-FXP"]["peer"] == ("Ethernet1/51", "Ethernet1/52")
     assert by_model["Nexus 9348GC-FXP"]["keepalive"] == ("Ethernet1/47", "Ethernet1/48")
     for name, ports in by_model.items():
         overlap = set(ports["peer"]) & set(ports["keepalive"])
@@ -42,8 +42,8 @@ def test_scenario_engine_uses_hardware_vpc_ports_per_model():
     engine = ScenarioEngine()
     cases = [
         ("vpc_core_pair", "Nexus 9336C-FX2", ("Ethernet1/35", "Ethernet1/36"), ("Ethernet1/33", "Ethernet1/34")),
-        ("vpc_leaf_pair", "Nexus 93180YC-EX", ("Ethernet1/53", "Ethernet1/54"), ("Ethernet1/47", "Ethernet1/48")),
-        ("vpc_access_pair", "Nexus 9348GC-FXP", ("Ethernet1/53", "Ethernet1/54"), ("Ethernet1/47", "Ethernet1/48")),
+        ("vpc_leaf_pair", "Nexus 93180YC-EX", ("Ethernet1/51", "Ethernet1/52"), ("Ethernet1/49", "Ethernet1/50")),
+        ("vpc_access_pair", "Nexus 9348GC-FXP", ("Ethernet1/51", "Ethernet1/52"), ("Ethernet1/47", "Ethernet1/48")),
     ]
     for scenario_id, model, peer, keepalive in cases:
         result = engine.apply_scenario(
@@ -68,14 +68,14 @@ def test_leaf_keepalive_ports_are_lag_members_not_bare():
         "10.10.10.1",
     )
     device = result["device"]
-    for port in ("Ethernet1/47", "Ethernet1/48"):
+    for port in ("Ethernet1/49", "Ethernet1/50"):
         intf = next(i for i in device.interfaces if i.name == port)
         assert intf.channel_group == 2
         assert intf.mode == "routed"
         assert "KEEPALIVE" in (intf.description or "")
 
     cfg = ConfigEngine().build_config(device)
-    for port in ("Ethernet1/47", "Ethernet1/48"):
+    for port in ("Ethernet1/49", "Ethernet1/50"):
         block_start = cfg.index(f"interface {port}")
         block = cfg[block_start:block_start + 200]
         assert "channel-group 2 mode active" in block

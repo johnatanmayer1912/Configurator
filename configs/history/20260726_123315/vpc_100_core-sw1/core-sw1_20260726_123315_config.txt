@@ -1,0 +1,173 @@
+! -----------------------------------------------------------------------------
+! Configuration Authority System
+! Version: 6.34.0
+! NX-OS:  9.3
+! Date:    2026-07-26 12:33:15
+! Mode:    vPC Pair
+! Tier:    standard
+! -----------------------------------------------------------------------------
+
+! Hostname & Global Services
+hostname core-sw1
+!
+banner motd ^
+*********************************************************
+                HQ-core-sw1
+                MGMT_IP: 10.10.10.1/24
+                HQ
+*********************************************************
+^
+!
+! Local user omitted — set admin password in wizard to create username (lab only).
+ip domain-lookup
+
+! Features
+feature interface-vlan
+feature hsrp
+feature lacp
+feature lldp
+
+! VLAN Configuration
+vlan 10
+  name FABRIC_10
+
+vlan 11
+  name FABRIC_11
+
+vlan 12
+  name FABRIC_12
+
+vlan 13
+  name FABRIC_13
+
+! vPC Domain
+vpc domain 100
+  role priority 4096
+  system-priority 32667
+  peer-keepalive destination 10.10.10.2 source 10.10.10.1 vrf management
+
+! L3 SVI Configuration
+interface Vlan10
+  description SVI_FABRIC_10
+  no ip redirects
+  no ip proxy-arp
+  no shutdown
+  ip address 10.10.0.1/24
+  hsrp version 2
+  hsrp 10
+    priority 110
+    preempt
+    ip 10.10.0.1
+
+interface Vlan11
+  description SVI_FABRIC_11
+  no ip redirects
+  no ip proxy-arp
+  no shutdown
+  ip address 10.11.0.1/24
+  hsrp version 2
+  hsrp 11
+    priority 110
+    preempt
+    ip 10.11.0.1
+
+! vPC Peer-Link Members
+interface Ethernet1/51
+  description vPC Peer-Link Member
+  channel-group 1 mode active
+  no shutdown
+
+interface Ethernet1/52
+  description vPC Peer-Link Member
+  channel-group 1 mode active
+  no shutdown
+
+! vPC Peer-Link Infrastructure
+interface port-channel1
+  description vPC PEER-LINK
+  switchport mode trunk
+  vpc peer-link
+  spanning-tree port type network
+  no shutdown
+
+
+! Uplink Configuration (Leaf to Core)
+interface Ethernetthernet1/53
+  description to leaf-sw1
+  switchport
+  switchport mode trunk
+  channel-group 10 mode active
+  no shutdown
+
+interface Ethernetthernet1/54
+  description to leaf-sw1
+  switchport
+  switchport mode trunk
+  channel-group 10 mode active
+  no shutdown
+
+
+! Downlink Configuration (Core to Leaf)
+interface Ethernet1/1
+  description to leaf-sw1 port 53
+  switchport
+  switchport mode trunk
+  channel-group 20 20 mode active
+  no shutdown
+
+interface Ethernet1/2
+  description to leaf-sw1 port 54
+  switchport
+  switchport mode trunk
+  channel-group 20 20 mode active
+  no shutdown
+
+
+! Ethernet Interfaces
+interface Ethernet1/1
+  description to leaf-sw1 port 53
+  switchport mode trunk
+  no shutdown
+
+interface Ethernet1/2
+  description to leaf-sw1 port 54
+  switchport mode trunk
+  no shutdown
+
+interface Ethernetthernet1/53
+  description to leaf-sw1
+  switchport mode trunk
+  no shutdown
+
+interface Ethernetthernet1/54
+  description to leaf-sw1
+  switchport mode trunk
+  no shutdown
+
+! Management & Routing
+interface mgmt0
+  ip address 10.10.10.1/24
+  vrf member management
+  no shutdown
+vrf context management
+  ip route 0.0.0.0/0 10.10.10.1
+
+! NTP
+ntp server 10.255.255.254 prefer use-vrf management
+! Logging
+logging server 10.255.255.254 6 use-vrf management
+logging timestamp milliseconds
+logging level info
+
+! Boot System
+boot nxos bootflash:/nxos.9.3.5.bin
+
+line console
+line vty
+
+! POST-PASTE CHECKLIST (lab engineer — comments only)
+! 1) show running-config | sec vpc
+! 2) show vpc brief
+! 3) show interface status err-disabled
+! 4) show ip route vrf management
+! 5) copy run start (only after lab sign-off)

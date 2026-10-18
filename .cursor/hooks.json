@@ -1,0 +1,17 @@
+{
+  "version": 1,
+  "hooks": {
+    "afterFileEdit": [
+      {
+        "command": "python .cursor/hooks/mandatory-qa-gate.py",
+        "matcher": "Write|StrReplace"
+      }
+    ],
+    "beforeShellExecution": [
+      {
+        "command": "python .cursor/hooks/mandatory-qa-release-gate.py",
+        "matcher": "PyInstaller|build_v5|_prebuild\\.py"
+      }
+    ]
+  }
+}

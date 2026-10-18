@@ -13,4 +13,6 @@ class Interface:
     channel_group: Optional[int] = None
     channel_mode: str = "active"
     mtu: Optional[int] = None
+    ip_address: Optional[str] = None
+    vrf: Optional[str] = None
     custom_lines: List[str] = field(default_factory=list)

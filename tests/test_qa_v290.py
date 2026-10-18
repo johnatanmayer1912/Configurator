@@ -113,4 +113,4 @@ def test_export_naming_pair_folder():
     folder = pair_batch_folder("SITE_A", "vpc_leaf_pair", "20260621_180000")
     assert folder == "SITE_A_vpc_leaf_pair_20260621_180000"
     prefix = build_file_prefix("SITE_A", "vpc_leaf_pair", "SW-01", "20260621_180000")
-    assert prefix == "SITE_A_vpc_leaf_pair_SW-01_20260621_180000"
+    assert prefix == "SW-01_20260621_180000"

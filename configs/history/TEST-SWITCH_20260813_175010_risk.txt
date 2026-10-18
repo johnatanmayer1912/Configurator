@@ -1,0 +1,9 @@
+==========================================
+       CONFIGURATION RISK ASSESSMENT      
+==========================================
+OVERALL RISK LEVEL: LOW
+TOTAL FINDINGS: 1
+------------------------------------------
+[LOW] hostname TEST-SWITCH
+   ↳ Matches risk pattern: 'hostname'
+==========================================

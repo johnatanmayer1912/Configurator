@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Step 6: Tab Navigation - Multi-Switch User Flow</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: #f5f5f5;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 30px 20px;
+            margin-bottom: 30px;
+        }
+        
+        header h1 {
+            font-size: 2em;
+            margin-bottom: 10px;
+        }
+        
+        .breadcrumb {
+            background: white;
+            padding: 15px 20px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        
+        .breadcrumb a {
+            color: #667eea;
+            text-decoration: none;
+        }
+        
+        .breadcrumb a:hover {
+            text-decoration: underline;
+        }
+        
+        .section {
+            background: white;
+            padding: 30px;
+            border-radius: 8px;
+            margin-bottom: 30px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        
+        .section h2 {
+            color: #667eea;
+            margin-bottom: 20px;
+            font-size: 1.5em;
+            border-bottom: 2px solid #667eea;
+            padding-bottom: 10px;
+        }
+        
+        .section h3 {
+            color: #333;
+            margin: 20px 0 10px 0;
+            font-size: 1.2em;
+        }
+        
+        .action-box {
+            background: #e3f2fd;
+            border-left: 4px solid #2196f3;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 4px;
+        }
+        
+        .action-box strong {
+            color: #1976d2;
+        }
+        
+        .function-box {
+            background: #fff3e0;
+            border-left: 4px solid #ff9800;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 4px;
+            font-family: 'Courier New', monospace;
+        }
+        
+        .result-box {
+            background: #e8f5e9;
+            border-left: 4px solid #4caf50;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 4px;
+        }
+        
+        .result-box ul {
+            margin-left: 20px;
+            margin-top: 10px;
+        }
+        
+        .code-block {
+            background: #f5f5f5;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            padding: 15px;
+            overflow-x: auto;
+            margin: 15px 0;
+        }
+        
+        .code-block pre {
+            margin: 0;
+            font-family: 'Courier New', monospace;
+            font-size: 14px;
+        }
+        
+        .next-step-box {
+            background: #f3e5f5;
+            border-left: 4px solid #9c27b0;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 4px;
+        }
+        
+        .next-step-box strong {
+            color: #7b1fa2;
+        }
+        
+        .navigation {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 30px;
+        }
+        
+        .navigation a {
+            display: inline-block;
+            background: #667eea;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 5px;
+            text-decoration: none;
+            transition: background 0.3s ease;
+        }
+        
+        .navigation a:hover {
+            background: #5568d3;
+        }
+        
+        .navigation .prev {
+            background: #6c757d;
+        }
+        
+        .navigation .prev:hover {
+            background: #5a6268;
+        }
+        
+        .ui-mockup {
+            background: white;
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+            padding: 20px;
+            margin: 20px 0;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+        
+        .ui-mockup-header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 15px 20px;
+            border-radius: 6px;
+            margin-bottom: 15px;
+        }
+        
+        .ui-mockup-header h3 {
+            margin: 0;
+            font-size: 1.2em;
+        }
+        
+        .mockup-browser {
+            background: #f8f9fa;
+            border: 1px solid #dee2e6;
+            border-radius: 6px;
+            overflow: hidden;
+        }
+        
+        .mockup-browser-bar {
+            background: #e9ecef;
+            padding: 8px 12px;
+            border-bottom: 1px solid #dee2e6;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .mockup-browser-bar .dots {
+            display: flex;
+            gap: 6px;
+        }
+        
+        .mockup-browser-bar .dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+        }
+        
+        .mockup-browser-bar .dot.red { background: #ff5f57; }
+        .mockup-browser-bar .dot.yellow { background: #febc2e; }
+        .mockup-browser-bar .dot.green { background: #28c840; }
+        
+        .mockup-browser-bar .url {
+            flex: 1;
+            background: white;
+            border: 1px solid #ced4da;
+            border-radius: 4px;
+            padding: 4px 8px;
+            font-size: 12px;
+            color: #495057;
+            font-family: monospace;
+        }
+        
+        .mockup-content {
+            padding: 20px;
+            background: white;
+        }
+        
+        .mockup-tabs {
+            display: flex;
+            border-bottom: 2px solid #e9ecef;
+            margin-bottom: 20px;
+        }
+        
+        .mockup-tab {
+            padding: 12px 20px;
+            border: none;
+            background: white;
+            border-bottom: 3px solid transparent;
+            font-size: 0.9em;
+            cursor: default;
+        }
+        
+        .mockup-tab.active {
+            border-bottom-color: #667eea;
+            color: #667eea;
+            font-weight: bold;
+        }
+        
+        .mockup-tab-content {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 6px;
+            border: 1px solid #e9ecef;
+        }
+        
+        .mockup-tab-content h4 {
+            margin: 0 0 10px 0;
+            color: #333;
+        }
+        
+        .mockup-tab-content p {
+            color: #666;
+            font-size: 0.9em;
+            margin: 0;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>Step 6: Configuration Editor Tab Navigation</h1>
+            <p>Multi-Switch User Flow Documentation</p>
+        </div>
+    </header>
+    
+    <div class="container">
+        <div class="breadcrumb">
+            <a href="index.html">← Back to Index</a>
+        </div>
+        
+        <div class="section">
+            <h2>User Action</h2>
+            <div class="action-box">
+                <strong>Action:</strong> User clicks different tabs (vPC Domains, VLANs, Interfaces, Uplinks)
+            </div>
+        </div>
+        
+        <div class="section">
+            <h2>JavaScript Function</h2>
+            <div class="function-box">
+                Function: Tab switching via event delegation in <code>ui-handlers.js</code>
+            </div>
+        </div>
+        
+        <div class="section">
+            <h2>Available Tabs</h2>
+            <div class="result-box">
+                <ul>
+                    <li><strong>Switches</strong> - View and edit switch configurations</li>
+                    <li><strong>vPC Domains</strong> - View and edit vPC domain configurations</li>
+                    <li><strong>VLANs</strong> - View and edit VLAN configurations</li>
+                    <li><strong>Interfaces</strong> - Apply interface templates</li>
+                    <li><strong>Uplinks</strong> - View and edit uplink configurations</li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="section">
+            <h2>Expected Result</h2>
+            <div class="result-box">
+                <ul>
+                    <li>Clicked tab becomes active (active class)</li>
+                    <li>Previous tab becomes hidden</li>
+                    <li>Panel content updates to show relevant data</li>
+                    <li>Tab buttons update aria-selected attributes</li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="section">
+            <h2>Visual UI Mockup</h2>
+            <div class="ui-mockup">
+                <div class="ui-mockup-header">
+                    <h3>User Interface - What the User Sees</h3>
+                </div>
+                <div class="mockup-browser">
+                    <div class="mockup-browser-bar">
+                        <div class="dots">
+                            <div class="dot red"></div>
+                            <div class="dot yellow"></div>
+                            <div class="dot green"></div>
+                        </div>
+                        <div class="url">http://127.0.0.1:9000</div>
+                    </div>
+                    <div class="mockup-content">
+                        <div class="mockup-tabs">
+                            <button class="mockup-tab">Switches</button>
+                            <button class="mockup-tab active">vPC Domains</button>
+                            <button class="mockup-tab">VLANs</button>
+                            <button class="mockup-tab">Interfaces</button>
+                            <button class="mockup-tab">Uplinks</button>
+                        </div>
+                        
+                        <div class="mockup-tab-content">
+                            <h4>vPC Domains Panel</h4>
+                            <p>View and edit vPC domain configurations</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="section">
+            <h2>Next Step</h2>
+            <div class="next-step-box">
+                <strong>Next:</strong> User can edit items in active tab or click Generate Config
+            </div>
+        </div>
+        
+        <div class="navigation">
+            <a href="step-5a-configuration-editor.html" class="prev">← Previous</a>
+            <a href="step-7-switch-editing.html">Next Step →</a>
+        </div>
+    </div>
+</body>
+</html>

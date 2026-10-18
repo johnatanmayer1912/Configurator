@@ -1,0 +1,187 @@
+/* UX-007 FIX: Component-based CSS organization */
+
+/* Button Components */
+.btn-primary,
+.btn-secondary,
+.btn-danger,
+.btn-success {
+    /* Button base styles moved here for component organization */
+    transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+/* Modal Components */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.8);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+}
+
+.modal-content {
+    background: #1c1c1e;
+    border-radius: 8px;
+    padding: 20px;
+    max-width: 500px;
+    width: 90%;
+}
+
+.modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.modal-body {
+    margin-bottom: 15px;
+}
+
+.modal-footer {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+}
+
+/* Form Components */
+.form-group {
+    margin-bottom: 15px;
+}
+
+.form-control {
+    width: 100%;
+    padding: 8px 12px;
+    border: 1px solid #3a3a3c;
+    border-radius: 4px;
+    background: #2d2d30;
+    color: #f1f5f9;
+}
+
+.form-text {
+    font-size: 12px;
+    color: #a0aec0;
+    margin-top: 4px;
+}
+
+/* Card Components */
+.card {
+    background: #1c1c1e;
+    border-radius: 8px;
+    padding: 15px;
+    margin-bottom: 15px;
+}
+
+.card-header {
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.card-body {
+    flex: 1;
+}
+
+.card-footer {
+    margin-top: 10px;
+    padding-top: 10px;
+    border-top: 1px solid #3a3a3c;
+}
+
+/* Pagination Components */
+.pagination-controls {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    margin: 1rem 0;
+}
+
+.pagination-controls button:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+/* Skeleton Loading Components */
+.skeleton {
+    background: linear-gradient(90deg, #1c1c1e 25%, #2a2a2e 50%, #1c1c1e 75%);
+    background-size: 200% 100%;
+    animation: skeleton-loading 1.5s infinite;
+    border-radius: 4px;
+}
+
+.skeleton-text {
+    height: 16px;
+    margin-bottom: 8px;
+}
+
+.skeleton-text-sm {
+    height: 12px;
+    width: 60%;
+}
+
+.skeleton-text-lg {
+    height: 24px;
+    width: 80%;
+}
+
+.skeleton-button {
+    height: 40px;
+    width: 120px;
+    border-radius: 6px;
+}
+
+.skeleton-card {
+    height: 100px;
+    border-radius: 8px;
+}
+
+.skeleton-avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+}
+
+/* Error Boundary Components */
+.error-boundary {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.8);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 9999;
+}
+
+.error-boundary-content {
+    background: #1c1c1e;
+    border: 2px solid #e74c3c;
+    border-radius: 8px;
+    padding: 30px;
+    max-width: 500px;
+    width: 90%;
+}
+
+.error-details {
+    font-family: monospace;
+    font-size: 12px;
+    color: #a0aec0;
+    background: #2d2d30;
+    padding: 10px;
+    border-radius: 4px;
+    overflow: auto;
+    max-height: 200px;
+    white-space: pre-wrap;
+}
+
+.error-actions {
+    display: flex;
+    gap: 10px;
+    margin-top: 20px;
+}

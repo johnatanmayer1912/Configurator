@@ -1,0 +1,196 @@
+--- baseline
++++ proposed
+@@ -0,0 +1,193 @@
++! -----------------------------------------------------------------------------
++! Configuration Authority System
++! Version: 6.36.0
++! NX-OS:  9.3
++! Date:    2026-07-27 10:07:16
++! Mode:    Standalone
++! Tier:    standard
++! -----------------------------------------------------------------------------
++
++! Hostname & Global Services
++hostname SWITCH
++!
++banner motd ^
++*********************************************************
++                HQ-SWITCH
++                MGMT_IP: 10.0.0.1/24
++                HQ
++*********************************************************
++^
++!
++! Local user omitted — set admin password in wizard to create username (lab only).
++ip domain-lookup
++
++! Features
++feature interface-vlan
++feature hsrp
++feature lacp
++feature lldp
++
++! VLAN Configuration
++vlan 100
++  name FABRIC_100
++
++vlan 101
++  name FABRIC_101
++
++vlan 102
++  name FABRIC_102
++
++vlan 103
++  name FABRIC_103
++
++vlan 104
++  name FABRIC_104
++
++! L3 SVI Configuration
++interface Vlan100
++  description SVI_FABRIC_100
++  no ip redirects
++  no ip proxy-arp
++  no shutdown
++  ip address 10.100.0.1/24
++  hsrp version 2
++  hsrp 100
++    priority 110
++    preempt
++    ip 10.100.0.1
++
++interface Vlan101
++  description SVI_FABRIC_101
++  no ip redirects
++  no ip proxy-arp
++  no shutdown
++  ip address 10.101.0.1/24
++  hsrp version 2
++  hsrp 101
++    priority 110
++    preempt
++    ip 10.101.0.1
++
++
++
++
++! Ethernet Interfaces
++interface Ethernet1/53
++  description Uplink_1
++  switchport mode trunk
++  switchport trunk allowed vlan 1-4094
++  no shutdown
++
++interface Ethernet1/54
++  description Uplink_2
++  switchport mode trunk
++  switchport trunk allowed vlan 1-4094
++  no shutdown
++
++! Management & Routing
++interface mgmt0
++  ip address 10.0.0.1/24
++  vrf member management
++  no shutdown
++vrf context management
++  ip route 0.0.0.0/0 10.0.0.254
++
++! NTP
++ntp server 10.255.255.254 prefer use-vrf management
++! Logging
++logging server 10.255.255.254 6 use-vrf management
++logging timestamp milliseconds
++logging level info
++
++! Boot System
++boot nxos bootflash:/nxos.9.3.5.bin
++
++line console
++line vty
++
++! =============================================================================
++! NX-OS TROUBLESHOOTING DIAGNOSTIC COMMANDS
++! =============================================================================
++! Use these commands for troubleshooting and verification:
++!
++! --- System Information ---
++! show version                    # Display NX-OS version, uptime, hardware info
++! show module                     # Display module information and status
++! show environment                # Display environmental status (fans, power, temp)
++! show system resources           # Display CPU and memory utilization
++! show processes cpu               # Display CPU utilization by process
++! show license                    # Display license information
++! show diagnostic results module all detail  # Display diagnostic test results
++!
++! --- Interface Status ---
++! show interface brief             # Display all interfaces with brief status
++! show interface status            # Display detailed interface status
++! show interface status err-disabled  # Display err-disabled interfaces
++! show interface switchport        # Display switchport configuration
++! show interface trunk             # Display trunk port information
++! show port-channel summary        # Display port-channel summary
++! show cdp neighbors              # Display CDP neighbor information
++! show lldp neighbors              # Display LLDP neighbor information
++!
++! --- VLAN Information ---
++! show vlan                       # Display VLAN information
++! show vlan brief                 # Display brief VLAN information
++! show spanning-tree              # Display spanning-tree information
++! show spanning-tree summary      # Display spanning-tree summary
++!
++! --- vPC Information ---
++! show vpc                        # Display vPC status
++! show vpc brief                  # Display brief vPC status
++! show vpc role                   # Display vPC role information
++! show vpc peer-keepalive         # Display vPC peer-keepalive status
++! show vpc consistency-parameters global  # Display global vPC consistency parameters
++! show vpc consistency-parameters interface port-channel<X>  # Display interface vPC consistency
++! show vpc consistency-parameters vlans  # Display VLAN vPC consistency
++! show running-config vpc          # Display vPC running configuration
++! show tech-support vpc           # Display detailed vPC technical support information
++!
++! --- Routing Information ---
++! show ip route                    # Display IP routing table
++! show ip route vrf all summary    # Display routing table summary for all VRFs
++! show ip interface brief          # Display IP interface information
++!
++! --- HSRP/VRRP Information ---
++! show hsrp                       # Display HSRP information
++! show hsrp brief                 # Display brief HSRP information
++! show hsrp interface vlan <vlan>  # Display HSRP information for specific VLAN
++! show vrrp                       # Display VRRP information
++! show vrrp brief                 # Display brief VRRP information
++!
++! --- Logging and Debugging ---
++! show logging logfile            # Display log file contents
++! show logging nvram               # Display NVRAM log contents
++! show logging level               # Display logging level configuration
++!
++! --- Hardware Diagnostics ---
++! show hardware                   # Display hardware inventory
++! show inventory                   # Display detailed inventory
++! show platform                   # Display platform information
++!
++! --- Configuration Verification ---
++! show running-config              # Display running configuration
++! show startup-config              # Display startup configuration
++! show diff rollback-config       # Display differences between running and startup
++!
++! --- Performance Monitoring ---
++! show interface counters          # Display interface counters
++! show interface counters detailed  # Display detailed interface counters
++! show processes                   # Display process information
++! show system internal mts buffer summary  # Display MTS buffer summary
++!
++! --- Security ---
++! show access-lists               # Display access lists
++! show ip access-lists             # Display IP access lists
++! show mac address-table           # Display MAC address table
++! show arp                        # Display ARP table
++!
++! POST-PASTE CHECKLIST (lab engineer — comments only)
++! 1) show running-config | sec vpc
++! 2) show vpc brief
++! 3) show interface status err-disabled
++! 4) show ip route vrf management
++! 5) copy run start (only after lab sign-off)

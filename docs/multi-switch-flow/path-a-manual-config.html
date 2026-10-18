@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Path A: Manual Configuration - Multi-Switch User Flow</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: #f5f5f5;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        header {
+            background: linear-gradient(135deg, #ffc107 0%, #ff9800 100%);
+            color: white;
+            padding: 30px 20px;
+            margin-bottom: 30px;
+        }
+        
+        header h1 {
+            font-size: 2em;
+            margin-bottom: 10px;
+        }
+        
+        .breadcrumb {
+            background: white;
+            padding: 15px 20px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        
+        .breadcrumb a {
+            color: #667eea;
+            text-decoration: none;
+        }
+        
+        .breadcrumb a:hover {
+            text-decoration: underline;
+        }
+        
+        .section {
+            background: white;
+            padding: 30px;
+            border-radius: 8px;
+            margin-bottom: 30px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        
+        .section h2 {
+            color: #ffc107;
+            margin-bottom: 20px;
+            font-size: 1.5em;
+            border-bottom: 2px solid #ffc107;
+            padding-bottom: 10px;
+        }
+        
+        .section h3 {
+            color: #333;
+            margin: 20px 0 10px 0;
+            font-size: 1.2em;
+        }
+        
+        .action-box {
+            background: #e3f2fd;
+            border-left: 4px solid #2196f3;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 4px;
+        }
+        
+        .action-box strong {
+            color: #1976d2;
+        }
+        
+        .result-box {
+            background: #e8f5e9;
+            border-left: 4px solid #4caf50;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 4px;
+        }
+        
+        .result-box ul {
+            margin-left: 20px;
+            margin-top: 10px;
+        }
+        
+        .flow-box {
+            background: #fff3e0;
+            border-left: 4px solid #ff9800;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 4px;
+        }
+        
+        .flow-box ol {
+            margin-left: 20px;
+            margin-top: 10px;
+        }
+        
+        .flow-box li {
+            margin: 10px 0;
+        }
+        
+        .navigation {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 30px;
+        }
+        
+        .navigation a {
+            display: inline-block;
+            background: #ffc107;
+            color: #333;
+            padding: 10px 20px;
+            border-radius: 5px;
+            text-decoration: none;
+            transition: background 0.3s ease;
+        }
+        
+        .navigation a:hover {
+            background: #e0a800;
+        }
+        
+        .navigation .prev {
+            background: #6c757d;
+            color: white;
+        }
+        
+        .navigation .prev:hover {
+            background: #5a6268;
+        }
+        
+        .ui-mockup {
+            background: white;
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+            padding: 20px;
+            margin: 20px 0;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+        
+        .ui-mockup-header {
+            background: linear-gradient(135deg, #ffc107 0%, #ff9800 100%);
+            color: white;
+            padding: 15px 20px;
+            border-radius: 6px;
+            margin-bottom: 15px;
+        }
+        
+        .ui-mockup-header h3 {
+            margin: 0;
+            font-size: 1.2em;
+        }
+        
+        .mockup-browser {
+            background: #f8f9fa;
+            border: 1px solid #dee2e6;
+            border-radius: 6px;
+            overflow: hidden;
+        }
+        
+        .mockup-browser-bar {
+            background: #e9ecef;
+            padding: 8px 12px;
+            border-bottom: 1px solid #dee2e6;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .mockup-browser-bar .dots {
+            display: flex;
+            gap: 6px;
+        }
+        
+        .mockup-browser-bar .dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+        }
+        
+        .mockup-browser-bar .dot.red { background: #ff5f57; }
+        .mockup-browser-bar .dot.yellow { background: #febc2e; }
+        .mockup-browser-bar .dot.green { background: #28c840; }
+        
+        .mockup-browser-bar .url {
+            flex: 1;
+            background: white;
+            border: 1px solid #ced4da;
+            border-radius: 4px;
+            padding: 4px 8px;
+            font-size: 12px;
+            color: #495057;
+            font-family: monospace;
+        }
+        
+        .mockup-content {
+            padding: 20px;
+            background: white;
+        }
+        
+        .mockup-editor {
+            background: #f8f9fa;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+        
+        .mockup-editor-header {
+            background: white;
+            padding: 15px 20px;
+            border-bottom: 1px solid #dee2e6;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .mockup-editor-header h3 {
+            margin: 0;
+            color: #333;
+        }
+        
+        .mockup-editor-actions {
+            display: flex;
+            gap: 8px;
+        }
+        
+        .mockup-editor-actions .btn {
+            padding: 6px 12px;
+            border-radius: 4px;
+            font-size: 0.85em;
+            border: 1px solid #dee2e6;
+            background: white;
+        }
+        
+        .mockup-editor-actions .btn.primary {
+            background: #ffc107;
+            color: #333;
+            border-color: #ffc107;
+        }
+        
+        .mockup-empty-state {
+            background: white;
+            border: 1px solid #dee2e6;
+            border-radius: 6px;
+            padding: 40px;
+            text-align: center;
+        }
+        
+        .mockup-empty-state h4 {
+            margin: 0 0 10px 0;
+            color: #333;
+        }
+        
+        .mockup-empty-state p {
+            color: #666;
+            margin: 0 0 20px 0;
+        }
+        
+        .mockup-empty-state .btn {
+            padding: 10px 20px;
+            border-radius: 4px;
+            font-size: 0.9em;
+            border: 1px solid #ffc107;
+            background: white;
+            color: #ffc107;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>Path A: Manual Configuration</h1>
+            <p>Multi-Switch User Flow Documentation - Alternative Path</p>
+        </div>
+    </header>
+    
+    <div class="container">
+        <div class="breadcrumb">
+            <a href="index.html">← Back to Index</a>
+        </div>
+        
+        <div class="section">
+            <h2>Overview</h2>
+            <p>This path allows users to skip templates and configure switches manually from scratch.</p>
+        </div>
+        
+        <div class="section">
+            <h2>User Action</h2>
+            <div class="action-box">
+                <strong>Action:</strong> User clicks "Use Manual Configuration" from template gallery
+            </div>
+        </div>
+        
+        <div class="section">
+            <h2>Expected Result</h2>
+            <div class="result-box">
+                <ul>
+                    <li>Template gallery becomes hidden</li>
+                    <li>Configuration editor appears with empty deployment</li>
+                    <li>User must manually add switches, vPC domains, VLANs, uplinks</li>
+                    <li>Topology canvas shows empty state</li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="section">
+            <h2>Flow Steps</h2>
+            <div class="flow-box">
+                <ol>
+                    <li><strong>Click "Use Manual Configuration"</strong> - Skips template selection</li>
+                    <li><strong>Configuration editor appears (empty)</strong> - Shows empty topology canvas</li>
+                    <li><strong>Click "+ Add Switch"</strong> - Opens add switch modal</li>
+                    <li><strong>Fill switch details</strong> - Enter hostname, role, model, IP, etc.</li>
+                    <li><strong>Save switch</strong> - Switch added to deployment</li>
+                    <li><strong>Repeat for all switches</strong> - Add all required switches</li>
+                    <li><strong>Click "+ Add vPC Domain"</strong> - For vPC configurations</li>
+                    <li><strong>Configure vPC pairs</strong> - Set primary/secondary switches</li>
+                    <li><strong>Configure VLANs</strong> - Add VLANs in VLANs tab</li>
+                    <li><strong>Configure uplinks</strong> - Add uplinks in Uplinks tab</li>
+                    <li><strong>Click "Generate Config"</strong> - Generate configurations</li>
+                </ol>
+            </div>
+        </div>
+        
+        <div class="section">
+            <h2>Use Cases</h2>
+            <div class="result-box">
+                <ul>
+                    <li>Users who prefer manual configuration over templates</li>
+                    <li>Custom network topologies not covered by templates</li>
+                    <li>Testing specific configuration scenarios</li>
+                    <li>Learning the configuration process step-by-step</li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="section">
+            <h2>Visual UI Mockup</h2>
+            <div class="ui-mockup">
+                <div class="ui-mockup-header">
+                    <h3>User Interface - What the User Sees</h3>
+                </div>
+                <div class="mockup-browser">
+                    <div class="mockup-browser-bar">
+                        <div class="dots">
+                            <div class="dot red"></div>
+                            <div class="dot yellow"></div>
+                            <div class="dot green"></div>
+                        </div>
+                        <div class="url">http://127.0.0.1:9000</div>
+                    </div>
+                    <div class="mockup-content">
+                        <div class="mockup-editor">
+                            <div class="mockup-editor-header">
+                                <h3>Network Configuration Editor (Manual Mode)</h3>
+                                <div class="mockup-editor-actions">
+                                    <button class="btn">Validate</button>
+                                    <button class="btn">Reset</button>
+                                    <button class="btn">Save as Template</button>
+                                    <button class="btn primary">Generate Config</button>
+                                </div>
+                            </div>
+                            
+                            <div class="mockup-empty-state">
+                                <h4>No switches configured</h4>
+                                <p>Start by adding switches to your network configuration</p>
+                                <button class="btn">+ Add Switch</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="navigation">
+            <a href="step-10-success-modal.html" class="prev">← Previous</a>
+            <a href="path-b-change-template.html">Next Path →</a>
+        </div>
+    </div>
+</body>
+</html>

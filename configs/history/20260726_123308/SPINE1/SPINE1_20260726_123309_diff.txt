@@ -1,0 +1,107 @@
+--- baseline
++++ proposed
+@@ -0,0 +1,104 @@
++! -----------------------------------------------------------------------------
++! Configuration Authority System
++! Version: 6.34.0
++! NX-OS:  9.3
++! Date:    2026-07-26 12:33:09
++! Mode:    Standalone
++! Tier:    standard
++! -----------------------------------------------------------------------------
++
++! Hostname & Global Services
++hostname SPINE1
++!
++banner motd ^
++*********************************************************
++                HQ-SPINE1
++                MGMT_IP: 10.0.0.1/24
++                HQ
++*********************************************************
++^
++!
++! Local user omitted — set admin password in wizard to create username (lab only).
++ip domain-lookup
++
++! Features
++feature interface-vlan
++feature lacp
++feature lldp
++
++! VLAN Configuration
++vlan 10
++  name TRANSIT_10
++
++vlan 11
++  name TRANSIT_11
++
++vlan 12
++  name TRANSIT_12
++
++vlan 13
++  name TRANSIT_13
++
++
++! Uplink Configuration (Leaf to Core)
++interface Ethernetthernet1/1
++  description to LEAF1
++  switchport
++  switchport mode trunk
++  channel-group 10 mode active
++  no shutdown
++
++interface Ethernetthernet1/2
++  description to LEAF1
++  switchport
++  switchport mode trunk
++  channel-group 10 mode active
++  no shutdown
++
++interface Ethernetthernet1/1
++  description to LEAF2
++  switchport
++  switchport mode trunk
++  channel-group 10 mode active
++  no shutdown
++
++interface Ethernetthernet1/2
++  description to LEAF2
++  switchport
++  switchport mode trunk
++  channel-group 10 mode active
++  no shutdown
++
++
++
++! Ethernet Interfaces
++interface Ethernetthernet1/1
++  description to LEAF2
++  switchport mode trunk
++  no shutdown
++
++interface Ethernetthernet1/2
++  description to LEAF2
++  switchport mode trunk
++  no shutdown
++
++! Management & Routing
++interface mgmt0
++  ip address 10.0.0.1/24
++  vrf member management
++  no shutdown
++vrf context management
++  ip route 0.0.0.0/0 10.0.0.254
++
++! Boot System
++boot nxos bootflash:/nxos.9.3.5.bin
++
++line console
++line vty
++
++! POST-PASTE CHECKLIST (lab engineer — comments only)
++! 1) show running-config | sec vpc
++! 2) show vpc brief
++! 3) show interface status err-disabled
++! 4) show ip route vrf management
++! 5) copy run start (only after lab sign-off)

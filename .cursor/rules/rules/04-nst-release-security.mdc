@@ -1,0 +1,24 @@
+---
+description: Release, QA, and security auto-activation for tests, builds, credentials, and mutations
+globs: tests/**/*,_prebuild.py,*.spec,build_scripts/**/*,modules/credential*,vlan_checker_web.py
+alwaysApply: false
+---
+
+# NST Release & Security
+
+## Auto-activate
+
+- `nst-release-engineer` for VERSION, CHANGELOG, spec, pytest, enterprise QA gate
+- `nst-security-ops` for credential APIs, `/api/execute`, VLAN/IM deploy routes
+
+## Pre-ship
+
+```bash
+python -m pytest tests/ -q && python _prebuild.py
+```
+
+## Vendor matrix
+
+Validate mentally: Cisco IOS/XE, NX-OS, Juniper Junos for any adapter or CLI change.
+
+Never commit or log secrets. Outputs → `utils/output_paths.py` only.

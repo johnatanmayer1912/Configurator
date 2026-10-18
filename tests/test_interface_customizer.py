@@ -48,7 +48,8 @@ def test_leaf_default_infra_only_no_bulk_access():
     assert "interface port-channel1" in cfg
     assert "interface port-channel2" in cfg
     assert "interface port-channel30" in cfg
-    assert "channel-group 30 mode active" in _block(cfg, "Ethernet1/49")
+    # Fiber uplink uses Ethernet1/53-54 (vpc_uplink_start/end), not Ethernet1/49-50 (keepalive)
+    assert "channel-group 30 mode active" in _block(cfg, "Ethernet1/53")
     assert "Access_Port_" not in cfg
 
 
@@ -159,7 +160,7 @@ def test_existing_vlan_name_not_duplicated():
 def test_reserved_peer_link_port_skipped():
     plans = [
         {
-            "interface": "Ethernet1/53",
+            "interface": "Ethernet1/51",  # vpc_peer_link port for Nexus 93180YC-EX
             "preset": "access_vlan",
             "vpc_port_channel": True,
             "mode": "access",
@@ -168,7 +169,7 @@ def test_reserved_peer_link_port_skipped():
     ]
     result = _apply_leaf(plans)
     assert not any(po.number >= 10 for po in result["device"].port_channels)
-    pl_intf = next(i for i in result["device"].interfaces if i.name == "Ethernet1/53")
+    pl_intf = next(i for i in result["device"].interfaces if i.name == "Ethernet1/51")
     assert pl_intf.channel_group == 1  # still peer-link
 
 

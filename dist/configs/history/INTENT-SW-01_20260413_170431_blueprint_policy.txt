@@ -1,5 +1,0 @@
-{
-  "stp_edge_defaults": "restricted",
-  "vpc_enabled": "no",
-  "security_tier": "standard"
-}

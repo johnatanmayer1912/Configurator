@@ -1,0 +1,65 @@
+{
+    "hostname": "SPINE2",
+    "mgmt_ip": "10.0.0.2/24",
+    "mgmt_gw": "10.0.0.254",
+    "model": "Nexus 9336C-FX2",
+    "vlans": [
+        {
+            "id": 10,
+            "name": "TRANSIT_10"
+        },
+        {
+            "id": 11,
+            "name": "TRANSIT_11"
+        },
+        {
+            "id": 12,
+            "name": "TRANSIT_12"
+        },
+        {
+            "id": 13,
+            "name": "TRANSIT_13"
+        }
+    ],
+    "interfaces": [],
+    "svis": [],
+    "static_routes": [],
+    "vpc": null,
+    "motd": "Data Center Spine \u2014 Core Access Restricted",
+    "admin_user": "admin",
+    "admin_password": "",
+    "nxos_version": "9.3",
+    "enabled_features": [
+        "interface_vlan",
+        "lacp",
+        "lldp"
+    ],
+    "security_tier": "standard",
+    "ntp_servers": [],
+    "logging_hosts": [],
+    "snmp_location": "",
+    "snmp_contact": "",
+    "network_name": "HQ",
+    "site_location": "HQ",
+    "snmp_trap_host_1": "",
+    "snmp_trap_host_2": "",
+    "snmp_v3_user": "",
+    "boot_image": "",
+    "tacacs_server_1": "",
+    "tacacs_key": "",
+    "spectrum_user": false,
+    "create_local_user": false,
+    "port_channels": [],
+    "spanning_tree_priority": 8192,
+    "baseline_options": [
+        "baseline_snmp_traps",
+        "baseline_cli_aliases",
+        "baseline_logging_source",
+        "baseline_spanning_tree"
+    ],
+    "fabric_bgp_asn": 65001,
+    "fabric_loopback": "10.255.0.1/32",
+    "fabric_vni": 10000,
+    "uplink_config": [],
+    "downlink_config": []
+}

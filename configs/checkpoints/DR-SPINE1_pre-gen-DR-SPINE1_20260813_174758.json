@@ -1,0 +1,217 @@
+{
+    "hostname": "DR-SPINE1",
+    "mgmt_ip": "10.1.0.1/24",
+    "mgmt_gw": "10.1.0.254",
+    "model": "Nexus 9336C-FX2",
+    "vlans": [
+        {
+            "id": 200,
+            "name": "TRANSIT_200"
+        },
+        {
+            "id": 201,
+            "name": "TRANSIT_201"
+        },
+        {
+            "id": 202,
+            "name": "TRANSIT_202"
+        },
+        {
+            "id": 203,
+            "name": "TRANSIT_203"
+        },
+        {
+            "id": 204,
+            "name": "TRANSIT_204"
+        },
+        {
+            "id": 205,
+            "name": "TRANSIT_205"
+        },
+        {
+            "id": 206,
+            "name": "TRANSIT_206"
+        },
+        {
+            "id": 207,
+            "name": "TRANSIT_207"
+        },
+        {
+            "id": 208,
+            "name": "TRANSIT_208"
+        },
+        {
+            "id": 209,
+            "name": "TRANSIT_209"
+        }
+    ],
+    "interfaces": [
+        {
+            "name": "Ethernet1/53",
+            "mode": "trunk",
+            "vlan": null,
+            "description": "to DR-LEAF1",
+            "shutdown": false,
+            "vpc_id": null,
+            "trunk_vlans": null,
+            "channel_group": 10,
+            "channel_mode": "active",
+            "mtu": null,
+            "ip_address": null,
+            "vrf": null,
+            "custom_lines": []
+        },
+        {
+            "name": "Ethernet1/54",
+            "mode": "trunk",
+            "vlan": null,
+            "description": "to DR-LEAF1",
+            "shutdown": false,
+            "vpc_id": null,
+            "trunk_vlans": null,
+            "channel_group": 10,
+            "channel_mode": "active",
+            "mtu": null,
+            "ip_address": null,
+            "vrf": null,
+            "custom_lines": []
+        },
+        {
+            "name": "Ethernet1/1",
+            "mode": "trunk",
+            "vlan": null,
+            "description": "to HQ-LEAF1 port 53",
+            "shutdown": false,
+            "vpc_id": null,
+            "trunk_vlans": null,
+            "channel_group": 20,
+            "channel_mode": "active",
+            "mtu": null,
+            "ip_address": null,
+            "vrf": null,
+            "custom_lines": []
+        },
+        {
+            "name": "Ethernet1/2",
+            "mode": "trunk",
+            "vlan": null,
+            "description": "to HQ-LEAF1 port 54",
+            "shutdown": false,
+            "vpc_id": null,
+            "trunk_vlans": null,
+            "channel_group": 20,
+            "channel_mode": "active",
+            "mtu": null,
+            "ip_address": null,
+            "vrf": null,
+            "custom_lines": []
+        },
+        {
+            "name": "Ethernet1/3",
+            "mode": "trunk",
+            "vlan": null,
+            "description": "to DR-LEAF1 port 53",
+            "shutdown": false,
+            "vpc_id": null,
+            "trunk_vlans": null,
+            "channel_group": 21,
+            "channel_mode": "active",
+            "mtu": null,
+            "ip_address": null,
+            "vrf": null,
+            "custom_lines": []
+        },
+        {
+            "name": "Ethernet1/4",
+            "mode": "trunk",
+            "vlan": null,
+            "description": "to DR-LEAF1 port 54",
+            "shutdown": false,
+            "vpc_id": null,
+            "trunk_vlans": null,
+            "channel_group": 21,
+            "channel_mode": "active",
+            "mtu": null,
+            "ip_address": null,
+            "vrf": null,
+            "custom_lines": []
+        }
+    ],
+    "svis": [],
+    "static_routes": [],
+    "vpc": null,
+    "motd": "Data Center Spine \u2014 Core Access Restricted",
+    "admin_user": "admin",
+    "admin_password": "",
+    "nxos_version": "9.3",
+    "enabled_features": [
+        "interface_vlan",
+        "lacp",
+        "lldp"
+    ],
+    "security_tier": "standard",
+    "ntp_servers": [],
+    "logging_hosts": [],
+    "snmp_location": "",
+    "snmp_contact": "",
+    "network_name": "DR",
+    "site_location": "DR",
+    "snmp_trap_host_1": "",
+    "snmp_trap_host_2": "",
+    "snmp_v3_user": "",
+    "boot_image": "",
+    "tacacs_server_1": "",
+    "tacacs_key": "",
+    "spectrum_user": false,
+    "create_local_user": false,
+    "port_channels": [],
+    "spanning_tree_priority": 8192,
+    "baseline_options": [],
+    "fabric_bgp_asn": 65001,
+    "fabric_loopback": "10.255.0.1/32",
+    "fabric_vni": 10000,
+    "uplink_config": [
+        {
+            "interface": "Ethernet1/53",
+            "description": "to DR-LEAF1",
+            "mode": "trunk",
+            "port_channel": 10
+        },
+        {
+            "interface": "Ethernet1/54",
+            "description": "to DR-LEAF1",
+            "mode": "trunk",
+            "port_channel": 10
+        }
+    ],
+    "downlink_config": [
+        {
+            "interface": "Ethernet1/1",
+            "description": "to HQ-LEAF1 port 53",
+            "mode": "trunk",
+            "port_channel": 20,
+            "channel_group": "20 mode active"
+        },
+        {
+            "interface": "Ethernet1/2",
+            "description": "to HQ-LEAF1 port 54",
+            "mode": "trunk",
+            "port_channel": 20,
+            "channel_group": "20 mode active"
+        },
+        {
+            "interface": "Ethernet1/3",
+            "description": "to DR-LEAF1 port 53",
+            "mode": "trunk",
+            "port_channel": 21,
+            "channel_group": "21 mode active"
+        },
+        {
+            "interface": "Ethernet1/4",
+            "description": "to DR-LEAF1 port 54",
+            "mode": "trunk",
+            "port_channel": 21,
+            "channel_group": "21 mode active"
+        }
+    ]
+}

@@ -86,9 +86,11 @@ def test_index_hardened_secrets_modal():
 
 
 @pytest.mark.mandatory
-def test_styles_min_width_1024():
+def test_styles_responsive_min_width():
+    """UX-001: body supports narrow viewports (320px+), not locked to 1024px."""
     css = STYLES.read_text(encoding="utf-8")
-    assert "min-width: 1024px" in css
+    assert "min-width: 320px" in css
+    assert "min-width: 1024px" not in css
 
 
 @pytest.mark.mandatory

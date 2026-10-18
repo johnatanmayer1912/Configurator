@@ -9,6 +9,7 @@ from core.interface_customizer import apply_interface_customizations, validate_i
 from core.link_resolver import resolve_link_plans
 from core.manual_overrides import apply_manual_overrides
 from core.vpc_topology import apply_vpc_leaf_topology, apply_vpc_topology
+from core.vlan_validator import VLANValidator
 from models.device_model import Device, VPCConfig
 from models.intent_model import BlueprintIntent, IntentOverrides
 
@@ -18,7 +19,8 @@ class ScenarioEngine:
 
     def __init__(self, catalog: Optional[CatalogLoader] = None) -> None:
         self.catalog = catalog or CatalogLoader()
-        self.intent_engine = IntentEngine()
+        self.intent_engine = IntentEngine(self.catalog)
+        self.vlan_validator = VLANValidator(self.catalog)
 
     def apply_scenario(
         self,
@@ -28,6 +30,8 @@ class ScenarioEngine:
         mgmt_ip: str,
         mgmt_gw: str,
         overrides: Optional[Dict[str, Any]] = None,
+        secondary_hostname: Optional[str] = None,
+        secondary_mgmt_ip: Optional[str] = None,
     ) -> Dict[str, Any]:
         scenario = self.catalog.get_scenario(scenario_id)
         if not scenario:
@@ -35,8 +39,29 @@ class ScenarioEngine:
 
         defaults = dict(scenario.get("defaults", {}))
         if overrides:
-            defaults.update(overrides)
+            # Only update with overrides if they are explicitly provided (not None)
+            # This ensures user's explicit VLAN choices are respected
+            for key, value in overrides.items():
+                if value is not None:
+                    defaults[key] = value
         defaults["site_name"] = defaults.get("site_name") or site_name
+
+        # Validate VLAN assignments against hardware constraints
+        model = defaults.get("model", "Generic")
+        base_vlan = defaults.get("base_access_vlan", 10)
+        vlan_count = defaults.get("access_vlan_count", 4)
+        
+        valid, msg = self.vlan_validator.validate_vlan_range(model, base_vlan, vlan_count)
+        if not valid:
+            # Suggest valid range if validation fails
+            suggested_start, suggested_end = self.vlan_validator.suggest_vlan_range(
+                model, vlan_count, base_vlan
+            )
+            import logging
+            logger = logging.getLogger(__name__)
+            logger.warning(f"VLAN validation failed for {model}: {msg}. Using suggested range [{suggested_start}-{suggested_end}]")
+            defaults["base_access_vlan"] = suggested_start
+            defaults["access_vlan_count"] = suggested_end - suggested_start + 1
 
         hw = self._hardware_for_model(defaults.get("model", "Generic"))
         defaults["downlinks"] = resolve_link_plans(
@@ -110,7 +135,7 @@ class ScenarioEngine:
         }
 
         if pair_mode:
-            result["pair"] = self._build_vpc_pair(device, defaults, hostname, scenario_id)
+            result["pair"] = self._build_vpc_pair(device, defaults, hostname, scenario_id, secondary_hostname, secondary_mgmt_ip)
 
         vpc_pair_active = bool(device.vpc and pair_mode)
         planner_warnings = validate_interface_plans(device, defaults, vpc_pair=vpc_pair_active)
@@ -266,13 +291,16 @@ class ScenarioEngine:
         return {}
 
     def _build_vpc_pair(
-        self, primary_device: Device, defaults: Dict[str, Any], base_hostname: str, scenario_id: str
+        self, primary_device: Device, defaults: Dict[str, Any], base_hostname: str, scenario_id: str,
+        secondary_hostname: Optional[str] = None, secondary_mgmt_ip: Optional[str] = None
     ) -> Dict[str, Any]:
         import copy
 
         secondary = copy.deepcopy(primary_device)
         base = base_hostname.removesuffix("-A").removesuffix("-B")
-        secondary.hostname = f"{base}-B"
+        secondary.hostname = secondary_hostname or f"{base}-B"
+        if secondary_mgmt_ip:
+            secondary.mgmt_ip = secondary_mgmt_ip
         enrich_device(secondary, defaults, vpc_role="secondary")
         if secondary.vpc:
             sec_priority = int(

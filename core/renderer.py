@@ -5,7 +5,7 @@ from typing import Optional
 from jinja2 import Environment, FileSystemLoader
 from models.device_model import Device
 from core.catalog_loader import CatalogLoader
-
+from utils.web_logger import logger
 
 class ConfigRenderer:
     def __init__(self, template_dir: str = None):
@@ -55,7 +55,7 @@ class ConfigRenderer:
         def baseline_on(option_id: str) -> bool:
             return option_id in baseline
 
-        return {
+        features = {
             "interface_vlan": on("interface_vlan", True),
             "lldp": on("lldp", True),
             "lacp": on("lacp", True),
@@ -92,20 +92,60 @@ class ConfigRenderer:
             "baseline_logging_source": baseline_on("baseline_logging_source"),
             "aaa_tacacs": on("aaa_tacacs", False),
         }
+        
+        logger.info(f"RENDERER_FEATURE_FLAGS",
+                   hostname=device.hostname,
+                   vpc_enabled=features["vpc"],
+                   lacp_enabled=features["lacp"],
+                   lldp_enabled=features["lldp"])
+        
+        return features
 
     def render_device_config(
         self, device: Device, template_name: str = None, metadata: dict = None
     ) -> str:
         """Renders NX-OS configuration for the device using version-aware templates."""
+        logger.info(f"RENDERER_START",
+                   hostname=device.hostname,
+                   template_name=template_name,
+                   nxos_version=device.nxos_version)
+        
         template_file = self._resolve_template(device, template_name)
+        logger.info(f"RENDERER_TEMPLATE_RESOLVED",
+                   hostname=device.hostname,
+                   template_file=template_file)
+        
         template = self.env.get_template(template_file)
         meta = dict(metadata or {})
         meta.setdefault("nxos_version", device.nxos_version)
         version_profile = self.catalog.get_version(device.nxos_version) or {}
         if not device.boot_image and version_profile.get("boot_image"):
             meta.setdefault("boot_image", version_profile["boot_image"])
-        return template.render(
-            device=device,
-            metadata=meta,
-            features=self._feature_flags(device),
-        )
+        
+        logger.info(f"RENDERER_BEFORE_RENDER",
+                   hostname=device.hostname,
+                   metadata_keys=list(meta.keys()),
+                   device_interfaces_count=len(device.interfaces) if device.interfaces else 0,
+                   device_port_channels_count=len(device.port_channels) if device.port_channels else 0,
+                   device_uplink_config_count=len(device.uplink_config) if device.uplink_config else 0,
+                   device_downlink_config_count=len(device.downlink_config) if device.downlink_config else 0)
+        
+        try:
+            rendered = template.render(
+                device=device,
+                metadata=meta,
+                features=self._feature_flags(device),
+            )
+            
+            logger.info(f"RENDERER_RENDER_COMPLETE",
+                       hostname=device.hostname,
+                       rendered_length=len(rendered) if rendered else 0,
+                       rendered_preview=rendered[:500] if rendered and len(rendered) > 0 else "EMPTY")
+            
+            return rendered
+        except Exception as e:
+            logger.error(f"RENDERER_RENDER_ERROR",
+                        hostname=device.hostname,
+                        error=str(e),
+                        error_type=type(e).__name__)
+            raise

@@ -59,8 +59,8 @@ def test_builder_recommend_vpc_leaf_from_paste():
     assert rec["wizard"]["overrides"]["security_tier"] == "hardened"
 
 
-def test_export_file_prefix_includes_site_and_scenario():
+def test_export_file_prefix_includes_hostname():
     prefix = build_file_prefix("HQ_DC", "vpc_leaf_pair", "DC-LEAF-01-A", "20260621_120000")
-    assert prefix.startswith("HQ_DC_vpc_leaf_pair_DC-LEAF-01-A_")
+    assert prefix.startswith("DC-LEAF-01-A_")
     folder = pair_batch_folder("HQ_DC", "vpc_leaf_pair", "20260621_120000")
     assert folder == "HQ_DC_vpc_leaf_pair_20260621_120000"

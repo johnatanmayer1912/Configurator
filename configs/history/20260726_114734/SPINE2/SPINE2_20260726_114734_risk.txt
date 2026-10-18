@@ -1,0 +1,17 @@
+==========================================
+       CONFIGURATION RISK ASSESSMENT      
+==========================================
+OVERALL RISK LEVEL: MEDIUM
+TOTAL FINDINGS: 5
+------------------------------------------
+[LOW] hostname SPINE2
+   ↳ Matches risk pattern: 'hostname'
+[LOW] snmp-server location HQ
+   ↳ Matches risk pattern: 'snmp-server location'
+[MEDIUM] spanning-tree vlan 1-3967 priority 8192
+   ↳ Matches risk pattern: 'spanning-tree'
+[MEDIUM] channel-group 1 mode active
+   ↳ Matches risk pattern: 'channel-group 1 mode'
+[MEDIUM] channel-group 1 mode active
+   ↳ Matches risk pattern: 'channel-group 1 mode'
+==========================================

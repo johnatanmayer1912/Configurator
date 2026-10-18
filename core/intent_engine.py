@@ -1,22 +1,45 @@
 from typing import List, Tuple
+import logging
 
 from models.device_model import Device, VPCConfig
 from models.interface_model import Interface
 from models.intent_model import BlueprintIntent, BlueprintResolution
 from models.vlan_model import VLAN
 from models.l3_models import SVI
+from core.vlan_validator import VLANValidator
+
+logger = logging.getLogger(__name__)
 
 
 class IntentEngine:
+    def __init__(self, catalog_loader=None):
+        from core.catalog_loader import CatalogLoader
+        self.catalog = catalog_loader or CatalogLoader()
+        self.vlan_validator = VLANValidator(self.catalog)
+
     def resolve(self, intent: BlueprintIntent) -> Tuple[Device, BlueprintResolution]:
         role = intent.role.lower().strip()
         if role not in {"access", "leaf", "spine"}:
             raise ValueError("Intent role must be access, leaf, or spine.")
 
+        # Get model-aware VLAN constraints
         vlan_start = intent.overrides.base_access_vlan
         vlan_count = intent.overrides.access_vlan_count
-        vlans = self._build_vlans(role, vlan_start, vlan_count)
-        interfaces = self._build_interfaces(role, intent.overrides.interface_count, vlan_start, intent.uplink_ports)
+        
+        # Validate and adjust VLAN range based on hardware constraints
+        constraints = self.vlan_validator.get_constraints(intent.model)
+        valid, msg = self.vlan_validator.validate_vlan_range(intent.model, vlan_start, vlan_count)
+        if not valid:
+            # Suggest valid range if validation fails
+            suggested_start, suggested_end = self.vlan_validator.suggest_vlan_range(
+                intent.model, vlan_count, vlan_start
+            )
+            logger.warning(f"VLAN validation failed for {intent.model}: {msg}. Using suggested range [{suggested_start}-{suggested_end}]")
+            vlan_start = suggested_start
+            vlan_count = suggested_end - suggested_start + 1
+        
+        vlans = self._build_vlans(role, vlan_start, vlan_count, constraints)
+        interfaces = self._build_interfaces(role, intent.overrides.interface_count, vlan_start, intent.uplink_ports, constraints)
         svis = self._build_svis(role, vlans)
 
         motd = intent.overrides.motd or self._default_motd(intent.site_name, role, intent.security_tier)
@@ -68,9 +91,28 @@ class IntentEngine:
         )
         return device, resolution
 
-    def _build_vlans(self, role: str, start: int, count: int) -> List[VLAN]:
-        prefix = {"access": "USER", "leaf": "FABRIC", "spine": "TRANSIT"}[role]
-        return [VLAN(id=start + i, name=f"{prefix}_{start + i}") for i in range(count)]
+    def _build_vlans(self, role: str, start: int, count: int, constraints) -> List[VLAN]:
+        if role == "access":
+            prefix = "USER"
+        elif role == "leaf":
+            prefix = "FABRIC"
+        else:
+            prefix = "TRANSIT"
+        
+        # Build VLANs respecting constraints
+        vlans = []
+        for i in range(count):
+            vlan_id = start + i
+            # Skip reserved VLANs
+            if constraints.is_vlan_reserved(vlan_id):
+                logger.warning(f"Skipping reserved VLAN {vlan_id} in range")
+                continue
+            if not constraints.is_vlan_valid(vlan_id):
+                logger.warning(f"Skipping invalid VLAN {vlan_id} in range")
+                continue
+            vlans.append(VLAN(id=vlan_id, name=f"{prefix}_{vlan_id}"))
+        
+        return vlans
 
     def _eth_sort_key(self, name: str) -> tuple:
         parts = name.replace("Ethernet", "").split("/")
@@ -79,7 +121,7 @@ class IntentEngine:
         except ValueError:
             return (0, 0)
 
-    def _build_interfaces(self, role: str, count: int, access_vlan: int, uplink_ports: List[str]) -> List[Interface]:
+    def _build_interfaces(self, role: str, count: int, access_vlan: int, uplink_ports: List[str], constraints) -> List[Interface]:
         interfaces: List[Interface] = []
         uplink_set = set(uplink_ports)
         access_idx = 0
@@ -91,13 +133,18 @@ class IntentEngine:
             if intf_mode == "access":
                 access_idx += 1
                 desc = f"Access_Port_{access_idx}"
+                # Use first valid VLAN from constraints if base VLAN is invalid
+                vlan_to_use = access_vlan
+                if not constraints.is_vlan_valid(access_vlan):
+                    vlan_to_use = constraints.default_vlan_start
             else:
                 desc = f"Routed_Port_{idx}"
+                vlan_to_use = None
             interfaces.append(
                 Interface(
                     name=name,
                     mode=intf_mode,
-                    vlan=access_vlan if intf_mode == "access" else None,
+                    vlan=vlan_to_use if intf_mode == "access" else None,
                     description=desc,
                     shutdown=False,
                 )

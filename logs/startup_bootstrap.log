@@ -327,3 +327,1607 @@ To replace the running instance: re-launch with --replace
 2026-06-25 08:56:23 | Initializing static assets from c:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator\static
 2026-06-25 08:56:23 | Application banners and logger initialized.
 2026-06-25 08:56:25 | Starting uvicorn server on 127.0.0.1:9000
+2026-07-07 09:33:09 | Runtime info: python=3.14.4 frozen=False cwd=C:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator - Copy
+2026-07-07 09:33:09 | Initializing static assets from C:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator - Copy\static
+2026-07-07 09:33:09 | Application banners and logger initialized.
+2026-07-07 09:33:09 | Port 9000 is already in use.
+Listening process PID(s): 20700
+PID file: C:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator - Copy\logs\nxos_configurator.pid (pid 8280)
+Close the console window, click Stop in the web UI, or run: scripts\stop_configurator.ps1
+To replace the running instance: re-launch with --replace
+2026-07-07 09:53:49 | Runtime info: python=3.14.4 frozen=False cwd=C:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator - Copy
+2026-07-07 09:53:50 | Initializing static assets from C:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator - Copy\static
+2026-07-07 09:53:50 | Application banners and logger initialized.
+2026-07-07 09:53:50 | Port 9000 is already in use.
+Listening process PID(s): 25756
+PID file: C:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator - Copy\logs\nxos_configurator.pid (pid 8280)
+Close the console window, click Stop in the web UI, or run: scripts\stop_configurator.ps1
+To replace the running instance: re-launch with --replace
+2026-07-09 11:55:16 | Runtime info: python=3.14.4 frozen=False cwd=C:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator - Copy
+2026-07-09 11:55:17 | Initializing static assets from C:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator - Copy\static
+2026-07-09 11:55:17 | Application banners and logger initialized.
+2026-07-09 11:55:19 | Starting uvicorn server on 127.0.0.1:9000
+2026-07-12 14:08:10 | Runtime info: python=3.12.6 frozen=True cwd=C:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator - Copy
+2026-07-12 14:08:10 | SERVER CRASH: No module named 'prometheus_client'
+Traceback (most recent call last):
+  File "web_launcher.py", line 192, in <module>
+    run_server()
+  File "web_launcher.py", line 109, in run_server
+    app, logger = build_web_app()
+                  ^^^^^^^^^^^^^^^
+  File "web_launcher.py", line 45, in build_web_app
+    from api.main import app
+  File "pyimod02_importers.py", line 457, in exec_module
+  File "api\main.py", line 40, in <module>
+    from prometheus_client import Counter, Histogram, generate_latest, CONTENT_TYPE_LATEST
+ModuleNotFoundError: No module named 'prometheus_client'
+
+2026-07-12 14:10:36 | Runtime info: python=3.12.6 frozen=True cwd=C:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator - Copy
+2026-07-12 14:10:36 | SERVER CRASH: No module named 'prometheus_client'
+Traceback (most recent call last):
+  File "web_launcher.py", line 192, in <module>
+    run_server()
+  File "web_launcher.py", line 109, in run_server
+    app, logger = build_web_app()
+                  ^^^^^^^^^^^^^^^
+  File "web_launcher.py", line 45, in build_web_app
+    from api.main import app
+  File "pyimod02_importers.py", line 457, in exec_module
+  File "api\main.py", line 40, in <module>
+    from prometheus_client import Counter, Histogram, generate_latest, CONTENT_TYPE_LATEST
+ModuleNotFoundError: No module named 'prometheus_client'
+
+2026-07-12 14:15:44 | Runtime info: python=3.12.6 frozen=True cwd=C:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator - Copy
+2026-07-12 14:15:44 | SERVER CRASH: Invalid format string
+Traceback (most recent call last):
+  File "web_launcher.py", line 192, in <module>
+    run_server()
+  File "web_launcher.py", line 109, in run_server
+    app, logger = build_web_app()
+                  ^^^^^^^^^^^^^^^
+  File "web_launcher.py", line 51, in build_web_app
+    logger.info(f"Initializing Static Assets from: {static_dir}")
+  File "utils\web_logger.py", line 43, in info
+    self._log(logging.INFO, msg, **kwargs)
+  File "utils\web_logger.py", line 54, in _log
+    "timestamp": time.strftime("%Y-%m-%dT%H:%M:%S.%fZ", time.gmtime()),
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ValueError: Invalid format string
+
+2026-07-12 14:17:58 | Runtime info: python=3.12.6 frozen=True cwd=C:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator - Copy
+2026-07-12 14:17:58 | Initializing static assets from C:\Users\bbb12\AppData\Local\Temp\_MEI312042\static
+2026-07-12 14:17:58 | Application banners and logger initialized.
+2026-07-12 14:18:00 | Starting uvicorn server on 127.0.0.1:9000
+2026-07-12 14:22:51 | Runtime info: python=3.12.6 frozen=True cwd=C:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator - Copy
+2026-07-12 14:22:51 | Initializing static assets from C:\Users\bbb12\AppData\Local\Temp\_MEI256882\static
+2026-07-12 14:22:51 | Application banners and logger initialized.
+2026-07-12 14:22:53 | Starting uvicorn server on 127.0.0.1:9000
+2026-07-12 14:27:19 | Runtime info: python=3.12.6 frozen=True cwd=C:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator - Copy
+2026-07-12 14:27:19 | Initializing static assets from C:\Users\bbb12\AppData\Local\Temp\_MEI464722\static
+2026-07-12 14:27:19 | Application banners and logger initialized.
+2026-07-12 14:27:21 | Starting uvicorn server on 127.0.0.1:9000
+2026-07-12 14:31:17 | Runtime info: python=3.12.6 frozen=True cwd=C:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator - Copy
+2026-07-12 14:31:17 | Initializing static assets from C:\Users\bbb12\AppData\Local\Temp\_MEI364322\static
+2026-07-12 14:31:17 | Application banners and logger initialized.
+2026-07-12 14:31:19 | Starting uvicorn server on 127.0.0.1:9000
+2026-07-12 14:44:28 | Runtime info: python=3.12.6 frozen=True cwd=C:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator - Copy
+2026-07-12 14:44:28 | Initializing static assets from C:\Users\bbb12\AppData\Local\Temp\_MEI353282\static
+2026-07-12 14:44:28 | Application banners and logger initialized.
+2026-07-12 14:44:28 | Port 9000 is already in use.
+Listening process PID(s): 25544
+PID file: C:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator - Copy\dist\logs\nxos_configurator.pid (pid 25544)
+Close the console window, click Stop in the web UI, or run: scripts\stop_configurator.ps1
+To replace the running instance: re-launch with --replace
+2026-07-12 14:46:36 | Runtime info: python=3.12.6 frozen=True cwd=C:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator - Copy
+2026-07-12 14:46:36 | Initializing static assets from C:\Users\bbb12\AppData\Local\Temp\_MEI484242\static
+2026-07-12 14:46:36 | Application banners and logger initialized.
+2026-07-12 14:46:38 | Starting uvicorn server on 127.0.0.1:9000
+2026-07-12 14:59:42 | Runtime info: python=3.12.6 frozen=True cwd=C:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator - Copy
+2026-07-12 14:59:42 | Initializing static assets from C:\Users\bbb12\AppData\Local\Temp\_MEI281322\static
+2026-07-12 14:59:42 | Application banners and logger initialized.
+2026-07-12 14:59:44 | Starting uvicorn server on 127.0.0.1:9000
+2026-07-12 15:07:38 | Runtime info: python=3.12.6 frozen=True cwd=C:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator - Copy
+2026-07-12 15:07:39 | Initializing static assets from C:\Users\bbb12\AppData\Local\Temp\_MEI447202\static
+2026-07-12 15:07:39 | Application banners and logger initialized.
+2026-07-12 15:07:41 | Starting uvicorn server on 127.0.0.1:9000
+2026-07-12 15:18:23 | Runtime info: python=3.12.6 frozen=True cwd=C:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator - Copy
+2026-07-12 15:18:23 | Initializing static assets from C:\Users\bbb12\AppData\Local\Temp\_MEI245562\static
+2026-07-12 15:18:23 | Application banners and logger initialized.
+2026-07-12 15:18:25 | Starting uvicorn server on 127.0.0.1:9000
+2026-07-12 15:43:02 | Runtime info: python=3.12.6 frozen=True cwd=C:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator - Copy
+2026-07-12 15:43:03 | Initializing static assets from C:\Users\bbb12\AppData\Local\Temp\_MEI319162\static
+2026-07-12 15:43:03 | Application banners and logger initialized.
+2026-07-12 15:43:05 | Starting uvicorn server on 127.0.0.1:9000
+2026-07-12 15:49:49 | Runtime info: python=3.12.6 frozen=True cwd=C:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator - Copy
+2026-07-12 15:49:50 | Initializing static assets from C:\Users\bbb12\AppData\Local\Temp\_MEI440722\static
+2026-07-12 15:49:50 | Application banners and logger initialized.
+2026-07-12 15:49:52 | Starting uvicorn server on 127.0.0.1:9000
+2026-07-12 16:12:51 | Runtime info: python=3.12.6 frozen=True cwd=C:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator - Copy
+2026-07-12 16:12:52 | Initializing static assets from C:\Users\bbb12\AppData\Local\Temp\_MEI475282\static
+2026-07-12 16:12:52 | Application banners and logger initialized.
+2026-07-12 16:12:54 | Starting uvicorn server on 127.0.0.1:9000
+2026-07-12 16:18:17 | Runtime info: python=3.12.6 frozen=True cwd=C:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator - Copy
+2026-07-12 16:18:17 | Initializing static assets from C:\Users\bbb12\AppData\Local\Temp\_MEI391962\static
+2026-07-12 16:18:17 | Application banners and logger initialized.
+2026-07-12 16:18:19 | Starting uvicorn server on 127.0.0.1:9000
+2026-07-12 16:32:07 | Runtime info: python=3.12.6 frozen=True cwd=C:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator - Copy
+2026-07-12 16:32:07 | Initializing static assets from C:\Users\bbb12\AppData\Local\Temp\_MEI430842\static
+2026-07-12 16:32:07 | Application banners and logger initialized.
+2026-07-12 16:32:09 | Starting uvicorn server on 127.0.0.1:9000
+2026-07-12 16:45:52 | Runtime info: python=3.14.4 frozen=False cwd=C:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator - Copy
+2026-07-12 16:45:52 | Initializing static assets from C:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator - Copy\static
+2026-07-12 16:45:52 | Application banners and logger initialized.
+2026-07-12 16:45:55 | Starting uvicorn server on 127.0.0.1:9000
+2026-07-13 09:10:58 | Runtime info: python=3.14.4 frozen=False cwd=C:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator - Copy
+2026-07-13 09:10:58 | Initializing static assets from C:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator - Copy\static
+2026-07-13 09:10:58 | Application banners and logger initialized.
+2026-07-13 09:10:58 | SERVER CRASH: 'ComprehensiveLogger' object has no attribute '_log_error'
+Traceback (most recent call last):
+  File "C:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator - Copy\web_launcher.py", line 196, in <module>
+    run_server()
+    ~~~~~~~~~~^^
+  File "C:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator - Copy\web_launcher.py", line 131, in run_server
+    logger.error(message)
+    ~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator - Copy\utils\web_logger.py", line 94, in error
+    self._log_error(msg, **kwargs)
+    ^^^^^^^^^^^^^^^
+AttributeError: 'ComprehensiveLogger' object has no attribute '_log_error'. Did you mean: 'log_error'?
+
+2026-07-13 09:11:25 | Runtime info: python=3.14.4 frozen=False cwd=C:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator - Copy
+2026-07-13 09:11:25 | Initializing static assets from C:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator - Copy\static
+2026-07-13 09:11:25 | Application banners and logger initialized.
+2026-07-13 09:11:27 | Starting uvicorn server on 127.0.0.1:9000
+2026-07-13 09:16:21 | Runtime info: python=3.14.4 frozen=False cwd=C:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator - Copy
+2026-07-13 09:16:22 | Initializing static assets from C:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator - Copy\static
+2026-07-13 09:16:22 | Application banners and logger initialized.
+2026-07-13 09:16:24 | Starting uvicorn server on 127.0.0.1:9000
+2026-07-13 09:27:18 | Runtime info: python=3.14.4 frozen=False cwd=C:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator - Copy
+2026-07-13 09:27:18 | Initializing static assets from C:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator - Copy\static
+2026-07-13 09:27:18 | Application banners and logger initialized.
+2026-07-13 09:27:20 | Starting uvicorn server on 127.0.0.1:9000
+2026-07-13 09:31:49 | Runtime info: python=3.14.4 frozen=False cwd=C:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator - Copy
+2026-07-13 09:31:49 | Initializing static assets from C:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator - Copy\static
+2026-07-13 09:31:49 | Application banners and logger initialized.
+2026-07-13 09:31:51 | Starting uvicorn server on 127.0.0.1:9000
+2026-07-16 10:36:33 | Runtime info: python=3.14.4 frozen=False cwd=C:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator - Copy
+2026-07-16 10:36:33 | Initializing static assets from C:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator - Copy\static
+2026-07-16 10:36:33 | Application banners and logger initialized.
+2026-07-16 10:36:35 | Starting uvicorn server on 127.0.0.1:9000
+2026-07-16 14:56:11 | Runtime info: python=3.14.4 frozen=False cwd=C:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator - Copy
+2026-07-16 14:56:11 | Initializing static assets from C:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator - Copy\static
+2026-07-16 14:56:11 | Application banners and logger initialized.
+2026-07-16 14:56:13 | Starting uvicorn server on 127.0.0.1:9000
+2026-07-19 10:22:18 | Runtime info: python=3.14.4 frozen=False cwd=C:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator - Copy
+2026-07-19 10:22:18 | Initializing static assets from C:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator - Copy\static
+2026-07-19 10:22:18 | Application banners and logger initialized.
+2026-07-19 10:22:18 | SERVER CRASH: 'ComprehensiveLogger' object has no attribute '_log_error'
+Traceback (most recent call last):
+  File "C:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator - Copy\web_launcher.py", line 196, in <module>
+    run_server()
+    ~~~~~~~~~~^^
+  File "C:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator - Copy\web_launcher.py", line 131, in run_server
+    logger.error(message)
+    ~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator - Copy\utils\web_logger.py", line 94, in error
+    self._log_error(msg, **kwargs)
+    ^^^^^^^^^^^^^^^
+AttributeError: 'ComprehensiveLogger' object has no attribute '_log_error'. Did you mean: 'log_error'?
+
+2026-07-19 10:22:47 | Runtime info: python=3.14.4 frozen=False cwd=C:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator - Copy
+2026-07-19 10:22:48 | Initializing static assets from C:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator - Copy\static
+2026-07-19 10:22:48 | Application banners and logger initialized.
+2026-07-19 10:22:52 | Starting uvicorn server on 127.0.0.1:9000
+2026-07-19 10:44:52 | Runtime info: python=3.14.4 frozen=False cwd=C:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator - Copy
+2026-07-19 10:44:52 | Initializing static assets from C:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator - Copy\static
+2026-07-19 10:44:52 | Application banners and logger initialized.
+2026-07-19 10:44:56 | Starting uvicorn server on 127.0.0.1:9000
+2026-07-19 10:50:46 | Runtime info: python=3.14.4 frozen=False cwd=C:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator - Copy
+2026-07-19 10:50:46 | Initializing static assets from C:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator - Copy\static
+2026-07-19 10:50:46 | Application banners and logger initialized.
+2026-07-19 10:50:50 | Starting uvicorn server on 127.0.0.1:9000
+2026-07-19 10:54:33 | Runtime info: python=3.14.4 frozen=False cwd=C:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator - Copy
+2026-07-19 10:54:34 | Initializing static assets from C:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator - Copy\static
+2026-07-19 10:54:34 | Application banners and logger initialized.
+2026-07-19 10:54:38 | Starting uvicorn server on 127.0.0.1:9000
+2026-07-19 11:07:03 | Runtime info: python=3.14.4 frozen=False cwd=C:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator - Copy
+2026-07-19 11:07:03 | Initializing static assets from C:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator - Copy\static
+2026-07-19 11:07:03 | Application banners and logger initialized.
+2026-07-19 11:07:07 | Starting uvicorn server on 127.0.0.1:9000
+2026-07-19 11:29:08 | Runtime info: python=3.14.4 frozen=False cwd=C:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator - Copy
+2026-07-19 11:29:09 | Initializing static assets from C:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator - Copy\static
+2026-07-19 11:29:09 | Application banners and logger initialized.
+2026-07-19 11:29:09 | Replaced prior instance on port 9000: PIDs [9872]
+2026-07-19 11:29:11 | Starting uvicorn server on 127.0.0.1:9000
+2026-07-19 11:32:32 | Runtime info: python=3.14.4 frozen=False cwd=C:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator - Copy
+2026-07-19 11:32:32 | Initializing static assets from C:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator - Copy\static
+2026-07-19 11:32:32 | Application banners and logger initialized.
+2026-07-19 11:32:32 | Replaced prior instance on port 9000: PIDs [23440]
+2026-07-19 11:32:35 | Starting uvicorn server on 127.0.0.1:9000
+2026-07-19 11:32:46 | Signal 2 received.
+2026-07-19 11:33:06 | Runtime info: python=3.14.4 frozen=False cwd=C:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator - Copy
+2026-07-19 11:33:07 | Initializing static assets from C:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator - Copy\static
+2026-07-19 11:33:07 | Application banners and logger initialized.
+2026-07-19 11:33:11 | Starting uvicorn server on 127.0.0.1:9000
+2026-07-19 11:35:08 | Runtime info: python=3.14.4 frozen=False cwd=C:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator - Copy
+2026-07-19 11:35:09 | Initializing static assets from C:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator - Copy\static
+2026-07-19 11:35:09 | Application banners and logger initialized.
+2026-07-19 11:35:13 | Starting uvicorn server on 127.0.0.1:9000
+2026-07-19 13:34:00 | Runtime info: python=3.14.4 frozen=False cwd=C:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator - Copy
+2026-07-19 13:34:01 | Initializing static assets from C:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator - Copy\static
+2026-07-19 13:34:01 | Application banners and logger initialized.
+2026-07-19 13:34:03 | Starting uvicorn server on 127.0.0.1:9000
+2026-07-19 13:57:59 | Runtime info: python=3.14.4 frozen=False cwd=C:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator - Copy
+2026-07-19 13:57:59 | Initializing static assets from C:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator - Copy\static
+2026-07-19 13:57:59 | Application banners and logger initialized.
+2026-07-19 13:58:01 | Starting uvicorn server on 127.0.0.1:9000
+2026-07-19 14:05:07 | Runtime info: python=3.14.4 frozen=False cwd=C:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator - Copy
+2026-07-19 14:05:07 | Initializing static assets from C:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator - Copy\static
+2026-07-19 14:05:07 | Application banners and logger initialized.
+2026-07-19 14:05:09 | Starting uvicorn server on 127.0.0.1:9000
+2026-07-19 14:34:17 | Runtime info: python=3.14.4 frozen=False cwd=C:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator - Copy
+2026-07-19 14:34:17 | Initializing static assets from C:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator - Copy\static
+2026-07-19 14:34:17 | Application banners and logger initialized.
+2026-07-19 14:34:17 | Port 9000 is already in use.
+Listening process PID(s): 22468
+PID file: C:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator - Copy\logs\nxos_configurator.pid (pid 22468)
+Close the console window, click Stop in the web UI, or run: scripts\stop_configurator.ps1
+To replace the running instance: re-launch with --replace
+2026-07-22 14:54:29 | Runtime info: python=3.14.4 frozen=False cwd=C:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator - Copy
+2026-07-22 14:54:30 | Initializing static assets from C:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator - Copy\static
+2026-07-22 14:54:30 | Application banners and logger initialized.
+2026-07-22 14:54:32 | Starting uvicorn server on 127.0.0.1:9000
+2026-07-22 14:56:37 | Runtime info: python=3.14.4 frozen=False cwd=C:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator - Copy
+2026-07-22 14:56:37 | Initializing static assets from C:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator - Copy\static
+2026-07-22 14:56:37 | Application banners and logger initialized.
+2026-07-22 14:56:39 | Starting uvicorn server on 127.0.0.1:9000
+2026-07-23 11:14:05 | Runtime info: python=3.14.4 frozen=False cwd=C:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator - Copy
+2026-07-23 11:14:06 | Initializing static assets from C:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator - Copy\static
+2026-07-23 11:14:06 | Application banners and logger initialized.
+2026-07-23 11:14:08 | Starting uvicorn server on 127.0.0.1:9000
+2026-07-23 12:20:45 | Runtime info: python=3.14.4 frozen=False cwd=C:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator - Copy
+2026-07-23 12:20:46 | Initializing static assets from C:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator - Copy\static
+2026-07-23 12:20:46 | Application banners and logger initialized.
+2026-07-23 12:20:48 | Starting uvicorn server on 127.0.0.1:9000
+2026-07-23 12:51:39 | Runtime info: python=3.14.4 frozen=False cwd=C:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator - Copy
+2026-07-23 12:51:40 | Initializing static assets from C:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator - Copy\static
+2026-07-23 12:51:40 | Application banners and logger initialized.
+2026-07-23 12:51:42 | Starting uvicorn server on 127.0.0.1:9000
+2026-07-23 12:52:56 | Runtime info: python=3.14.4 frozen=False cwd=C:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator - Copy
+2026-07-23 12:52:57 | Initializing static assets from C:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator - Copy\static
+2026-07-23 12:52:57 | Application banners and logger initialized.
+2026-07-23 12:52:59 | Starting uvicorn server on 127.0.0.1:9000
+2026-07-23 12:53:53 | Runtime info: python=3.14.4 frozen=False cwd=C:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator - Copy
+2026-07-23 12:53:54 | Initializing static assets from C:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator - Copy\static
+2026-07-23 12:53:54 | Application banners and logger initialized.
+2026-07-23 12:53:56 | Starting uvicorn server on 127.0.0.1:9000
+2026-07-23 12:54:52 | Runtime info: python=3.14.4 frozen=False cwd=C:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator - Copy
+2026-07-23 12:54:53 | Initializing static assets from C:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator - Copy\static
+2026-07-23 12:54:53 | Application banners and logger initialized.
+2026-07-23 12:54:55 | Starting uvicorn server on 127.0.0.1:9000
+2026-07-23 13:13:43 | Runtime info: python=3.14.4 frozen=False cwd=C:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator - Copy
+2026-07-23 13:13:43 | Initializing static assets from C:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator - Copy\static
+2026-07-23 13:13:43 | Application banners and logger initialized.
+2026-07-23 13:13:45 | Starting uvicorn server on 127.0.0.1:9000
+2026-07-23 13:23:51 | Runtime info: python=3.14.4 frozen=False cwd=C:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator - Copy
+2026-07-23 13:23:51 | Initializing static assets from C:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator - Copy\static
+2026-07-23 13:23:51 | Application banners and logger initialized.
+2026-07-23 13:23:53 | Starting uvicorn server on 127.0.0.1:9000
+2026-07-23 13:25:44 | Runtime info: python=3.14.4 frozen=False cwd=C:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator - Copy
+2026-07-23 13:25:44 | Initializing static assets from C:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator - Copy\static
+2026-07-23 13:25:44 | Application banners and logger initialized.
+2026-07-23 13:25:46 | Starting uvicorn server on 127.0.0.1:9000
+2026-07-23 13:48:36 | Runtime info: python=3.14.4 frozen=False cwd=C:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator - Copy
+2026-07-23 13:48:36 | Initializing static assets from C:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator - Copy\static
+2026-07-23 13:48:36 | Application banners and logger initialized.
+2026-07-23 13:48:38 | Starting uvicorn server on 127.0.0.1:9000
+2026-07-23 14:06:49 | Runtime info: python=3.14.4 frozen=False cwd=C:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator - Copy
+2026-07-23 14:06:50 | Initializing static assets from C:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator - Copy\static
+2026-07-23 14:06:50 | Application banners and logger initialized.
+2026-07-23 14:06:52 | Starting uvicorn server on 127.0.0.1:9000
+2026-07-23 14:10:12 | Runtime info: python=3.14.4 frozen=False cwd=C:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator - Copy
+2026-07-23 14:10:13 | Initializing static assets from C:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator - Copy\static
+2026-07-23 14:10:13 | Application banners and logger initialized.
+2026-07-23 14:10:15 | Starting uvicorn server on 127.0.0.1:9000
+2026-07-23 14:12:52 | Runtime info: python=3.14.4 frozen=False cwd=C:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator - Copy
+2026-07-23 14:12:52 | Initializing static assets from C:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator - Copy\static
+2026-07-23 14:12:53 | Application banners and logger initialized.
+2026-07-23 14:12:55 | Starting uvicorn server on 127.0.0.1:9000
+2026-07-23 14:19:14 | Runtime info: python=3.14.4 frozen=False cwd=C:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator - Copy
+2026-07-23 14:19:14 | Initializing static assets from C:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator - Copy\static
+2026-07-23 14:19:14 | Application banners and logger initialized.
+2026-07-23 14:19:16 | Starting uvicorn server on 127.0.0.1:9000
+2026-07-23 14:26:38 | Runtime info: python=3.14.4 frozen=False cwd=C:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator - Copy
+2026-07-23 14:26:38 | Initializing static assets from C:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator - Copy\static
+2026-07-23 14:26:38 | Application banners and logger initialized.
+2026-07-23 14:26:40 | Starting uvicorn server on 127.0.0.1:9000
+2026-07-23 15:59:44 | Runtime info: python=3.14.4 frozen=False cwd=C:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator - Copy
+2026-07-23 15:59:44 | Initializing static assets from C:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator - Copy\static
+2026-07-23 15:59:44 | Application banners and logger initialized.
+2026-07-23 15:59:46 | Starting uvicorn server on 127.0.0.1:9000
+2026-07-26 08:14:41 | Runtime info: python=3.14.4 frozen=False cwd=c:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator - Copy
+2026-07-26 08:14:42 | Initializing static assets from c:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator - Copy\static
+2026-07-26 08:14:42 | Application banners and logger initialized.
+2026-07-26 08:14:44 | Starting uvicorn server on 127.0.0.1:9000
+2026-07-26 08:15:30 | Runtime info: python=3.14.4 frozen=False cwd=c:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator - Copy
+2026-07-26 08:15:31 | Initializing static assets from c:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator - Copy\static
+2026-07-26 08:15:31 | Application banners and logger initialized.
+2026-07-26 08:15:33 | Starting uvicorn server on 127.0.0.1:9000
+2026-07-26 08:23:00 | Runtime info: python=3.14.4 frozen=False cwd=c:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator - Copy
+2026-07-26 08:23:00 | Initializing static assets from c:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator - Copy\static
+2026-07-26 08:23:00 | Application banners and logger initialized.
+2026-07-26 08:23:02 | Starting uvicorn server on 127.0.0.1:9000
+2026-07-26 08:27:23 | Runtime info: python=3.14.4 frozen=False cwd=c:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator - Copy
+2026-07-26 08:27:23 | Initializing static assets from c:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator - Copy\static
+2026-07-26 08:27:23 | Application banners and logger initialized.
+2026-07-26 08:27:25 | Starting uvicorn server on 127.0.0.1:9000
+2026-07-26 08:28:46 | Runtime info: python=3.14.4 frozen=False cwd=c:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator - Copy
+2026-07-26 08:28:46 | Initializing static assets from c:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator - Copy\static
+2026-07-26 08:28:46 | Application banners and logger initialized.
+2026-07-26 08:28:48 | Starting uvicorn server on 127.0.0.1:9000
+2026-07-26 08:29:05 | Runtime info: python=3.14.4 frozen=False cwd=c:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator - Copy
+2026-07-26 08:29:05 | Initializing static assets from c:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator - Copy\static
+2026-07-26 08:29:05 | Application banners and logger initialized.
+2026-07-26 08:29:07 | Starting uvicorn server on 127.0.0.1:9000
+2026-07-26 08:29:15 | Runtime info: python=3.14.4 frozen=False cwd=c:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator - Copy
+2026-07-26 08:29:15 | Initializing static assets from c:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator - Copy\static
+2026-07-26 08:29:15 | Application banners and logger initialized.
+2026-07-26 08:29:15 | Port 9000 is already in use.
+Listening process PID(s): 23704
+PID file: c:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator - Copy\logs\nxos_configurator.pid (pid 23704)
+Close the console window, click Stop in the web UI, or run: scripts\stop_configurator.ps1
+To replace the running instance: re-launch with --replace
+2026-07-26 08:31:30 | Runtime info: python=3.14.4 frozen=False cwd=C:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator - Copy
+2026-07-26 08:31:30 | Initializing static assets from C:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator - Copy\static
+2026-07-26 08:31:30 | Application banners and logger initialized.
+2026-07-26 08:31:32 | Starting uvicorn server on 127.0.0.1:9000
+2026-07-26 08:33:24 | Runtime info: python=3.14.4 frozen=False cwd=c:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator - Copy
+2026-07-26 08:33:24 | Initializing static assets from c:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator - Copy\static
+2026-07-26 08:33:24 | Application banners and logger initialized.
+2026-07-26 08:33:24 | Port 9000 is already in use.
+Listening process PID(s): 15316
+PID file: c:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator - Copy\logs\nxos_configurator.pid (pid 15316)
+Close the console window, click Stop in the web UI, or run: scripts\stop_configurator.ps1
+To replace the running instance: re-launch with --replace
+2026-07-26 08:39:37 | Runtime info: python=3.14.4 frozen=False cwd=c:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator - Copy
+2026-07-26 08:39:37 | Initializing static assets from c:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator - Copy\static
+2026-07-26 08:39:37 | Application banners and logger initialized.
+2026-07-26 08:39:37 | Port 9000 is already in use.
+Listening process PID(s): 15316
+PID file: c:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator - Copy\logs\nxos_configurator.pid (pid 15316)
+Close the console window, click Stop in the web UI, or run: scripts\stop_configurator.ps1
+To replace the running instance: re-launch with --replace
+2026-07-26 08:41:03 | Runtime info: python=3.14.4 frozen=False cwd=c:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator - Copy
+2026-07-26 08:41:03 | Initializing static assets from c:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator - Copy\static
+2026-07-26 08:41:03 | Application banners and logger initialized.
+2026-07-26 08:41:03 | Port 9000 is already in use.
+Listening process PID(s): 15316
+PID file: c:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator - Copy\logs\nxos_configurator.pid (pid 15316)
+Close the console window, click Stop in the web UI, or run: scripts\stop_configurator.ps1
+To replace the running instance: re-launch with --replace
+2026-07-26 08:42:33 | Runtime info: python=3.14.4 frozen=False cwd=c:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator - Copy
+2026-07-26 08:42:34 | Initializing static assets from c:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator - Copy\static
+2026-07-26 08:42:34 | Application banners and logger initialized.
+2026-07-26 08:42:34 | Port 9000 is already in use.
+Listening process PID(s): 15316
+PID file: c:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator - Copy\logs\nxos_configurator.pid (pid 15316)
+Close the console window, click Stop in the web UI, or run: scripts\stop_configurator.ps1
+To replace the running instance: re-launch with --replace
+2026-07-26 08:44:52 | Runtime info: python=3.14.4 frozen=False cwd=c:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator - Copy
+2026-07-26 08:44:53 | Initializing static assets from c:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator - Copy\static
+2026-07-26 08:44:53 | Application banners and logger initialized.
+2026-07-26 08:44:53 | Port 9000 is already in use.
+Listening process PID(s): 15316
+PID file: c:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator - Copy\logs\nxos_configurator.pid (pid 15316)
+Close the console window, click Stop in the web UI, or run: scripts\stop_configurator.ps1
+To replace the running instance: re-launch with --replace
+2026-07-26 08:45:37 | Runtime info: python=3.14.4 frozen=False cwd=c:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator - Copy
+2026-07-26 08:45:37 | Initializing static assets from c:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator - Copy\static
+2026-07-26 08:45:37 | Application banners and logger initialized.
+2026-07-26 08:45:37 | Port 9000 is already in use.
+Listening process PID(s): 15316
+PID file: c:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator - Copy\logs\nxos_configurator.pid (pid 15316)
+Close the console window, click Stop in the web UI, or run: scripts\stop_configurator.ps1
+To replace the running instance: re-launch with --replace
+2026-07-26 08:46:44 | Runtime info: python=3.14.4 frozen=False cwd=c:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator - Copy
+2026-07-26 08:46:45 | Initializing static assets from c:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator - Copy\static
+2026-07-26 08:46:45 | Application banners and logger initialized.
+2026-07-26 08:46:45 | Port 9000 is already in use.
+Listening process PID(s): 15316
+PID file: c:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator - Copy\logs\nxos_configurator.pid (pid 15316)
+Close the console window, click Stop in the web UI, or run: scripts\stop_configurator.ps1
+To replace the running instance: re-launch with --replace
+2026-07-26 08:47:39 | Runtime info: python=3.14.4 frozen=False cwd=c:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator - Copy
+2026-07-26 08:47:39 | Initializing static assets from c:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator - Copy\static
+2026-07-26 08:47:39 | Application banners and logger initialized.
+2026-07-26 08:47:39 | Port 9000 is already in use.
+Listening process PID(s): 15316
+PID file: c:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator - Copy\logs\nxos_configurator.pid (pid 15316)
+Close the console window, click Stop in the web UI, or run: scripts\stop_configurator.ps1
+To replace the running instance: re-launch with --replace
+2026-07-26 08:48:32 | Runtime info: python=3.14.4 frozen=False cwd=c:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator - Copy
+2026-07-26 08:48:33 | Initializing static assets from c:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator - Copy\static
+2026-07-26 08:48:33 | Application banners and logger initialized.
+2026-07-26 08:48:33 | Port 9000 is already in use.
+Listening process PID(s): 15316
+PID file: c:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator - Copy\logs\nxos_configurator.pid (pid 15316)
+Close the console window, click Stop in the web UI, or run: scripts\stop_configurator.ps1
+To replace the running instance: re-launch with --replace
+2026-07-26 08:50:41 | Runtime info: python=3.14.4 frozen=False cwd=c:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator - Copy
+2026-07-26 08:50:41 | Initializing static assets from c:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator - Copy\static
+2026-07-26 08:50:41 | Application banners and logger initialized.
+2026-07-26 08:50:41 | Port 9000 is already in use.
+Listening process PID(s): 15316
+PID file: c:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator - Copy\logs\nxos_configurator.pid (pid 15316)
+Close the console window, click Stop in the web UI, or run: scripts\stop_configurator.ps1
+To replace the running instance: re-launch with --replace
+2026-07-26 08:51:07 | Runtime info: python=3.14.4 frozen=False cwd=c:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator - Copy
+2026-07-26 08:51:07 | Initializing static assets from c:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator - Copy\static
+2026-07-26 08:51:07 | Application banners and logger initialized.
+2026-07-26 08:51:07 | Port 9000 is already in use.
+Listening process PID(s): 15316
+PID file: c:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator - Copy\logs\nxos_configurator.pid (pid 15316)
+Close the console window, click Stop in the web UI, or run: scripts\stop_configurator.ps1
+To replace the running instance: re-launch with --replace
+2026-07-26 08:51:20 | Runtime info: python=3.14.4 frozen=False cwd=c:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator - Copy
+2026-07-26 08:51:20 | Initializing static assets from c:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator - Copy\static
+2026-07-26 08:51:20 | Application banners and logger initialized.
+2026-07-26 08:51:20 | Port 9000 is already in use.
+Listening process PID(s): 15316
+PID file: c:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator - Copy\logs\nxos_configurator.pid (pid 15316)
+Close the console window, click Stop in the web UI, or run: scripts\stop_configurator.ps1
+To replace the running instance: re-launch with --replace
+2026-07-26 08:51:40 | Runtime info: python=3.14.4 frozen=False cwd=c:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator - Copy
+2026-07-26 08:51:40 | Initializing static assets from c:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator - Copy\static
+2026-07-26 08:51:40 | Application banners and logger initialized.
+2026-07-26 08:51:40 | Port 9000 is already in use.
+Listening process PID(s): 15316
+PID file: c:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator - Copy\logs\nxos_configurator.pid (pid 15316)
+Close the console window, click Stop in the web UI, or run: scripts\stop_configurator.ps1
+To replace the running instance: re-launch with --replace
+2026-07-26 08:55:56 | Runtime info: python=3.14.4 frozen=False cwd=c:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator - Copy
+2026-07-26 08:55:57 | Initializing static assets from c:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator - Copy\static
+2026-07-26 08:55:57 | Application banners and logger initialized.
+2026-07-26 08:55:57 | Port 9000 is already in use.
+Listening process PID(s): 15316
+PID file: c:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator - Copy\logs\nxos_configurator.pid (pid 15316)
+Close the console window, click Stop in the web UI, or run: scripts\stop_configurator.ps1
+To replace the running instance: re-launch with --replace
+2026-07-26 08:56:24 | Runtime info: python=3.14.4 frozen=False cwd=c:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator - Copy
+2026-07-26 08:56:24 | Initializing static assets from c:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator - Copy\static
+2026-07-26 08:56:24 | Application banners and logger initialized.
+2026-07-26 08:56:24 | Port 9000 is already in use.
+Listening process PID(s): 15316
+PID file: c:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator - Copy\logs\nxos_configurator.pid (pid 15316)
+Close the console window, click Stop in the web UI, or run: scripts\stop_configurator.ps1
+To replace the running instance: re-launch with --replace
+2026-07-26 08:56:37 | Runtime info: python=3.14.4 frozen=False cwd=c:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator - Copy
+2026-07-26 08:56:37 | Initializing static assets from c:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator - Copy\static
+2026-07-26 08:56:37 | Application banners and logger initialized.
+2026-07-26 08:56:37 | Port 9000 is already in use.
+Listening process PID(s): 15316
+PID file: c:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator - Copy\logs\nxos_configurator.pid (pid 15316)
+Close the console window, click Stop in the web UI, or run: scripts\stop_configurator.ps1
+To replace the running instance: re-launch with --replace
+2026-07-26 08:56:57 | Runtime info: python=3.14.4 frozen=False cwd=c:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator - Copy
+2026-07-26 08:56:57 | Initializing static assets from c:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator - Copy\static
+2026-07-26 08:56:57 | Application banners and logger initialized.
+2026-07-26 08:56:57 | Port 9000 is already in use.
+Listening process PID(s): 15316
+PID file: c:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator - Copy\logs\nxos_configurator.pid (pid 15316)
+Close the console window, click Stop in the web UI, or run: scripts\stop_configurator.ps1
+To replace the running instance: re-launch with --replace
+2026-07-26 08:59:21 | Runtime info: python=3.14.4 frozen=False cwd=c:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator - Copy
+2026-07-26 08:59:21 | Initializing static assets from c:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator - Copy\static
+2026-07-26 08:59:21 | Application banners and logger initialized.
+2026-07-26 08:59:21 | Port 9000 is already in use.
+Listening process PID(s): 15316
+PID file: c:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator - Copy\logs\nxos_configurator.pid (pid 15316)
+Close the console window, click Stop in the web UI, or run: scripts\stop_configurator.ps1
+To replace the running instance: re-launch with --replace
+2026-07-26 09:00:09 | Runtime info: python=3.14.4 frozen=False cwd=c:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator - Copy
+2026-07-26 09:00:09 | Initializing static assets from c:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator - Copy\static
+2026-07-26 09:00:09 | Application banners and logger initialized.
+2026-07-26 09:00:09 | Port 9000 is already in use.
+Listening process PID(s): 15316
+PID file: c:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator - Copy\logs\nxos_configurator.pid (pid 15316)
+Close the console window, click Stop in the web UI, or run: scripts\stop_configurator.ps1
+To replace the running instance: re-launch with --replace
+2026-07-26 09:02:20 | Runtime info: python=3.14.4 frozen=False cwd=c:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator - Copy
+2026-07-26 09:02:21 | Initializing static assets from c:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator - Copy\static
+2026-07-26 09:02:21 | Application banners and logger initialized.
+2026-07-26 09:02:21 | Port 9000 is already in use.
+Listening process PID(s): 15316
+PID file: c:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator - Copy\logs\nxos_configurator.pid (pid 15316)
+Close the console window, click Stop in the web UI, or run: scripts\stop_configurator.ps1
+To replace the running instance: re-launch with --replace
+2026-07-26 09:02:30 | Runtime info: python=3.14.4 frozen=False cwd=c:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator - Copy
+2026-07-26 09:02:30 | Initializing static assets from c:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator - Copy\static
+2026-07-26 09:02:30 | Application banners and logger initialized.
+2026-07-26 09:02:30 | Port 9000 is already in use.
+Listening process PID(s): 15316
+PID file: c:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator - Copy\logs\nxos_configurator.pid (pid 15316)
+Close the console window, click Stop in the web UI, or run: scripts\stop_configurator.ps1
+To replace the running instance: re-launch with --replace
+2026-07-26 09:02:44 | Runtime info: python=3.14.4 frozen=False cwd=c:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator - Copy
+2026-07-26 09:02:45 | Initializing static assets from c:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator - Copy\static
+2026-07-26 09:02:45 | Application banners and logger initialized.
+2026-07-26 09:02:45 | Port 9000 is already in use.
+Listening process PID(s): 15316
+PID file: c:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator - Copy\logs\nxos_configurator.pid (pid 15316)
+Close the console window, click Stop in the web UI, or run: scripts\stop_configurator.ps1
+To replace the running instance: re-launch with --replace
+2026-07-26 09:03:04 | Runtime info: python=3.14.4 frozen=False cwd=c:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator - Copy
+2026-07-26 09:03:04 | Initializing static assets from c:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator - Copy\static
+2026-07-26 09:03:04 | Application banners and logger initialized.
+2026-07-26 09:03:04 | Port 9000 is already in use.
+Listening process PID(s): 15316
+PID file: c:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator - Copy\logs\nxos_configurator.pid (pid 15316)
+Close the console window, click Stop in the web UI, or run: scripts\stop_configurator.ps1
+To replace the running instance: re-launch with --replace
+2026-07-26 09:05:16 | Runtime info: python=3.14.4 frozen=False cwd=c:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator - Copy
+2026-07-26 09:05:16 | Initializing static assets from c:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator - Copy\static
+2026-07-26 09:05:16 | Application banners and logger initialized.
+2026-07-26 09:05:16 | Port 9000 is already in use.
+Listening process PID(s): 15316
+PID file: c:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator - Copy\logs\nxos_configurator.pid (pid 15316)
+Close the console window, click Stop in the web UI, or run: scripts\stop_configurator.ps1
+To replace the running instance: re-launch with --replace
+2026-07-26 09:08:16 | Runtime info: python=3.14.4 frozen=False cwd=C:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator - Copy
+2026-07-26 09:08:16 | Initializing static assets from C:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator - Copy\static
+2026-07-26 09:08:16 | Application banners and logger initialized.
+2026-07-26 09:08:16 | Port 9000 is already in use.
+Listening process PID(s): 15316
+PID file: C:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator - Copy\logs\nxos_configurator.pid (pid 15316)
+Close the console window, click Stop in the web UI, or run: scripts\stop_configurator.ps1
+To replace the running instance: re-launch with --replace
+2026-07-26 10:44:22 | Runtime info: python=3.14.4 frozen=False cwd=c:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator - Copy
+2026-07-26 10:44:22 | Initializing static assets from c:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator - Copy\static
+2026-07-26 10:44:22 | Application banners and logger initialized.
+2026-07-26 10:44:24 | Starting uvicorn server on 127.0.0.1:9000
+2026-07-26 10:46:07 | Runtime info: python=3.14.4 frozen=False cwd=c:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator - Copy
+2026-07-26 10:46:08 | Initializing static assets from c:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator - Copy\static
+2026-07-26 10:46:08 | Application banners and logger initialized.
+2026-07-26 10:46:08 | Port 9000 is already in use.
+Listening process PID(s): 27084
+PID file: c:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator - Copy\logs\nxos_configurator.pid (pid 27084)
+Close the console window, click Stop in the web UI, or run: scripts\stop_configurator.ps1
+To replace the running instance: re-launch with --replace
+2026-07-26 10:46:53 | Runtime info: python=3.14.4 frozen=False cwd=c:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator - Copy
+2026-07-26 10:46:54 | Initializing static assets from c:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator - Copy\static
+2026-07-26 10:46:54 | Application banners and logger initialized.
+2026-07-26 10:46:54 | Port 9000 is already in use.
+Listening process PID(s): 27084
+PID file: c:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator - Copy\logs\nxos_configurator.pid (pid 27084)
+Close the console window, click Stop in the web UI, or run: scripts\stop_configurator.ps1
+To replace the running instance: re-launch with --replace
+2026-07-26 11:49:13 | Runtime info: python=3.14.4 frozen=False cwd=c:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator - Copy
+2026-07-26 11:49:14 | Initializing static assets from c:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator - Copy\static
+2026-07-26 11:49:14 | Application banners and logger initialized.
+2026-07-26 11:49:14 | Port 9000 is already in use.
+Listening process PID(s): 18240
+PID file: c:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator - Copy\logs\nxos_configurator.pid (pid 27084)
+Close the console window, click Stop in the web UI, or run: scripts\stop_configurator.ps1
+To replace the running instance: re-launch with --replace
+2026-07-26 11:50:02 | Runtime info: python=3.14.4 frozen=False cwd=c:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator - Copy
+2026-07-26 11:50:02 | Initializing static assets from c:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator - Copy\static
+2026-07-26 11:50:02 | Application banners and logger initialized.
+2026-07-26 11:50:02 | Port 9000 is already in use.
+Listening process PID(s): 18240
+PID file: c:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator - Copy\logs\nxos_configurator.pid (pid 27084)
+Close the console window, click Stop in the web UI, or run: scripts\stop_configurator.ps1
+To replace the running instance: re-launch with --replace
+2026-07-26 11:50:47 | Runtime info: python=3.14.4 frozen=False cwd=c:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator - Copy
+2026-07-26 11:50:47 | Initializing static assets from c:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator - Copy\static
+2026-07-26 11:50:47 | Application banners and logger initialized.
+2026-07-26 11:50:47 | Port 9000 is already in use.
+Listening process PID(s): 18240
+PID file: c:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator - Copy\logs\nxos_configurator.pid (pid 27084)
+Close the console window, click Stop in the web UI, or run: scripts\stop_configurator.ps1
+To replace the running instance: re-launch with --replace
+2026-07-26 12:35:05 | Runtime info: python=3.14.4 frozen=False cwd=C:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator - Copy
+2026-07-26 12:35:06 | Initializing static assets from C:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator - Copy\static
+2026-07-26 12:35:06 | Application banners and logger initialized.
+2026-07-26 12:35:08 | Starting uvicorn server on 127.0.0.1:9000
+2026-07-26 12:36:37 | Runtime info: python=3.14.4 frozen=False cwd=C:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator - Copy
+2026-07-26 12:36:37 | Initializing static assets from C:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator - Copy\static
+2026-07-26 12:36:37 | Application banners and logger initialized.
+2026-07-26 12:36:39 | Starting uvicorn server on 127.0.0.1:9000
+2026-07-26 12:59:00 | Runtime info: python=3.14.4 frozen=False cwd=C:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator - Copy
+2026-07-26 12:59:00 | Initializing static assets from C:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator - Copy\static
+2026-07-26 12:59:00 | Application banners and logger initialized.
+2026-07-26 12:59:02 | Starting uvicorn server on 127.0.0.1:9000
+2026-07-26 13:09:53 | Runtime info: python=3.14.4 frozen=False cwd=C:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator - Copy
+2026-07-26 13:09:54 | Initializing static assets from C:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator - Copy\static
+2026-07-26 13:09:54 | Application banners and logger initialized.
+2026-07-26 13:09:56 | Starting uvicorn server on 127.0.0.1:9000
+2026-07-26 13:54:19 | Runtime info: python=3.14.4 frozen=False cwd=C:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator - Copy
+2026-07-26 13:54:19 | Initializing static assets from C:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator - Copy\static
+2026-07-26 13:54:19 | Application banners and logger initialized.
+2026-07-26 13:54:21 | Starting uvicorn server on 127.0.0.1:9000
+2026-07-26 14:27:31 | Runtime info: python=3.14.4 frozen=False cwd=C:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator - Copy
+2026-07-26 14:27:32 | Initializing static assets from C:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator - Copy\static
+2026-07-26 14:27:32 | Application banners and logger initialized.
+2026-07-26 14:27:34 | Starting uvicorn server on 127.0.0.1:9000
+2026-07-26 14:45:03 | Runtime info: python=3.14.4 frozen=False cwd=C:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator - Copy
+2026-07-26 14:45:03 | Initializing static assets from C:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator - Copy\static
+2026-07-26 14:45:03 | Application banners and logger initialized.
+2026-07-26 14:45:05 | Starting uvicorn server on 127.0.0.1:9000
+2026-07-26 16:44:44 | Runtime info: python=3.14.4 frozen=False cwd=C:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator - Copy
+2026-07-26 16:44:44 | Initializing static assets from C:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator - Copy\static
+2026-07-26 16:44:44 | Application banners and logger initialized.
+2026-07-26 16:44:46 | Starting uvicorn server on 127.0.0.1:9000
+2026-07-27 10:04:27 | Runtime info: python=3.14.4 frozen=False cwd=C:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator - Copy
+2026-07-27 10:04:28 | Initializing static assets from C:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator - Copy\static
+2026-07-27 10:04:28 | Application banners and logger initialized.
+2026-07-27 10:04:30 | Starting uvicorn server on 127.0.0.1:9000
+2026-07-27 10:17:01 | Runtime info: python=3.14.4 frozen=False cwd=C:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator - Copy
+2026-07-27 10:17:01 | Initializing static assets from C:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator - Copy\static
+2026-07-27 10:17:01 | Application banners and logger initialized.
+2026-07-27 10:17:03 | Starting uvicorn server on 127.0.0.1:9000
+2026-07-27 10:47:26 | Runtime info: python=3.14.4 frozen=False cwd=C:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator - Copy
+2026-07-27 10:47:26 | Initializing static assets from C:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator - Copy\static
+2026-07-27 10:47:26 | Application banners and logger initialized.
+2026-07-27 10:47:26 | Port 9000 is already in use.
+Listening process PID(s): 20004
+PID file: C:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator - Copy\logs\nxos_configurator.pid (pid 20004)
+Close the console window, click Stop in the web UI, or run: scripts\stop_configurator.ps1
+To replace the running instance: re-launch with --replace
+2026-07-27 10:47:52 | Runtime info: python=3.14.4 frozen=False cwd=C:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator - Copy
+2026-07-27 10:47:52 | Initializing static assets from C:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator - Copy\static
+2026-07-27 10:47:52 | Application banners and logger initialized.
+2026-07-27 10:47:54 | Starting uvicorn server on 127.0.0.1:9000
+2026-07-27 10:48:54 | Runtime info: python=3.14.4 frozen=False cwd=C:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator - Copy
+2026-07-27 10:48:54 | Initializing static assets from C:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator - Copy\static
+2026-07-27 10:48:54 | Application banners and logger initialized.
+2026-07-27 10:48:56 | Starting uvicorn server on 127.0.0.1:9000
+2026-07-27 10:49:32 | Runtime info: python=3.14.4 frozen=False cwd=c:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator - Copy
+2026-07-27 10:49:33 | Initializing static assets from c:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator - Copy\static
+2026-07-27 10:49:33 | Application banners and logger initialized.
+2026-07-27 10:49:35 | Starting uvicorn server on 127.0.0.1:9000
+2026-07-27 10:53:58 | Runtime info: python=3.14.4 frozen=False cwd=c:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator - Copy
+2026-07-27 10:53:58 | Initializing static assets from c:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator - Copy\static
+2026-07-27 10:53:58 | Application banners and logger initialized.
+2026-07-27 10:53:58 | Port 9000 is already in use.
+Listening process PID(s): 30672
+PID file: c:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator - Copy\logs\nxos_configurator.pid (pid 30672)
+Close the console window, click Stop in the web UI, or run: scripts\stop_configurator.ps1
+To replace the running instance: re-launch with --replace
+2026-07-27 10:54:43 | Runtime info: python=3.14.4 frozen=False cwd=c:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator - Copy
+2026-07-27 10:54:43 | Initializing static assets from c:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator - Copy\static
+2026-07-27 10:54:43 | Application banners and logger initialized.
+2026-07-27 10:54:43 | Port 9000 is already in use.
+Listening process PID(s): 30672
+PID file: c:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator - Copy\logs\nxos_configurator.pid (pid 30672)
+Close the console window, click Stop in the web UI, or run: scripts\stop_configurator.ps1
+To replace the running instance: re-launch with --replace
+2026-07-27 10:55:29 | Runtime info: python=3.14.4 frozen=False cwd=c:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator - Copy
+2026-07-27 10:55:29 | Initializing static assets from c:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator - Copy\static
+2026-07-27 10:55:29 | Application banners and logger initialized.
+2026-07-27 10:55:29 | Port 9000 is already in use.
+Listening process PID(s): 30672
+PID file: c:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator - Copy\logs\nxos_configurator.pid (pid 30672)
+Close the console window, click Stop in the web UI, or run: scripts\stop_configurator.ps1
+To replace the running instance: re-launch with --replace
+2026-07-27 10:58:42 | Runtime info: python=3.14.4 frozen=False cwd=c:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator - Copy
+2026-07-27 10:58:42 | Initializing static assets from c:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator - Copy\static
+2026-07-27 10:58:42 | Application banners and logger initialized.
+2026-07-27 10:58:42 | Port 9000 is already in use.
+Listening process PID(s): 30672
+PID file: c:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator - Copy\logs\nxos_configurator.pid (pid 30672)
+Close the console window, click Stop in the web UI, or run: scripts\stop_configurator.ps1
+To replace the running instance: re-launch with --replace
+2026-07-27 11:01:35 | Runtime info: python=3.14.4 frozen=False cwd=C:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator - Copy
+2026-07-27 11:01:36 | Initializing static assets from C:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator - Copy\static
+2026-07-27 11:01:36 | Application banners and logger initialized.
+2026-07-27 11:01:36 | Port 9000 is already in use.
+Listening process PID(s): 30672
+PID file: C:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator - Copy\logs\nxos_configurator.pid (pid 30672)
+Close the console window, click Stop in the web UI, or run: scripts\stop_configurator.ps1
+To replace the running instance: re-launch with --replace
+2026-07-27 11:19:21 | Runtime info: python=3.14.4 frozen=False cwd=C:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator - Copy
+2026-07-27 11:19:21 | Initializing static assets from C:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator - Copy\static
+2026-07-27 11:19:21 | Application banners and logger initialized.
+2026-07-27 11:19:23 | Starting uvicorn server on 127.0.0.1:9000
+2026-07-27 11:51:57 | Runtime info: python=3.14.4 frozen=False cwd=C:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator - Copy
+2026-07-27 11:51:58 | Initializing static assets from C:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator - Copy\static
+2026-07-27 11:51:58 | Application banners and logger initialized.
+2026-07-27 11:52:00 | Starting uvicorn server on 127.0.0.1:9000
+2026-07-27 13:29:08 | Runtime info: python=3.14.4 frozen=False cwd=C:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator - Copy
+2026-07-27 13:29:08 | Initializing static assets from C:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator - Copy\static
+2026-07-27 13:29:08 | Application banners and logger initialized.
+2026-07-27 13:29:10 | Starting uvicorn server on 127.0.0.1:9000
+2026-07-27 13:42:01 | Runtime info: python=3.14.4 frozen=False cwd=C:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator - Copy
+2026-07-27 13:42:02 | Initializing static assets from C:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator - Copy\static
+2026-07-27 13:42:02 | Application banners and logger initialized.
+2026-07-27 13:42:04 | Starting uvicorn server on 127.0.0.1:9000
+2026-07-27 13:45:53 | Runtime info: python=3.14.4 frozen=False cwd=C:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator - Copy
+2026-07-27 13:45:53 | Initializing static assets from C:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator - Copy\static
+2026-07-27 13:45:53 | Application banners and logger initialized.
+2026-07-27 13:45:53 | Port 9000 is already in use.
+Listening process PID(s): 13156
+PID file: C:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator - Copy\logs\nxos_configurator.pid (pid 13156)
+Close the console window, click Stop in the web UI, or run: scripts\stop_configurator.ps1
+To replace the running instance: re-launch with --replace
+2026-07-27 13:46:05 | Runtime info: python=3.14.4 frozen=False cwd=C:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator - Copy
+2026-07-27 13:46:06 | Initializing static assets from C:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator - Copy\static
+2026-07-27 13:46:06 | Application banners and logger initialized.
+2026-07-27 13:46:06 | Replaced prior instance on port 9000: PIDs [13156]
+2026-07-27 13:46:09 | Starting uvicorn server on 127.0.0.1:9000
+2026-07-27 13:46:22 | Signal 2 received.
+2026-07-27 13:46:37 | Runtime info: python=3.14.4 frozen=False cwd=C:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator - Copy
+2026-07-27 13:46:37 | Initializing static assets from C:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator - Copy\static
+2026-07-27 13:46:37 | Application banners and logger initialized.
+2026-07-27 13:46:39 | Starting uvicorn server on 127.0.0.1:9000
+2026-07-27 14:09:12 | Runtime info: python=3.14.4 frozen=False cwd=C:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator - Copy
+2026-07-27 14:09:12 | Initializing static assets from C:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator - Copy\static
+2026-07-27 14:09:12 | Application banners and logger initialized.
+2026-07-27 14:09:14 | Starting uvicorn server on 127.0.0.1:9000
+2026-07-27 14:12:44 | Runtime info: python=3.14.4 frozen=False cwd=C:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator - Copy
+2026-07-27 14:12:45 | Initializing static assets from C:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator - Copy\static
+2026-07-27 14:12:45 | Application banners and logger initialized.
+2026-07-27 14:12:47 | Starting uvicorn server on 127.0.0.1:9000
+2026-07-27 14:13:47 | Runtime info: python=3.14.4 frozen=False cwd=C:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator - Copy
+2026-07-27 14:13:47 | Initializing static assets from C:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator - Copy\static
+2026-07-27 14:13:47 | Application banners and logger initialized.
+2026-07-27 14:13:49 | Starting uvicorn server on 127.0.0.1:9000
+2026-07-27 14:14:56 | Runtime info: python=3.14.4 frozen=False cwd=C:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator - Copy
+2026-07-27 14:14:56 | Initializing static assets from C:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator - Copy\static
+2026-07-27 14:14:56 | Application banners and logger initialized.
+2026-07-27 14:14:58 | Starting uvicorn server on 127.0.0.1:9000
+2026-07-27 14:16:36 | Runtime info: python=3.14.4 frozen=False cwd=C:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator - Copy
+2026-07-27 14:16:36 | Initializing static assets from C:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator - Copy\static
+2026-07-27 14:16:36 | Application banners and logger initialized.
+2026-07-27 14:16:38 | Starting uvicorn server on 127.0.0.1:9000
+2026-07-27 14:18:52 | Runtime info: python=3.14.4 frozen=False cwd=C:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator - Copy
+2026-07-27 14:18:52 | Initializing static assets from C:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator - Copy\static
+2026-07-27 14:18:52 | Application banners and logger initialized.
+2026-07-27 14:18:54 | Starting uvicorn server on 127.0.0.1:9000
+2026-07-27 14:22:39 | Runtime info: python=3.14.4 frozen=False cwd=C:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator - Copy
+2026-07-27 14:22:39 | Initializing static assets from C:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator - Copy\static
+2026-07-27 14:22:39 | Application banners and logger initialized.
+2026-07-27 14:22:41 | Starting uvicorn server on 127.0.0.1:9000
+2026-07-27 14:40:32 | Runtime info: python=3.14.4 frozen=False cwd=C:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator - Copy
+2026-07-27 14:40:32 | Initializing static assets from C:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator - Copy\static
+2026-07-27 14:40:32 | Application banners and logger initialized.
+2026-07-27 14:40:34 | Starting uvicorn server on 127.0.0.1:9000
+2026-07-27 14:44:53 | Runtime info: python=3.14.4 frozen=False cwd=C:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator - Copy
+2026-07-27 14:44:53 | Initializing static assets from C:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator - Copy\static
+2026-07-27 14:44:53 | Application banners and logger initialized.
+2026-07-27 14:44:55 | Starting uvicorn server on 127.0.0.1:9000
+2026-07-27 14:49:01 | Runtime info: python=3.14.4 frozen=False cwd=C:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator - Copy
+2026-07-27 14:49:02 | Initializing static assets from C:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator - Copy\static
+2026-07-27 14:49:02 | Application banners and logger initialized.
+2026-07-27 14:49:04 | Starting uvicorn server on 127.0.0.1:9000
+2026-07-27 14:50:17 | Runtime info: python=3.14.4 frozen=False cwd=C:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator - Copy
+2026-07-27 14:50:17 | Initializing static assets from C:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator - Copy\static
+2026-07-27 14:50:17 | Application banners and logger initialized.
+2026-07-27 14:50:19 | Starting uvicorn server on 127.0.0.1:9000
+2026-07-27 15:00:08 | Runtime info: python=3.14.4 frozen=False cwd=C:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator - Copy
+2026-07-27 15:00:08 | Initializing static assets from C:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator - Copy\static
+2026-07-27 15:00:08 | Application banners and logger initialized.
+2026-07-27 15:00:10 | Starting uvicorn server on 127.0.0.1:9000
+2026-07-27 15:09:51 | Runtime info: python=3.14.4 frozen=False cwd=C:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator - Copy
+2026-07-27 15:09:51 | Initializing static assets from C:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator - Copy\static
+2026-07-27 15:09:51 | Application banners and logger initialized.
+2026-07-27 15:09:53 | Starting uvicorn server on 127.0.0.1:9000
+2026-07-27 15:20:34 | Runtime info: python=3.14.4 frozen=False cwd=C:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator - Copy
+2026-07-27 15:20:34 | Initializing static assets from C:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator - Copy\static
+2026-07-27 15:20:34 | Application banners and logger initialized.
+2026-07-27 15:20:36 | Starting uvicorn server on 127.0.0.1:9000
+2026-07-27 15:29:06 | Runtime info: python=3.14.4 frozen=False cwd=C:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator - Copy
+2026-07-27 15:29:06 | Initializing static assets from C:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator - Copy\static
+2026-07-27 15:29:06 | Application banners and logger initialized.
+2026-07-27 15:29:08 | Starting uvicorn server on 127.0.0.1:9000
+2026-07-27 15:45:31 | Runtime info: python=3.14.4 frozen=False cwd=C:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator - Copy
+2026-07-27 15:45:31 | Initializing static assets from C:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator - Copy\static
+2026-07-27 15:45:31 | Application banners and logger initialized.
+2026-07-27 15:45:31 | Port 9000 is already in use.
+Listening process PID(s): 5052
+PID file: C:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator - Copy\logs\nxos_configurator.pid (pid 5052)
+Close the console window, click Stop in the web UI, or run: scripts\stop_configurator.ps1
+To replace the running instance: re-launch with --replace
+2026-07-27 15:45:45 | Runtime info: python=3.14.4 frozen=False cwd=C:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator - Copy
+2026-07-27 15:45:46 | Initializing static assets from C:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator - Copy\static
+2026-07-27 15:45:46 | Application banners and logger initialized.
+2026-07-27 15:45:48 | Starting uvicorn server on 127.0.0.1:9000
+2026-07-27 15:53:14 | Runtime info: python=3.14.4 frozen=False cwd=C:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator - Copy
+2026-07-27 15:53:15 | Initializing static assets from C:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator - Copy\static
+2026-07-27 15:53:15 | Application banners and logger initialized.
+2026-07-27 15:53:15 | Port 9000 is already in use.
+Listening process PID(s): 15448
+PID file: C:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator - Copy\logs\nxos_configurator.pid (pid 15448)
+Close the console window, click Stop in the web UI, or run: scripts\stop_configurator.ps1
+To replace the running instance: re-launch with --replace
+2026-07-27 15:53:26 | Runtime info: python=3.14.4 frozen=False cwd=C:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator - Copy
+2026-07-27 15:53:26 | Initializing static assets from C:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator - Copy\static
+2026-07-27 15:53:26 | Application banners and logger initialized.
+2026-07-27 15:53:28 | Starting uvicorn server on 127.0.0.1:9000
+2026-07-27 15:54:59 | Runtime info: python=3.14.4 frozen=False cwd=C:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator - Copy
+2026-07-27 15:55:00 | Initializing static assets from C:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator - Copy\static
+2026-07-27 15:55:00 | Application banners and logger initialized.
+2026-07-27 15:55:00 | Port 9000 is already in use.
+Listening process PID(s): 21252
+PID file: C:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator - Copy\logs\nxos_configurator.pid (pid 21252)
+Close the console window, click Stop in the web UI, or run: scripts\stop_configurator.ps1
+To replace the running instance: re-launch with --replace
+2026-07-27 15:55:12 | Runtime info: python=3.14.4 frozen=False cwd=C:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator - Copy
+2026-07-27 15:55:13 | Initializing static assets from C:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator - Copy\static
+2026-07-27 15:55:13 | Application banners and logger initialized.
+2026-07-27 15:55:15 | Starting uvicorn server on 127.0.0.1:9000
+2026-07-27 15:59:48 | Runtime info: python=3.14.4 frozen=False cwd=C:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator - Copy
+2026-07-27 15:59:49 | Initializing static assets from C:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator - Copy\static
+2026-07-27 15:59:49 | Application banners and logger initialized.
+2026-07-27 15:59:49 | Port 9000 is already in use.
+Listening process PID(s): 14028
+PID file: C:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator - Copy\logs\nxos_configurator.pid (pid 14028)
+Close the console window, click Stop in the web UI, or run: scripts\stop_configurator.ps1
+To replace the running instance: re-launch with --replace
+2026-07-27 16:03:13 | Runtime info: python=3.14.4 frozen=False cwd=C:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator - Copy
+2026-07-27 16:03:14 | Initializing static assets from C:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator - Copy\static
+2026-07-27 16:03:14 | Application banners and logger initialized.
+2026-07-27 16:03:16 | Starting uvicorn server on 127.0.0.1:9000
+2026-07-27 16:04:47 | Runtime info: python=3.14.4 frozen=False cwd=C:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator - Copy
+2026-07-27 16:04:47 | Initializing static assets from C:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator - Copy\static
+2026-07-27 16:04:47 | Application banners and logger initialized.
+2026-07-27 16:04:47 | Port 9000 is already in use.
+Listening process PID(s): 16844
+PID file: C:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator - Copy\logs\nxos_configurator.pid (pid 16844)
+Close the console window, click Stop in the web UI, or run: scripts\stop_configurator.ps1
+To replace the running instance: re-launch with --replace
+2026-07-27 16:04:59 | Runtime info: python=3.14.4 frozen=False cwd=C:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator - Copy
+2026-07-27 16:04:59 | Initializing static assets from C:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator - Copy\static
+2026-07-27 16:04:59 | Application banners and logger initialized.
+2026-07-27 16:05:02 | Starting uvicorn server on 127.0.0.1:9000
+2026-07-27 16:08:07 | Runtime info: python=3.14.4 frozen=False cwd=C:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator - Copy
+2026-07-27 16:08:08 | Initializing static assets from C:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator - Copy\static
+2026-07-27 16:08:08 | Application banners and logger initialized.
+2026-07-27 16:08:08 | Port 9000 is already in use.
+Listening process PID(s): 21664
+PID file: C:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator - Copy\logs\nxos_configurator.pid (pid 21664)
+Close the console window, click Stop in the web UI, or run: scripts\stop_configurator.ps1
+To replace the running instance: re-launch with --replace
+2026-07-27 16:08:21 | Runtime info: python=3.14.4 frozen=False cwd=C:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator - Copy
+2026-07-27 16:08:22 | Initializing static assets from C:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator - Copy\static
+2026-07-27 16:08:22 | Application banners and logger initialized.
+2026-07-27 16:08:24 | Starting uvicorn server on 127.0.0.1:9000
+2026-07-27 16:13:10 | Runtime info: python=3.14.4 frozen=False cwd=C:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator - Copy
+2026-07-27 16:13:10 | Initializing static assets from C:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator - Copy\static
+2026-07-27 16:13:10 | Application banners and logger initialized.
+2026-07-27 16:13:10 | Port 9000 is already in use.
+Listening process PID(s): 15488
+PID file: C:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator - Copy\logs\nxos_configurator.pid (pid 15488)
+Close the console window, click Stop in the web UI, or run: scripts\stop_configurator.ps1
+To replace the running instance: re-launch with --replace
+2026-07-27 16:13:28 | Runtime info: python=3.14.4 frozen=False cwd=C:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator - Copy
+2026-07-27 16:13:28 | Initializing static assets from C:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator - Copy\static
+2026-07-27 16:13:28 | Application banners and logger initialized.
+2026-07-27 16:13:30 | Starting uvicorn server on 127.0.0.1:9000
+2026-07-27 16:14:48 | Runtime info: python=3.14.4 frozen=False cwd=C:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator - Copy
+2026-07-27 16:14:48 | Initializing static assets from C:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator - Copy\static
+2026-07-27 16:14:48 | Application banners and logger initialized.
+2026-07-27 16:14:48 | Port 9000 is already in use.
+Listening process PID(s): 10000
+PID file: C:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator - Copy\logs\nxos_configurator.pid (pid 10000)
+Close the console window, click Stop in the web UI, or run: scripts\stop_configurator.ps1
+To replace the running instance: re-launch with --replace
+2026-07-27 16:15:06 | Runtime info: python=3.14.4 frozen=False cwd=C:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator - Copy
+2026-07-27 16:15:06 | Initializing static assets from C:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator - Copy\static
+2026-07-27 16:15:06 | Application banners and logger initialized.
+2026-07-27 16:15:08 | Starting uvicorn server on 127.0.0.1:9000
+2026-07-27 16:18:24 | Runtime info: python=3.14.4 frozen=False cwd=C:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator - Copy
+2026-07-27 16:18:24 | Initializing static assets from C:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator - Copy\static
+2026-07-27 16:18:24 | Application banners and logger initialized.
+2026-07-27 16:18:24 | Port 9000 is already in use.
+Listening process PID(s): 19604
+PID file: C:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator - Copy\logs\nxos_configurator.pid (pid 19604)
+Close the console window, click Stop in the web UI, or run: scripts\stop_configurator.ps1
+To replace the running instance: re-launch with --replace
+2026-07-27 16:18:45 | Runtime info: python=3.14.4 frozen=False cwd=C:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator - Copy
+2026-07-27 16:18:46 | Initializing static assets from C:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator - Copy\static
+2026-07-27 16:18:46 | Application banners and logger initialized.
+2026-07-27 16:18:48 | Starting uvicorn server on 127.0.0.1:9000
+2026-07-27 16:21:35 | Runtime info: python=3.14.4 frozen=False cwd=C:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator - Copy
+2026-07-27 16:21:35 | Initializing static assets from C:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator - Copy\static
+2026-07-27 16:21:35 | Application banners and logger initialized.
+2026-07-27 16:21:35 | Port 9000 is already in use.
+Listening process PID(s): 14052
+PID file: C:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator - Copy\logs\nxos_configurator.pid (pid 14052)
+Close the console window, click Stop in the web UI, or run: scripts\stop_configurator.ps1
+To replace the running instance: re-launch with --replace
+2026-07-27 16:21:48 | Runtime info: python=3.14.4 frozen=False cwd=C:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator - Copy
+2026-07-27 16:21:49 | Initializing static assets from C:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator - Copy\static
+2026-07-27 16:21:49 | Application banners and logger initialized.
+2026-07-27 16:21:51 | Starting uvicorn server on 127.0.0.1:9000
+2026-07-27 16:24:29 | Runtime info: python=3.14.4 frozen=False cwd=C:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator - Copy
+2026-07-27 16:24:30 | Initializing static assets from C:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator - Copy\static
+2026-07-27 16:24:30 | Application banners and logger initialized.
+2026-07-27 16:24:30 | Port 9000 is already in use.
+Listening process PID(s): 25332
+PID file: C:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator - Copy\logs\nxos_configurator.pid (pid 25332)
+Close the console window, click Stop in the web UI, or run: scripts\stop_configurator.ps1
+To replace the running instance: re-launch with --replace
+2026-07-27 16:24:43 | Runtime info: python=3.14.4 frozen=False cwd=C:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator - Copy
+2026-07-27 16:24:43 | Initializing static assets from C:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator - Copy\static
+2026-07-27 16:24:43 | Application banners and logger initialized.
+2026-07-27 16:24:45 | Starting uvicorn server on 127.0.0.1:9000
+2026-07-27 16:26:20 | Runtime info: python=3.14.4 frozen=False cwd=C:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator - Copy
+2026-07-27 16:26:21 | Initializing static assets from C:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator - Copy\static
+2026-07-27 16:26:21 | Application banners and logger initialized.
+2026-07-27 16:26:21 | Port 9000 is already in use.
+Listening process PID(s): 21520
+PID file: C:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator - Copy\logs\nxos_configurator.pid (pid 21520)
+Close the console window, click Stop in the web UI, or run: scripts\stop_configurator.ps1
+To replace the running instance: re-launch with --replace
+2026-07-27 16:26:31 | Runtime info: python=3.14.4 frozen=False cwd=C:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator - Copy
+2026-07-27 16:26:32 | Initializing static assets from C:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator - Copy\static
+2026-07-27 16:26:32 | Application banners and logger initialized.
+2026-07-27 16:26:34 | Starting uvicorn server on 127.0.0.1:9000
+2026-07-27 16:39:47 | Runtime info: python=3.14.4 frozen=False cwd=C:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator - Copy
+2026-07-27 16:39:48 | Initializing static assets from C:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator - Copy\static
+2026-07-27 16:39:48 | Application banners and logger initialized.
+2026-07-27 16:39:50 | Starting uvicorn server on 127.0.0.1:9000
+2026-07-27 16:41:09 | Runtime info: python=3.14.4 frozen=False cwd=C:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator - Copy
+2026-07-27 16:41:09 | Initializing static assets from C:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator - Copy\static
+2026-07-27 16:41:09 | Application banners and logger initialized.
+2026-07-27 16:41:09 | Port 9000 is already in use.
+Listening process PID(s): 20940
+PID file: C:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator - Copy\logs\nxos_configurator.pid (pid 20940)
+Close the console window, click Stop in the web UI, or run: scripts\stop_configurator.ps1
+To replace the running instance: re-launch with --replace
+2026-07-27 16:41:19 | Runtime info: python=3.14.4 frozen=False cwd=C:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator - Copy
+2026-07-27 16:41:20 | Initializing static assets from C:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator - Copy\static
+2026-07-27 16:41:20 | Application banners and logger initialized.
+2026-07-27 16:41:22 | Starting uvicorn server on 127.0.0.1:9000
+2026-07-27 16:43:02 | Runtime info: python=3.14.4 frozen=False cwd=C:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator - Copy
+2026-07-27 16:43:02 | Initializing static assets from C:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator - Copy\static
+2026-07-27 16:43:02 | Application banners and logger initialized.
+2026-07-27 16:43:02 | Port 9000 is already in use.
+Listening process PID(s): 23888
+PID file: C:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator - Copy\logs\nxos_configurator.pid (pid 23888)
+Close the console window, click Stop in the web UI, or run: scripts\stop_configurator.ps1
+To replace the running instance: re-launch with --replace
+2026-07-27 16:43:16 | Runtime info: python=3.14.4 frozen=False cwd=C:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator - Copy
+2026-07-27 16:43:16 | Initializing static assets from C:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator - Copy\static
+2026-07-27 16:43:16 | Application banners and logger initialized.
+2026-07-27 16:43:18 | Starting uvicorn server on 127.0.0.1:9000
+2026-07-27 16:45:50 | Runtime info: python=3.14.4 frozen=False cwd=C:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator - Copy
+2026-07-27 16:45:51 | Initializing static assets from C:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator - Copy\static
+2026-07-27 16:45:51 | Application banners and logger initialized.
+2026-07-27 16:45:53 | Starting uvicorn server on 127.0.0.1:9000
+2026-07-27 16:46:43 | Runtime info: python=3.14.4 frozen=False cwd=C:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator - Copy
+2026-07-27 16:46:43 | Initializing static assets from C:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator - Copy\static
+2026-07-27 16:46:43 | Application banners and logger initialized.
+2026-07-27 16:46:43 | Port 9000 is already in use.
+Listening process PID(s): 25324
+PID file: C:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator - Copy\logs\nxos_configurator.pid (pid 25324)
+Close the console window, click Stop in the web UI, or run: scripts\stop_configurator.ps1
+To replace the running instance: re-launch with --replace
+2026-07-27 16:47:51 | Runtime info: python=3.14.4 frozen=False cwd=C:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator - Copy
+2026-07-27 16:47:51 | Initializing static assets from C:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator - Copy\static
+2026-07-27 16:47:51 | Application banners and logger initialized.
+2026-07-27 16:47:53 | Starting uvicorn server on 127.0.0.1:9000
+2026-07-27 16:49:02 | Runtime info: python=3.14.4 frozen=False cwd=C:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator - Copy
+2026-07-27 16:49:03 | Initializing static assets from C:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator - Copy\static
+2026-07-27 16:49:03 | Application banners and logger initialized.
+2026-07-27 16:49:03 | Port 9000 is already in use.
+Listening process PID(s): 13092
+PID file: C:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator - Copy\logs\nxos_configurator.pid (pid 13092)
+Close the console window, click Stop in the web UI, or run: scripts\stop_configurator.ps1
+To replace the running instance: re-launch with --replace
+2026-07-27 16:49:14 | Runtime info: python=3.14.4 frozen=False cwd=C:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator - Copy
+2026-07-27 16:49:14 | Initializing static assets from C:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator - Copy\static
+2026-07-27 16:49:14 | Application banners and logger initialized.
+2026-07-27 16:49:16 | Starting uvicorn server on 127.0.0.1:9000
+2026-07-27 16:51:18 | Runtime info: python=3.14.4 frozen=False cwd=C:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator - Copy
+2026-07-27 16:51:18 | Initializing static assets from C:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator - Copy\static
+2026-07-27 16:51:18 | Application banners and logger initialized.
+2026-07-27 16:51:18 | Port 9000 is already in use.
+Listening process PID(s): 27720
+PID file: C:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator - Copy\logs\nxos_configurator.pid (pid 27720)
+Close the console window, click Stop in the web UI, or run: scripts\stop_configurator.ps1
+To replace the running instance: re-launch with --replace
+2026-07-27 16:51:33 | Runtime info: python=3.14.4 frozen=False cwd=C:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator - Copy
+2026-07-27 16:51:34 | Initializing static assets from C:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator - Copy\static
+2026-07-27 16:51:34 | Application banners and logger initialized.
+2026-07-27 16:51:36 | Starting uvicorn server on 127.0.0.1:9000
+2026-07-27 16:53:45 | Runtime info: python=3.14.4 frozen=False cwd=C:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator - Copy
+2026-07-27 16:53:46 | Initializing static assets from C:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator - Copy\static
+2026-07-27 16:53:46 | Application banners and logger initialized.
+2026-07-27 16:53:46 | Port 9000 is already in use.
+Listening process PID(s): 12668
+PID file: C:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator - Copy\logs\nxos_configurator.pid (pid 12668)
+Close the console window, click Stop in the web UI, or run: scripts\stop_configurator.ps1
+To replace the running instance: re-launch with --replace
+2026-07-27 16:54:04 | Runtime info: python=3.14.4 frozen=False cwd=C:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator - Copy
+2026-07-27 16:54:04 | Initializing static assets from C:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator - Copy\static
+2026-07-27 16:54:04 | Application banners and logger initialized.
+2026-07-27 16:54:06 | Starting uvicorn server on 127.0.0.1:9000
+2026-07-27 17:16:44 | Runtime info: python=3.14.4 frozen=False cwd=C:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator - Copy
+2026-07-27 17:16:44 | Initializing static assets from C:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator - Copy\static
+2026-07-27 17:16:44 | Application banners and logger initialized.
+2026-07-27 17:16:46 | Starting uvicorn server on 127.0.0.1:9000
+2026-07-28 08:57:05 | Runtime info: python=3.14.4 frozen=False cwd=C:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator - Copy
+2026-07-28 08:57:06 | Initializing static assets from C:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator - Copy\static
+2026-07-28 08:57:06 | Application banners and logger initialized.
+2026-07-28 08:57:06 | Port 9000 is already in use.
+Listening process PID(s): 25944
+PID file: C:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator - Copy\logs\nxos_configurator.pid (pid 25944)
+Close the console window, click Stop in the web UI, or run: scripts\stop_configurator.ps1
+To replace the running instance: re-launch with --replace
+2026-07-28 08:58:57 | Runtime info: python=3.14.4 frozen=False cwd=C:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator - Copy
+2026-07-28 08:58:58 | Initializing static assets from C:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator - Copy\static
+2026-07-28 08:58:58 | Application banners and logger initialized.
+2026-07-28 08:59:00 | Starting uvicorn server on 127.0.0.1:9000
+2026-07-28 09:07:50 | Runtime info: python=3.14.4 frozen=False cwd=C:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator - Copy
+2026-07-28 09:07:50 | Initializing static assets from C:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator - Copy\static
+2026-07-28 09:07:50 | Application banners and logger initialized.
+2026-07-28 09:07:52 | Starting uvicorn server on 127.0.0.1:9000
+2026-07-28 10:44:18 | Runtime info: python=3.14.4 frozen=False cwd=C:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator - Copy
+2026-07-28 10:44:19 | Initializing static assets from C:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator - Copy\static
+2026-07-28 10:44:19 | Application banners and logger initialized.
+2026-07-28 10:44:21 | Starting uvicorn server on 127.0.0.1:9000
+2026-07-28 10:58:28 | Runtime info: python=3.14.4 frozen=False cwd=C:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator - Copy
+2026-07-28 10:58:28 | Initializing static assets from C:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator - Copy\static
+2026-07-28 10:58:28 | Application banners and logger initialized.
+2026-07-28 10:58:30 | Starting uvicorn server on 127.0.0.1:9000
+2026-07-28 11:00:58 | Runtime info: python=3.14.4 frozen=False cwd=C:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator - Copy
+2026-07-28 11:00:59 | Initializing static assets from C:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator - Copy\static
+2026-07-28 11:00:59 | Application banners and logger initialized.
+2026-07-28 11:01:01 | Starting uvicorn server on 127.0.0.1:9000
+2026-07-28 11:31:28 | Runtime info: python=3.14.4 frozen=False cwd=C:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator - Copy
+2026-07-28 11:31:29 | Initializing static assets from C:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator - Copy\static
+2026-07-28 11:31:29 | Application banners and logger initialized.
+2026-07-28 11:31:31 | Starting uvicorn server on 127.0.0.1:9000
+2026-07-28 11:33:24 | Runtime info: python=3.14.4 frozen=False cwd=C:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator - Copy
+2026-07-28 11:33:25 | Initializing static assets from C:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator - Copy\static
+2026-07-28 11:33:25 | Application banners and logger initialized.
+2026-07-28 11:33:27 | Starting uvicorn server on 127.0.0.1:9000
+2026-07-28 11:35:00 | Runtime info: python=3.14.4 frozen=False cwd=C:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator - Copy
+2026-07-28 11:35:00 | Initializing static assets from C:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator - Copy\static
+2026-07-28 11:35:00 | Application banners and logger initialized.
+2026-07-28 11:35:02 | Starting uvicorn server on 127.0.0.1:9000
+2026-07-28 11:37:54 | Runtime info: python=3.14.4 frozen=False cwd=C:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator - Copy
+2026-07-28 11:37:54 | Initializing static assets from C:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator - Copy\static
+2026-07-28 11:37:54 | Application banners and logger initialized.
+2026-07-28 11:37:56 | Starting uvicorn server on 127.0.0.1:9000
+2026-07-28 11:40:23 | Runtime info: python=3.14.4 frozen=False cwd=C:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator - Copy
+2026-07-28 11:40:23 | Initializing static assets from C:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator - Copy\static
+2026-07-28 11:40:23 | Application banners and logger initialized.
+2026-07-28 11:40:25 | Starting uvicorn server on 127.0.0.1:9000
+2026-07-28 11:51:02 | Runtime info: python=3.14.4 frozen=False cwd=C:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator - Copy
+2026-07-28 11:51:02 | Initializing static assets from C:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator - Copy\static
+2026-07-28 11:51:02 | Application banners and logger initialized.
+2026-07-28 11:51:04 | Starting uvicorn server on 127.0.0.1:9000
+2026-07-28 12:01:34 | Runtime info: python=3.14.4 frozen=False cwd=C:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator - Copy
+2026-07-28 12:01:34 | Initializing static assets from C:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator - Copy\static
+2026-07-28 12:01:34 | Application banners and logger initialized.
+2026-07-28 12:01:36 | Starting uvicorn server on 127.0.0.1:9000
+2026-07-28 12:02:33 | Runtime info: python=3.14.4 frozen=False cwd=C:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator - Copy
+2026-07-28 12:02:33 | Initializing static assets from C:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator - Copy\static
+2026-07-28 12:02:33 | Application banners and logger initialized.
+2026-07-28 12:02:35 | Starting uvicorn server on 127.0.0.1:9000
+2026-07-28 12:03:22 | Runtime info: python=3.14.4 frozen=False cwd=C:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator - Copy
+2026-07-28 12:03:22 | Initializing static assets from C:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator - Copy\static
+2026-07-28 12:03:22 | Application banners and logger initialized.
+2026-07-28 12:03:24 | Starting uvicorn server on 127.0.0.1:9000
+2026-07-28 12:14:09 | Runtime info: python=3.14.4 frozen=False cwd=C:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator - Copy
+2026-07-28 12:14:10 | Initializing static assets from C:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator - Copy\static
+2026-07-28 12:14:10 | Application banners and logger initialized.
+2026-07-28 12:14:12 | Starting uvicorn server on 127.0.0.1:9000
+2026-07-28 12:27:23 | Runtime info: python=3.14.4 frozen=False cwd=C:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator - Copy
+2026-07-28 12:27:24 | Initializing static assets from C:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator - Copy\static
+2026-07-28 12:27:24 | Application banners and logger initialized.
+2026-07-28 12:27:26 | Starting uvicorn server on 127.0.0.1:9000
+2026-07-28 12:30:59 | Runtime info: python=3.14.4 frozen=False cwd=C:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator - Copy
+2026-07-28 12:30:59 | Initializing static assets from C:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator - Copy\static
+2026-07-28 12:30:59 | Application banners and logger initialized.
+2026-07-28 12:31:01 | Starting uvicorn server on 127.0.0.1:9000
+2026-07-28 12:33:29 | Runtime info: python=3.14.4 frozen=False cwd=C:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator - Copy
+2026-07-28 12:33:30 | Initializing static assets from C:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator - Copy\static
+2026-07-28 12:33:30 | Application banners and logger initialized.
+2026-07-28 12:33:32 | Starting uvicorn server on 127.0.0.1:9000
+2026-07-28 12:37:39 | Runtime info: python=3.14.4 frozen=False cwd=C:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator - Copy
+2026-07-28 12:37:40 | Initializing static assets from C:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator - Copy\static
+2026-07-28 12:37:40 | Application banners and logger initialized.
+2026-07-28 12:37:42 | Starting uvicorn server on 127.0.0.1:9000
+2026-07-28 12:46:38 | Runtime info: python=3.14.4 frozen=False cwd=C:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator - Copy
+2026-07-28 12:46:39 | Initializing static assets from C:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator - Copy\static
+2026-07-28 12:46:39 | Application banners and logger initialized.
+2026-07-28 12:46:41 | Starting uvicorn server on 127.0.0.1:9000
+2026-07-28 12:51:46 | Runtime info: python=3.14.4 frozen=False cwd=C:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator - Copy
+2026-07-28 12:51:46 | Initializing static assets from C:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator - Copy\static
+2026-07-28 12:51:46 | Application banners and logger initialized.
+2026-07-28 12:51:48 | Starting uvicorn server on 127.0.0.1:9000
+2026-07-28 12:53:44 | Runtime info: python=3.14.4 frozen=False cwd=C:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator - Copy
+2026-07-28 12:53:44 | Initializing static assets from C:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator - Copy\static
+2026-07-28 12:53:44 | Application banners and logger initialized.
+2026-07-28 12:53:46 | Starting uvicorn server on 127.0.0.1:9000
+2026-07-28 12:55:19 | Runtime info: python=3.14.4 frozen=False cwd=C:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator - Copy
+2026-07-28 12:55:20 | Initializing static assets from C:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator - Copy\static
+2026-07-28 12:55:20 | Application banners and logger initialized.
+2026-07-28 12:55:22 | Starting uvicorn server on 127.0.0.1:9000
+2026-07-28 13:18:59 | Runtime info: python=3.14.4 frozen=False cwd=C:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator - Copy
+2026-07-28 13:19:00 | Initializing static assets from C:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator - Copy\static
+2026-07-28 13:19:00 | Application banners and logger initialized.
+2026-07-28 13:19:02 | Starting uvicorn server on 127.0.0.1:9000
+2026-07-28 13:22:05 | Runtime info: python=3.14.4 frozen=False cwd=C:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator - Copy
+2026-07-28 13:22:05 | Initializing static assets from C:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator - Copy\static
+2026-07-28 13:22:05 | Application banners and logger initialized.
+2026-07-28 13:22:07 | Starting uvicorn server on 127.0.0.1:9000
+2026-07-28 13:23:48 | Runtime info: python=3.14.4 frozen=False cwd=C:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator - Copy
+2026-07-28 13:23:49 | Initializing static assets from C:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator - Copy\static
+2026-07-28 13:23:49 | Application banners and logger initialized.
+2026-07-28 13:23:51 | Starting uvicorn server on 127.0.0.1:9000
+2026-07-28 13:31:00 | Runtime info: python=3.14.4 frozen=False cwd=C:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator - Copy
+2026-07-28 13:31:00 | Initializing static assets from C:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator - Copy\static
+2026-07-28 13:31:00 | Application banners and logger initialized.
+2026-07-28 13:31:02 | Starting uvicorn server on 127.0.0.1:9000
+2026-07-28 13:33:29 | Runtime info: python=3.14.4 frozen=False cwd=C:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator - Copy
+2026-07-28 13:33:29 | Initializing static assets from C:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator - Copy\static
+2026-07-28 13:33:29 | Application banners and logger initialized.
+2026-07-28 13:33:31 | Starting uvicorn server on 127.0.0.1:9000
+2026-07-28 13:57:07 | Runtime info: python=3.14.4 frozen=False cwd=C:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator - Copy
+2026-07-28 13:57:08 | Initializing static assets from C:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator - Copy\static
+2026-07-28 13:57:08 | Application banners and logger initialized.
+2026-07-28 13:57:10 | Starting uvicorn server on 127.0.0.1:9000
+2026-07-28 14:07:52 | Runtime info: python=3.14.4 frozen=False cwd=C:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator - Copy
+2026-07-28 14:07:52 | Initializing static assets from C:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator - Copy\static
+2026-07-28 14:07:52 | Application banners and logger initialized.
+2026-07-28 14:07:54 | Starting uvicorn server on 127.0.0.1:9000
+2026-07-28 14:09:12 | Runtime info: python=3.14.4 frozen=False cwd=C:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator - Copy
+2026-07-28 14:09:12 | Initializing static assets from C:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator - Copy\static
+2026-07-28 14:09:12 | Application banners and logger initialized.
+2026-07-28 14:09:14 | Starting uvicorn server on 127.0.0.1:9000
+2026-07-28 14:13:55 | Runtime info: python=3.14.4 frozen=False cwd=C:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator - Copy
+2026-07-28 14:13:55 | Initializing static assets from C:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator - Copy\static
+2026-07-28 14:13:55 | Application banners and logger initialized.
+2026-07-28 14:13:58 | Starting uvicorn server on 127.0.0.1:9000
+2026-07-28 14:33:22 | Runtime info: python=3.14.4 frozen=False cwd=C:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator - Copy
+2026-07-28 14:33:23 | Initializing static assets from C:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator - Copy\static
+2026-07-28 14:33:23 | Application banners and logger initialized.
+2026-07-28 14:33:25 | Starting uvicorn server on 127.0.0.1:9000
+2026-07-29 08:50:10 | Runtime info: python=3.14.4 frozen=False cwd=C:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator - Copy
+2026-07-29 08:50:10 | Initializing static assets from C:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator - Copy\static
+2026-07-29 08:50:10 | Application banners and logger initialized.
+2026-07-29 08:50:12 | Starting uvicorn server on 127.0.0.1:9000
+2026-07-29 09:05:32 | Runtime info: python=3.14.4 frozen=False cwd=C:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator - Copy
+2026-07-29 09:05:32 | Initializing static assets from C:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator - Copy\static
+2026-07-29 09:05:32 | Application banners and logger initialized.
+2026-07-29 09:05:34 | Starting uvicorn server on 127.0.0.1:9000
+2026-07-29 09:30:17 | Runtime info: python=3.14.4 frozen=False cwd=C:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator - Copy
+2026-07-29 09:30:17 | Initializing static assets from C:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator - Copy\static
+2026-07-29 09:30:17 | Application banners and logger initialized.
+2026-07-29 09:30:19 | Starting uvicorn server on 127.0.0.1:9000
+2026-07-29 10:36:04 | Runtime info: python=3.14.4 frozen=False cwd=C:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator - Copy
+2026-07-29 10:36:04 | Initializing static assets from C:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator - Copy\static
+2026-07-29 10:36:04 | Application banners and logger initialized.
+2026-07-29 10:36:06 | Starting uvicorn server on 127.0.0.1:9000
+2026-07-29 10:46:47 | Runtime info: python=3.14.4 frozen=False cwd=C:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator - Copy
+2026-07-29 10:46:48 | Initializing static assets from C:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator - Copy\static
+2026-07-29 10:46:48 | Application banners and logger initialized.
+2026-07-29 10:46:50 | Starting uvicorn server on 127.0.0.1:9000
+2026-07-29 12:24:05 | Runtime info: python=3.14.4 frozen=False cwd=C:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator - Copy
+2026-07-29 12:24:06 | Initializing static assets from C:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator - Copy\static
+2026-07-29 12:24:06 | Application banners and logger initialized.
+2026-07-29 12:24:06 | Port 9000 is already in use.
+Listening process PID(s): 15512
+PID file: C:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator - Copy\logs\nxos_configurator.pid (pid 29020)
+Close the console window, click Stop in the web UI, or run: scripts\stop_configurator.ps1
+To replace the running instance: re-launch with --replace
+2026-07-29 12:27:52 | Runtime info: python=3.14.4 frozen=False cwd=C:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator - Copy
+2026-07-29 12:27:53 | Initializing static assets from C:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator - Copy\static
+2026-07-29 12:27:53 | Application banners and logger initialized.
+2026-07-29 12:27:57 | Starting uvicorn server on 127.0.0.1:9000
+2026-07-29 12:35:02 | Runtime info: python=3.14.4 frozen=False cwd=C:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator - Copy
+2026-07-29 12:35:03 | Initializing static assets from C:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator - Copy\static
+2026-07-29 12:35:03 | Application banners and logger initialized.
+2026-07-29 12:35:03 | Replaced prior instance on port 9000: PIDs [20368]
+2026-07-29 12:35:06 | Starting uvicorn server on 127.0.0.1:9000
+2026-07-29 12:35:30 | Signal 2 received.
+2026-07-29 12:35:55 | Runtime info: python=3.14.4 frozen=False cwd=C:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator - Copy
+2026-07-29 12:35:55 | Initializing static assets from C:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator - Copy\static
+2026-07-29 12:35:55 | Application banners and logger initialized.
+2026-07-29 12:35:57 | Starting uvicorn server on 127.0.0.1:9000
+2026-07-29 12:52:55 | Runtime info: python=3.14.4 frozen=False cwd=C:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator - Copy
+2026-07-29 12:52:55 | Initializing static assets from C:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator - Copy\static
+2026-07-29 12:52:55 | Application banners and logger initialized.
+2026-07-29 12:52:56 | Replaced prior instance on port 9000: PIDs [20384]
+2026-07-29 12:52:58 | Starting uvicorn server on 127.0.0.1:9000
+2026-07-29 12:53:21 | Signal 2 received.
+2026-07-29 12:53:46 | Runtime info: python=3.14.4 frozen=False cwd=C:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator - Copy
+2026-07-29 12:53:46 | Initializing static assets from C:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator - Copy\static
+2026-07-29 12:53:46 | Application banners and logger initialized.
+2026-07-29 12:53:49 | Starting uvicorn server on 127.0.0.1:9000
+2026-07-29 13:28:45 | Runtime info: python=3.14.4 frozen=False cwd=C:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator - Copy
+2026-07-29 13:28:45 | Initializing static assets from C:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator - Copy\static
+2026-07-29 13:28:45 | Application banners and logger initialized.
+2026-07-29 13:28:47 | Starting uvicorn server on 127.0.0.1:9000
+2026-07-29 14:01:45 | Runtime info: python=3.14.4 frozen=False cwd=C:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator - Copy
+2026-07-29 14:01:46 | Initializing static assets from C:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator - Copy\static
+2026-07-29 14:01:46 | Application banners and logger initialized.
+2026-07-29 14:01:48 | Starting uvicorn server on 127.0.0.1:9000
+2026-07-29 14:05:28 | Runtime info: python=3.14.4 frozen=False cwd=C:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator - Copy
+2026-07-29 14:05:29 | Initializing static assets from C:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator - Copy\static
+2026-07-29 14:05:29 | Application banners and logger initialized.
+2026-07-29 14:05:29 | Replaced prior instance on port 9000: PIDs [5904]
+2026-07-29 14:05:31 | Starting uvicorn server on 127.0.0.1:9000
+2026-07-29 14:05:48 | Signal 2 received.
+2026-07-29 14:06:08 | Runtime info: python=3.14.4 frozen=False cwd=C:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator - Copy
+2026-07-29 14:06:08 | Initializing static assets from C:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator - Copy\static
+2026-07-29 14:06:08 | Application banners and logger initialized.
+2026-07-29 14:06:10 | Starting uvicorn server on 127.0.0.1:9000
+2026-07-29 14:10:21 | Runtime info: python=3.14.4 frozen=False cwd=C:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator - Copy
+2026-07-29 14:10:21 | Initializing static assets from C:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator - Copy\static
+2026-07-29 14:10:21 | Application banners and logger initialized.
+2026-07-29 14:10:21 | Port 9000 is already in use.
+Listening process PID(s): 2392
+PID file: C:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator - Copy\logs\nxos_configurator.pid (pid 2392)
+Close the console window, click Stop in the web UI, or run: scripts\stop_configurator.ps1
+To replace the running instance: re-launch with --replace
+2026-07-29 14:10:36 | Runtime info: python=3.14.4 frozen=False cwd=C:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator - Copy
+2026-07-29 14:10:37 | Initializing static assets from C:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator - Copy\static
+2026-07-29 14:10:37 | Application banners and logger initialized.
+2026-07-29 14:10:37 | Replaced prior instance on port 9000: PIDs [2392]
+2026-07-29 14:10:40 | Starting uvicorn server on 127.0.0.1:9000
+2026-07-29 14:10:53 | Signal 2 received.
+2026-07-29 14:11:15 | Runtime info: python=3.14.4 frozen=False cwd=C:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator - Copy
+2026-07-29 14:11:15 | Initializing static assets from C:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator - Copy\static
+2026-07-29 14:11:15 | Application banners and logger initialized.
+2026-07-29 14:11:17 | Starting uvicorn server on 127.0.0.1:9000
+2026-08-02 07:54:04 | Runtime info: python=3.14.4 frozen=False cwd=C:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator - Copy
+2026-08-02 07:54:04 | Initializing static assets from C:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator - Copy\static
+2026-08-02 07:54:04 | Application banners and logger initialized.
+2026-08-02 07:54:04 | Replaced prior instance on port 9000: PIDs [3572]
+2026-08-02 07:54:07 | Starting uvicorn server on 127.0.0.1:9000
+2026-08-02 08:04:18 | Signal 2 received.
+2026-08-02 08:05:28 | Runtime info: python=3.14.4 frozen=False cwd=C:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator - Copy
+2026-08-02 08:05:29 | Initializing static assets from C:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator - Copy\static
+2026-08-02 08:05:29 | Application banners and logger initialized.
+2026-08-02 08:05:33 | Starting uvicorn server on 127.0.0.1:9000
+2026-08-02 08:20:36 | Runtime info: python=3.14.4 frozen=False cwd=C:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator - Copy
+2026-08-02 08:20:37 | Initializing static assets from C:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator - Copy\static
+2026-08-02 08:20:37 | Application banners and logger initialized.
+2026-08-02 08:20:37 | Replaced prior instance on port 9000: PIDs [10208]
+2026-08-02 08:20:40 | Starting uvicorn server on 127.0.0.1:9000
+2026-08-02 08:56:21 | Signal 2 received.
+2026-08-02 08:59:57 | Runtime info: python=3.14.4 frozen=False cwd=C:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator - Copy
+2026-08-02 08:59:57 | Initializing static assets from C:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator - Copy\static
+2026-08-02 08:59:57 | Application banners and logger initialized.
+2026-08-02 09:00:01 | Starting uvicorn server on 127.0.0.1:9000
+2026-08-02 09:29:07 | Runtime info: python=3.14.4 frozen=False cwd=C:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator - Copy
+2026-08-02 09:29:08 | Initializing static assets from C:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator - Copy\static
+2026-08-02 09:29:08 | Application banners and logger initialized.
+2026-08-02 09:29:12 | Starting uvicorn server on 127.0.0.1:9000
+2026-08-02 10:13:48 | Runtime info: python=3.14.4 frozen=False cwd=C:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator - Copy
+2026-08-02 10:13:48 | Initializing static assets from C:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator - Copy\static
+2026-08-02 10:13:48 | Application banners and logger initialized.
+2026-08-02 10:13:52 | Starting uvicorn server on 127.0.0.1:9000
+2026-08-02 10:23:03 | Runtime info: python=3.14.4 frozen=False cwd=C:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator - Copy
+2026-08-02 10:23:04 | Initializing static assets from C:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator - Copy\static
+2026-08-02 10:23:04 | Application banners and logger initialized.
+2026-08-02 10:23:08 | Starting uvicorn server on 127.0.0.1:9000
+2026-08-02 10:26:42 | Runtime info: python=3.14.4 frozen=False cwd=C:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator - Copy
+2026-08-02 10:26:42 | Initializing static assets from C:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator - Copy\static
+2026-08-02 10:26:42 | Application banners and logger initialized.
+2026-08-02 10:26:46 | Starting uvicorn server on 127.0.0.1:9000
+2026-08-02 10:38:50 | Runtime info: python=3.14.4 frozen=False cwd=C:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator - Copy
+2026-08-02 10:38:50 | Initializing static assets from C:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator - Copy\static
+2026-08-02 10:38:50 | Application banners and logger initialized.
+2026-08-02 10:38:54 | Starting uvicorn server on 127.0.0.1:9000
+2026-08-02 10:50:48 | Runtime info: python=3.14.4 frozen=False cwd=C:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator - Copy
+2026-08-02 10:50:49 | Initializing static assets from C:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator - Copy\static
+2026-08-02 10:50:49 | Application banners and logger initialized.
+2026-08-02 10:50:53 | Starting uvicorn server on 127.0.0.1:9000
+2026-08-02 10:53:34 | Runtime info: python=3.14.4 frozen=False cwd=C:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator - Copy
+2026-08-02 10:53:35 | Initializing static assets from C:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator - Copy\static
+2026-08-02 10:53:35 | Application banners and logger initialized.
+2026-08-02 10:53:39 | Starting uvicorn server on 127.0.0.1:9000
+2026-08-02 11:12:57 | Runtime info: python=3.14.4 frozen=False cwd=C:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator - Copy
+2026-08-02 11:12:58 | Initializing static assets from C:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator - Copy\static
+2026-08-02 11:12:58 | Application banners and logger initialized.
+2026-08-02 11:13:02 | Starting uvicorn server on 127.0.0.1:9000
+2026-08-02 11:24:53 | Runtime info: python=3.14.4 frozen=False cwd=C:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator - Copy
+2026-08-02 11:24:53 | Initializing static assets from C:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator - Copy\static
+2026-08-02 11:24:53 | Application banners and logger initialized.
+2026-08-02 11:24:57 | Starting uvicorn server on 127.0.0.1:9000
+2026-08-02 11:34:21 | Runtime info: python=3.14.4 frozen=False cwd=C:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator - Copy
+2026-08-02 11:34:21 | Initializing static assets from C:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator - Copy\static
+2026-08-02 11:34:21 | Application banners and logger initialized.
+2026-08-02 11:34:25 | Starting uvicorn server on 127.0.0.1:9000
+2026-08-02 11:37:11 | Runtime info: python=3.14.4 frozen=False cwd=C:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator - Copy
+2026-08-02 11:37:11 | Initializing static assets from C:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator - Copy\static
+2026-08-02 11:37:11 | Application banners and logger initialized.
+2026-08-02 11:37:15 | Starting uvicorn server on 127.0.0.1:9000
+2026-08-02 11:46:57 | Runtime info: python=3.14.4 frozen=False cwd=C:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator - Copy
+2026-08-02 11:46:57 | Initializing static assets from C:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator - Copy\static
+2026-08-02 11:46:57 | Application banners and logger initialized.
+2026-08-02 11:47:01 | Starting uvicorn server on 127.0.0.1:9000
+2026-08-02 11:56:33 | Runtime info: python=3.14.4 frozen=False cwd=C:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator - Copy
+2026-08-02 11:56:33 | Initializing static assets from C:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator - Copy\static
+2026-08-02 11:56:33 | Application banners and logger initialized.
+2026-08-02 11:56:33 | Port 9000 is already in use.
+Listening process PID(s): 18276
+PID file: C:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator - Copy\logs\nxos_configurator.pid (pid 18276)
+Close the console window, click Stop in the web UI, or run: scripts\stop_configurator.ps1
+To replace the running instance: re-launch with --replace
+2026-08-02 12:20:41 | Runtime info: python=3.14.4 frozen=False cwd=C:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator - Copy
+2026-08-02 12:20:42 | Initializing static assets from C:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator - Copy\static
+2026-08-02 12:20:42 | Application banners and logger initialized.
+2026-08-02 12:20:44 | Starting uvicorn server on 127.0.0.1:9000
+2026-08-02 13:13:03 | Runtime info: python=3.14.4 frozen=False cwd=C:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator - Copy
+2026-08-02 13:13:03 | Initializing static assets from C:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator - Copy\static
+2026-08-02 13:13:03 | Application banners and logger initialized.
+2026-08-02 13:13:06 | Starting uvicorn server on 127.0.0.1:9000
+2026-08-02 13:27:19 | Runtime info: python=3.14.4 frozen=False cwd=C:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator - Copy
+2026-08-02 13:27:19 | Initializing static assets from C:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator - Copy\static
+2026-08-02 13:27:19 | Application banners and logger initialized.
+2026-08-02 13:27:21 | Starting uvicorn server on 127.0.0.1:9000
+2026-08-02 13:38:12 | Runtime info: python=3.14.4 frozen=False cwd=C:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator - Copy
+2026-08-02 13:38:12 | Initializing static assets from C:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator - Copy\static
+2026-08-02 13:38:12 | Application banners and logger initialized.
+2026-08-02 13:38:14 | Starting uvicorn server on 127.0.0.1:9000
+2026-08-02 14:16:21 | Runtime info: python=3.14.4 frozen=False cwd=C:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator - Copy
+2026-08-02 14:16:22 | Initializing static assets from C:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator - Copy\static
+2026-08-02 14:16:22 | Application banners and logger initialized.
+2026-08-02 14:16:24 | Starting uvicorn server on 127.0.0.1:9000
+2026-08-13 15:43:23 | Runtime info: python=3.14.4 frozen=False cwd=C:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator - Copy
+2026-08-13 15:43:23 | Initializing static assets from C:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator - Copy\static
+2026-08-13 15:43:23 | Application banners and logger initialized.
+2026-08-13 15:43:25 | Starting uvicorn server on 127.0.0.1:9000
+2026-08-13 15:44:05 | Runtime info: python=3.14.4 frozen=False cwd=C:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator - Copy
+2026-08-13 15:44:06 | Initializing static assets from C:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator - Copy\static
+2026-08-13 15:44:06 | Application banners and logger initialized.
+2026-08-13 15:44:08 | Starting uvicorn server on 127.0.0.1:9000
+2026-08-13 15:51:32 | Runtime info: python=3.14.4 frozen=False cwd=C:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator - Copy
+2026-08-13 15:51:32 | Initializing static assets from C:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator - Copy\static
+2026-08-13 15:51:32 | Application banners and logger initialized.
+2026-08-13 15:51:34 | Starting uvicorn server on 127.0.0.1:9000
+2026-08-13 15:52:57 | Runtime info: python=3.14.4 frozen=False cwd=C:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator - Copy
+2026-08-13 15:52:57 | Initializing static assets from C:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator - Copy\static
+2026-08-13 15:52:57 | Application banners and logger initialized.
+2026-08-13 15:53:00 | Starting uvicorn server on 127.0.0.1:9000
+2026-08-13 15:54:45 | Runtime info: python=3.14.4 frozen=False cwd=C:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator - Copy
+2026-08-13 15:54:46 | Initializing static assets from C:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator - Copy\static
+2026-08-13 15:54:46 | Application banners and logger initialized.
+2026-08-13 15:54:48 | Starting uvicorn server on 127.0.0.1:9000
+2026-08-13 15:55:49 | Runtime info: python=3.14.4 frozen=False cwd=C:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator - Copy
+2026-08-13 15:55:49 | Initializing static assets from C:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator - Copy\static
+2026-08-13 15:55:49 | Application banners and logger initialized.
+2026-08-13 15:55:51 | Starting uvicorn server on 127.0.0.1:9000
+2026-08-13 16:03:21 | Runtime info: python=3.14.4 frozen=False cwd=C:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator - Copy
+2026-08-13 16:03:22 | Initializing static assets from C:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator - Copy\static
+2026-08-13 16:03:22 | Application banners and logger initialized.
+2026-08-13 16:03:24 | Starting uvicorn server on 127.0.0.1:9000
+2026-08-13 16:08:34 | Runtime info: python=3.14.4 frozen=False cwd=C:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator - Copy
+2026-08-13 16:08:34 | Initializing static assets from C:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator - Copy\static
+2026-08-13 16:08:34 | Application banners and logger initialized.
+2026-08-13 16:08:36 | Starting uvicorn server on 127.0.0.1:9000
+2026-08-13 16:09:02 | Runtime info: python=3.14.4 frozen=False cwd=C:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator - Copy
+2026-08-13 16:09:02 | Initializing static assets from C:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator - Copy\static
+2026-08-13 16:09:02 | Application banners and logger initialized.
+2026-08-13 16:09:04 | Starting uvicorn server on 127.0.0.1:9000
+2026-08-13 16:09:43 | Runtime info: python=3.14.4 frozen=False cwd=C:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator - Copy
+2026-08-13 16:09:44 | Initializing static assets from C:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator - Copy\static
+2026-08-13 16:09:44 | Application banners and logger initialized.
+2026-08-13 16:09:46 | Starting uvicorn server on 127.0.0.1:9000
+2026-08-13 16:10:17 | Runtime info: python=3.14.4 frozen=False cwd=C:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator - Copy
+2026-08-13 16:10:18 | Initializing static assets from C:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator - Copy\static
+2026-08-13 16:10:18 | Application banners and logger initialized.
+2026-08-13 16:10:20 | Starting uvicorn server on 127.0.0.1:9000
+2026-08-13 16:10:57 | Runtime info: python=3.14.4 frozen=False cwd=c:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator - Copy
+2026-08-13 16:10:58 | Initializing static assets from c:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator - Copy\static
+2026-08-13 16:10:58 | Application banners and logger initialized.
+2026-08-13 16:11:00 | Starting uvicorn server on 127.0.0.1:9000
+2026-08-13 16:21:22 | Runtime info: python=3.14.4 frozen=False cwd=C:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator - Copy
+2026-08-13 16:21:22 | Initializing static assets from C:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator - Copy\static
+2026-08-13 16:21:22 | Application banners and logger initialized.
+2026-08-13 16:21:24 | Starting uvicorn server on 127.0.0.1:9000
+2026-08-13 16:21:58 | Runtime info: python=3.14.4 frozen=False cwd=c:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator - Copy
+2026-08-13 16:21:58 | Initializing static assets from c:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator - Copy\static
+2026-08-13 16:21:58 | Application banners and logger initialized.
+2026-08-13 16:22:00 | Starting uvicorn server on 127.0.0.1:9000
+2026-08-13 16:38:55 | Runtime info: python=3.14.4 frozen=False cwd=c:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator - Copy
+2026-08-13 16:38:56 | Initializing static assets from c:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator - Copy\static
+2026-08-13 16:38:56 | Application banners and logger initialized.
+2026-08-13 16:38:56 | Port 9000 is already in use.
+Listening process PID(s): 34392
+PID file: c:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator - Copy\logs\nxos_configurator.pid (pid 34392)
+Close the console window, click Stop in the web UI, or run: scripts\stop_configurator.ps1
+To replace the running instance: re-launch with --replace
+2026-08-13 16:39:41 | Runtime info: python=3.14.4 frozen=False cwd=c:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator - Copy
+2026-08-13 16:39:41 | Initializing static assets from c:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator - Copy\static
+2026-08-13 16:39:41 | Application banners and logger initialized.
+2026-08-13 16:39:41 | Port 9000 is already in use.
+Listening process PID(s): 34392
+PID file: c:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator - Copy\logs\nxos_configurator.pid (pid 34392)
+Close the console window, click Stop in the web UI, or run: scripts\stop_configurator.ps1
+To replace the running instance: re-launch with --replace
+2026-08-13 16:40:27 | Runtime info: python=3.14.4 frozen=False cwd=c:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator - Copy
+2026-08-13 16:40:27 | Initializing static assets from c:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator - Copy\static
+2026-08-13 16:40:27 | Application banners and logger initialized.
+2026-08-13 16:40:27 | Port 9000 is already in use.
+Listening process PID(s): 34392
+PID file: c:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator - Copy\logs\nxos_configurator.pid (pid 34392)
+Close the console window, click Stop in the web UI, or run: scripts\stop_configurator.ps1
+To replace the running instance: re-launch with --replace
+2026-08-13 16:43:46 | Runtime info: python=3.14.4 frozen=False cwd=c:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator - Copy
+2026-08-13 16:43:47 | Initializing static assets from c:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator - Copy\static
+2026-08-13 16:43:47 | Application banners and logger initialized.
+2026-08-13 16:43:47 | Port 9000 is already in use.
+Listening process PID(s): 34392
+PID file: c:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator - Copy\logs\nxos_configurator.pid (pid 34392)
+Close the console window, click Stop in the web UI, or run: scripts\stop_configurator.ps1
+To replace the running instance: re-launch with --replace
+2026-08-13 17:21:04 | Runtime info: python=3.14.4 frozen=False cwd=C:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator - Copy
+2026-08-13 17:21:04 | Initializing static assets from C:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator - Copy\static
+2026-08-13 17:21:04 | Application banners and logger initialized.
+2026-08-13 17:21:06 | Starting uvicorn server on 127.0.0.1:9000
+2026-08-13 17:21:33 | Runtime info: python=3.14.4 frozen=False cwd=C:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator - Copy
+2026-08-13 17:21:34 | Initializing static assets from C:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator - Copy\static
+2026-08-13 17:21:34 | Application banners and logger initialized.
+2026-08-13 17:21:36 | Starting uvicorn server on 127.0.0.1:9000
+2026-08-13 17:22:08 | Runtime info: python=3.14.4 frozen=False cwd=c:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator - Copy
+2026-08-13 17:22:08 | Initializing static assets from c:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator - Copy\static
+2026-08-13 17:22:08 | Application banners and logger initialized.
+2026-08-13 17:22:10 | Starting uvicorn server on 127.0.0.1:9000
+2026-08-13 17:24:32 | Runtime info: python=3.14.4 frozen=False cwd=C:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator - Copy
+2026-08-13 17:24:32 | Initializing static assets from C:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator - Copy\static
+2026-08-13 17:24:32 | Application banners and logger initialized.
+2026-08-13 17:24:32 | Port 9000 is already in use.
+Listening process PID(s): 33492
+PID file: C:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator - Copy\logs\nxos_configurator.pid (pid 33492)
+Close the console window, click Stop in the web UI, or run: scripts\stop_configurator.ps1
+To replace the running instance: re-launch with --replace
+2026-08-13 17:25:05 | Runtime info: python=3.14.4 frozen=False cwd=c:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator - Copy
+2026-08-13 17:25:05 | Initializing static assets from c:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator - Copy\static
+2026-08-13 17:25:05 | Application banners and logger initialized.
+2026-08-13 17:25:08 | Starting uvicorn server on 127.0.0.1:9000
+2026-08-13 17:39:25 | Runtime info: python=3.14.4 frozen=False cwd=c:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator - Copy
+2026-08-13 17:39:25 | Initializing static assets from c:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator - Copy\static
+2026-08-13 17:39:25 | Application banners and logger initialized.
+2026-08-13 17:39:25 | Port 9000 is already in use.
+Listening process PID(s): 18716
+PID file: c:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator - Copy\logs\nxos_configurator.pid (pid 18716)
+Close the console window, click Stop in the web UI, or run: scripts\stop_configurator.ps1
+To replace the running instance: re-launch with --replace
+2026-08-13 17:40:10 | Runtime info: python=3.14.4 frozen=False cwd=c:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator - Copy
+2026-08-13 17:40:11 | Initializing static assets from c:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator - Copy\static
+2026-08-13 17:40:11 | Application banners and logger initialized.
+2026-08-13 17:40:11 | Port 9000 is already in use.
+Listening process PID(s): 18716
+PID file: c:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator - Copy\logs\nxos_configurator.pid (pid 18716)
+Close the console window, click Stop in the web UI, or run: scripts\stop_configurator.ps1
+To replace the running instance: re-launch with --replace
+2026-08-13 17:40:57 | Runtime info: python=3.14.4 frozen=False cwd=c:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator - Copy
+2026-08-13 17:40:58 | Initializing static assets from c:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator - Copy\static
+2026-08-13 17:40:58 | Application banners and logger initialized.
+2026-08-13 17:40:58 | Port 9000 is already in use.
+Listening process PID(s): 18716
+PID file: c:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator - Copy\logs\nxos_configurator.pid (pid 18716)
+Close the console window, click Stop in the web UI, or run: scripts\stop_configurator.ps1
+To replace the running instance: re-launch with --replace
+2026-08-13 17:41:40 | Runtime info: python=3.14.4 frozen=False cwd=c:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator - Copy
+2026-08-13 17:41:41 | Initializing static assets from c:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator - Copy\static
+2026-08-13 17:41:41 | Application banners and logger initialized.
+2026-08-13 17:41:41 | Port 9000 is already in use.
+Listening process PID(s): 18716
+PID file: c:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator - Copy\logs\nxos_configurator.pid (pid 18716)
+Close the console window, click Stop in the web UI, or run: scripts\stop_configurator.ps1
+To replace the running instance: re-launch with --replace
+2026-08-13 17:42:26 | Runtime info: python=3.14.4 frozen=False cwd=c:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator - Copy
+2026-08-13 17:42:26 | Initializing static assets from c:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator - Copy\static
+2026-08-13 17:42:26 | Application banners and logger initialized.
+2026-08-13 17:42:26 | Port 9000 is already in use.
+Listening process PID(s): 18716
+PID file: c:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator - Copy\logs\nxos_configurator.pid (pid 18716)
+Close the console window, click Stop in the web UI, or run: scripts\stop_configurator.ps1
+To replace the running instance: re-launch with --replace
+2026-08-13 17:43:14 | Runtime info: python=3.14.4 frozen=False cwd=c:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator - Copy
+2026-08-13 17:43:15 | Initializing static assets from c:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator - Copy\static
+2026-08-13 17:43:15 | Application banners and logger initialized.
+2026-08-13 17:43:15 | Port 9000 is already in use.
+Listening process PID(s): 18716
+PID file: c:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator - Copy\logs\nxos_configurator.pid (pid 18716)
+Close the console window, click Stop in the web UI, or run: scripts\stop_configurator.ps1
+To replace the running instance: re-launch with --replace
+2026-08-13 17:44:34 | Runtime info: python=3.14.4 frozen=False cwd=c:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator - Copy
+2026-08-13 17:44:34 | Initializing static assets from c:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator - Copy\static
+2026-08-13 17:44:34 | Application banners and logger initialized.
+2026-08-13 17:44:34 | Port 9000 is already in use.
+Listening process PID(s): 18716
+PID file: c:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator - Copy\logs\nxos_configurator.pid (pid 18716)
+Close the console window, click Stop in the web UI, or run: scripts\stop_configurator.ps1
+To replace the running instance: re-launch with --replace
+2026-08-13 17:46:48 | Runtime info: python=3.14.4 frozen=False cwd=c:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator - Copy
+2026-08-13 17:46:49 | Initializing static assets from c:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator - Copy\static
+2026-08-13 17:46:49 | Application banners and logger initialized.
+2026-08-13 17:46:49 | Port 9000 is already in use.
+Listening process PID(s): 18716
+PID file: c:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator - Copy\logs\nxos_configurator.pid (pid 18716)
+Close the console window, click Stop in the web UI, or run: scripts\stop_configurator.ps1
+To replace the running instance: re-launch with --replace
+2026-08-13 17:48:08 | Runtime info: python=3.14.4 frozen=False cwd=C:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator - Copy
+2026-08-13 17:48:08 | Initializing static assets from C:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator - Copy\static
+2026-08-13 17:48:08 | Application banners and logger initialized.
+2026-08-13 17:48:08 | Port 9000 is already in use.
+Listening process PID(s): 18716
+PID file: C:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator - Copy\logs\nxos_configurator.pid (pid 18716)
+Close the console window, click Stop in the web UI, or run: scripts\stop_configurator.ps1
+To replace the running instance: re-launch with --replace
+2026-08-13 17:50:21 | Runtime info: python=3.14.4 frozen=False cwd=C:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator - Copy
+2026-08-13 17:50:21 | Initializing static assets from C:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator - Copy\static
+2026-08-13 17:50:21 | Application banners and logger initialized.
+2026-08-13 17:50:23 | Starting uvicorn server on 127.0.0.1:9000
+2026-08-16 14:27:20 | Runtime info: python=3.14.4 frozen=False cwd=c:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator - Copy
+2026-08-16 14:27:20 | Initializing static assets from c:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator - Copy\static
+2026-08-16 14:27:20 | Application banners and logger initialized.
+2026-08-16 14:27:22 | Starting uvicorn server on 127.0.0.1:9000
+2026-08-16 14:43:47 | Runtime info: python=3.14.4 frozen=False cwd=c:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator - Copy
+2026-08-16 14:43:47 | Initializing static assets from c:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator - Copy\static
+2026-08-16 14:43:47 | Application banners and logger initialized.
+2026-08-16 14:43:47 | Port 9000 is already in use.
+Listening process PID(s): 3068
+PID file: c:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator - Copy\logs\nxos_configurator.pid (pid 3068)
+Close the console window, click Stop in the web UI, or run: scripts\stop_configurator.ps1
+To replace the running instance: re-launch with --replace
+2026-08-16 14:44:35 | Runtime info: python=3.14.4 frozen=False cwd=c:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator - Copy
+2026-08-16 14:44:36 | Initializing static assets from c:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator - Copy\static
+2026-08-16 14:44:36 | Application banners and logger initialized.
+2026-08-16 14:44:36 | Port 9000 is already in use.
+Listening process PID(s): 3068
+PID file: c:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator - Copy\logs\nxos_configurator.pid (pid 3068)
+Close the console window, click Stop in the web UI, or run: scripts\stop_configurator.ps1
+To replace the running instance: re-launch with --replace
+2026-08-16 14:45:23 | Runtime info: python=3.14.4 frozen=False cwd=c:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator - Copy
+2026-08-16 14:45:24 | Initializing static assets from c:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator - Copy\static
+2026-08-16 14:45:24 | Application banners and logger initialized.
+2026-08-16 14:45:24 | Port 9000 is already in use.
+Listening process PID(s): 3068
+PID file: c:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator - Copy\logs\nxos_configurator.pid (pid 3068)
+Close the console window, click Stop in the web UI, or run: scripts\stop_configurator.ps1
+To replace the running instance: re-launch with --replace
+2026-08-16 14:49:12 | Runtime info: python=3.14.4 frozen=False cwd=c:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator - Copy
+2026-08-16 14:49:12 | Initializing static assets from c:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator - Copy\static
+2026-08-16 14:49:12 | Application banners and logger initialized.
+2026-08-16 14:49:12 | Port 9000 is already in use.
+Listening process PID(s): 3068
+PID file: c:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator - Copy\logs\nxos_configurator.pid (pid 3068)
+Close the console window, click Stop in the web UI, or run: scripts\stop_configurator.ps1
+To replace the running instance: re-launch with --replace
+2026-08-16 14:53:03 | Runtime info: python=3.14.4 frozen=False cwd=C:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator - Copy
+2026-08-16 14:53:04 | Initializing static assets from C:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator - Copy\static
+2026-08-16 14:53:04 | Application banners and logger initialized.
+2026-08-16 14:53:04 | Port 9000 is already in use.
+Listening process PID(s): 3068
+PID file: C:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator - Copy\logs\nxos_configurator.pid (pid 3068)
+Close the console window, click Stop in the web UI, or run: scripts\stop_configurator.ps1
+To replace the running instance: re-launch with --replace
+2026-08-16 15:51:57 | Runtime info: python=3.14.4 frozen=False cwd=C:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator - Copy
+2026-08-16 15:51:57 | Initializing static assets from C:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator - Copy\static
+2026-08-16 15:51:57 | Application banners and logger initialized.
+2026-08-16 15:51:59 | Starting uvicorn server on 127.0.0.1:9000
+2026-08-16 15:59:07 | Runtime info: python=3.14.4 frozen=False cwd=C:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator - Copy
+2026-08-16 15:59:07 | Initializing static assets from C:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator - Copy\static
+2026-08-16 15:59:07 | Application banners and logger initialized.
+2026-08-16 15:59:09 | Starting uvicorn server on 127.0.0.1:9000
+2026-08-16 16:06:03 | Runtime info: python=3.14.4 frozen=False cwd=C:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator - Copy
+2026-08-16 16:06:04 | Initializing static assets from C:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator - Copy\static
+2026-08-16 16:06:04 | Application banners and logger initialized.
+2026-08-16 16:06:06 | Starting uvicorn server on 127.0.0.1:9000
+2026-08-16 16:06:37 | Runtime info: python=3.14.4 frozen=False cwd=C:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator - Copy
+2026-08-16 16:06:37 | Initializing static assets from C:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator - Copy\static
+2026-08-16 16:06:37 | Application banners and logger initialized.
+2026-08-16 16:06:39 | Starting uvicorn server on 127.0.0.1:9000
+2026-08-16 16:07:24 | Runtime info: python=3.14.4 frozen=False cwd=C:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator - Copy
+2026-08-16 16:07:25 | Initializing static assets from C:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator - Copy\static
+2026-08-16 16:07:25 | Application banners and logger initialized.
+2026-08-16 16:07:27 | Starting uvicorn server on 127.0.0.1:9000
+2026-08-16 16:28:24 | Runtime info: python=3.14.4 frozen=False cwd=C:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator - Copy
+2026-08-16 16:28:24 | Initializing static assets from C:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator - Copy\static
+2026-08-16 16:28:24 | Application banners and logger initialized.
+2026-08-16 16:28:26 | Starting uvicorn server on 127.0.0.1:9000
+2026-08-16 17:09:02 | Runtime info: python=3.14.4 frozen=False cwd=C:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator - Copy
+2026-08-16 17:09:03 | Initializing static assets from C:\Users\bbb12\OneDrive\Desktop\Antigravity Projects Folder\Configurator - Copy\static
+2026-08-16 17:09:03 | Application banners and logger initialized.
+2026-08-16 17:09:05 | Starting uvicorn server on 127.0.0.1:9000

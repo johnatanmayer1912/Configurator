@@ -1,0 +1,230 @@
+! -----------------------------------------------------------------------------
+! Configuration Authority System
+! Version: 6.32.0
+! NX-OS:  9.3
+! Date:    2026-07-26 10:24:20
+! Mode:    vPC Pair
+! Tier:    standard
+! -----------------------------------------------------------------------------
+
+! Hostname & Global Services
+hostname LEAF4
+!
+banner motd ^
+*********************************************************
+                HQ-LEAF4
+                MGMT_IP: 10.0.0.14/24
+                HQ
+*********************************************************
+^
+!
+! Local user omitted — set admin password in wizard to create username (lab only).
+ip domain-lookup
+
+! Features
+feature interface-vlan
+feature hsrp
+feature lacp
+feature vpc
+feature lldp
+
+! SNMP
+snmp-server location HQ
+snmp-server source-interface traps mgmt0
+! SNMP trap hosts — add in Production details when NMS is ready
+rmon event 1 log trap public description FATAL(1) owner PMON@FATAL
+rmon event 2 log trap public description CRITICAL(2) owner PMON@CRITICAL
+rmon event 3 log trap public description ERROR(3) owner PMON@ERROR
+rmon event 4 log trap public description WARNING(4) owner PMON@WARNING
+rmon event 5 log trap public description INFORMATION(5) owner PMON@INFO
+snmp-server enable traps callhome event-notify
+snmp-server enable traps callhome smtp-send-fail
+snmp-server enable traps cfs state-change-notif
+snmp-server enable traps cfs merge-failure
+snmp-server enable traps aaa server-state-change
+snmp-server enable traps feature-control FeatureOpStatusChange
+snmp-server enable traps sysmgr cseFailSwCoreNotifyExtended
+snmp-server enable traps config ccmCLIRunningConfigChanged
+snmp-server enable traps snmp authentication
+snmp-server enable traps link cisco-xcvr-mon-status-chg
+snmp-server enable traps vtp notifs
+snmp-server enable traps vtp vlancreate
+snmp-server enable traps vtp vlandelete
+snmp-server enable traps bridge newroot
+snmp-server enable traps bridge topologychange
+snmp-server enable traps stpx inconsistency
+snmp-server enable traps stpx root-inconsistency
+snmp-server enable traps stpx loop-inconsistency
+snmp-server enable traps system Clock-change-notification
+snmp-server enable traps feature-control ciscoFeatOpStatusChange
+snmp-server enable traps mmode cseNormalModeChangeNotify
+snmp-server enable traps mmode cseMaintModeChangeNotify
+snmp-server enable traps syslog message-generated
+
+! VLAN Configuration
+vlan 100
+  name FABRIC_100
+
+vlan 101
+  name FABRIC_101
+
+vlan 102
+  name FABRIC_102
+
+vlan 103
+  name FABRIC_103
+
+! Spanning Tree
+spanning-tree vlan 1-3967 priority 8192
+
+! vPC Domain
+vpc domain 200
+  role priority 4096
+  system-priority 32667
+  peer-keepalive destination 10.0.0.2 source 10.0.0.1 vrf management
+  peer-gateway
+  auto-recovery
+  ip arp synchronize
+  orphan-port suspend
+
+! L3 SVI Configuration
+interface Vlan100
+  description SVI_FABRIC_100
+  no ip redirects
+  no ip proxy-arp
+  no shutdown
+  ip address 10.100.0.1/24
+  hsrp version 2
+  hsrp 100
+    priority 110
+    preempt
+    ip 10.100.0.1
+
+interface Vlan101
+  description SVI_FABRIC_101
+  no ip redirects
+  no ip proxy-arp
+  no shutdown
+  ip address 10.101.0.1/24
+  hsrp version 2
+  hsrp 101
+    priority 110
+    preempt
+    ip 10.101.0.1
+
+! Port-Channels
+interface port-channel1
+  description Connected_To_LEAF4-B_Peer-Link
+  switchport
+  switchport mode trunk
+  spanning-tree port type network
+  vpc peer-link
+  no shutdown
+
+interface port-channel2
+  description Connected_To_LEAF4-B_Peer-Keepalive
+  vrf member management
+  ip address 10.0.0.1/24
+  no shutdown
+
+interface port-channel30
+  description Connected_to_SPINE1 + SPINE21 + SPINE1 + SPINE22
+  switchport
+  switchport mode trunk
+  vpc 30
+  no shutdown
+
+! Ethernet Interfaces
+interface Ethernet1/35-36
+  description Part_Of_Vpc_PEERLINK_To_LEAF4-B
+  switchport
+  switchport mode trunk
+  channel-group 1 mode active
+  no shutdown
+
+interface Ethernet1/49
+  description Part_Of_Vpc_KEEPALIVE_To_LEAF3
+  channel-group 2 mode active
+  no shutdown
+
+interface Ethernet1/50
+  description Part_Of_Vpc_KEEPALIVE_To_LEAF3
+  channel-group 2 mode active
+  no shutdown
+
+interface Ethernet1/53
+  description to SPINE1 port 1
+  switchport
+  switchport mode trunk
+  channel-group 30 mode active
+  no shutdown
+
+interface Ethernet1/54
+  description to SPINE2 port 1
+  switchport
+  switchport mode trunk
+  channel-group 30 mode active
+  no shutdown
+
+interface Ethernet1/1
+  description to SPINE1
+  switchport
+  switchport mode trunk
+  channel-group 20 mode active
+  no shutdown
+
+interface Ethernet1/2
+  description to SPINE1
+  switchport
+  switchport mode trunk
+  channel-group 20 mode active
+  no shutdown
+
+interface Ethernet1/3
+  description to SPINE2
+  switchport
+  switchport mode trunk
+  channel-group 20 mode active
+  no shutdown
+
+interface Ethernet1/4
+  description to SPINE2
+  switchport
+  switchport mode trunk
+  channel-group 20 mode active
+  no shutdown
+
+
+! Management & Routing
+interface mgmt0
+  ip address 10.0.0.14/24
+  vrf member management
+  no shutdown
+vrf context management
+  ip route 0.0.0.0/0 10.0.0.254
+
+! NTP
+ntp server 10.255.255.254 prefer use-vrf management
+! Logging
+logging source-interface mgmt0
+logging server 10.255.255.254 6 use-vrf management
+logging timestamp milliseconds
+logging level info
+
+! CLI Aliases
+cli alias name wr copy running startup
+cli alias name shint show interface status
+cli alias name shintd show interface description
+
+! Boot System
+boot nxos bootflash:/nxos.9.3.5.bin
+
+line console
+line vty
+
+! POST-PASTE CHECKLIST (lab engineer — comments only)
+! 1) show running-config | sec vpc
+! 2) show vpc brief
+! 3) show interface status err-disabled
+! 4) show ip route vrf management
+! 5) copy run start (only after lab sign-off)

@@ -1,0 +1,23 @@
+{
+  "name": "nxos-configurator-web",
+  "version": "6.44.0",
+  "description": "NX-OS Configuration Authority - Web-based configurator for Cisco Nexus switches",
+  "main": "main.py",
+  "scripts": {
+    "start": "python main.py",
+    "build": "python -m PyInstaller NXOS_Configurator_Web_v6.44.0.spec",
+    "test": "pytest"
+  },
+  "keywords": [
+    "nxos",
+    "cisco",
+    "nexus",
+    "configurator",
+    "network"
+  ],
+  "author": "Antigravity",
+  "license": "MIT",
+  "devDependencies": {
+    "yaml": "^2.3.4"
+  }
+}

@@ -38,10 +38,14 @@ def _block(cfg: str, name: str) -> str:
 def test_fiber_uplink_pool_excludes_vpc_reserved_ports():
     hw = ROOT_CATALOG.get_hardware_profile("Nexus 93180YC-EX")
     pool = fiber_uplink_pool(hw)
-    assert "Ethernet1/49" in pool
-    assert "Ethernet1/50" in pool
-    assert "Ethernet1/53" not in pool
-    assert "Ethernet1/47" not in pool
+    # vpc_keepalive is Ethernet1/49-50, vpc_peer_link is Ethernet1/51-52
+    # fiber uplink pool should be Ethernet1/53-54 (vpc_uplink_start/end)
+    assert "Ethernet1/53" in pool
+    assert "Ethernet1/54" in pool
+    assert "Ethernet1/49" not in pool  # reserved for keepalive
+    assert "Ethernet1/50" not in pool  # reserved for keepalive
+    assert "Ethernet1/51" not in pool  # reserved for peer-link
+    assert "Ethernet1/52" not in pool  # reserved for peer-link
 
 
 @pytest.mark.mandatory
@@ -79,8 +83,9 @@ def test_10g_leaf_default_fiber_uplink_po30():
     _, cfg = _cfg("vpc_leaf_pair", "DC-LEAF-01-A", uplink_options={"uplink_fiber_pair": True})
     assert "interface port-channel30" in cfg
     assert "vpc 30" in _block(cfg, "port-channel30")
-    assert "channel-group 30 mode active" in _block(cfg, "Ethernet1/49")
-    assert "channel-group 30 mode active" in _block(cfg, "Ethernet1/50")
+    # Fiber uplink uses Ethernet1/53-54 (vpc_uplink_start/end), not Ethernet1/49-50 (keepalive)
+    assert "channel-group 30 mode active" in _block(cfg, "Ethernet1/53")
+    assert "channel-group 30 mode active" in _block(cfg, "Ethernet1/54")
 
 
 @pytest.mark.mandatory

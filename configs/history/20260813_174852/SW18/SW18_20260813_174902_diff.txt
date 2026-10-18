@@ -1,0 +1,845 @@
+--- baseline
++++ proposed
+@@ -0,0 +1,842 @@
++! -----------------------------------------------------------------------------
++! Configuration Authority System
++! Version: 6.43.0
++! NX-OS:  9.3
++! Date:    2026-08-13 17:49:02
++! Mode:    Standalone
++! Tier:    standard
++! -----------------------------------------------------------------------------
++
++! Hostname & Global Services
++hostname SW18
++!
++banner motd ^
++*********************************************************
++                HQ-SW18
++                MGMT_IP: 10.0.0.18/24
++                HQ
++*********************************************************
++^
++!
++! Local user omitted — set admin password in wizard to create username (lab only).
++ip domain-lookup
++
++! Features
++feature interface-vlan
++feature hsrp
++feature lacp
++feature lldp
++
++! VLAN Configuration
++vlan 100
++  name FABRIC_100
++
++vlan 101
++  name FABRIC_101
++
++vlan 102
++  name FABRIC_102
++
++vlan 103
++  name FABRIC_103
++
++vlan 104
++  name FABRIC_104
++
++! L3 SVI Configuration
++interface Vlan100
++  description SVI_FABRIC_100
++  no ip redirects
++  no ip proxy-arp
++  no shutdown
++  ip address 10.100.0.1/24
++  hsrp version 2
++  hsrp 100
++    priority 110
++    preempt
++    ip 10.100.0.1
++
++interface Vlan101
++  description SVI_FABRIC_101
++  no ip redirects
++  no ip proxy-arp
++  no shutdown
++  ip address 10.101.0.1/24
++  hsrp version 2
++  hsrp 101
++    priority 110
++    preempt
++    ip 10.101.0.1
++
++
++
++
++! Ethernet Interfaces
++interface Ethernet1/1
++  description Access_Port_1
++  switchport mode access
++  switchport access vlan 100
++  spanning-tree port type edge
++  storm-control broadcast level 20.00
++  storm-control multicast level 20.00
++  storm-control action shutdown
++  no shutdown
++
++interface Ethernet1/2
++  description Access_Port_2
++  switchport mode access
++  switchport access vlan 100
++  spanning-tree port type edge
++  storm-control broadcast level 20.00
++  storm-control multicast level 20.00
++  storm-control action shutdown
++  no shutdown
++
++interface Ethernet1/3
++  description Access_Port_3
++  switchport mode access
++  switchport access vlan 100
++  spanning-tree port type edge
++  storm-control broadcast level 20.00
++  storm-control multicast level 20.00
++  storm-control action shutdown
++  no shutdown
++
++interface Ethernet1/4
++  description Access_Port_4
++  switchport mode access
++  switchport access vlan 100
++  spanning-tree port type edge
++  storm-control broadcast level 20.00
++  storm-control multicast level 20.00
++  storm-control action shutdown
++  no shutdown
++
++interface Ethernet1/5
++  description Access_Port_5
++  switchport mode access
++  switchport access vlan 100
++  spanning-tree port type edge
++  storm-control broadcast level 20.00
++  storm-control multicast level 20.00
++  storm-control action shutdown
++  no shutdown
++
++interface Ethernet1/6
++  description Access_Port_6
++  switchport mode access
++  switchport access vlan 100
++  spanning-tree port type edge
++  storm-control broadcast level 20.00
++  storm-control multicast level 20.00
++  storm-control action shutdown
++  no shutdown
++
++interface Ethernet1/7
++  description Access_Port_7
++  switchport mode access
++  switchport access vlan 100
++  spanning-tree port type edge
++  storm-control broadcast level 20.00
++  storm-control multicast level 20.00
++  storm-control action shutdown
++  no shutdown
++
++interface Ethernet1/8
++  description Access_Port_8
++  switchport mode access
++  switchport access vlan 100
++  spanning-tree port type edge
++  storm-control broadcast level 20.00
++  storm-control multicast level 20.00
++  storm-control action shutdown
++  no shutdown
++
++interface Ethernet1/9
++  description Access_Port_9
++  switchport mode access
++  switchport access vlan 100
++  spanning-tree port type edge
++  storm-control broadcast level 20.00
++  storm-control multicast level 20.00
++  storm-control action shutdown
++  no shutdown
++
++interface Ethernet1/10
++  description Access_Port_10
++  switchport mode access
++  switchport access vlan 100
++  spanning-tree port type edge
++  storm-control broadcast level 20.00
++  storm-control multicast level 20.00
++  storm-control action shutdown
++  no shutdown
++
++interface Ethernet1/11
++  description Access_Port_11
++  switchport mode access
++  switchport access vlan 100
++  spanning-tree port type edge
++  storm-control broadcast level 20.00
++  storm-control multicast level 20.00
++  storm-control action shutdown
++  no shutdown
++
++interface Ethernet1/12
++  description Access_Port_12
++  switchport mode access
++  switchport access vlan 100
++  spanning-tree port type edge
++  storm-control broadcast level 20.00
++  storm-control multicast level 20.00
++  storm-control action shutdown
++  no shutdown
++
++interface Ethernet1/13
++  description Access_Port_13
++  switchport mode access
++  switchport access vlan 100
++  spanning-tree port type edge
++  storm-control broadcast level 20.00
++  storm-control multicast level 20.00
++  storm-control action shutdown
++  no shutdown
++
++interface Ethernet1/14
++  description Access_Port_14
++  switchport mode access
++  switchport access vlan 100
++  spanning-tree port type edge
++  storm-control broadcast level 20.00
++  storm-control multicast level 20.00
++  storm-control action shutdown
++  no shutdown
++
++interface Ethernet1/15
++  description Access_Port_15
++  switchport mode access
++  switchport access vlan 100
++  spanning-tree port type edge
++  storm-control broadcast level 20.00
++  storm-control multicast level 20.00
++  storm-control action shutdown
++  no shutdown
++
++interface Ethernet1/16
++  description Access_Port_16
++  switchport mode access
++  switchport access vlan 100
++  spanning-tree port type edge
++  storm-control broadcast level 20.00
++  storm-control multicast level 20.00
++  storm-control action shutdown
++  no shutdown
++
++interface Ethernet1/17
++  description Access_Port_17
++  switchport mode access
++  switchport access vlan 100
++  spanning-tree port type edge
++  storm-control broadcast level 20.00
++  storm-control multicast level 20.00
++  storm-control action shutdown
++  no shutdown
++
++interface Ethernet1/18
++  description Access_Port_18
++  switchport mode access
++  switchport access vlan 100
++  spanning-tree port type edge
++  storm-control broadcast level 20.00
++  storm-control multicast level 20.00
++  storm-control action shutdown
++  no shutdown
++
++interface Ethernet1/19
++  description Access_Port_19
++  switchport mode access
++  switchport access vlan 100
++  spanning-tree port type edge
++  storm-control broadcast level 20.00
++  storm-control multicast level 20.00
++  storm-control action shutdown
++  no shutdown
++
++interface Ethernet1/20
++  description Access_Port_20
++  switchport mode access
++  switchport access vlan 100
++  spanning-tree port type edge
++  storm-control broadcast level 20.00
++  storm-control multicast level 20.00
++  storm-control action shutdown
++  no shutdown
++
++interface Ethernet1/21
++  description Access_Port_21
++  switchport mode access
++  switchport access vlan 100
++  spanning-tree port type edge
++  storm-control broadcast level 20.00
++  storm-control multicast level 20.00
++  storm-control action shutdown
++  no shutdown
++
++interface Ethernet1/22
++  description Access_Port_22
++  switchport mode access
++  switchport access vlan 100
++  spanning-tree port type edge
++  storm-control broadcast level 20.00
++  storm-control multicast level 20.00
++  storm-control action shutdown
++  no shutdown
++
++interface Ethernet1/23
++  description Access_Port_23
++  switchport mode access
++  switchport access vlan 100
++  spanning-tree port type edge
++  storm-control broadcast level 20.00
++  storm-control multicast level 20.00
++  storm-control action shutdown
++  no shutdown
++
++interface Ethernet1/24
++  description Access_Port_24
++  switchport mode access
++  switchport access vlan 100
++  spanning-tree port type edge
++  storm-control broadcast level 20.00
++  storm-control multicast level 20.00
++  storm-control action shutdown
++  no shutdown
++
++interface Ethernet1/25
++  description Access_Port_25
++  switchport mode access
++  switchport access vlan 100
++  spanning-tree port type edge
++  storm-control broadcast level 20.00
++  storm-control multicast level 20.00
++  storm-control action shutdown
++  no shutdown
++
++interface Ethernet1/26
++  description Access_Port_26
++  switchport mode access
++  switchport access vlan 100
++  spanning-tree port type edge
++  storm-control broadcast level 20.00
++  storm-control multicast level 20.00
++  storm-control action shutdown
++  no shutdown
++
++interface Ethernet1/27
++  description Access_Port_27
++  switchport mode access
++  switchport access vlan 100
++  spanning-tree port type edge
++  storm-control broadcast level 20.00
++  storm-control multicast level 20.00
++  storm-control action shutdown
++  no shutdown
++
++interface Ethernet1/28
++  description Access_Port_28
++  switchport mode access
++  switchport access vlan 100
++  spanning-tree port type edge
++  storm-control broadcast level 20.00
++  storm-control multicast level 20.00
++  storm-control action shutdown
++  no shutdown
++
++interface Ethernet1/29
++  description Access_Port_29
++  switchport mode access
++  switchport access vlan 100
++  spanning-tree port type edge
++  storm-control broadcast level 20.00
++  storm-control multicast level 20.00
++  storm-control action shutdown
++  no shutdown
++
++interface Ethernet1/30
++  description Access_Port_30
++  switchport mode access
++  switchport access vlan 100
++  spanning-tree port type edge
++  storm-control broadcast level 20.00
++  storm-control multicast level 20.00
++  storm-control action shutdown
++  no shutdown
++
++interface Ethernet1/31
++  description Access_Port_31
++  switchport mode access
++  switchport access vlan 100
++  spanning-tree port type edge
++  storm-control broadcast level 20.00
++  storm-control multicast level 20.00
++  storm-control action shutdown
++  no shutdown
++
++interface Ethernet1/32
++  description Access_Port_32
++  switchport mode access
++  switchport access vlan 100
++  spanning-tree port type edge
++  storm-control broadcast level 20.00
++  storm-control multicast level 20.00
++  storm-control action shutdown
++  no shutdown
++
++interface Ethernet1/33
++  description Access_Port_33
++  switchport mode access
++  switchport access vlan 100
++  spanning-tree port type edge
++  storm-control broadcast level 20.00
++  storm-control multicast level 20.00
++  storm-control action shutdown
++  no shutdown
++
++interface Ethernet1/34
++  description Access_Port_34
++  switchport mode access
++  switchport access vlan 100
++  spanning-tree port type edge
++  storm-control broadcast level 20.00
++  storm-control multicast level 20.00
++  storm-control action shutdown
++  no shutdown
++
++interface Ethernet1/35
++  description Access_Port_35
++  switchport mode access
++  switchport access vlan 100
++  spanning-tree port type edge
++  storm-control broadcast level 20.00
++  storm-control multicast level 20.00
++  storm-control action shutdown
++  no shutdown
++
++interface Ethernet1/36
++  description Access_Port_36
++  switchport mode access
++  switchport access vlan 100
++  spanning-tree port type edge
++  storm-control broadcast level 20.00
++  storm-control multicast level 20.00
++  storm-control action shutdown
++  no shutdown
++
++interface Ethernet1/37
++  description Access_Port_37
++  switchport mode access
++  switchport access vlan 100
++  spanning-tree port type edge
++  storm-control broadcast level 20.00
++  storm-control multicast level 20.00
++  storm-control action shutdown
++  no shutdown
++
++interface Ethernet1/38
++  description Access_Port_38
++  switchport mode access
++  switchport access vlan 100
++  spanning-tree port type edge
++  storm-control broadcast level 20.00
++  storm-control multicast level 20.00
++  storm-control action shutdown
++  no shutdown
++
++interface Ethernet1/39
++  description Access_Port_39
++  switchport mode access
++  switchport access vlan 100
++  spanning-tree port type edge
++  storm-control broadcast level 20.00
++  storm-control multicast level 20.00
++  storm-control action shutdown
++  no shutdown
++
++interface Ethernet1/40
++  description Access_Port_40
++  switchport mode access
++  switchport access vlan 100
++  spanning-tree port type edge
++  storm-control broadcast level 20.00
++  storm-control multicast level 20.00
++  storm-control action shutdown
++  no shutdown
++
++interface Ethernet1/41
++  description Access_Port_41
++  switchport mode access
++  switchport access vlan 100
++  spanning-tree port type edge
++  storm-control broadcast level 20.00
++  storm-control multicast level 20.00
++  storm-control action shutdown
++  no shutdown
++
++interface Ethernet1/42
++  description Access_Port_42
++  switchport mode access
++  switchport access vlan 100
++  spanning-tree port type edge
++  storm-control broadcast level 20.00
++  storm-control multicast level 20.00
++  storm-control action shutdown
++  no shutdown
++
++interface Ethernet1/43
++  description Access_Port_43
++  switchport mode access
++  switchport access vlan 100
++  spanning-tree port type edge
++  storm-control broadcast level 20.00
++  storm-control multicast level 20.00
++  storm-control action shutdown
++  no shutdown
++
++interface Ethernet1/44
++  description Access_Port_44
++  switchport mode access
++  switchport access vlan 100
++  spanning-tree port type edge
++  storm-control broadcast level 20.00
++  storm-control multicast level 20.00
++  storm-control action shutdown
++  no shutdown
++
++interface Ethernet1/45
++  description Access_Port_45
++  switchport mode access
++  switchport access vlan 100
++  spanning-tree port type edge
++  storm-control broadcast level 20.00
++  storm-control multicast level 20.00
++  storm-control action shutdown
++  no shutdown
++
++interface Ethernet1/46
++  description Access_Port_46
++  switchport mode access
++  switchport access vlan 100
++  spanning-tree port type edge
++  storm-control broadcast level 20.00
++  storm-control multicast level 20.00
++  storm-control action shutdown
++  no shutdown
++
++interface Ethernet1/47
++  description Access_Port_47
++  switchport mode access
++  switchport access vlan 100
++  spanning-tree port type edge
++  storm-control broadcast level 20.00
++  storm-control multicast level 20.00
++  storm-control action shutdown
++  no shutdown
++
++interface Ethernet1/48
++  description Access_Port_48
++  switchport mode access
++  switchport access vlan 100
++  spanning-tree port type edge
++  storm-control broadcast level 20.00
++  storm-control multicast level 20.00
++  storm-control action shutdown
++  no shutdown
++
++interface Ethernet1/49
++  description Access_Port_49
++  switchport mode access
++  switchport access vlan 100
++  spanning-tree port type edge
++  storm-control broadcast level 20.00
++  storm-control multicast level 20.00
++  storm-control action shutdown
++  no shutdown
++
++interface Ethernet1/50
++  description Access_Port_50
++  switchport mode access
++  switchport access vlan 100
++  spanning-tree port type edge
++  storm-control broadcast level 20.00
++  storm-control multicast level 20.00
++  storm-control action shutdown
++  no shutdown
++
++interface Ethernet1/51
++  description Access_Port_51
++  switchport mode access
++  switchport access vlan 100
++  spanning-tree port type edge
++  storm-control broadcast level 20.00
++  storm-control multicast level 20.00
++  storm-control action shutdown
++  no shutdown
++
++interface Ethernet1/52
++  description Access_Port_52
++  switchport mode access
++  switchport access vlan 100
++  spanning-tree port type edge
++  storm-control broadcast level 20.00
++  storm-control multicast level 20.00
++  storm-control action shutdown
++  no shutdown
++
++interface Ethernet1/53
++  description Uplink_1
++  switchport mode trunk
++  switchport trunk allowed vlan 1-4094
++  no shutdown
++
++interface Ethernet1/54
++  description Uplink_2
++  switchport mode trunk
++  switchport trunk allowed vlan 1-4094
++  no shutdown
++
++! Management & Routing
++interface mgmt0
++  ip address 10.0.0.18/24
++  vrf member management
++  no shutdown
++vrf context management
++  ip route 0.0.0.0/0 10.0.0.254
++
++! NTP
++ntp server 10.255.255.254 prefer use-vrf management
++! Logging
++logging server 10.255.255.254 6 use-vrf management
++logging timestamp milliseconds
++logging level info
++
++! Boot System
++boot nxos bootflash:/nxos.9.3.5.bin
++
++line console
++line vty
++
++! =============================================================================
++! NX-OS TROUBLESHOOTING DIAGNOSTIC COMMANDS
++! =============================================================================
++! Use these commands for troubleshooting and verification:
++!
++! ─────────────────────────────────────────────────────────────────────────────
++! CRITICAL DIAGNOSTICS (First 5 commands to run when issues occur)
++! ─────────────────────────────────────────────────────────────────────────────
++! show system resources           # Check CPU/memory utilization (should be <80%)
++! show environment                # Check fans, power supplies, temperature
++! show interface status err-disabled  # Check for error-disabled interfaces
++! show logging logfile last 50    # Check recent log entries for errors
++! show processes cpu              # Check for high CPU processes
++!
++! ─────────────────────────────────────────────────────────────────────────────
++! SYSTEM INFORMATION & HEALTH
++! ─────────────────────────────────────────────────────────────────────────────
++! show version                    # NX-OS version, uptime, hardware info
++! show module                     # Module status and hardware inventory
++! show platform                   # Platform-specific information
++! show inventory                  # Detailed hardware inventory
++! show license                    # License status and features
++! show boot                       # Boot variables and kickstart info
++! show diagnostic results module all detail  # Hardware diagnostic test results
++! show system internal kernel uptime  # Kernel uptime and stability
++!
++! ─────────────────────────────────────────────────────────────────────────────
++! INTERFACE DIAGNOSTICS
++! ─────────────────────────────────────────────────────────────────────────────
++! show interface brief             # Quick interface status overview
++! show interface status            # Detailed interface status with reasons
++! show interface status err-disabled  # Error-disabled interfaces with reasons
++! show interface switchport        # Switchport configuration details
++! show interface trunk             # Trunk port information and allowed VLANs
++! show interface counters          # Interface packet/byte counters
++! show interface counters detailed  # Detailed interface error counters
++! show port-channel summary        # Port-channel status and member ports
++! show port-channel database       # Port-channel configuration database
++! show lacp counters               # LACP protocol statistics
++! show cdp neighbors               # CDP neighbor discovery (if enabled)
++! show lldp neighbors              # LLDP neighbor discovery (if enabled)
++! show lldp neighbors detail       # Detailed LLDP neighbor information
++! show interface transceiver detail  # SFP/optical module diagnostics
++! show interface flowcontrol       # Flow control status per interface
++!
++! ─────────────────────────────────────────────────────────────────────────────
++! VLAN & SPANNING TREE
++! ─────────────────────────────────────────────────────────────────────────────
++! show vlan                       # All VLANs and their names
++! show vlan brief                 # Brief VLAN summary
++! show spanning-tree              # STP status for all VLANs
++! show spanning-tree summary      # STP summary and root bridge info
++! show spanning-tree detail        # Detailed STP information per VLAN
++! show spanning-tree mst          # MST (Multiple Spanning Tree) configuration
++! show spanning-tree rapid-pvst   # R-PVST+ specific information
++! show spanning-tree interface <interface>  # STP status for specific interface
++! show vlan private-vlan           # Private VLAN configuration (if used)
++!
++! ─────────────────────────────────────────────────────────────────────────────
++! vPC (Virtual Port Channel) DIAGNOSTICS
++! ─────────────────────────────────────────────────────────────────────────────
++! show vpc                        # vPC status and role (primary/secondary)
++! show vpc brief                  # Brief vPC status summary
++! show vpc role                   # vPC role information and priority
++! show vpc peer-keepalive         # Peer-keepalive link status and reachability
++! show vpc peer-link              # Peer-link status and member ports
++! show vpc consistency-parameters global  # Global vPC type-1 consistency
++! show vpc consistency-parameters interface port-channel<X>  # Interface type-1 consistency
++! show vpc consistency-parameters vlans  # VLAN type-2 consistency
++! show vpc statistics             # vPC packet statistics and counters
++! show vpc synchronization        # vPC synchronization status
++! show running-config vpc          # Current vPC configuration
++! show tech-support vpc           # Comprehensive vPC diagnostic output
++! show vpc orphan-ports           # Orphan port status (ports without peer-link)
++!
++! ─────────────────────────────────────────────────────────────────────────────
++! ROUTING DIAGNOSTICS
++! ─────────────────────────────────────────────────────────────────────────────
++! show ip route                    # IPv4 routing table
++! show ip route vrf all summary    # Routing table summary for all VRFs
++! show ip route vrf management     # Management VRF routing table
++! show ip interface brief          # IP interface status and addresses
++! show ip interface vrf all brief  # IP interfaces for all VRFs
++! show ip eigrp neighbors          # EIGRP neighbor status (if configured)
++! show ip ospf neighbors           # OSPF neighbor status (if configured)
++! show ip bgp                      # BGP status and routes (if configured)
++! show ip bgp summary              # BGP neighbor summary
++! show ip arp                      # ARP table entries
++! show ip arp detail               # Detailed ARP information
++! show ipv6 route                  # IPv6 routing table (if used)
++! show ipv6 interface brief        # IPv6 interface status
++!
++! ─────────────────────────────────────────────────────────────────────────────
++! FIRST-HOP REDUNDANCY (HSRP/VRRP/GLBP)
++! ─────────────────────────────────────────────────────────────────────────────
++! show hsrp                       # HSRP status for all groups
++! show hsrp brief                 # Brief HSRP status summary
++! show hsrp detail                # Detailed HSRP information
++! show hsrp interface vlan <vlan>  # HSRP status for specific VLAN
++! show hsrp group <group>         # HSRP status for specific group
++! show vrrp                       # VRRP status (if configured)
++! show vrrp brief                 # Brief VRRP status
++! show glbp                       # GLBP status (if configured)
++!
++! ─────────────────────────────────────────────────────────────────────────────
++! SECURITY & ACCESS CONTROL
++! ─────────────────────────────────────────────────────────────────────────────
++! show access-lists               # All access lists
++! show ip access-lists            # IPv4 access lists
++! show ipv6 access-lists          # IPv6 access lists
++! show mac address-table           # MAC address table (CAM table)
++! show mac address-table aging-time  # MAC aging timer configuration
++! show mac address-table count      # MAC address table entry count
++! show ip arp                      # ARP table (also in routing section)
++! show ip arp inspection           # Dynamic ARP Inspection status (if enabled)
++! show ip dhcp snooping            # DHCP snooping status (if enabled)
++! show ip source-guard             # IP Source Guard status (if enabled)
++! show port-security               # Port security status (if enabled)
++! show aaa                        # AAA authentication/authorization status
++! show tacacs                      # TACACS+ server status (if configured)
++! show radius                      # RADIUS server status (if configured)
++! show user-account               # Local user accounts
++! show login failures             # Failed login attempts
++!
++! ─────────────────────────────────────────────────────────────────────────────
++! LOGGING & DEBUGGING
++! ─────────────────────────────────────────────────────────────────────────────
++! show logging logfile            # Log file contents
++! show logging logfile last 100    # Last 100 log entries
++! show logging nvram               # NVRAM log contents
++! show logging level               # Logging level configuration
++! show logging status             # Logging server status
++! show logging last 50             # Last 50 messages from all facilities
++! show debug-filter               # Debug filter status (if debugging enabled)
++! show processes                   # All running processes
++! show processes cpu               # CPU utilization by process
++! show processes memory            # Memory utilization by process
++! show system internal mts buffer summary  # Message transport buffer status
++!
++! ─────────────────────────────────────────────────────────────────────────────
++! PERFORMANCE MONITORING
++! ─────────────────────────────────────────────────────────────────────────────
++! show system resources           # CPU, memory, buffer utilization
++! show hardware internal forwarding l2 detail  # L2 forwarding details
++! show hardware internal forwarding l3 detail  # L3 forwarding details
++! show interface hardware queue    # Hardware queue statistics
++! show queueing                   # Queueing configuration and statistics
++! show policy-map interface <interface>  # QoS policy application
++! show class-map                   # QoS class-map configuration
++! show policy-map                  # QoS policy-map configuration
++! show netflow                     # NetFlow statistics (if enabled)
++! show sampler                     # NetFlow sampler configuration
++!
++! ─────────────────────────────────────────────────────────────────────────────
++! STORAGE & FILE SYSTEM
++! ─────────────────────────────────────────────────────────────────────────────
++! dir bootflash:                   # List bootflash contents
++! dir logflash:                    # List logflash contents (if present)
++! show system internal flash       # Flash memory status
++! show system internal kernel uptime  # Kernel uptime (also in system section)
++! show version | include uptime     # System uptime
++!
++! ─────────────────────────────────────────────────────────────────────────────
++! CONFIGURATION MANAGEMENT
++! ─────────────────────────────────────────────────────────────────────────────
++! show running-config              # Current running configuration
++! show startup-config              # Startup configuration (saved)
++! show diff rollback-config       # Differences between running and startup
++! show running-config diff startup-config  # Same as above
++! show running-config section <section>  # Specific configuration section
++! show running-config | include <pattern>  # Filter configuration
++! show running-config | begin <pattern>   # Start from pattern
++! copy running-config startup-config  # Save configuration
++! write memory                    # Same as above (short form)
++!
++! ─────────────────────────────────────────────────────────────────────────────
++! TROUBLESHOOTING WORKFLOOS
++! ─────────────────────────────────────────────────────────────────────────────
++!
++! WORKFLOW: Interface Not Coming Up
++! 1) show interface status          # Check interface state
++! 2) show interface counters        # Check for errors
++! 3) show spanning-tree interface <intf>  # Check STP blocking
++! 4) show lacp counters             # Check LACP if port-channel
++! 5) show logging logfile last 50    # Check for error messages
++!
++! WORKFLOW: vPC Peer-Link Down
++! 1) show vpc peer-link             # Check peer-link status
++! 2) show vpc peer-keepalive        # Check keepalive status
++! 3) show interface status          # Check member interface status
++! 4) show lacp counters             # Check LACP synchronization
++! 5) show logging logfile last 50    # Check for vPC errors
++!
++! WORKFLOW: High CPU Utilization
++! 1) show system resources          # Check overall CPU/memory
++! 2) show processes cpu             # Identify top CPU processes
++! 3) show interface counters        # Check for high traffic
++! 4) show logging logfile last 50    # Check for error storms
++! 5) show hardware internal forwarding  # Check forwarding engine load
++!
++! WORKFLOW: Routing Not Working
++! 1) show ip route                  # Check routing table
++! 2) show ip interface brief        # Check interface IP addresses
++! 3) show ip arp                    # Check ARP table
++! 4) show ip ospf neighbors         # Check OSPF adjacency (if OSPF)
++! 5) show logging logfile last 50    # Check for routing errors
++!
++! ─────────────────────────────────────────────────────────────────────────────
++! POST-PASTE CHECKLIST (lab engineer — comments only)
++! ─────────────────────────────────────────────────────────────────────────────
++! 1) show running-config | sec vpc
++! 2) show vpc brief
++! 3) show interface status err-disabled
++! 4) show ip route vrf management
++! 5) copy run start (only after lab sign-off)

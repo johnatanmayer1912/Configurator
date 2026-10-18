@@ -1,0 +1,469 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Error 2: Configuration Generation Failure - Multi-Switch User Flow</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: #f5f5f5;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        header {
+            background: linear-gradient(135deg, #dc3545 0%, #c82333 100%);
+            color: white;
+            padding: 30px 20px;
+            margin-bottom: 30px;
+        }
+        
+        header h1 {
+            font-size: 2em;
+            margin-bottom: 10px;
+        }
+        
+        .breadcrumb {
+            background: white;
+            padding: 15px 20px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        
+        .breadcrumb a {
+            color: #667eea;
+            text-decoration: none;
+        }
+        
+        .breadcrumb a:hover {
+            text-decoration: underline;
+        }
+        
+        .section {
+            background: white;
+            padding: 30px;
+            border-radius: 8px;
+            margin-bottom: 30px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        
+        .section h2 {
+            color: #dc3545;
+            margin-bottom: 20px;
+            font-size: 1.5em;
+            border-bottom: 2px solid #dc3545;
+            padding-bottom: 10px;
+        }
+        
+        .section h3 {
+            color: #333;
+            margin: 20px 0 10px 0;
+            font-size: 1.2em;
+        }
+        
+        .error-box {
+            background: #f8d7da;
+            border-left: 4px solid #dc3545;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 4px;
+        }
+        
+        .error-box strong {
+            color: #721c24;
+        }
+        
+        .result-box {
+            background: #e8f5e9;
+            border-left: 4px solid #4caf50;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 4px;
+        }
+        
+        .result-box ul {
+            margin-left: 20px;
+            margin-top: 10px;
+        }
+        
+        .recovery-box {
+            background: #fff3cd;
+            border-left: 4px solid #ffc107;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 4px;
+        }
+        
+        .recovery-box ul {
+            margin-left: 20px;
+            margin-top: 10px;
+        }
+        
+        .navigation {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 30px;
+        }
+        
+        .navigation a {
+            display: inline-block;
+            background: #dc3545;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 5px;
+            text-decoration: none;
+            transition: background 0.3s ease;
+        }
+        
+        .navigation a:hover {
+            background: #c82333;
+        }
+        
+        .navigation .prev {
+            background: #dc3545;
+            color: white;
+        }
+        
+        .navigation .prev:hover {
+            background: #c82333;
+        }
+        
+        .navigation .next {
+            background: #28a745;
+        }
+        
+        .navigation .next:hover {
+            background: #218838;
+        }
+        
+        .ui-mockup {
+            background: white;
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+            padding: 20px;
+            margin: 20px 0;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+        
+        .ui-mockup-header {
+            background: linear-gradient(135deg, #dc3545 0%, #c82333 100%);
+            color: white;
+            padding: 15px 20px;
+            border-radius: 6px;
+            margin-bottom: 15px;
+        }
+        
+        .ui-mockup-header h3 {
+            margin: 0;
+            font-size: 1.2em;
+        }
+        
+        .mockup-browser {
+            background: #f8f9fa;
+            border: 1px solid #dee2e6;
+            border-radius: 6px;
+            overflow: hidden;
+        }
+        
+        .mockup-browser-bar {
+            background: #e9ecef;
+            padding: 8px 12px;
+            border-bottom: 1px solid #dee2e6;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .mockup-browser-bar .dots {
+            display: flex;
+            gap: 6px;
+        }
+        
+        .mockup-browser-bar .dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+        }
+        
+        .mockup-browser-bar .dot.red { background: #ff5f57; }
+        .mockup-browser-bar .dot.yellow { background: #febc2e; }
+        .mockup-browser-bar .dot.green { background: #28c840; }
+        
+        .mockup-browser-bar .url {
+            flex: 1;
+            background: white;
+            border: 1px solid #ced4da;
+            border-radius: 4px;
+            padding: 4px 8px;
+            font-size: 12px;
+            color: #495057;
+            font-family: monospace;
+        }
+        
+        .mockup-content {
+            padding: 20px;
+            background: white;
+        }
+        
+        .mockup-warning-toast {
+            background: #fff3cd;
+            border: 1px solid #ffc107;
+            border-radius: 4px;
+            padding: 15px;
+            margin-bottom: 20px;
+        }
+        
+        .mockup-warning-toast h4 {
+            margin: 0 0 10px 0;
+            color: #856404;
+            font-size: 1em;
+        }
+        
+        .mockup-warning-toast p {
+            color: #856404;
+            font-size: 0.9em;
+            margin: 0;
+        }
+        
+        .mockup-results {
+            background: #f8f9fa;
+            border-radius: 8px;
+            padding: 20px;
+        }
+        
+        .mockup-results h3 {
+            margin: 0 0 15px 0;
+            color: #333;
+        }
+        
+        .mockup-results-summary {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+        
+        .mockup-results-summary .success-count {
+            background: #e8f5e9;
+            color: #155724;
+            padding: 8px 12px;
+            border-radius: 4px;
+            font-size: 0.9em;
+        }
+        
+        .mockup-results-summary .error-count {
+            background: #f8d7da;
+            color: #721c24;
+            padding: 8px 12px;
+            border-radius: 4px;
+            font-size: 0.9em;
+        }
+        
+        .mockup-result-item {
+            background: white;
+            border: 1px solid #dee2e6;
+            border-radius: 6px;
+            padding: 15px;
+            margin-bottom: 10px;
+        }
+        
+        .mockup-result-item.error {
+            border-color: #dc3545;
+        }
+        
+        .mockup-result-item-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+        
+        .mockup-result-item-header strong {
+            color: #333;
+        }
+        
+        .mockup-status-badge {
+            background: #28a745;
+            color: white;
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-size: 0.8em;
+        }
+        
+        .mockup-status-badge.error {
+            background: #dc3545;
+        }
+        
+        .mockup-error-message {
+            background: #f8d7da;
+            color: #721c24;
+            padding: 8px;
+            border-radius: 4px;
+            font-size: 0.85em;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>Error 2: Configuration Generation Failure</h1>
+            <p>Multi-Switch User Flow Documentation - Error Handling</p>
+        </div>
+    </header>
+    
+    <div class="container">
+        <div class="breadcrumb">
+            <a href="index.html">← Back to Index</a>
+        </div>
+        
+        <div class="section">
+            <h2>Scenario</h2>
+            <p>Backend fails to generate one or more configurations during the generation process.</p>
+        </div>
+        
+        <div class="section">
+            <h2>Error Conditions</h2>
+            <div class="error-box">
+                <ul>
+                    <li><strong>Backend Processing Error:</strong> Configuration generation fails for specific switch</li>
+                    <li><strong>Validation Error:</strong> Invalid configuration parameters</li>
+                    <li><strong>Resource Error:</strong> Insufficient system resources</li>
+                    <li><strong>File System Error:</strong> Cannot write config files</li>
+                    <li><strong>Partial Success:</strong> Some switches succeed, others fail</li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="section">
+            <h2>Expected Result</h2>
+            <div class="result-box">
+                <ul>
+                    <li>Warning toast appears: "Generated 3/4 configurations with 1 error"</li>
+                    <li>Results show failed switches with error messages</li>
+                    <li>Successful configs still saved to output directory</li>
+                    <li>Error details shown for each failed switch</li>
+                    <li>User can retry or fix issues</li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="section">
+            <h2>Recovery Steps</h2>
+            <div class="recovery-box">
+                <ul>
+                    <li><strong>Review error messages</strong> - Check specific error details for failed switches</li>
+                    <li><strong>Fix configuration issues</strong> - Edit switch configuration in editor</li>
+                    <li><strong>Retry generation</strong> - Click Generate Config again after fixing</li>
+                    <li><strong>Remove problematic switch</strong> - Delete switch causing errors if not needed</li>
+                    <li><strong>Check backend logs</strong> - Review server logs for detailed error information</li>
+                    <li><strong>Use successful configs</strong> - Download configs that were successfully generated</li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="section">
+            <h2>API Response Structure (Partial Failure)</h2>
+            <div class="error-box">
+                <pre>{
+    "total_switches": 4,
+    "successful": 3,
+    "failed": 1,
+    "results": [
+        { "hostname": "CORE1", "config": "...", "status": "success" },
+        { "hostname": "CORE2", "config": "...", "status": "success" },
+        { "hostname": "LEAF10G-1", "config": "...", "status": "success" }
+    ],
+    "errors": [
+        { "hostname": "LEAF10G-2", "error": "Invalid interface format" }
+    ],
+    "export_dir": "configs/history/20260729_103653"
+}</pre>
+            </div>
+        </div>
+        
+        <div class="section">
+            <h2>Visual UI Mockup</h2>
+            <div class="ui-mockup">
+                <div class="ui-mockup-header">
+                    <h3>User Interface - What the User Sees</h3>
+                </div>
+                <div class="mockup-browser">
+                    <div class="mockup-browser-bar">
+                        <div class="dots">
+                            <div class="dot red"></div>
+                            <div class="dot yellow"></div>
+                            <div class="dot green"></div>
+                        </div>
+                        <div class="url">http://127.0.0.1:9000</div>
+                    </div>
+                    <div class="mockup-content">
+                        <div class="mockup-warning-toast">
+                            <h4>⚠ Generated 3/4 configurations with 1 error</h4>
+                            <p>Review the results below for details</p>
+                        </div>
+                        
+                        <div class="mockup-results">
+                            <h3>Configuration Results</h3>
+                            
+                            <div class="mockup-results-summary">
+                                <div class="success-count">3 successful</div>
+                                <div class="error-count">1 failed</div>
+                            </div>
+                            
+                            <div class="mockup-result-item">
+                                <div class="mockup-result-item-header">
+                                    <strong>CORE1</strong>
+                                    <span class="mockup-status-badge">✓ Success</span>
+                                </div>
+                            </div>
+                            
+                            <div class="mockup-result-item">
+                                <div class="mockup-result-item-header">
+                                    <strong>CORE2</strong>
+                                    <span class="mockup-status-badge">✓ Success</span>
+                                </div>
+                            </div>
+                            
+                            <div class="mockup-result-item">
+                                <div class="mockup-result-item-header">
+                                    <strong>LEAF10G-1</strong>
+                                    <span class="mockup-status-badge">✓ Success</span>
+                                </div>
+                            </div>
+                            
+                            <div class="mockup-result-item error">
+                                <div class="mockup-result-item-header">
+                                    <strong>LEAF10G-2</strong>
+                                    <span class="mockup-status-badge error">✗ Failed</span>
+                                </div>
+                                <div class="mockup-error-message">
+                                    Error: Invalid interface format for Nexus 9348GC-FXP
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="navigation">
+            <a href="error-1-template-failure.html" class="prev">← Previous</a>
+            <a href="qa-checklist.html" class="next">QA Checklist →</a>
+        </div>
+    </div>
+</body>
+</html>

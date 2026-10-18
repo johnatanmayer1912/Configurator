@@ -59,6 +59,13 @@ def build_web_app():
         raise FileNotFoundError(f"UI template missing: {template_index}")
 
     app.mount("/static", StaticFiles(directory=static_dir), name="static")
+    
+    # PA-001 FIX: Mount templates directory for external template loading
+    templates_dir = get_resource_path("templates")
+    if os.path.exists(templates_dir):
+        app.mount("/templates", StaticFiles(directory=templates_dir), name="templates")
+        logger.info(f"Mounted templates directory from: {templates_dir}")
+    
     admin_page = get_resource_path("templates/web/admin.html")
 
     @app.get("/")
@@ -143,6 +150,10 @@ def run_server() -> None:
             server.should_exit = True
             if hasattr(server, "force_exit"):
                 server.force_exit = True
+
+        # Shutdown logger
+        from utils.web_logger import logger as web_logger
+        web_logger.shutdown()
 
         def hard_exit() -> None:
             time.sleep(2.0)

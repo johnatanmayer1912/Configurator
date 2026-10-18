@@ -1,0 +1,37 @@
+---
+description: NLAP mandatory QA gate — extend tests/mandatory on every change; run gate before release
+alwaysApply: true
+---
+
+# NLAP Mandatory QA Gate
+
+## Before any release or EXE build
+
+1. `python scripts/run_mandatory_qa.py --manifest-check`
+2. `python scripts/run_mandatory_qa.py`
+3. `python -m pytest tests/ -q`
+4. `python _prebuild.py`
+
+## After any code change (features, bug fixes, refactors)
+
+1. Read `.cursor/skills/nlap-release-council/SKILL.md`
+2. If behavior changed: add `@pytest.mark.mandatory` tests in `tests/mandatory/`
+3. Update `qa/mandatory/MANIFEST.yaml` scenario entries
+4. Extend `.cursor/skills/nlap-release-council/QUESTIONNAIRE.md` rows
+
+## Council personas (all code-backed)
+
+Network council · Architect · Software engineer · Field operator · Product simplicity (Steve Jobs lens) · UI/UX professional
+
+## Do not ship when
+
+- Mandatory manifest out of sync
+- P0 gaps open in latest gap register
+- New feature without mandatory test coverage
+
+## References
+
+- Manifest: `qa/mandatory/MANIFEST.yaml`
+- Evolution policy: `qa/mandatory/EVOLUTION_POLICY.md`
+- Release gate doc: `docs/06-quality-assurance/MANDATORY_RELEASE_GATE.md`
+- CI: `.github/workflows/mandatory-qa.yml`

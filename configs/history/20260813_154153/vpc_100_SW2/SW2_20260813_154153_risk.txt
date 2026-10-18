@@ -1,0 +1,19 @@
+==========================================
+       CONFIGURATION RISK ASSESSMENT      
+==========================================
+OVERALL RISK LEVEL: HIGH
+TOTAL FINDINGS: 6
+------------------------------------------
+[LOW] hostname SW2
+   ↳ Matches risk pattern: 'hostname'
+[HIGH] vpc domain 100
+   ↳ Matches risk pattern: 'vpc domain'
+[LOW] interface port-channel1
+   ↳ Matches risk pattern: 'interface port-channel'
+[MEDIUM] spanning-tree port type network
+   ↳ Matches risk pattern: 'spanning-tree'
+[LOW] ntp server 10.255.255.254 prefer use-vrf management
+   ↳ Matches risk pattern: 'ntp server'
+[LOW] logging server 10.255.255.254 6 use-vrf management
+   ↳ Matches risk pattern: 'logging server'
+==========================================

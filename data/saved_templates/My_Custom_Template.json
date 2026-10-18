@@ -1,0 +1,263 @@
+{
+  "name": "My Custom Template",
+  "description": "Custom template created from current configuration",
+  "updated_at": "2026-08-17T10:02:13.298792+00:00",
+  "deployment": {
+    "switches": [
+      {
+        "id": "switch-1786960927262-0",
+        "hostname": "CUSTOM-SWITCH",
+        "mgmt_ip": "10.0.0.1/24",
+        "mgmt_gw": "10.0.0.254",
+        "model": "Nexus 9336C-FX2",
+        "role": "core",
+        "vpc_domain": "10",
+        "nxos_version": "9.3",
+        "vpc_peer_link_id": 1,
+        "keepalive_po_id": 2,
+        "vpc_system_priority": 32667,
+        "base_access_vlan": 10,
+        "access_vlan_count": 4,
+        "local_ka": "10.0.0.1",
+        "site_name": ""
+      },
+      {
+        "id": "switch-1786960927262-1",
+        "hostname": "CORE2",
+        "mgmt_ip": "10.0.0.2/24",
+        "mgmt_gw": "10.0.0.254",
+        "model": "Nexus 9336C-FX2",
+        "role": "core",
+        "vpc_domain": "10",
+        "nxos_version": "9.3",
+        "vpc_peer_link_id": 1,
+        "keepalive_po_id": 2,
+        "vpc_system_priority": 32667,
+        "base_access_vlan": 10,
+        "access_vlan_count": 4,
+        "local_ka": "10.0.0.2"
+      },
+      {
+        "id": "switch-1786960927262-2",
+        "hostname": "LEAF10G-1",
+        "mgmt_ip": "10.0.0.11/24",
+        "mgmt_gw": "10.0.0.254",
+        "model": "Nexus 93180YC-EX",
+        "role": "leaf",
+        "vpc_domain": "100",
+        "nxos_version": "9.3",
+        "vpc_peer_link_id": 1,
+        "keepalive_po_id": 2,
+        "vpc_system_priority": 32667,
+        "base_access_vlan": 100,
+        "access_vlan_count": 4,
+        "local_ka": "10.0.0.1"
+      },
+      {
+        "id": "switch-1786960927262-3",
+        "hostname": "LEAF10G-2",
+        "mgmt_ip": "10.0.0.12/24",
+        "mgmt_gw": "10.0.0.254",
+        "model": "Nexus 93180YC-EX",
+        "role": "leaf",
+        "vpc_domain": "100",
+        "nxos_version": "9.3",
+        "vpc_peer_link_id": 1,
+        "keepalive_po_id": 2,
+        "vpc_system_priority": 32667,
+        "base_access_vlan": 100,
+        "access_vlan_count": 4,
+        "local_ka": "10.0.0.2"
+      }
+    ],
+    "vpc_pairs": [
+      {
+        "id": "vpc-1786960927262-0",
+        "domain": "10",
+        "primary": "CORE1",
+        "secondary": "CORE2",
+        "peer_link_ports": "E1/35-36"
+      },
+      {
+        "id": "vpc-1786960927262-1",
+        "domain": "100",
+        "primary": "LEAF10G-1",
+        "secondary": "LEAF10G-2",
+        "peer_link_ports": "E1/51-52"
+      }
+    ],
+    "uplinks": [
+      {
+        "id": "uplink-1786960927262-0",
+        "from": "LEAF10G-1",
+        "to": "CORE1",
+        "ports": "E1/53",
+        "to_ports": "E1/1",
+        "po_id": "10"
+      },
+      {
+        "id": "uplink-1786960927262-1",
+        "from": "LEAF10G-1",
+        "to": "CORE2",
+        "ports": "E1/54",
+        "to_ports": "E1/1",
+        "po_id": "10"
+      },
+      {
+        "id": "uplink-1786960927262-2",
+        "from": "LEAF10G-2",
+        "to": "CORE1",
+        "ports": "E1/53",
+        "to_ports": "E1/2",
+        "po_id": "10"
+      },
+      {
+        "id": "uplink-1786960927262-3",
+        "from": "LEAF10G-2",
+        "to": "CORE2",
+        "ports": "E1/54",
+        "to_ports": "E1/2",
+        "po_id": "10"
+      }
+    ],
+    "global_vlans": [
+      {
+        "id": 10,
+        "name": "Data-VLAN-10"
+      },
+      {
+        "id": 20,
+        "name": "Data-VLAN-20"
+      },
+      {
+        "id": 30,
+        "name": "Data-VLAN-30"
+      },
+      {
+        "id": 40,
+        "name": "Data-VLAN-40"
+      },
+      {
+        "id": 50,
+        "name": "Data-VLAN-50"
+      }
+    ]
+  },
+  "switches": [
+    {
+      "id": "switch-1786960927262-0",
+      "hostname": "CUSTOM-SWITCH",
+      "mgmt_ip": "10.0.0.1/24",
+      "mgmt_gw": "10.0.0.254",
+      "model": "Nexus 9336C-FX2",
+      "role": "core",
+      "vpc_domain": "10",
+      "nxos_version": "9.3",
+      "vpc_peer_link_id": 1,
+      "keepalive_po_id": 2,
+      "vpc_system_priority": 32667,
+      "base_access_vlan": 10,
+      "access_vlan_count": 4,
+      "local_ka": "10.0.0.1",
+      "site_name": ""
+    },
+    {
+      "id": "switch-1786960927262-1",
+      "hostname": "CORE2",
+      "mgmt_ip": "10.0.0.2/24",
+      "mgmt_gw": "10.0.0.254",
+      "model": "Nexus 9336C-FX2",
+      "role": "core",
+      "vpc_domain": "10",
+      "nxos_version": "9.3",
+      "vpc_peer_link_id": 1,
+      "keepalive_po_id": 2,
+      "vpc_system_priority": 32667,
+      "base_access_vlan": 10,
+      "access_vlan_count": 4,
+      "local_ka": "10.0.0.2"
+    },
+    {
+      "id": "switch-1786960927262-2",
+      "hostname": "LEAF10G-1",
+      "mgmt_ip": "10.0.0.11/24",
+      "mgmt_gw": "10.0.0.254",
+      "model": "Nexus 93180YC-EX",
+      "role": "leaf",
+      "vpc_domain": "100",
+      "nxos_version": "9.3",
+      "vpc_peer_link_id": 1,
+      "keepalive_po_id": 2,
+      "vpc_system_priority": 32667,
+      "base_access_vlan": 100,
+      "access_vlan_count": 4,
+      "local_ka": "10.0.0.1"
+    },
+    {
+      "id": "switch-1786960927262-3",
+      "hostname": "LEAF10G-2",
+      "mgmt_ip": "10.0.0.12/24",
+      "mgmt_gw": "10.0.0.254",
+      "model": "Nexus 93180YC-EX",
+      "role": "leaf",
+      "vpc_domain": "100",
+      "nxos_version": "9.3",
+      "vpc_peer_link_id": 1,
+      "keepalive_po_id": 2,
+      "vpc_system_priority": 32667,
+      "base_access_vlan": 100,
+      "access_vlan_count": 4,
+      "local_ka": "10.0.0.2"
+    }
+  ],
+  "vpc_pairs": [
+    {
+      "id": "vpc-1786960927262-0",
+      "domain": "10",
+      "primary": "CORE1",
+      "secondary": "CORE2",
+      "peer_link_ports": "E1/35-36"
+    },
+    {
+      "id": "vpc-1786960927262-1",
+      "domain": "100",
+      "primary": "LEAF10G-1",
+      "secondary": "LEAF10G-2",
+      "peer_link_ports": "E1/51-52"
+    }
+  ],
+  "uplinks": [
+    {
+      "id": "uplink-1786960927262-0",
+      "from": "LEAF10G-1",
+      "to": "CORE1",
+      "ports": "E1/53",
+      "to_ports": "E1/1",
+      "po_id": "10"
+    },
+    {
+      "id": "uplink-1786960927262-1",
+      "from": "LEAF10G-1",
+      "to": "CORE2",
+      "ports": "E1/54",
+      "to_ports": "E1/1",
+      "po_id": "10"
+    },
+    {
+      "id": "uplink-1786960927262-2",
+      "from": "LEAF10G-2",
+      "to": "CORE1",
+      "ports": "E1/53",
+      "to_ports": "E1/2",
+      "po_id": "10"
+    },
+    {
+      "id": "uplink-1786960927262-3",
+      "from": "LEAF10G-2",
+      "to": "CORE2",
+      "ports": "E1/54",
+      "to_ports": "E1/2",
+      "po_id": "10"
+    }
+  ]
+}

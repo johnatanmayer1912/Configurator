@@ -186,8 +186,8 @@ function renderLinkSection(kind, rows) {
             <td><input type="number" class="link-vpc" min="1" max="4096" value="${row.vpc_id}" aria-label="vPC ID"></td>
             <td class="link-members-cell">
                 <input type="text" class="link-members" value="${escapeHtml(row.members)}" placeholder="Ethernet1/49, Ethernet1/50" autocomplete="off">
-                <button type="button" class="btn-outline btn-xs link-expand" title="Expand range" onclick="expandLinkMembers(this)">Expand</button>
-                <button type="button" class="btn-outline btn-xs link-suggest" title="Suggest free ports" onclick="suggestMembersForRow(this)">Suggest</button>
+                <button type="button" class="btn-outline btn-xs link-expand" title="Expand range" data-action="expand-link-members">Expand</button>
+                <button type="button" class="btn-outline btn-xs link-suggest" title="Suggest free ports" data-action="suggest-members-row">Suggest</button>
             </td>
             <td><input type="text" class="link-desc" value="${escapeHtml(row.description)}" autocomplete="off"></td>
             <td class="link-plan-actions">
@@ -202,6 +202,15 @@ function onLinkPlannerChange() {
     syncLinkPlannerFromDom();
     scheduleLivePreview?.();
     refreshCapacityHint?.();
+    if (typeof renderTopologyDiagram === "function") renderTopologyDiagram();
+    
+    // Show topology panel when links are configured
+    const topoPanel = document.getElementById("topologyPanel");
+    if (topoPanel) {
+        const hasLinks = (linkPlannerRows.downlink?.length > 0) || (linkPlannerRows.uplink?.length > 0);
+        topoPanel.hidden = !hasLinks;
+        if (hasLinks) topoPanel.style.display = "block";
+    }
 }
 
 function syncLinkPlannerFromDom() {

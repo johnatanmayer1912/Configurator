@@ -1,0 +1,117 @@
+{
+  "interface_templates": [
+    {
+      "id": "server_port",
+      "label": "Server Port (Access)",
+      "description": "Standard server access with portfast and BPDU guard",
+      "mode": "access",
+      "vlan": "data",
+      "features": ["portfast", "bpduguard"],
+      "config": {
+        "switchport_mode": "access",
+        "switchport_access_vlan": "data",
+        "spanning_tree_portfast": "enable",
+        "spanning_tree_bpduguard": "enable"
+      }
+    },
+    {
+      "id": "ip_phone_port",
+      "label": "IP Phone Port (Access)",
+      "description": "IP phone with voice VLAN and CDP/LLDP",
+      "mode": "access",
+      "vlan": "data",
+      "voice_vlan": "voice",
+      "features": ["portfast", "bpduguard", "cdp", "lldp"],
+      "config": {
+        "switchport_mode": "access",
+        "switchport_access_vlan": "data",
+        "switchport_voice_vlan": "voice",
+        "spanning_tree_portfast": "enable",
+        "spanning_tree_bpduguard": "enable"
+      }
+    },
+    {
+      "id": "ap_port",
+      "label": "Wireless AP Port (Trunk)",
+      "description": "Wireless AP trunk with native VLAN",
+      "mode": "trunk",
+      "native_vlan": "data",
+      "allowed_vlans": ["data", "voice", "guest"],
+      "features": ["portfast", "bpduguard"],
+      "config": {
+        "switchport_mode": "trunk",
+        "switchport_trunk_native_vlan": "data",
+        "switchport_trunk_allowed_vlan": "data,voice,guest",
+        "spanning_tree_portfast": "trunk"
+      }
+    },
+    {
+      "id": "iscsi_port",
+      "label": "iSCSI Storage Port (Trunk)",
+      "description": "iSCSI storage with jumbo frames",
+      "mode": "trunk",
+      "native_vlan": "storage",
+      "mtu": 9216,
+      "features": ["portfast", "bpduguard", "jumbo_frames"],
+      "config": {
+        "switchport_mode": "trunk",
+        "switchport_trunk_native_vlan": "storage",
+        "mtu": 9216,
+        "spanning_tree_portfast": "trunk"
+      }
+    },
+    {
+      "id": "mgmt_port",
+      "label": "Management Port (Access)",
+      "description": "OOB management access",
+      "mode": "access",
+      "vlan": "mgmt",
+      "features": ["portfast"],
+      "config": {
+        "switchport_mode": "access",
+        "switchport_access_vlan": "mgmt",
+        "spanning_tree_portfast": "enable"
+      }
+    },
+    {
+      "id": "lacp_port",
+      "label": "LACP Port Channel Member",
+      "description": "LACP port channel member",
+      "mode": "trunk",
+      "channel_group": "auto",
+      "features": ["lacp"],
+      "config": {
+        "switchport_mode": "trunk",
+        "channel_group": "auto",
+        "lacp_mode": "active"
+      }
+    },
+    {
+      "id": "vpc_peer_link",
+      "label": "vPC Peer Link (Trunk)",
+      "description": "vPC peer link trunk",
+      "mode": "trunk",
+      "allowed_vlans": "all",
+      "features": ["vpc", "portfast"],
+      "config": {
+        "switchport_mode": "trunk",
+        "switchport_trunk_allowed_vlan": "all",
+        "spanning_tree_portfast": "trunk",
+        "vpc_peer_link": true
+      }
+    },
+    {
+      "id": "vpc_keepalive",
+      "label": "vPC Keepalive Link",
+      "description": "vPC keepalive link",
+      "mode": "access",
+      "vlan": "vpc_ka",
+      "features": ["vpc"],
+      "config": {
+        "switchport_mode": "access",
+        "switchport_access_vlan": "vpc_ka",
+        "vpc_keepalive": true
+      }
+    }
+  ]
+}

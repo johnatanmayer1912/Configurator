@@ -1,0 +1,447 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Step 1: Application Launch - Multi-Switch User Flow</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: #f5f5f5;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 30px 20px;
+            margin-bottom: 30px;
+        }
+        
+        header h1 {
+            font-size: 2em;
+            margin-bottom: 10px;
+        }
+        
+        .breadcrumb {
+            background: white;
+            padding: 15px 20px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        
+        .breadcrumb a {
+            color: #667eea;
+            text-decoration: none;
+        }
+        
+        .breadcrumb a:hover {
+            text-decoration: underline;
+        }
+        
+        .section {
+            background: white;
+            padding: 30px;
+            border-radius: 8px;
+            margin-bottom: 30px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        
+        .section h2 {
+            color: #667eea;
+            margin-bottom: 20px;
+            font-size: 1.5em;
+            border-bottom: 2px solid #667eea;
+            padding-bottom: 10px;
+        }
+        
+        .section h3 {
+            color: #333;
+            margin: 20px 0 10px 0;
+            font-size: 1.2em;
+        }
+        
+        .action-box {
+            background: #e3f2fd;
+            border-left: 4px solid #2196f3;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 4px;
+        }
+        
+        .action-box strong {
+            color: #1976d2;
+        }
+        
+        .function-box {
+            background: #fff3e0;
+            border-left: 4px solid #ff9800;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 4px;
+            font-family: 'Courier New', monospace;
+        }
+        
+        .result-box {
+            background: #e8f5e9;
+            border-left: 4px solid #4caf50;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 4px;
+        }
+        
+        .result-box ul {
+            margin-left: 20px;
+            margin-top: 10px;
+        }
+        
+        .code-block {
+            background: #f5f5f5;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            padding: 15px;
+            overflow-x: auto;
+            margin: 15px 0;
+        }
+        
+        .code-block pre {
+            margin: 0;
+            font-family: 'Courier New', monospace;
+            font-size: 14px;
+        }
+        
+        .next-step-box {
+            background: #f3e5f5;
+            border-left: 4px solid #9c27b0;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 4px;
+        }
+        
+        .next-step-box strong {
+            color: #7b1fa2;
+        }
+        
+        .navigation {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 30px;
+        }
+        
+        .navigation a {
+            display: inline-block;
+            background: #667eea;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 5px;
+            text-decoration: none;
+            transition: background 0.3s ease;
+        }
+        
+        .navigation a:hover {
+            background: #5568d3;
+        }
+        
+        .navigation .prev {
+            background: #6c757d;
+        }
+        
+        .navigation .prev:hover {
+            background: #5a6268;
+        }
+        
+        .ui-mockup {
+            background: white;
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+            padding: 20px;
+            margin: 20px 0;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+        
+        .ui-mockup-header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 15px 20px;
+            border-radius: 6px;
+            margin-bottom: 15px;
+        }
+        
+        .ui-mockup-header h3 {
+            margin: 0;
+            font-size: 1.2em;
+        }
+        
+        .mockup-browser {
+            background: #f8f9fa;
+            border: 1px solid #dee2e6;
+            border-radius: 6px;
+            overflow: hidden;
+        }
+        
+        .mockup-browser-bar {
+            background: #e9ecef;
+            padding: 8px 12px;
+            border-bottom: 1px solid #dee2e6;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .mockup-browser-bar .dots {
+            display: flex;
+            gap: 6px;
+        }
+        
+        .mockup-browser-bar .dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+        }
+        
+        .mockup-browser-bar .dot.red { background: #ff5f57; }
+        .mockup-browser-bar .dot.yellow { background: #febc2e; }
+        .mockup-browser-bar .dot.green { background: #28c840; }
+        
+        .mockup-browser-bar .url {
+            flex: 1;
+            background: white;
+            border: 1px solid #ced4da;
+            border-radius: 4px;
+            padding: 4px 8px;
+            font-size: 12px;
+            color: #495057;
+            font-family: monospace;
+        }
+        
+        .mockup-content {
+            padding: 20px;
+            background: white;
+        }
+        
+        .mockup-app-header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 20px;
+            border-radius: 6px;
+            margin-bottom: 15px;
+        }
+        
+        .mockup-app-header h1 {
+            font-size: 1.5em;
+            margin: 0 0 8px 0;
+        }
+        
+        .mockup-app-header .subtitle {
+            font-size: 0.9em;
+            opacity: 0.9;
+        }
+        
+        .mockup-app-header .badge {
+            background: #28a745;
+            padding: 2px 8px;
+            border-radius: 4px;
+            font-size: 0.8em;
+            margin-left: 8px;
+        }
+        
+        .mockup-wizard-nav {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 15px;
+            border-bottom: 2px solid #e9ecef;
+            padding-bottom: 10px;
+        }
+        
+        .mockup-step-btn {
+            padding: 8px 16px;
+            border: 1px solid #dee2e6;
+            background: white;
+            border-radius: 4px;
+            font-size: 0.9em;
+            cursor: default;
+        }
+        
+        .mockup-step-btn.active {
+            background: #667eea;
+            color: white;
+            border-color: #667eea;
+        }
+        
+        .mockup-wizard-content {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 6px;
+            border: 1px solid #e9ecef;
+        }
+        
+        .mockup-wizard-content h2 {
+            font-size: 1.2em;
+            margin: 0 0 10px 0;
+            color: #333;
+        }
+        
+        .mockup-wizard-content p {
+            color: #666;
+            font-size: 0.9em;
+            margin: 0;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>Step 1: Application Launch</h1>
+            <p>Multi-Switch User Flow Documentation</p>
+        </div>
+    </header>
+    
+    <div class="container">
+        <div class="breadcrumb">
+            <a href="index.html">← Back to Index</a>
+        </div>
+        
+        <div class="section">
+            <h2>User Action</h2>
+            <div class="action-box">
+                <strong>Action:</strong> User launches <code>NXOS_Configurator_Web_v6.38.1.exe</code>
+            </div>
+        </div>
+        
+        <div class="section">
+            <h2>JavaScript Function</h2>
+            <div class="function-box">
+                Function: <code>DOMContentLoaded</code> event listener (app.js:220-231)
+            </div>
+        </div>
+        
+        <div class="section">
+            <h2>Expected HTML Page Structure</h2>
+            <div class="code-block">
+                <pre>&lt;body&gt;
+    &lt;div class="container"&gt;
+        &lt;header class="app-header"&gt;
+            &lt;h1&gt;NX-OS Configuration Authority&lt;/h1&gt;
+            &lt;div class="subtitle"&gt;
+                &lt;span id="buildVersion"&gt;6.38.1&lt;/span&gt;
+                &lt;span class="dot"&gt;·&lt;/span&gt;
+                &lt;span id="offlineBadge" class="badge ok"&gt;Offline Ready&lt;/span&gt;
+            &lt;/div&gt;
+            &lt;div class="header-actions"&gt;
+                &lt;div class="header-dropdown"&gt;
+                    &lt;button id="modeDropdownBtn"&gt;Mode: Quick &lt;span class="dropdown-arrow"&gt;▾&lt;/span&gt;&lt;/button&gt;
+                    &lt;div class="dropdown-menu" id="modeDropdown"&gt;
+                        &lt;button data-action="set-wizard-mode" data-mode="quick"&gt;Quick&lt;/button&gt;
+                        &lt;button data-action="set-wizard-mode" data-mode="architect"&gt;Architect&lt;/button&gt;
+                        &lt;button data-action="toggle-multi-switch"&gt;Multi-Switch&lt;/button&gt;
+                        &lt;button data-action="toggle-training" id="trainingModeToggle"&gt;Training&lt;/button&gt;
+                    &lt;/div&gt;
+                &lt;/div&gt;
+                &lt;!-- Other dropdowns... --&gt;
+            &lt;/div&gt;
+        &lt;/header&gt;
+        
+        &lt;div class="wizard-panel"&gt;
+            &lt;nav class="wizard-nav"&gt;
+                &lt;button class="step-btn active" data-step="1"&gt;1 Mode&lt;/button&gt;
+                &lt;button class="step-btn" data-step="2"&gt;2 vPC&lt;/button&gt;
+                &lt;!-- More steps... --&gt;
+            &lt;/nav&gt;
+            
+            &lt;div class="wizard-step active" id="step-1"&gt;
+                &lt;h2 class="step-title"&gt;What is this switch's role?&lt;/h2&gt;
+                &lt;div id="modeGrid" class="choice-grid"&gt;&lt;/div&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/body&gt;</pre>
+            </div>
+        </div>
+        
+        <div class="section">
+            <h2>Expected Result</h2>
+            <div class="result-box">
+                <ul>
+                    <li>Application loads in browser at <code>http://127.0.0.1:9000</code></li>
+                    <li>Header shows version "6.38.1" and "Offline Ready" badge</li>
+                    <li>Mode dropdown shows "Mode: Quick"</li>
+                    <li>Wizard panel shows Step 1 with mode selection grid</li>
+                    <li>Template gallery is hidden</li>
+                    <li>Configuration editor is hidden</li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="section">
+            <h2>Visual UI Mockup</h2>
+            <div class="ui-mockup">
+                <div class="ui-mockup-header">
+                    <h3>User Interface - What the User Sees</h3>
+                </div>
+                <div class="mockup-browser">
+                    <div class="mockup-browser-bar">
+                        <div class="dots">
+                            <div class="dot red"></div>
+                            <div class="dot yellow"></div>
+                            <div class="dot green"></div>
+                        </div>
+                        <div class="url">http://127.0.0.1:9000</div>
+                    </div>
+                    <div class="mockup-content">
+                        <div class="mockup-app-header">
+                            <h1>NX-OS Configuration Authority</h1>
+                            <div class="subtitle">
+                                <span>6.38.1</span>
+                                <span>·</span>
+                                <span class="badge">Offline Ready</span>
+                            </div>
+                        </div>
+                        
+                        <div class="mockup-wizard-nav">
+                            <div class="mockup-step-btn active">1 Mode</div>
+                            <div class="mockup-step-btn">2 vPC</div>
+                            <div class="mockup-step-btn">3 Platform</div>
+                            <div class="mockup-step-btn">4 Features</div>
+                            <div class="mockup-step-btn">5 VLANs</div>
+                            <div class="mockup-step-btn">6 Interfaces</div>
+                            <div class="mockup-step-btn">7 Links</div>
+                            <div class="mockup-step-btn">8 Review</div>
+                        </div>
+                        
+                        <div class="mockup-wizard-content">
+                            <h2>What is this switch's role?</h2>
+                            <p>One decision at a time — we map the rest automatically.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="section">
+            <h2>Next Step</h2>
+            <div class="next-step-box">
+                <strong>Next:</strong> User clicks "Multi-Switch" in mode dropdown
+            </div>
+        </div>
+        
+        <div class="navigation">
+            <a href="index.html" class="prev">← Previous</a>
+            <a href="step-2-enable-multi-switch.html">Next Step →</a>
+        </div>
+    </div>
+</body>
+</html>

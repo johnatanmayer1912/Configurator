@@ -1,0 +1,446 @@
+! -----------------------------------------------------------------------------
+! Configuration Authority System
+! Version: 6.38.4
+! NX-OS:  9.3
+! Date:    2026-07-29 14:02:51
+! Mode:    vPC Pair
+! Tier:    standard
+! -----------------------------------------------------------------------------
+
+! Hostname & Global Services
+hostname CORE2
+!
+banner motd ^
+*********************************************************
+                HQ-CORE2
+                MGMT_IP: 10.0.0.2/24
+                HQ
+*********************************************************
+^
+!
+! Local user omitted — set admin password in wizard to create username (lab only).
+ip domain-lookup
+
+! Features
+feature interface-vlan
+feature hsrp
+feature lacp
+feature lldp
+
+! SNMP
+snmp-server location HQ
+snmp-server source-interface traps mgmt0
+! SNMP trap hosts — add in Production details when NMS is ready
+rmon event 1 log trap public description FATAL(1) owner PMON@FATAL
+rmon event 2 log trap public description CRITICAL(2) owner PMON@CRITICAL
+rmon event 3 log trap public description ERROR(3) owner PMON@ERROR
+rmon event 4 log trap public description WARNING(4) owner PMON@WARNING
+rmon event 5 log trap public description INFORMATION(5) owner PMON@INFO
+snmp-server enable traps callhome event-notify
+snmp-server enable traps callhome smtp-send-fail
+snmp-server enable traps cfs state-change-notif
+snmp-server enable traps cfs merge-failure
+snmp-server enable traps aaa server-state-change
+snmp-server enable traps feature-control FeatureOpStatusChange
+snmp-server enable traps sysmgr cseFailSwCoreNotifyExtended
+snmp-server enable traps config ccmCLIRunningConfigChanged
+snmp-server enable traps snmp authentication
+snmp-server enable traps link cisco-xcvr-mon-status-chg
+snmp-server enable traps vtp notifs
+snmp-server enable traps vtp vlancreate
+snmp-server enable traps vtp vlandelete
+snmp-server enable traps bridge newroot
+snmp-server enable traps bridge topologychange
+snmp-server enable traps stpx inconsistency
+snmp-server enable traps stpx root-inconsistency
+snmp-server enable traps stpx loop-inconsistency
+snmp-server enable traps system Clock-change-notification
+snmp-server enable traps feature-control ciscoFeatOpStatusChange
+snmp-server enable traps mmode cseNormalModeChangeNotify
+snmp-server enable traps mmode cseMaintModeChangeNotify
+snmp-server enable traps syslog message-generated
+
+! VLAN Configuration
+vlan 10
+  name Data-VLAN-10
+
+vlan 20
+  name Data-VLAN-20
+
+vlan 30
+  name Data-VLAN-30
+
+vlan 40
+  name Data-VLAN-40
+
+vlan 50
+  name Data-VLAN-50
+
+! Spanning Tree
+spanning-tree vlan 1-3967 priority 8192
+
+! vPC Domain
+vpc domain 10
+  role priority 8192
+  system-priority 32667
+  peer-keepalive destination 10.10.10.2 source 10.10.10.1 vrf management
+
+! L3 SVI Configuration
+interface Vlan10
+  description SVI_FABRIC_10
+  no ip redirects
+  no ip proxy-arp
+  no shutdown
+  ip address 10.10.0.1/24
+  hsrp version 2
+  hsrp 10
+    priority 110
+    preempt
+    ip 10.10.0.1
+
+interface Vlan11
+  description SVI_FABRIC_11
+  no ip redirects
+  no ip proxy-arp
+  no shutdown
+  ip address 10.11.0.1/24
+  hsrp version 2
+  hsrp 11
+    priority 110
+    preempt
+    ip 10.11.0.1
+
+! vPC Peer-Link Members
+interface E1/35
+  description vPC Peer-Link Member
+  channel-group 1 mode active
+  no shutdown
+
+interface E1/36
+  description vPC Peer-Link Member
+  channel-group 1 mode active
+  no shutdown
+
+! vPC Peer-Link Infrastructure
+interface port-channel1
+  description vPC PEER-LINK
+  switchport mode trunk
+  vpc peer-link
+  spanning-tree port type network
+  no shutdown
+
+
+! Uplink Configuration (Leaf to Core)
+interface Ethernet1/54
+  description to LEAF10G-1
+  switchport
+  switchport mode trunk
+  channel-group 10 mode active
+  no shutdown
+
+interface Ethernet1/54
+  description to LEAF10G-2
+  switchport
+  switchport mode trunk
+  channel-group 10 mode active
+  no shutdown
+
+
+! Downlink Configuration (Core to Leaf)
+interface Ethernet1/1
+  description to LEAF10G-1 port 53
+  switchport
+  switchport mode trunk
+  channel-group 20 20 mode active
+  no shutdown
+
+interface Ethernet1/2
+  description to LEAF10G-1 port 54
+  switchport
+  switchport mode trunk
+  channel-group 20 20 mode active
+  no shutdown
+
+interface Ethernet1/3
+  description to LEAF10G-2 port 53
+  switchport
+  switchport mode trunk
+  channel-group 21 21 mode active
+  no shutdown
+
+interface Ethernet1/4
+  description to LEAF10G-2 port 54
+  switchport
+  switchport mode trunk
+  channel-group 21 21 mode active
+  no shutdown
+
+
+! Ethernet Interfaces
+interface Ethernet1/1
+  description to LEAF10G-1 port 53
+  switchport mode trunk
+  no shutdown
+
+interface Ethernet1/2
+  description to LEAF10G-1 port 54
+  switchport mode trunk
+  no shutdown
+
+interface Ethernet1/3
+  description to LEAF10G-2 port 53
+  switchport mode trunk
+  no shutdown
+
+interface Ethernet1/4
+  description to LEAF10G-2 port 54
+  switchport mode trunk
+  no shutdown
+
+interface Ethernet1/54
+  description to LEAF10G-2
+  switchport mode trunk
+  no shutdown
+
+! Management & Routing
+interface mgmt0
+  ip address 10.0.0.2/24
+  vrf member management
+  no shutdown
+vrf context management
+  ip route 0.0.0.0/0 10.0.0.254
+
+! NTP
+ntp server 10.255.255.254 prefer use-vrf management
+! Logging
+logging source-interface mgmt0
+logging server 10.255.255.254 6 use-vrf management
+logging timestamp milliseconds
+logging level info
+
+! CLI Aliases
+cli alias name wr copy running startup
+cli alias name shint show interface status
+cli alias name shintd show interface description
+
+! Boot System
+boot nxos bootflash:/nxos.9.3.5.bin
+
+line console
+line vty
+
+! =============================================================================
+! NX-OS TROUBLESHOOTING DIAGNOSTIC COMMANDS
+! =============================================================================
+! Use these commands for troubleshooting and verification:
+!
+! ─────────────────────────────────────────────────────────────────────────────
+! CRITICAL DIAGNOSTICS (First 5 commands to run when issues occur)
+! ─────────────────────────────────────────────────────────────────────────────
+! show system resources           # Check CPU/memory utilization (should be <80%)
+! show environment                # Check fans, power supplies, temperature
+! show interface status err-disabled  # Check for error-disabled interfaces
+! show logging logfile last 50    # Check recent log entries for errors
+! show processes cpu              # Check for high CPU processes
+!
+! ─────────────────────────────────────────────────────────────────────────────
+! SYSTEM INFORMATION & HEALTH
+! ─────────────────────────────────────────────────────────────────────────────
+! show version                    # NX-OS version, uptime, hardware info
+! show module                     # Module status and hardware inventory
+! show platform                   # Platform-specific information
+! show inventory                  # Detailed hardware inventory
+! show license                    # License status and features
+! show boot                       # Boot variables and kickstart info
+! show diagnostic results module all detail  # Hardware diagnostic test results
+! show system internal kernel uptime  # Kernel uptime and stability
+!
+! ─────────────────────────────────────────────────────────────────────────────
+! INTERFACE DIAGNOSTICS
+! ─────────────────────────────────────────────────────────────────────────────
+! show interface brief             # Quick interface status overview
+! show interface status            # Detailed interface status with reasons
+! show interface status err-disabled  # Error-disabled interfaces with reasons
+! show interface switchport        # Switchport configuration details
+! show interface trunk             # Trunk port information and allowed VLANs
+! show interface counters          # Interface packet/byte counters
+! show interface counters detailed  # Detailed interface error counters
+! show port-channel summary        # Port-channel status and member ports
+! show port-channel database       # Port-channel configuration database
+! show lacp counters               # LACP protocol statistics
+! show cdp neighbors               # CDP neighbor discovery (if enabled)
+! show lldp neighbors              # LLDP neighbor discovery (if enabled)
+! show lldp neighbors detail       # Detailed LLDP neighbor information
+! show interface transceiver detail  # SFP/optical module diagnostics
+! show interface flowcontrol       # Flow control status per interface
+!
+! ─────────────────────────────────────────────────────────────────────────────
+! VLAN & SPANNING TREE
+! ─────────────────────────────────────────────────────────────────────────────
+! show vlan                       # All VLANs and their names
+! show vlan brief                 # Brief VLAN summary
+! show spanning-tree              # STP status for all VLANs
+! show spanning-tree summary      # STP summary and root bridge info
+! show spanning-tree detail        # Detailed STP information per VLAN
+! show spanning-tree mst          # MST (Multiple Spanning Tree) configuration
+! show spanning-tree rapid-pvst   # R-PVST+ specific information
+! show spanning-tree interface <interface>  # STP status for specific interface
+! show vlan private-vlan           # Private VLAN configuration (if used)
+!
+! ─────────────────────────────────────────────────────────────────────────────
+! vPC (Virtual Port Channel) DIAGNOSTICS
+! ─────────────────────────────────────────────────────────────────────────────
+! show vpc                        # vPC status and role (primary/secondary)
+! show vpc brief                  # Brief vPC status summary
+! show vpc role                   # vPC role information and priority
+! show vpc peer-keepalive         # Peer-keepalive link status and reachability
+! show vpc peer-link              # Peer-link status and member ports
+! show vpc consistency-parameters global  # Global vPC type-1 consistency
+! show vpc consistency-parameters interface port-channel<X>  # Interface type-1 consistency
+! show vpc consistency-parameters vlans  # VLAN type-2 consistency
+! show vpc statistics             # vPC packet statistics and counters
+! show vpc synchronization        # vPC synchronization status
+! show running-config vpc          # Current vPC configuration
+! show tech-support vpc           # Comprehensive vPC diagnostic output
+! show vpc orphan-ports           # Orphan port status (ports without peer-link)
+!
+! ─────────────────────────────────────────────────────────────────────────────
+! ROUTING DIAGNOSTICS
+! ─────────────────────────────────────────────────────────────────────────────
+! show ip route                    # IPv4 routing table
+! show ip route vrf all summary    # Routing table summary for all VRFs
+! show ip route vrf management     # Management VRF routing table
+! show ip interface brief          # IP interface status and addresses
+! show ip interface vrf all brief  # IP interfaces for all VRFs
+! show ip eigrp neighbors          # EIGRP neighbor status (if configured)
+! show ip ospf neighbors           # OSPF neighbor status (if configured)
+! show ip bgp                      # BGP status and routes (if configured)
+! show ip bgp summary              # BGP neighbor summary
+! show ip arp                      # ARP table entries
+! show ip arp detail               # Detailed ARP information
+! show ipv6 route                  # IPv6 routing table (if used)
+! show ipv6 interface brief        # IPv6 interface status
+!
+! ─────────────────────────────────────────────────────────────────────────────
+! FIRST-HOP REDUNDANCY (HSRP/VRRP/GLBP)
+! ─────────────────────────────────────────────────────────────────────────────
+! show hsrp                       # HSRP status for all groups
+! show hsrp brief                 # Brief HSRP status summary
+! show hsrp detail                # Detailed HSRP information
+! show hsrp interface vlan <vlan>  # HSRP status for specific VLAN
+! show hsrp group <group>         # HSRP status for specific group
+! show vrrp                       # VRRP status (if configured)
+! show vrrp brief                 # Brief VRRP status
+! show glbp                       # GLBP status (if configured)
+!
+! ─────────────────────────────────────────────────────────────────────────────
+! SECURITY & ACCESS CONTROL
+! ─────────────────────────────────────────────────────────────────────────────
+! show access-lists               # All access lists
+! show ip access-lists            # IPv4 access lists
+! show ipv6 access-lists          # IPv6 access lists
+! show mac address-table           # MAC address table (CAM table)
+! show mac address-table aging-time  # MAC aging timer configuration
+! show mac address-table count      # MAC address table entry count
+! show ip arp                      # ARP table (also in routing section)
+! show ip arp inspection           # Dynamic ARP Inspection status (if enabled)
+! show ip dhcp snooping            # DHCP snooping status (if enabled)
+! show ip source-guard             # IP Source Guard status (if enabled)
+! show port-security               # Port security status (if enabled)
+! show aaa                        # AAA authentication/authorization status
+! show tacacs                      # TACACS+ server status (if configured)
+! show radius                      # RADIUS server status (if configured)
+! show user-account               # Local user accounts
+! show login failures             # Failed login attempts
+!
+! ─────────────────────────────────────────────────────────────────────────────
+! LOGGING & DEBUGGING
+! ─────────────────────────────────────────────────────────────────────────────
+! show logging logfile            # Log file contents
+! show logging logfile last 100    # Last 100 log entries
+! show logging nvram               # NVRAM log contents
+! show logging level               # Logging level configuration
+! show logging status             # Logging server status
+! show logging last 50             # Last 50 messages from all facilities
+! show debug-filter               # Debug filter status (if debugging enabled)
+! show processes                   # All running processes
+! show processes cpu               # CPU utilization by process
+! show processes memory            # Memory utilization by process
+! show system internal mts buffer summary  # Message transport buffer status
+!
+! ─────────────────────────────────────────────────────────────────────────────
+! PERFORMANCE MONITORING
+! ─────────────────────────────────────────────────────────────────────────────
+! show system resources           # CPU, memory, buffer utilization
+! show hardware internal forwarding l2 detail  # L2 forwarding details
+! show hardware internal forwarding l3 detail  # L3 forwarding details
+! show interface hardware queue    # Hardware queue statistics
+! show queueing                   # Queueing configuration and statistics
+! show policy-map interface <interface>  # QoS policy application
+! show class-map                   # QoS class-map configuration
+! show policy-map                  # QoS policy-map configuration
+! show netflow                     # NetFlow statistics (if enabled)
+! show sampler                     # NetFlow sampler configuration
+!
+! ─────────────────────────────────────────────────────────────────────────────
+! STORAGE & FILE SYSTEM
+! ─────────────────────────────────────────────────────────────────────────────
+! dir bootflash:                   # List bootflash contents
+! dir logflash:                    # List logflash contents (if present)
+! show system internal flash       # Flash memory status
+! show system internal kernel uptime  # Kernel uptime (also in system section)
+! show version | include uptime     # System uptime
+!
+! ─────────────────────────────────────────────────────────────────────────────
+! CONFIGURATION MANAGEMENT
+! ─────────────────────────────────────────────────────────────────────────────
+! show running-config              # Current running configuration
+! show startup-config              # Startup configuration (saved)
+! show diff rollback-config       # Differences between running and startup
+! show running-config diff startup-config  # Same as above
+! show running-config section <section>  # Specific configuration section
+! show running-config | include <pattern>  # Filter configuration
+! show running-config | begin <pattern>   # Start from pattern
+! copy running-config startup-config  # Save configuration
+! write memory                    # Same as above (short form)
+!
+! ─────────────────────────────────────────────────────────────────────────────
+! TROUBLESHOOTING WORKFLOOS
+! ─────────────────────────────────────────────────────────────────────────────
+!
+! WORKFLOW: Interface Not Coming Up
+! 1) show interface status          # Check interface state
+! 2) show interface counters        # Check for errors
+! 3) show spanning-tree interface <intf>  # Check STP blocking
+! 4) show lacp counters             # Check LACP if port-channel
+! 5) show logging logfile last 50    # Check for error messages
+!
+! WORKFLOW: vPC Peer-Link Down
+! 1) show vpc peer-link             # Check peer-link status
+! 2) show vpc peer-keepalive        # Check keepalive status
+! 3) show interface status          # Check member interface status
+! 4) show lacp counters             # Check LACP synchronization
+! 5) show logging logfile last 50    # Check for vPC errors
+!
+! WORKFLOW: High CPU Utilization
+! 1) show system resources          # Check overall CPU/memory
+! 2) show processes cpu             # Identify top CPU processes
+! 3) show interface counters        # Check for high traffic
+! 4) show logging logfile last 50    # Check for error storms
+! 5) show hardware internal forwarding  # Check forwarding engine load
+!
+! WORKFLOW: Routing Not Working
+! 1) show ip route                  # Check routing table
+! 2) show ip interface brief        # Check interface IP addresses
+! 3) show ip arp                    # Check ARP table
+! 4) show ip ospf neighbors         # Check OSPF adjacency (if OSPF)
+! 5) show logging logfile last 50    # Check for routing errors
+!
+! ─────────────────────────────────────────────────────────────────────────────
+! POST-PASTE CHECKLIST (lab engineer — comments only)
+! ─────────────────────────────────────────────────────────────────────────────
+! 1) show running-config | sec vpc
+! 2) show vpc brief
+! 3) show interface status err-disabled
+! 4) show ip route vrf management
+! 5) copy run start (only after lab sign-off)

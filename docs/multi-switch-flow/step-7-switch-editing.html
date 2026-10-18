@@ -1,0 +1,516 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Step 7: Switch Editing - Multi-Switch User Flow</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: #f5f5f5;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 30px 20px;
+            margin-bottom: 30px;
+        }
+        
+        header h1 {
+            font-size: 2em;
+            margin-bottom: 10px;
+        }
+        
+        .breadcrumb {
+            background: white;
+            padding: 15px 20px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        
+        .breadcrumb a {
+            color: #667eea;
+            text-decoration: none;
+        }
+        
+        .breadcrumb a:hover {
+            text-decoration: underline;
+        }
+        
+        .section {
+            background: white;
+            padding: 30px;
+            border-radius: 8px;
+            margin-bottom: 30px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        
+        .section h2 {
+            color: #667eea;
+            margin-bottom: 20px;
+            font-size: 1.5em;
+            border-bottom: 2px solid #667eea;
+            padding-bottom: 10px;
+        }
+        
+        .section h3 {
+            color: #333;
+            margin: 20px 0 10px 0;
+            font-size: 1.2em;
+        }
+        
+        .action-box {
+            background: #e3f2fd;
+            border-left: 4px solid #2196f3;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 4px;
+        }
+        
+        .action-box strong {
+            color: #1976d2;
+        }
+        
+        .function-box {
+            background: #fff3e0;
+            border-left: 4px solid #ff9800;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 4px;
+            font-family: 'Courier New', monospace;
+        }
+        
+        .result-box {
+            background: #e8f5e9;
+            border-left: 4px solid #4caf50;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 4px;
+        }
+        
+        .result-box ul {
+            margin-left: 20px;
+            margin-top: 10px;
+        }
+        
+        .code-block {
+            background: #f5f5f5;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            padding: 15px;
+            overflow-x: auto;
+            margin: 15px 0;
+        }
+        
+        .code-block pre {
+            margin: 0;
+            font-family: 'Courier New', monospace;
+            font-size: 14px;
+        }
+        
+        .next-step-box {
+            background: #f3e5f5;
+            border-left: 4px solid #9c27b0;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 4px;
+        }
+        
+        .next-step-box strong {
+            color: #7b1fa2;
+        }
+        
+        .navigation {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 30px;
+        }
+        
+        .navigation a {
+            display: inline-block;
+            background: #667eea;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 5px;
+            text-decoration: none;
+            transition: background 0.3s ease;
+        }
+        
+        .navigation a:hover {
+            background: #5568d3;
+        }
+        
+        .navigation .prev {
+            background: #6c757d;
+        }
+        
+        .navigation .prev:hover {
+            background: #5a6268;
+        }
+        
+        .ui-mockup {
+            background: white;
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+            padding: 20px;
+            margin: 20px 0;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+        
+        .ui-mockup-header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 15px 20px;
+            border-radius: 6px;
+            margin-bottom: 15px;
+        }
+        
+        .ui-mockup-header h3 {
+            margin: 0;
+            font-size: 1.2em;
+        }
+        
+        .mockup-browser {
+            background: #f8f9fa;
+            border: 1px solid #dee2e6;
+            border-radius: 6px;
+            overflow: hidden;
+        }
+        
+        .mockup-browser-bar {
+            background: #e9ecef;
+            padding: 8px 12px;
+            border-bottom: 1px solid #dee2e6;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .mockup-browser-bar .dots {
+            display: flex;
+            gap: 6px;
+        }
+        
+        .mockup-browser-bar .dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+        }
+        
+        .mockup-browser-bar .dot.red { background: #ff5f57; }
+        .mockup-browser-bar .dot.yellow { background: #febc2e; }
+        .mockup-browser-bar .dot.green { background: #28c840; }
+        
+        .mockup-browser-bar .url {
+            flex: 1;
+            background: white;
+            border: 1px solid #ced4da;
+            border-radius: 4px;
+            padding: 4px 8px;
+            font-size: 12px;
+            color: #495057;
+            font-family: monospace;
+        }
+        
+        .mockup-content {
+            padding: 20px;
+            background: white;
+        }
+        
+        .mockup-modal-backdrop {
+            background: rgba(0, 0, 0, 0.5);
+            padding: 40px;
+            border-radius: 8px;
+        }
+        
+        .mockup-modal {
+            background: white;
+            border-radius: 8px;
+            overflow: hidden;
+            max-width: 500px;
+        }
+        
+        .mockup-modal-header {
+            background: #f8f9fa;
+            padding: 15px 20px;
+            border-bottom: 1px solid #dee2e6;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .mockup-modal-header h3 {
+            margin: 0;
+            color: #333;
+            font-size: 1.1em;
+        }
+        
+        .mockup-modal-close {
+            background: none;
+            border: none;
+            font-size: 1.5em;
+            color: #666;
+            cursor: default;
+        }
+        
+        .mockup-modal-body {
+            padding: 20px;
+        }
+        
+        .mockup-form-group {
+            margin-bottom: 15px;
+        }
+        
+        .mockup-form-group label {
+            display: block;
+            margin-bottom: 5px;
+            color: #333;
+            font-size: 0.9em;
+            font-weight: bold;
+        }
+        
+        .mockup-form-group input,
+        .mockup-form-group select {
+            width: 100%;
+            padding: 8px 12px;
+            border: 1px solid #dee2e6;
+            border-radius: 4px;
+            font-size: 0.9em;
+        }
+        
+        .mockup-modal-footer {
+            background: #f8f9fa;
+            padding: 15px 20px;
+            border-top: 1px solid #dee2e6;
+            display: flex;
+            gap: 10px;
+            justify-content: flex-end;
+        }
+        
+        .mockup-btn {
+            padding: 8px 16px;
+            border-radius: 4px;
+            font-size: 0.9em;
+            border: 1px solid #dee2e6;
+            background: white;
+        }
+        
+        .mockup-btn.primary {
+            background: #667eea;
+            color: white;
+            border-color: #667eea;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>Step 7: Switch Editing</h1>
+            <p>Multi-Switch User Flow Documentation</p>
+        </div>
+    </header>
+    
+    <div class="container">
+        <div class="breadcrumb">
+            <a href="index.html">← Back to Index</a>
+        </div>
+        
+        <div class="section">
+            <h2>User Action</h2>
+            <div class="action-box">
+                <strong>Action:</strong> User clicks "Edit" button on a switch (e.g., CORE1)
+            </div>
+        </div>
+        
+        <div class="section">
+            <h2>JavaScript Function</h2>
+            <div class="function-box">
+                Function: Opens edit modal via event delegation
+            </div>
+        </div>
+        
+        <div class="section">
+            <h2>Expected HTML Modal Structure</h2>
+            <div class="code-block">
+                <pre>&lt;div id="editSwitchModal" class="modal-backdrop" role="dialog" aria-modal="true"&gt;
+    &lt;div class="modal-content"&gt;
+        &lt;div class="modal-header"&gt;
+            &lt;h3&gt;Edit Switch: CORE1&lt;/h3&gt;
+            &lt;button class="modal-close" data-action="close-modal" aria-label="Close modal"&gt;×&lt;/button&gt;
+        &lt;/div&gt;
+        
+        &lt;div class="modal-body"&gt;
+            &lt;form id="editSwitchForm"&gt;
+                &lt;div class="form-group"&gt;
+                    &lt;label for="editHostname"&gt;Hostname&lt;/label&gt;
+                    &lt;input type="text" id="editHostname" name="hostname" value="CORE1" required&gt;
+                &lt;/div&gt;
+                
+                &lt;div class="form-group"&gt;
+                    &lt;label for="editRole"&gt;Role&lt;/label&gt;
+                    &lt;select id="editRole" name="role"&gt;
+                        &lt;option value="core" selected&gt;Core&lt;/option&gt;
+                        &lt;option value="spine"&gt;Spine&lt;/option&gt;
+                        &lt;option value="leaf"&gt;Leaf&lt;/option&gt;
+                        &lt;option value="access"&gt;Access&lt;/option&gt;
+                    &lt;/select&gt;
+                &lt;/div&gt;
+                
+                &lt;div class="form-group"&gt;
+                    &lt;label for="editModel"&gt;Model&lt;/label&gt;
+                    &lt;select id="editModel" name="model"&gt;
+                        &lt;option value="Nexus 9336C-FX2" selected&gt;Nexus 9336C-FX2&lt;/option&gt;
+                        &lt;option value="Nexus 93180YC-EX"&gt;Nexus 93180YC-EX&lt;/option&gt;
+                        &lt;option value="Nexus 9348GC-FXP"&gt;Nexus 9348GC-FXP&lt;/option&gt;
+                    &lt;/select&gt;
+                &lt;/div&gt;
+                
+                &lt;div class="form-group"&gt;
+                    &lt;label for="editMgmtIp"&gt;Management IP&lt;/label&gt;
+                    &lt;input type="text" id="editMgmtIp" name="mgmt_ip" value="10.0.0.1/24" required&gt;
+                &lt;/div&gt;
+                
+                &lt;div class="form-group"&gt;
+                    &lt;label for="editMgmtGw"&gt;Management Gateway&lt;/label&gt;
+                    &lt;input type="text" id="editMgmtGw" name="mgmt_gw" value="10.0.0.254"&gt;
+                &lt;/div&gt;
+                
+                &lt;div class="form-group"&gt;
+                    &lt;label for="editVpcDomain"&gt;vPC Domain&lt;/label&gt;
+                    &lt;input type="number" id="editVpcDomain" name="vpc_domain" value="10"&gt;
+                &lt;/div&gt;
+                
+                &lt;div class="form-group"&gt;
+                    &lt;label for="editBaseVlan"&gt;Base Access VLAN&lt;/label&gt;
+                    &lt;input type="number" id="editBaseVlan" name="base_access_vlan" value="10"&gt;
+                &lt;/div&gt;
+                
+                &lt;div class="form-group"&gt;
+                    &lt;label for="editVlanCount"&gt;Access VLAN Count&lt;/label&gt;
+                    &lt;input type="number" id="editVlanCount" name="access_vlan_count" value="4"&gt;
+                &lt;/div&gt;
+            &lt;/form&gt;
+        &lt;/div&gt;
+        
+        &lt;div class="modal-footer"&gt;
+            &lt;button class="btn-outline" data-action="close-modal"&gt;Cancel&lt;/button&gt;
+            &lt;button class="btn-primary" data-action="save-switch"&gt;Save Changes&lt;/button&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/div&gt;</pre>
+            </div>
+        </div>
+        
+        <div class="section">
+            <h2>Expected Result</h2>
+            <div class="result-box">
+                <ul>
+                    <li>Modal overlay appears with backdrop</li>
+                    <li>Modal shows current switch values in form fields</li>
+                    <li>User can edit any field</li>
+                    <li>Cancel button closes modal without saving</li>
+                    <li>Save Changes button updates deployment object and re-renders switch list</li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="section">
+            <h2>Visual UI Mockup</h2>
+            <div class="ui-mockup">
+                <div class="ui-mockup-header">
+                    <h3>User Interface - What the User Sees</h3>
+                </div>
+                <div class="mockup-browser">
+                    <div class="mockup-browser-bar">
+                        <div class="dots">
+                            <div class="dot red"></div>
+                            <div class="dot yellow"></div>
+                            <div class="dot green"></div>
+                        </div>
+                        <div class="url">http://127.0.0.1:9000</div>
+                    </div>
+                    <div class="mockup-content">
+                        <div class="mockup-modal-backdrop">
+                            <div class="mockup-modal">
+                                <div class="mockup-modal-header">
+                                    <h3>Edit Switch: CORE1</h3>
+                                    <button class="mockup-modal-close">×</button>
+                                </div>
+                                
+                                <div class="mockup-modal-body">
+                                    <div class="mockup-form-group">
+                                        <label>Hostname</label>
+                                        <input type="text" value="CORE1">
+                                    </div>
+                                    
+                                    <div class="mockup-form-group">
+                                        <label>Role</label>
+                                        <select>
+                                            <option selected>Core</option>
+                                            <option>Spine</option>
+                                            <option>Leaf</option>
+                                            <option>Access</option>
+                                        </select>
+                                    </div>
+                                    
+                                    <div class="mockup-form-group">
+                                        <label>Model</label>
+                                        <select>
+                                            <option selected>Nexus 9336C-FX2</option>
+                                            <option>Nexus 93180YC-EX</option>
+                                            <option>Nexus 9348GC-FXP</option>
+                                        </select>
+                                    </div>
+                                    
+                                    <div class="mockup-form-group">
+                                        <label>Management IP</label>
+                                        <input type="text" value="10.0.0.1/24">
+                                    </div>
+                                    
+                                    <div class="mockup-form-group">
+                                        <label>vPC Domain</label>
+                                        <input type="number" value="10">
+                                    </div>
+                                </div>
+                                
+                                <div class="mockup-modal-footer">
+                                    <button class="mockup-btn">Cancel</button>
+                                    <button class="mockup-btn primary">Save Changes</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="section">
+            <h2>Next Step</h2>
+            <div class="next-step-box">
+                <strong>Next:</strong> User saves changes or cancels
+            </div>
+        </div>
+        
+        <div class="navigation">
+            <a href="step-6-tab-navigation.html" class="prev">← Previous</a>
+            <a href="step-8-generate-config.html">Next Step →</a>
+        </div>
+    </div>
+</body>
+</html>

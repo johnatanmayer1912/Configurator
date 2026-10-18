@@ -23,7 +23,11 @@ async function loadPoMap() {
     try {
         const res = await fetch("/admin/po-map", { headers: authHeaders() });
         if (!res.ok) {
-            setStatus(`Load failed (HTTP ${res.status}).`);
+            if (res.status === 401 || res.status === 403) {
+                setStatus("Access denied.");
+            } else {
+                setStatus(`Load failed (HTTP ${res.status}).`);
+            }
             return;
         }
         poMapData = await res.json();

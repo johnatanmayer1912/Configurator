@@ -40,8 +40,8 @@ class CatalogLoader:
     @staticmethod
     def _resolve_hardware_path() -> Path:
         if getattr(sys, "frozen", False):
-            return Path(sys._MEIPASS) / "hardware_profiles.yaml"
-        return Path(__file__).resolve().parent.parent / "hardware_profiles.yaml"
+            return Path(sys._MEIPASS) / "data" / "hardware_profiles.yaml"
+        return Path(__file__).resolve().parent.parent / "data" / "hardware_profiles.yaml"
 
     def list_versions(self) -> List[Dict[str, Any]]:
         return self._versions.get("versions", [])
@@ -112,6 +112,13 @@ class CatalogLoader:
                     "vpc_peer_link": profile.get("vpc_peer_link", []),
                     "vpc_keepalive": profile.get("vpc_keepalive", []),
                     "port_groups": profile.get("port_groups", []),
+                    "vlan_constraints": profile.get("vlan_constraints", {}),
+                    "vpc_uplink_start": profile.get("vpc_uplink_start"),
+                    "vpc_uplink_end": profile.get("vpc_uplink_end"),
+                    "downlink_10g_start": profile.get("downlink_10g_start"),
+                    "downlink_10g_end": profile.get("downlink_10g_end"),
+                    "downlink_1g_start": profile.get("downlink_1g_start"),
+                    "downlink_1g_end": profile.get("downlink_1g_end"),
                 }
             )
         return profiles

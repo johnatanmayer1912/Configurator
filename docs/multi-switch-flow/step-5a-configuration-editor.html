@@ -1,0 +1,659 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Step 5A: Configuration Editor - Multi-Switch User Flow</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: #f5f5f5;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 30px 20px;
+            margin-bottom: 30px;
+        }
+        
+        header h1 {
+            font-size: 2em;
+            margin-bottom: 10px;
+        }
+        
+        .breadcrumb {
+            background: white;
+            padding: 15px 20px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        
+        .breadcrumb a {
+            color: #667eea;
+            text-decoration: none;
+        }
+        
+        .breadcrumb a:hover {
+            text-decoration: underline;
+        }
+        
+        .section {
+            background: white;
+            padding: 30px;
+            border-radius: 8px;
+            margin-bottom: 30px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        
+        .section h2 {
+            color: #667eea;
+            margin-bottom: 20px;
+            font-size: 1.5em;
+            border-bottom: 2px solid #667eea;
+            padding-bottom: 10px;
+        }
+        
+        .section h3 {
+            color: #333;
+            margin: 20px 0 10px 0;
+            font-size: 1.2em;
+        }
+        
+        .action-box {
+            background: #e3f2fd;
+            border-left: 4px solid #2196f3;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 4px;
+        }
+        
+        .action-box strong {
+            color: #1976d2;
+        }
+        
+        .function-box {
+            background: #fff3e0;
+            border-left: 4px solid #ff9800;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 4px;
+            font-family: 'Courier New', monospace;
+        }
+        
+        .result-box {
+            background: #e8f5e9;
+            border-left: 4px solid #4caf50;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 4px;
+        }
+        
+        .result-box ul {
+            margin-left: 20px;
+            margin-top: 10px;
+        }
+        
+        .code-block {
+            background: #f5f5f5;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            padding: 15px;
+            overflow-x: auto;
+            margin: 15px 0;
+        }
+        
+        .code-block pre {
+            margin: 0;
+            font-family: 'Courier New', monospace;
+            font-size: 14px;
+        }
+        
+        .next-step-box {
+            background: #f3e5f5;
+            border-left: 4px solid #9c27b0;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 4px;
+        }
+        
+        .next-step-box strong {
+            color: #7b1fa2;
+        }
+        
+        .navigation {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 30px;
+        }
+        
+        .navigation a {
+            display: inline-block;
+            background: #667eea;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 5px;
+            text-decoration: none;
+            transition: background 0.3s ease;
+        }
+        
+        .navigation a:hover {
+            background: #5568d3;
+        }
+        
+        .navigation .prev {
+            background: #6c757d;
+        }
+        
+        .navigation .prev:hover {
+            background: #5a6268;
+        }
+        
+        .ui-mockup {
+            background: white;
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+            padding: 20px;
+            margin: 20px 0;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+        
+        .ui-mockup-header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 15px 20px;
+            border-radius: 6px;
+            margin-bottom: 15px;
+        }
+        
+        .ui-mockup-header h3 {
+            margin: 0;
+            font-size: 1.2em;
+        }
+        
+        .mockup-browser {
+            background: #f8f9fa;
+            border: 1px solid #dee2e6;
+            border-radius: 6px;
+            overflow: hidden;
+        }
+        
+        .mockup-browser-bar {
+            background: #e9ecef;
+            padding: 8px 12px;
+            border-bottom: 1px solid #dee2e6;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .mockup-browser-bar .dots {
+            display: flex;
+            gap: 6px;
+        }
+        
+        .mockup-browser-bar .dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+        }
+        
+        .mockup-browser-bar .dot.red { background: #ff5f57; }
+        .mockup-browser-bar .dot.yellow { background: #febc2e; }
+        .mockup-browser-bar .dot.green { background: #28c840; }
+        
+        .mockup-browser-bar .url {
+            flex: 1;
+            background: white;
+            border: 1px solid #ced4da;
+            border-radius: 4px;
+            padding: 4px 8px;
+            font-size: 12px;
+            color: #495057;
+            font-family: monospace;
+        }
+        
+        .mockup-content {
+            padding: 20px;
+            background: white;
+        }
+        
+        .mockup-editor {
+            background: #f8f9fa;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+        
+        .mockup-editor-header {
+            background: white;
+            padding: 15px 20px;
+            border-bottom: 1px solid #dee2e6;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .mockup-editor-header h3 {
+            margin: 0;
+            color: #333;
+        }
+        
+        .mockup-editor-actions {
+            display: flex;
+            gap: 8px;
+        }
+        
+        .mockup-editor-actions .btn {
+            padding: 6px 12px;
+            border-radius: 4px;
+            font-size: 0.85em;
+            border: 1px solid #dee2e6;
+            background: white;
+        }
+        
+        .mockup-editor-actions .btn.primary {
+            background: #667eea;
+            color: white;
+            border-color: #667eea;
+        }
+        
+        .mockup-editor-layout {
+            display: flex;
+            gap: 15px;
+        }
+        
+        .mockup-topology-canvas {
+            flex: 1;
+            background: white;
+            border: 1px solid #dee2e6;
+            border-radius: 6px;
+            padding: 15px;
+            min-height: 200px;
+        }
+        
+        .mockup-topology-canvas h4 {
+            margin: 0 0 10px 0;
+            color: #333;
+            font-size: 0.9em;
+        }
+        
+        .mockup-topology-placeholder {
+            background: #f8f9fa;
+            border: 1px dashed #dee2e6;
+            border-radius: 4px;
+            height: 150px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #999;
+            font-size: 0.85em;
+        }
+        
+        .mockup-canvas-actions {
+            display: flex;
+            gap: 8px;
+            margin-top: 10px;
+        }
+        
+        .mockup-canvas-actions .btn {
+            padding: 6px 12px;
+            border-radius: 4px;
+            font-size: 0.85em;
+            border: 1px solid #667eea;
+            background: white;
+            color: #667eea;
+        }
+        
+        .mockup-config-panels {
+            flex: 1;
+            background: white;
+            border: 1px solid #dee2e6;
+            border-radius: 6px;
+            overflow: hidden;
+        }
+        
+        .mockup-panel-tabs {
+            display: flex;
+            border-bottom: 1px solid #dee2e6;
+        }
+        
+        .mockup-panel-tabs .tab {
+            padding: 10px 15px;
+            border: none;
+            background: white;
+            border-bottom: 2px solid transparent;
+            font-size: 0.85em;
+            cursor: default;
+        }
+        
+        .mockup-panel-tabs .tab.active {
+            border-bottom-color: #667eea;
+            color: #667eea;
+        }
+        
+        .mockup-panel-content {
+            padding: 15px;
+        }
+        
+        .mockup-panel-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+        
+        .mockup-panel-header h4 {
+            margin: 0;
+            color: #333;
+        }
+        
+        .mockup-panel-header .btn {
+            padding: 6px 12px;
+            border-radius: 4px;
+            font-size: 0.85em;
+            border: 1px solid #667eea;
+            background: white;
+            color: #667eea;
+        }
+        
+        .mockup-switch-item {
+            background: #f8f9fa;
+            border: 1px solid #dee2e6;
+            border-radius: 4px;
+            padding: 12px;
+            margin-bottom: 10px;
+        }
+        
+        .mockup-switch-item-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 8px;
+        }
+        
+        .mockup-switch-item-header strong {
+            color: #333;
+        }
+        
+        .mockup-switch-item-actions {
+            display: flex;
+            gap: 6px;
+        }
+        
+        .mockup-switch-item-actions .btn {
+            padding: 4px 8px;
+            border-radius: 3px;
+            font-size: 0.75em;
+            border: 1px solid #dee2e6;
+            background: white;
+        }
+        
+        .mockup-switch-item-actions .btn.danger {
+            border-color: #dc3545;
+            color: #dc3545;
+        }
+        
+        .mockup-switch-item-details {
+            display: flex;
+            gap: 15px;
+            font-size: 0.8em;
+            color: #666;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>Step 5A: Configuration Editor (Customize Network)</h1>
+            <p>Multi-Switch User Flow Documentation</p>
+        </div>
+    </header>
+    
+    <div class="container">
+        <div class="breadcrumb">
+            <a href="index.html">← Back to Index</a>
+        </div>
+        
+        <div class="section">
+            <h2>User Action</h2>
+            <div class="action-box">
+                <strong>Action:</strong> User clicks "Customize Network"
+            </div>
+        </div>
+        
+        <div class="section">
+            <h2>JavaScript Function</h2>
+            <div class="function-box">
+                Function: <code>hideTemplateGallery()</code> (app.js:1740-1779)
+            </div>
+        </div>
+        
+        <div class="section">
+            <h2>Expected HTML Page Structure</h2>
+            <div class="code-block">
+                <pre>&lt;div class="template-gallery hidden" id="templateGallery"&gt;
+    &lt;!-- Hidden --&gt;
+&lt;/div&gt;
+
+&lt;div class="configuration-editor" id="configurationEditor" role="region"&gt;
+    &lt;div class="editor-header"&gt;
+        &lt;h3&gt;Network Configuration Editor&lt;/h3&gt;
+        &lt;div class="editor-actions"&gt;
+            &lt;button class="btn-ghost btn-sm" data-action="validate-topology"&gt;Validate&lt;/button&gt;
+            &lt;button class="btn-ghost btn-sm" data-action="reset-to-template"&gt;Reset&lt;/button&gt;
+            &lt;button class="btn-ghost btn-sm" data-action="save-custom-template"&gt;Save as Template&lt;/button&gt;
+            &lt;button class="btn-primary btn-sm" data-action="generate-config"&gt;Generate Config&lt;/button&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+    
+    &lt;div class="editor-layout"&gt;
+        &lt;!-- Topology Canvas --&gt;
+        &lt;div class="topology-canvas" role="img"&gt;
+            &lt;div id="editorTopologyContainer"&gt;
+                &lt;svg width="100%" height="400" viewBox="0 0 600 400"&gt;
+                    &lt;!-- Live topology SVG --&gt;
+                &lt;/svg&gt;
+            &lt;/div&gt;
+            &lt;div class="canvas-actions"&gt;
+                &lt;button class="btn-sm" data-action="add-switch"&gt;+ Add Switch&lt;/button&gt;
+                &lt;button class="btn-sm" data-action="add-vpc-domain"&gt;+ Add vPC Domain&lt;/button&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+        
+        &lt;!-- Configuration Panels --&gt;
+        &lt;div class="config-panels" role="tablist"&gt;
+            &lt;div class="panel-tabs" role="tablist"&gt;
+                &lt;button class="tab-btn active" data-tab="switches" role="tab"&gt;Switches&lt;/button&gt;
+                &lt;button class="tab-btn" data-tab="vpc" role="tab"&gt;vPC Domains&lt;/button&gt;
+                &lt;button class="tab-btn" data-tab="vlans" role="tab"&gt;VLANs&lt;/button&gt;
+                &lt;button class="tab-btn" data-tab="interfaces" role="tab"&gt;Interfaces&lt;/button&gt;
+                &lt;button class="tab-btn" data-tab="uplinks" role="tab"&gt;Uplinks&lt;/button&gt;
+            &lt;/div&gt;
+            
+            &lt;div class="panel-content"&gt;
+                &lt;!-- Switches Panel (active by default) --&gt;
+                &lt;div id="panel-switches" class="tab-panel active" role="tabpanel"&gt;
+                    &lt;div class="panel-header"&gt;
+                        &lt;h4&gt;Switches&lt;/h4&gt;
+                        &lt;button class="btn-sm" data-action="add-switch"&gt;+ Add Switch&lt;/button&gt;
+                    &lt;/div&gt;
+                    &lt;div id="switchesList" role="list"&gt;
+                        &lt;div class="switch-item"&gt;
+                            &lt;div class="switch-item-header"&gt;
+                                &lt;strong&gt;CORE1&lt;/strong&gt;
+                                &lt;div class="switch-item-actions"&gt;
+                                    &lt;button class="btn-sm" data-action="edit-switch" data-index="0"&gt;Edit&lt;/button&gt;
+                                    &lt;button class="btn-sm" data-action="clone-switch" data-index="0"&gt;Clone&lt;/button&gt;
+                                    &lt;button class="btn-sm btn-danger" data-action="remove-switch" data-index="0"&gt;Remove&lt;/button&gt;
+                                &lt;/div&gt;
+                            &lt;/div&gt;
+                            &lt;div class="switch-item-details"&gt;
+                                &lt;span&gt;Role: core&lt;/span&gt;
+                                &lt;span&gt;Model: Nexus 9336C-FX2&lt;/span&gt;
+                                &lt;span&gt;IP: 10.0.0.1/24&lt;/span&gt;
+                                &lt;span&gt;vPC Domain: 10&lt;/span&gt;
+                            &lt;/div&gt;
+                        &lt;/div&gt;
+                        &lt;!-- More switch items --&gt;
+                    &lt;/div&gt;
+                &lt;/div&gt;
+                
+                &lt;!-- Other panels (hidden by default) --&gt;
+                &lt;div id="panel-vpc" class="tab-panel hidden" role="tabpanel"&gt;...&lt;/div&gt;
+                &lt;div id="panel-vlans" class="tab-panel hidden" role="tabpanel"&gt;...&lt;/div&gt;
+                &lt;div id="panel-interfaces" class="tab-panel hidden" role="tabpanel"&gt;...&lt;/div&gt;
+                &lt;div id="panel-uplinks" class="tab-panel hidden" role="tabpanel"&gt;...&lt;/div&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/div&gt;</pre>
+            </div>
+        </div>
+        
+        <div class="section">
+            <h2>Expected Result</h2>
+            <div class="result-box">
+                <ul>
+                    <li>Template gallery becomes hidden</li>
+                    <li>Configuration editor becomes visible</li>
+                    <li>Topology canvas shows live SVG visualization of network</li>
+                    <li>Switches panel is active by default</li>
+                    <li>All 4 switches from template are listed:
+                        <ul>
+                            <li>CORE1 (core, Nexus 9336C-FX2, 10.0.0.1/24, vPC Domain 10)</li>
+                            <li>CORE2 (core, Nexus 9336C-FX2, 10.0.0.2/24, vPC Domain 10)</li>
+                            <li>LEAF10G-1 (leaf, Nexus 93180YC-EX, 10.0.0.11/24, vPC Domain 100)</li>
+                            <li>LEAF10G-2 (leaf, Nexus 93180YC-EX, 10.0.0.12/24, vPC Domain 100)</li>
+                        </ul>
+                    </li>
+                    <li>Each switch has Edit, Clone, Remove buttons</li>
+                    <li>Editor header has Validate, Reset, Save as Template, Generate Config buttons</li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="section">
+            <h2>Visual UI Mockup</h2>
+            <div class="ui-mockup">
+                <div class="ui-mockup-header">
+                    <h3>User Interface - What the User Sees</h3>
+                </div>
+                <div class="mockup-browser">
+                    <div class="mockup-browser-bar">
+                        <div class="dots">
+                            <div class="dot red"></div>
+                            <div class="dot yellow"></div>
+                            <div class="dot green"></div>
+                        </div>
+                        <div class="url">http://127.0.0.1:9000</div>
+                    </div>
+                    <div class="mockup-content">
+                        <div class="mockup-editor">
+                            <div class="mockup-editor-header">
+                                <h3>Network Configuration Editor</h3>
+                                <div class="mockup-editor-actions">
+                                    <button class="btn">Validate</button>
+                                    <button class="btn">Reset</button>
+                                    <button class="btn">Save as Template</button>
+                                    <button class="btn primary">Generate Config</button>
+                                </div>
+                            </div>
+                            
+                            <div class="mockup-editor-layout">
+                                <div class="mockup-topology-canvas">
+                                    <h4>Topology Canvas</h4>
+                                    <div class="mockup-topology-placeholder">
+                                        [Live Network Topology SVG]
+                                    </div>
+                                    <div class="mockup-canvas-actions">
+                                        <button class="btn">+ Add Switch</button>
+                                        <button class="btn">+ Add vPC Domain</button>
+                                    </div>
+                                </div>
+                                
+                                <div class="mockup-config-panels">
+                                    <div class="mockup-panel-tabs">
+                                        <button class="tab active">Switches</button>
+                                        <button class="tab">vPC Domains</button>
+                                        <button class="tab">VLANs</button>
+                                        <button class="tab">Interfaces</button>
+                                        <button class="tab">Uplinks</button>
+                                    </div>
+                                    
+                                    <div class="mockup-panel-content">
+                                        <div class="mockup-panel-header">
+                                            <h4>Switches</h4>
+                                            <button class="btn">+ Add Switch</button>
+                                        </div>
+                                        
+                                        <div class="mockup-switch-item">
+                                            <div class="mockup-switch-item-header">
+                                                <strong>CORE1</strong>
+                                                <div class="mockup-switch-item-actions">
+                                                    <button class="btn">Edit</button>
+                                                    <button class="btn">Clone</button>
+                                                    <button class="btn danger">Remove</button>
+                                                </div>
+                                            </div>
+                                            <div class="mockup-switch-item-details">
+                                                <span>Role: core</span>
+                                                <span>Model: Nexus 9336C-FX2</span>
+                                                <span>IP: 10.0.0.1/24</span>
+                                                <span>vPC Domain: 10</span>
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="mockup-switch-item">
+                                            <div class="mockup-switch-item-header">
+                                                <strong>CORE2</strong>
+                                                <div class="mockup-switch-item-actions">
+                                                    <button class="btn">Edit</button>
+                                                    <button class="btn">Clone</button>
+                                                    <button class="btn danger">Remove</button>
+                                                </div>
+                                            </div>
+                                            <div class="mockup-switch-item-details">
+                                                <span>Role: core</span>
+                                                <span>Model: Nexus 9336C-FX2</span>
+                                                <span>IP: 10.0.0.2/24</span>
+                                                <span>vPC Domain: 10</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="section">
+            <h2>Next Step</h2>
+            <div class="next-step-box">
+                <strong>Next:</strong> User can edit switches, switch tabs, or click Generate Config
+            </div>
+        </div>
+        
+        <div class="navigation">
+            <a href="step-4-template-success.html" class="prev">← Previous</a>
+            <a href="step-6-tab-navigation.html">Next Step →</a>
+        </div>
+    </div>
+</body>
+</html>

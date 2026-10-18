@@ -132,6 +132,21 @@ class HomeView(ctk.CTkScrollableFrame):
             justify="left",
         ).pack(anchor="w", pady=(6, 0))
 
+        # Multi-switch web UI parity note (P2 UX)
+        ctk.CTkLabel(
+            header_frame,
+            text=(
+                "For multi-switch fabric deployments (vPC pairs, spine-leaf, custom uplinks), "
+                "use the web console: run web_launcher.py and open http://127.0.0.1:9000 "
+                "— the desktop wizard covers single-switch and vPC pair workflows only."
+            ),
+            font=ctk.CTkFont(size=12),
+            text_color="#f39c12",
+            anchor="w",
+            wraplength=700,
+            justify="left",
+        ).pack(anchor="w", pady=(10, 0))
+
         # Horizontal divider
         ctk.CTkFrame(self, height=1, fg_color="#3a3a3a").pack(
             fill="x", padx=24, pady=(12, 0)

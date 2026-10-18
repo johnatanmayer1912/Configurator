@@ -1,0 +1,11 @@
+{
+  "permissions": {
+    "read": ["*"],
+    "write": [".devin/"],
+    "network": false
+  },
+  "read_config_from": [".devin/config.local.json"],
+  "auto_invoke_skills": true,
+  "max_concurrent_skills": 3,
+  "evolution_enabled": true
+}

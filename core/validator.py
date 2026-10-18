@@ -48,6 +48,10 @@ class DeviceValidator:
             if svi.hsrp:
                 self._validate_ip(svi.hsrp.vip, f"SVI Vlan{svi.vlan_id} HSRP VIP")
 
+        # 6. vPC semantic checks
+        if device.vpc:
+            self._validate_vpc_semantics(device)
+
         status = "pass" if not self.errors else "fail"
         return {
             "status": status,
@@ -95,3 +99,26 @@ class DeviceValidator:
             ipaddress.ip_address(clean_ip)
         except ValueError:
             self.errors.append(f"Invalid {label} format: {ip_str}")
+
+    def _validate_vpc_semantics(self, device: Device) -> None:
+        vpc = device.vpc
+        if not vpc:
+            return
+        peer_members: List[str] = []
+        for po in device.port_channels or []:
+            if po.vpc_peer_link:
+                peer_members = list(po.member_interfaces)
+                break
+        if len(peer_members) < 2 and len(vpc.peer_link_interfaces) < 2:
+            self.errors.append(
+                f"vPC domain {vpc.domain_id}: peer-link requires at least two member interfaces"
+            )
+        local_host = vpc.local_keepalive_ip.split("/")[0]
+        remote_host = vpc.remote_keepalive_ip.split("/")[0]
+        if local_host == remote_host:
+            self.errors.append(
+                f"vPC domain {vpc.domain_id}: local and remote keepalive IPs must differ "
+                f"({local_host})"
+            )
+        if vpc.domain_id < 1 or vpc.domain_id > 4095:
+            self.errors.append(f"vPC domain ID must be 1-4095, got {vpc.domain_id}")

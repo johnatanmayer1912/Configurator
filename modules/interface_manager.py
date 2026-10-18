@@ -5,11 +5,11 @@ from models.interface_model import Interface
 def get_vpc_ports(model: str):
     # Returns: {'peer_link': [list of ports], 'keepalive': [list of ports]}
     if model == NexusModel.N93180YC_EX:
-        return {'peer_link': ['Ethernet1/53', 'Ethernet1/54'], 'keepalive': ['Ethernet1/47', 'Ethernet1/48']} 
+        return {'peer_link': ['Ethernet1/51', 'Ethernet1/52'], 'keepalive': ['Ethernet1/49', 'Ethernet1/50']} 
     elif model == NexusModel.N9336C_FX2:
         return {'peer_link': ['Ethernet1/35', 'Ethernet1/36'], 'keepalive': ['Ethernet1/33', 'Ethernet1/34']}
     elif model == NexusModel.N9348GC_FXP:
-        return {'peer_link': ['Ethernet1/53', 'Ethernet1/54'], 'keepalive': ['Ethernet1/47', 'Ethernet1/48']}
+        return {'peer_link': ['Ethernet1/51', 'Ethernet1/52'], 'keepalive': ['Ethernet1/47', 'Ethernet1/48']}
     return None
 
 def generate_interfaces_generic(c_1g: int, c_10g: int, c_40g: int, exclude_ports: List[str] = []) -> List[Interface]:

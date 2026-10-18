@@ -1,6 +1,0 @@
-Site: HQ_DC
-Role: spine
-Model: Nexus 9336C-FX2
-Redundancy: vpc
-Access VLAN range: 10 to 10
-Interfaces generated: 0

@@ -56,12 +56,53 @@ function wantsVpcPortChannel(plan) {
     return plan.vpc_port_channel === true || ["access_vlan", "trunk_all", "trunk_custom"].includes(plan.preset);
 }
 
+function getUsedInterfaces() {
+    const used = new Set();
+    
+    // Get vPC peer-link ports
+    const peerLink = document.getElementById("vpc_pl_ints")?.value || "";
+    if (peerLink) {
+        peerLink.split(",").forEach(p => used.add(p.trim()));
+    }
+    
+    // Get vPC keepalive ports
+    const keepalive = document.getElementById("vpc_ka_ints")?.value || "";
+    if (keepalive) {
+        keepalive.split(",").forEach(p => used.add(p.trim()));
+    }
+    
+    // Get uplink/downlink members from link planner
+    if (typeof linkPlannerRows !== "undefined") {
+        [...(linkPlannerRows.downlink || []), ...(linkPlannerRows.uplink || [])].forEach(row => {
+            if (row.members) {
+                row.members.split(",").forEach(p => used.add(p.trim()));
+            }
+        });
+    }
+    
+    // Get interfaces already used in other plans
+    interfacePlans.forEach(plan => {
+        if (plan.interface) used.add(plan.interface.trim());
+    });
+    
+    return used;
+}
+
 function hardwarePortOptions() {
     const model = document.getElementById("model")?.value;
     const hw = (catalog.hardware || []).find((h) => h.display_name === model);
     const total = hw?.total_ports || 54;
     const ports = [];
-    for (let i = 1; i <= total; i++) ports.push(`Ethernet1/${i}`);
+    const used = getUsedInterfaces();
+    
+    for (let i = 1; i <= total; i++) {
+        const port = `Ethernet1/${i}`;
+        ports.push({
+            value: port,
+            disabled: used.has(port),
+            label: used.has(port) ? `${port} (used)` : port
+        });
+    }
     return ports;
 }
 
@@ -137,7 +178,8 @@ function refreshPortDatalist() {
         dl.id = "ifacePortList";
         document.body.appendChild(dl);
     }
-    dl.innerHTML = ports.map((p) => `<option value="${escapeHtml(p)}">`).join("");
+    // For datalist, we can't disable options, so just show all
+    dl.innerHTML = ports.map((p) => `<option value="${escapeHtml(p.value)}"${p.disabled ? ' disabled' : ''}>`).join("");
 }
 
 function refreshVlanHintList() {
@@ -184,7 +226,12 @@ function renderInterfacePlanner() {
             <div class="grid-2">
                 <div class="form-group">
                     <label>Port</label>
-                    <input type="text" data-field="interface" list="ifacePortList" value="${escapeHtml(plan.interface)}" placeholder="Ethernet1/5">
+                    <select data-field="interface" class="interface-port-select">
+                        <option value="">Select port...</option>
+                        ${hardwarePortOptions().map(p => 
+                            `<option value="${escapeHtml(p.value)}"${p.disabled ? ' disabled' : ''}${plan.interface === p.value ? ' selected' : ''}>${escapeHtml(p.label)}</option>`
+                        ).join("")}
+                    </select>
                 </div>
                 <div class="form-group">
                     <label>Preset</label>

@@ -29,7 +29,7 @@ scenarios:
     redundancy: vpc
     role: access
     pair_mode: true
-    help: "Nexus 9348GC-FXP pair for closet redundancy. Peer-link Eth1/53–54 and keepalive Eth1/47–48 per hardware profile. Add closet ports via Interface Planner."
+    help: "Nexus 9348GC-FXP pair for closet redundancy. Peer-link Eth1/51–52 and keepalive Eth1/47–48 per hardware profile. Add closet ports via Interface Planner."
     defaults:
       model: "Nexus 9348GC-FXP"
       nxos_version: "9.3"

@@ -1,0 +1,238 @@
+{
+  "hostname": "LEAF1",
+  "mgmt_ip": "10.0.0.11/24",
+  "mgmt_gw": "10.0.0.254",
+  "model": "Nexus 93180YC-EX",
+  "vlans": [
+    {
+      "id": 100,
+      "name": "FABRIC_100"
+    },
+    {
+      "id": 101,
+      "name": "FABRIC_101"
+    },
+    {
+      "id": 102,
+      "name": "FABRIC_102"
+    },
+    {
+      "id": 103,
+      "name": "FABRIC_103"
+    }
+  ],
+  "interfaces": [
+    {
+      "name": "Ethernet1/35-36",
+      "mode": "trunk",
+      "vlan": null,
+      "description": "Part_Of_Vpc_PEERLINK_To_LEAF2",
+      "shutdown": false,
+      "vpc_id": null,
+      "trunk_vlans": null,
+      "channel_group": 1,
+      "channel_mode": "active",
+      "mtu": null,
+      "custom_lines": []
+    },
+    {
+      "name": "Ethernet1/49",
+      "mode": "routed",
+      "vlan": null,
+      "description": "Part_Of_Vpc_KEEPALIVE_To_LEAF2",
+      "shutdown": false,
+      "vpc_id": null,
+      "trunk_vlans": null,
+      "channel_group": 2,
+      "channel_mode": "active",
+      "mtu": null,
+      "custom_lines": []
+    },
+    {
+      "name": "Ethernet1/50",
+      "mode": "routed",
+      "vlan": null,
+      "description": "Part_Of_Vpc_KEEPALIVE_To_LEAF2",
+      "shutdown": false,
+      "vpc_id": null,
+      "trunk_vlans": null,
+      "channel_group": 2,
+      "channel_mode": "active",
+      "mtu": null,
+      "custom_lines": []
+    },
+    {
+      "name": "Ethernet1/53",
+      "mode": "trunk",
+      "vlan": null,
+      "description": "Part_Of_VPC30_Uplink",
+      "shutdown": false,
+      "vpc_id": null,
+      "trunk_vlans": null,
+      "channel_group": 30,
+      "channel_mode": "active",
+      "mtu": null,
+      "custom_lines": []
+    },
+    {
+      "name": "Ethernet1/54",
+      "mode": "trunk",
+      "vlan": null,
+      "description": "Part_Of_VPC30_Uplink",
+      "shutdown": false,
+      "vpc_id": null,
+      "trunk_vlans": null,
+      "channel_group": 30,
+      "channel_mode": "active",
+      "mtu": null,
+      "custom_lines": []
+    }
+  ],
+  "svis": [
+    {
+      "vlan_id": 100,
+      "ip_address": "10.100.0.1/24",
+      "description": "SVI_FABRIC_100",
+      "hsrp": {
+        "group": 100,
+        "vip": "10.100.0.1",
+        "priority": 110,
+        "preempt": true
+      },
+      "vrf": null
+    },
+    {
+      "vlan_id": 101,
+      "ip_address": "10.101.0.1/24",
+      "description": "SVI_FABRIC_101",
+      "hsrp": {
+        "group": 101,
+        "vip": "10.101.0.1",
+        "priority": 110,
+        "preempt": true
+      },
+      "vrf": null
+    }
+  ],
+  "static_routes": [],
+  "vpc": {
+    "domain_id": 100,
+    "role": "primary",
+    "keepalive_vrf": "management",
+    "local_keepalive_ip": "10.255.255.1",
+    "remote_keepalive_ip": "10.255.255.2",
+    "peer_link_id": 1,
+    "peer_link_interfaces": [
+      "Ethernet1/49",
+      "Ethernet1/50"
+    ],
+    "keepalive_interfaces": [
+      "Ethernet1/49",
+      "Ethernet1/50"
+    ],
+    "keepalive_po_id": 2,
+    "system_priority": 32667,
+    "role_priority": 4096,
+    "peer_switch": false,
+    "delay_restore": null
+  },
+  "motd": "Data Center Leaf \u2014 vPC Member",
+  "admin_user": "admin",
+  "admin_password": "",
+  "nxos_version": "9.3",
+  "enabled_features": [
+    "hsrp",
+    "interface_vlan",
+    "lacp",
+    "lldp",
+    "logging",
+    "ntp",
+    "storm_control",
+    "vpc",
+    "vpc_arp_sync",
+    "vpc_auto_recovery",
+    "vpc_orphan_suspend",
+    "vpc_peer_gateway"
+  ],
+  "security_tier": "standard",
+  "ntp_servers": [
+    "10.255.255.254"
+  ],
+  "logging_hosts": [
+    "10.255.255.254"
+  ],
+  "snmp_location": "",
+  "snmp_contact": "",
+  "network_name": "HQ",
+  "site_location": "HQ",
+  "snmp_trap_host_1": "",
+  "snmp_trap_host_2": "",
+  "snmp_v3_user": "",
+  "boot_image": "",
+  "tacacs_server_1": "",
+  "tacacs_key": "",
+  "spectrum_user": false,
+  "create_local_user": false,
+  "port_channels": [
+    {
+      "number": 1,
+      "description": "Connected_To_LEAF2_Peer-Link",
+      "mode": "trunk",
+      "vpc_id": null,
+      "vpc_peer_link": true,
+      "vpc_keepalive": false,
+      "vrf": null,
+      "ip_address": null,
+      "mtu": null,
+      "spanning_tree_network": true,
+      "member_interfaces": [
+        "Ethernet1/35-36"
+      ],
+      "access_vlan": null,
+      "trunk_vlans": "100,101,102,103"
+    },
+    {
+      "number": 2,
+      "description": "Connected_To_LEAF2_Peer-Keepalive",
+      "mode": "l3",
+      "vpc_id": null,
+      "vpc_peer_link": false,
+      "vpc_keepalive": true,
+      "vrf": "management",
+      "ip_address": "10.255.255.1/24",
+      "mtu": null,
+      "spanning_tree_network": false,
+      "member_interfaces": [
+        "Ethernet1/49",
+        "Ethernet1/50"
+      ],
+      "access_vlan": null,
+      "trunk_vlans": null
+    },
+    {
+      "number": 30,
+      "description": "Connected_to_SPINE_PAIR",
+      "mode": "trunk",
+      "vpc_id": 30,
+      "vpc_peer_link": false,
+      "vpc_keepalive": false,
+      "vrf": null,
+      "ip_address": null,
+      "mtu": null,
+      "spanning_tree_network": false,
+      "member_interfaces": [
+        "Ethernet1/53",
+        "Ethernet1/54"
+      ],
+      "access_vlan": null,
+      "trunk_vlans": null
+    }
+  ],
+  "spanning_tree_priority": 8192,
+  "baseline_options": [],
+  "fabric_bgp_asn": 65001,
+  "fabric_loopback": "10.255.0.1/32",
+  "fabric_vni": 10000,
+  "uplink_config": [],
+  "downlink_config": []
+}

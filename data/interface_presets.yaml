@@ -6,6 +6,7 @@ presets:
     needs_vlan: false
     needs_trunk: false
     allows_vpc_po: false
+    template_type: "basic"
 
   - id: access_vlan
     label: "Access port — single VLAN"
@@ -13,6 +14,11 @@ presets:
     needs_vlan: true
     needs_trunk: false
     allows_vpc_po: true
+    template_type: "access"
+    default_config:
+      mode: "access"
+      stp: "edge"
+      storm_control: true
 
   - id: trunk_all
     label: "Trunk — all VLANs"
@@ -21,6 +27,10 @@ presets:
     needs_trunk: false
     default_trunk_vlans: "1-4094"
     allows_vpc_po: true
+    template_type: "trunk"
+    default_config:
+      mode: "trunk"
+      allowed_vlans: "1-4094"
 
   - id: trunk_custom
     label: "Trunk — custom VLAN list"
@@ -28,6 +38,9 @@ presets:
     needs_vlan: false
     needs_trunk: true
     allows_vpc_po: true
+    template_type: "trunk"
+    default_config:
+      mode: "trunk"
 
   - id: routed
     label: "Routed (L3)"
@@ -35,6 +48,9 @@ presets:
     needs_vlan: false
     needs_trunk: false
     allows_vpc_po: false
+    template_type: "routed"
+    default_config:
+      mode: "routed"
 
   - id: custom
     label: "Custom CLI"
@@ -43,5 +59,112 @@ presets:
     needs_trunk: false
     allows_vpc_po: false
     needs_custom_cli: true
+    template_type: "custom"
+
+  # New interface templates for GAP 7
+  - id: server_port
+    label: "Server Port (Access)"
+    description: "Standard server access port with portfast and BPDU guard."
+    needs_vlan: true
+    needs_trunk: false
+    allows_vpc_po: true
+    template_type: "access"
+    default_config:
+      mode: "access"
+      stp: "portfast"
+      bpdu_guard: true
+      storm_control: true
+      description: "Standard server connectivity"
+
+  - id: ip_phone_port
+    label: "IP Phone Port (Access)"
+    description: "IP phone access port with voice VLAN and CDP/LLDP."
+    needs_vlan: true
+    needs_trunk: false
+    allows_vpc_po: true
+    template_type: "access"
+    default_config:
+      mode: "access"
+      voice_vlan: true
+      cdp: true
+      lldp: true
+      stp: "portfast"
+      description: "IP phone with PC behind"
+
+  - id: ap_port
+    label: "Wireless AP Port (Trunk)"
+    description: "Wireless access point trunk with native VLAN and CAPWAP."
+    needs_vlan: false
+    needs_trunk: false
+    default_trunk_vlans: "1-4094"
+    allows_vpc_po: true
+    template_type: "trunk"
+    default_config:
+      mode: "trunk"
+      allowed_vlans: "1-4094"
+      native_vlan: 1
+      description: "Wireless access point uplink"
+
+  - id: iscsi_port
+    label: "iSCSI Storage Port (Trunk)"
+    description: "iSCSI storage trunk with jumbo frames and flow control."
+    needs_vlan: false
+    needs_trunk: true
+    allows_vpc_po: true
+    template_type: "trunk"
+    default_config:
+      mode: "trunk"
+      mtu: 9216
+      flow_control: "receive"
+      description: "iSCSI storage connectivity"
+
+  - id: mgmt_port
+    label: "Management Port (Access)"
+    description: "Out-of-band management access with ACL protection."
+    needs_vlan: true
+    needs_trunk: false
+    allows_vpc_po: false
+    template_type: "access"
+    default_config:
+      mode: "access"
+      description: "OOB management access"
+
+  - id: lacp_port
+    label: "LACP Port Channel Member"
+    description: "LACP port channel member with standard settings."
+    needs_vlan: false
+    needs_trunk: false
+    allows_vpc_po: true
+    template_type: "trunk"
+    default_config:
+      mode: "trunk"
+      lacp: "active"
+      description: "Port channel member"
+
+  - id: vpc_peer_link
+    label: "vPC Peer Link (Trunk)"
+    description: "vPC peer link trunk with special settings."
+    needs_vlan: false
+    needs_trunk: false
+    default_trunk_vlans: "1-4094"
+    allows_vpc_po: false
+    template_type: "trunk"
+    default_config:
+      mode: "trunk"
+      allowed_vlans: "1-4094"
+      vpc_peer_link: true
+      description: "vPC peer link"
+
+  - id: vpc_keepalive
+    label: "vPC Keepalive (Routed)"
+    description: "vPC keepalive routed port with dedicated settings."
+    needs_vlan: false
+    needs_trunk: false
+    allows_vpc_po: false
+    template_type: "routed"
+    default_config:
+      mode: "routed"
+      vpc_keepalive: true
+      description: "vPC keepalive link"
 
 vpc_po_start: 10

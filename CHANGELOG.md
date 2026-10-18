@@ -2,6 +2,211 @@
 
 All notable changes to this project will be documented in this file.
 
+## [6.43.0] - 2026-08-13
+
+### P0/P1 architecture & Cisco cutover order
+
+#### Unified API & typed deployment contracts
+- **`POST /api/v1/config/generate`** — single entry for `single`, `preview`, `wizard`, and `deployment` modes
+- **`VPCPairInput` / `UplinkInput`** — shared Pydantic validators; `from_ports` / `to_ports` for asymmetric cabling
+- **`DeploymentInput.normalize_topology()`** — authoritative vPC/uplink validation at API boundary
+- **`baseline_options`** — preserved through deployment `DeviceInput` construction
+- **`output_dir`** — honored via `resolve_deployment_export_base()` (vault-relative paths only)
+- **vPC export blocking** — pass 3 skips switches in failed vPC pairs (`switches_blocked_by_vpc_errors`)
+
+#### Deployment builder extraction
+- **`core/deployment_builder.py`** — export path resolver, custom uplink wiring (`apply_custom_uplinks_for_switch`)
+- Replaced ~230-line inline uplink loop in `generate_deployment` with shared helper
+
+#### NX-OS 9.x template cutover order
+- **`nxos_base.j2`** — `vpc domain` / `peer-keepalive` moved **after** port-channel block (matches legacy 7.x order)
+- Routed keepalive interfaces render `vrf member` + `ip address` on dedicated Ethernet (no LACP PO)
+
+#### Routed keepalive (Cisco best practice)
+- **`baseline_keepalive_routed`** baseline option — dedicated routed link instead of L3 port-channel
+- `core/vpc_topology.py` — `_append_keepalive_topology()` + `_inject_routed_keepalive_interface()`
+
+### P2 Product / UX
+
+#### Config template API (live)
+- **`GET/POST /config/templates`** + **`GET /config/templates/{id}`** — disk-backed saved templates (`core/template_store.py`)
+- Web UI **Save as Template** posts to server API with localStorage fallback; gallery loads saved templates on startup
+
+#### Accessibility & responsive layout
+- Removed **`min-width: 1024px`** body constraint — supports tablet/narrow viewports (320px+)
+- Skip navigation, skeleton loaders, and reduced-motion support retained from prior releases
+
+#### Desktop GUI parity note
+- CTK **Home** view banner directs operators to `web_launcher.py` for multi-switch fabric deployments
+
+#### Tests
+- `tests/mandatory/test_remediation_v643.py` (6 regressions)
+
+## [6.42.0] - 2026-08-13
+
+### Legacy 7.x keepalive + two-pass deployment refactor
+
+#### NX-OS 7.x legacy template (`nxos_legacy.j2`)
+- Full **port-channels** block (peer-link trunk + allowed VLANs, L3 keepalive with `no switchport`)
+- **vPC domain** moved after keepalive/port-channel interfaces (correct cutover order)
+- Ethernet stanza newline fixes; uses `device.vpc.role_priority` for role election
+
+#### Two-pass multi-switch deployment
+- **Pass 1:** build all `Device` models (scenario + vPC + custom uplinks)
+- **Pass 2:** `wire_core_leaf_downlinks()` — order-independent core/spine → leaf wiring
+- **Pass 3:** pipeline render/export per switch
+- Post-build **`validate_all_vpc_pairs()`** for every vPC domain
+- New module: `core/deployment_wiring.py`
+
+#### Tests
+- `tests/mandatory/test_legacy_and_twopass.py` (4 regressions)
+
+## [6.41.1] - 2026-08-13
+
+### Multi-disciplinary audit — P0 remediation
+
+#### Correctness & Cisco NX-OS output
+- **vPC keepalive symmetry** — `_build_deployment_vpc_config()` role-aware local/remote IP mapping with partner cross-check (fixes secondary peer validation failures)
+- **Peer-link trunk allowed VLANs** — explicit `switchport trunk allowed vlan` on vPC peer-links from device VLAN set (type-2 consistency)
+- **L3 keepalive port-channel** — `no switchport` on L3 PO and routed LAG members in `nxos_base.j2`
+- **`DeviceValidator` vPC semantics** — peer-link member count, keepalive IP inequality, domain range
+
+#### API & safety
+- **`/config/upload` basic path** — fixed `ValidationSeverity` / `ConfigValidationError` construction (was HTTP 500)
+- **`/generate-config`** — pre-flight `device_validator.validate()` before pipeline execute
+- **`/api/generate-config`** — preview mode (no vault write); rejects empty CLI output
+- **`DeploymentInput`** — rejects empty switch list at schema level
+
+#### Tests
+- New `tests/mandatory/test_audit_remediation_p0.py` (5 regressions)
+
+## [6.41.0] - 2026-08-13
+
+### Multi-switch deployment route hardening, vPC fixes, offline EXE
+
+#### Multi-switch route (distinct from VPC wizard)
+- **Route separation** — `CONFIG_ROUTE_VPC` (`/scenario/generate`) vs `CONFIG_ROUTE_MULTISWITCH` (`/generate-deployment`); wizard preflight skipped when multi-switch deployment is active
+- **`preflightDeploymentErrors()`** — validates deployment switches, mgmt IPs, vPC pairs, and peer-link ports instead of wizard steps 1–8
+- **`updateBadges()`** — shows deployment-specific badges (switch count, vPC count) in multi-switch mode
+
+#### Backend fixes
+- **`_build_deployment_vpc_config()`** — full `VPCConfig` population from deployment vPC pair data (fixes HTTP 500 on `/generate-deployment`)
+- **Secondary vPC role** — always overwrites scenario vPC config; secondary peers get `role priority 8192`
+- **`channel_group`** — peer-link interfaces use correct `iface.channel_group` field for Jinja rendering
+- **`validate_vpc_pair()`** — called when both vPC peers are processed
+- **`_switch_is_spine_or_core()`** — spine/core uplink auto-wiring for spine-leaf topologies
+- **`/api/generate-config`** — delegates to real deployment pipeline via `_dict_to_switch_config()` (PA-005)
+- **CORS** — localhost-specific origins with `allow_credentials=False`
+
+#### Tests
+- 52 multiswitch mandatory + E2E tests passing (including PA-005 server-side config generation)
+
+## [6.39.0] - 2026-08-02
+
+### Multi-switch results display, Cancel modal fix, API VLAN fix, EXE build
+
+#### Fixes
+- **Results container visible** — `displayDeploymentResults` now navigates wizard to step-8, activates `portMapTab`, and removes hidden state so deployment results are always visible after generation
+- **Success modal** — `showMultiSwitchSuccessModal` uses correct `.modal` class pattern instead of `modal-backdrop`
+- **view-config / view-port-map buttons** — Added missing click handlers in `ui-handlers.js` for result item action buttons
+- **Cancel Add Switch** — Moved `close-modal` and `confirm-add-switch` from `change` event handler to `click` handler; Cancel now correctly removes the modal overlay
+- **API preview Renderer** — Fixed `from core.renderer import Renderer` (class is `ConfigRenderer`) in `/generate-deployment?preview=true` path
+- **API VLAN str** — Fixed `str(v.id)` → `str(v)` in `user_vlan_str` when `user_vlan_ids` contains raw ints from `global_vlans`
+- **Template flow** — Removed premature `hideTemplateGallery()` call from `applyTemplate`; editor only appears after "Customize Network" click
+- **ui-handlers event routing** — Moved `filter-templates`, `show-template-comparison`, `render-template-gallery` from `change` to `click` handler
+
+## [6.28.9] - 2026-07-20
+
+### JavaScript ReferenceError fix
+
+Fixed the ReferenceError in topology-view.js that was causing console errors during multi-switch deployment.
+
+#### Fixes
+- **ReferenceError fix** - Renamed `multiSwitchMode` variable to `isMultiSwitchMode` in topology-view.js:562 to avoid temporal dead zone issue
+- **Console error resolution** - Eliminated repeated "Cannot access 'multiSwitchMode' before initialization" errors
+
+## [6.28.8] - 2026-07-19
+
+### Interface ordering fix
+
+Fixed interface ordering in CLI output to ensure interfaces appear in natural numeric order.
+
+#### Fixes
+- **Interface sorting** - Added automatic interface sorting by name in Device class __post_init__ method
+- **Natural order** - Interfaces now sort as Ethernet1/1, 1/2, 1/3, 1/4 before 1/35-36, etc.
+- **CSS display fix** - Removed max-height constraint from .cli-block to show full configuration
+
+## [6.28.7] - 2026-07-19
+
+### Post-build popup mandatory for all scenarios
+
+Made the build success popup mandatory across all configuration scenarios.
+
+#### Features
+- **Universal build success popup** - Post-build popup now appears for all scenarios (vPC, multi-switch, standalone) showing created files and next actions
+- **Multi-switch export summary** - Added export information to multi-switch deployment response to enable popup display
+- **Consistent user experience** - Users always see file creation summary and action options (open folder, restart, etc.) after successful builds
+
+## [6.28.6] - 2026-07-19
+
+### User VLAN choice override fix
+
+Fixed scenario defaults overriding user's explicit VLAN choices in multi-switch deployments.
+
+#### Fixes
+- **Override application logic** - Modified scenario_engine to only apply override values when explicitly provided (not None), ensuring user's VLAN choices are respected over scenario defaults
+- **VLAN parameter preservation** - User-selected base_access_vlan and access_vlan_count now take precedence over scenario template defaults
+
+## [6.28.5] - 2026-07-19
+
+### VLAN naming consistency fix
+
+Fixed inconsistent VLAN naming across different device roles in multi-switch deployments.
+
+#### Fixes
+- **Consistent VLAN naming** - Updated VLAN naming logic to use consistent "TRANSIT" prefix across all device roles (spine, leaf, access) instead of role-specific prefixes (TRANSIT for spine, FABRIC for leaf, USER for access)
+- **Multi-switch VLAN consistency** - Ensures all devices in a multi-switch deployment have matching VLAN names when the same VLAN range is selected
+
+## [6.28.4] - 2026-07-19
+
+### Core switch scenario selection fix
+
+Fixed campus network configuration generation for core switches in vPC pairs.
+
+#### Fixes
+- **Core role scenario selection** - Updated scenario selection logic to include `role: "core"` switches in vPC deployments, ensuring they use `vpc_core_pair` scenario for proper VLANs, SVIs, and institutional baseline
+- **vPC pair variable scope** - Fixed UnboundLocalError by initializing `vpc_pair` variable before use in scenario selection
+
+## [6.28.3] - 2026-07-19
+
+### Multi-switch configuration completeness fix
+
+Fixed spine/core switch configuration generation in multi-switch deployments to include VLANs, SVIs, and institutional baseline configurations matching the VPC scenario output.
+
+#### Fixes
+- **Scenario-based configuration enrichment** - Applied scenario templates to enrich device configurations with proper VLANs, SVIs, features, and baseline options during multi-switch deployment generation
+- **Spine scenario selection** - Updated spine switches in multi-switch deployments with vPC leaf pairs to use `vpc_core_pair` scenario for complete institutional baseline
+- **Default vPC parameters** - Added default vPC parameter values for spine switches that don't have explicit vPC configuration to prevent TypeError during scenario application
+
+## [6.28.2] - 2026-07-19
+
+### Multi-switch deployment fixes
+
+Fixed critical issues preventing leaf switch configuration generation in multi-switch deployments.
+
+#### Fixes
+- **ImportError in catalog_loader** - Fixed incorrect import of non-existent `load_hardware_profiles` function; replaced with correct `CatalogLoader().list_hardware_profiles()` method call
+- **Variable scope error** - Fixed local variable shadowing of global `catalog` variable that caused "cannot access local variable 'catalog' where it is not associated with a value" error
+- **VPCConfig instantiation** - Previously fixed VPCConfig() being called without required arguments by implementing `_build_deployment_vpc_config` helper function
+- **Topology rendering** - Fixed multi-switch topology diagram to correctly render full spine-leaf topology instead of only vPC core pair
+- **Port map display** - Fixed port maps and configuration maps not displaying in deployment results
+- **Spine-leaf classification** - Fixed device class matching to correctly identify spine switches with `device_class` "core" and role "spine"
+
+#### Testing
+- Verified all 6 switches (2 spines + 4 leaves) now generate configurations successfully
+- Confirmed topology diagram renders correctly for multi-switch deployments
+- Port maps and configuration maps display properly for all switches
+
 ## [5.0.3] - 2026-06-23
 
 ### Offline-integrity hardening + UI polish — no new exe

@@ -2,6 +2,8 @@
 
 **Run before every VERSION bump and offline exe build.**
 
+**Current Version: 6.14.0**
+
 Manifest-driven gate: `data/release_qa_manifest.yaml`  
 Council rationale: [MANDATORY_RELEASE_TESTS.md](MANDATORY_RELEASE_TESTS.md)
 
